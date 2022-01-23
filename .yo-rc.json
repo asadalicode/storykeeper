@@ -1,0 +1,32 @@
+{
+  "generator-ngx-rocket": {
+    "version": "10.1.2",
+    "props": {
+      "location": "path",
+      "strict": true,
+      "skipInstall": false,
+      "skipQuickstart": false,
+      "initGit": true,
+      "usePrefix": true,
+      "appName": "ngx new",
+      "target": ["web", "cordova"],
+      "mobile": ["ios", "android"],
+      "ui": "ionic",
+      "layout": "tabs",
+      "features": ["pwa", "auth", "lazy", "cypress"],
+      "languages": ["en-US", "es-ES"],
+      "tools": ["prettier", "hads"],
+      "utility": ["lodash", "moment"],
+      "deploy": "none",
+      "projectName": "ngx-new",
+      "packageManager": "npm",
+      "desktop": [],
+      "pwa": true,
+      "auth": true,
+      "lazy": true,
+      "e2e": false,
+      "cypress": true,
+      "angulartics": false
+    }
+  }
+}
