@@ -1,0 +1,12 @@
+{
+  "defaultProject": "ngx-new",
+  "projects": {
+    "ngx-new": {
+      "name": "ngx-new",
+      "integrations": {
+        "capacitor": {}
+      },
+      "type": "angular"
+    }
+  }
+}
