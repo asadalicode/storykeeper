@@ -85,6 +85,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
       this.keyboard.hideFormAccessoryBar(true);
       this.statusBar.styleLightContent();
+      this.statusBar.overlaysWebView(false);
       this.splashScreen.hide();
     }
   }

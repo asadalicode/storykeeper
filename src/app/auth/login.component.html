@@ -27,7 +27,7 @@
               <span class="ion-padding" translate>Email or password incorrect.</span>
             </ion-text>
             <ion-list>
-              <ion-item lines="inset">
+              <ion-item lines="none">
                 <ion-label class="form-input-label" position="stacked" translate>Enter_email</ion-label>
                 <ion-input
                   class="form-input"
@@ -42,7 +42,7 @@
                 [hidden]="loginForm.controls['username'].valid || loginForm.controls['username'].untouched">
                 <span class="ion-padding" translate>Email is required</span>
               </ion-text> -->
-              <ion-item lines="inset">
+              <ion-item lines="none">
                 <ion-label class="form-input-label" position="stacked" translate>Password</ion-label>
                 <ion-input
                   class="form-input"
@@ -82,9 +82,13 @@
             <ion-item lines="none">
               <ion-text color="medium"> Or continue with </ion-text>
               <div>
-                <ion-icon name="logo-facebook"></ion-icon>
-                <ion-icon name="logo-facebook"></ion-icon>
-                <ion-icon name="logo-facebook"></ion-icon>
+                <img src="assets/images/facebook.svg" alt="" />
+                <img src="assets/images/google.svg" alt="" />
+                <img src="assets/images/apple.svg" alt="" />
+
+                <!-- <ion-icon [src]="'assets/images/facebook.svg'"></ion-icon>
+                <ion-icon [src]="'assets/images/google.svg'"></ion-icon>
+                <ion-icon [src]="'assets/images/apple.svg'"></ion-icon> -->
               </div>
             </ion-item>
           </form>

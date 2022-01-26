@@ -31,6 +31,9 @@ ion-row {
 .login-container {
   background-color: var(--ion-background-color);
   max-width: 350px;
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
 }
 
 .form-input-label {
