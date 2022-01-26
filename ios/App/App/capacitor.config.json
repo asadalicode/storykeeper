@@ -1,1 +1,22 @@
-{}
+{
+  "appId": "com.storykeeperv1.app",
+  "appName": "storykeeper",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "cordova": {
+    "preferences": {
+      "Hostname": "app",
+      "Fullscreen": "false",
+      "DisallowOverscroll": "true",
+      "Orientation": "portrait",
+      "StatusBarStyle": "lightcontent",
+      "AutoHideSplashScreen": "false",
+      "SplashScreen": "screen",
+      "SplashScreenDelay": "3000",
+      "ShowSplashScreenSpinner": "false",
+      "SplashMaintainAspectRatio": "true",
+      "FadeSplashScreenDuration": "500",
+      "SplashShowOnlyFirstTime": "true"
+    }
+  }
+}

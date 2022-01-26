@@ -3,7 +3,6 @@ ion-row {
   height: 100%;
 }
 
-.login-header,
 .login-background {
   background-color: var(--ion-color-primary);
   color: var(--ion-color-primary-contrast);
@@ -17,6 +16,47 @@ ion-row {
   bottom: 50%;
 }
 
+.login-header {
+  font-weight: 600;
+  line-height: 44px;
+  font-size: 28px;
+  color: var(--ion-color-primary);
+}
+.login-sub-heading {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ion-color-tertiary);
+}
+
 .login-container {
   background-color: var(--ion-background-color);
+  max-width: 350px;
+}
+
+.form-input-label {
+  color: var(--ion-color-primary);
+  font-weight: 500 !important;
+  font-size: 16px;
+}
+.form-input {
+  margin-top: 15px;
+  padding: 6px 16px !important;
+  background-color: var(--ion-color-light);
+  color: var(--ion-color-tertiary);
+  border-radius: 8px;
+
+  &.ion-invalid {
+    background-color: var(--ion-color-danger-opacity);
+    color: var(--ion-color-danger);
+  }
+  &:is(.ion-untouched, .ion-pristine) {
+    background-color: var(--ion-color-light);
+    color: var(--ion-color-tertiary);
+  }
+}
+
+.forgot-password-link {
+  color: var(--ion-color-medium);
+  line-height: 20px;
+  font-size: 14px;
 }

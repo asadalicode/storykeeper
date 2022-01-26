@@ -1,5 +1,5 @@
 {
-  "APP_NAME": "ngx new",
+  "APP_NAME": "Story Keeper",
   "About": "Acerca de",
   "Hello world !": "¡Hola Mundo!",
   "Home": "Inicio",
@@ -14,11 +14,13 @@
   "Profile": "Perfil",
   "Login": "Iniciar sesión",
   "Logout": "Salir",
-  "Password": "Contraseña",
-  "Password is required": "Se requiere contraseña",
-  "Username": "Nombre de usuario",
-  "Username is required": "Se requiere nombre de usuario",
-  "Username or password incorrect.": "Usuario o contraseña incorrectos.",
+  "Password": "Enter your password",
+  "Password is required": "Password is required",
+  "Enter_email": "Enter your email",
+  "Email is required": "Email is required",
+  "Email or password incorrect.": "Email or password incorrect.",
   "Remember me": "Recuérdame",
-  "Version": "Versión"
+  "Version": "Versión",
+  "Create_account": "Create account",
+  "Create_account_subheading": "Enter your information below or continue with your social account."
 }
