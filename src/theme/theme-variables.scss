@@ -4,6 +4,7 @@
 
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 :root {
   /** primary **/
@@ -106,4 +107,5 @@
   /** content margin and padding **/
   --ion-content-margin: 16px;
   --ion-content-padding: 16px;
+  --ion-font-family: "Inter";
 }

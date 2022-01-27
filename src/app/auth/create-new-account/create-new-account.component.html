@@ -1,0 +1,84 @@
+<ion-content no-bounce>
+  <app-header showAction="signin"></app-header>
+  <ion-grid class="page-content ion-no-padding">
+    <ion-row class="ion-no-padding">
+      <ion-col
+        *ngIf="isWeb"
+        size-sm="8"
+        size-lg="6"
+        size-xl="6"
+        class="ion-hide-sm-down ion-text-center ion-align-self-center ion-no-padding"
+      >
+        <img src="assets/images/login-backgroud.svg" alt="signup-backgroud" />
+      </ion-col>
+      <ion-col size-sm="12" size-lg="6" size-xl="6" class="ion-align-self-center ion-no-padding">
+        <div class="signup-container">
+          <h1 class="signup-header ion-padding-start" translate>Create_account</h1>
+          <!-- <p class="signup-sub-heading ion-padding-start" translate>Create_account_subheading</p> -->
+          <form (ngSubmit)="signup()" [formGroup]="signupForm" novalidate autocomplete="off">
+            <ion-text color="danger" [hidden]="!error || signupForm.dirty || isLoading">
+              <span class="ion-padding" translate>Email or password incorrect.</span>
+            </ion-text>
+            <ion-list>
+              <ion-item lines="none">
+                <ion-label class="form-input-label" position="stacked" translate>Enter_email</ion-label>
+                <ion-input
+                  class="form-input"
+                  type="text"
+                  formControlName="username"
+                  autocomplete="username"
+                  autocomplete="new-email"
+                ></ion-input>
+              </ion-item>
+
+              <ion-item lines="none">
+                <ion-label class="form-input-label" position="stacked" translate>Password</ion-label>
+                <ion-input
+                  class="form-input"
+                  type="password"
+                  formControlName="password"
+                  autocomplete="current-password"
+                  autocomplete="new-password"
+                ></ion-input>
+              </ion-item>
+              <ion-item lines="none">
+                <ion-label class="form-input-label" position="stacked" translate>Confirm Password</ion-label>
+                <ion-input
+                  class="form-input"
+                  type="password"
+                  formControlName="confirmPassword"
+                  autocomplete="current-password"
+                  autocomplete="new-password"
+                ></ion-input>
+              </ion-item>
+            </ion-list>
+
+            <div class="social-signup">
+              <ion-text color="medium"> Or continue with </ion-text>
+              <div>
+                <img src="assets/images/facebook.svg" alt="" />
+                <img src="assets/images/google.svg" alt="" />
+                <img src="assets/images/apple.svg" alt="" />
+              </div>
+            </div>
+            <div class="ion-padding-horizontal">
+              <ion-button
+                type="submit"
+                [disabled]="signupForm.invalid || isLoading"
+                color="primary"
+                expand="block"
+                translate
+              >
+                Create_account
+              </ion-button>
+            </div>
+
+            <ion-text color="tertiary">
+              <h5 class="switch-page">Already have an account? <a routerLink="/login"> Sign in here</a>.</h5>
+            </ion-text>
+          </form>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

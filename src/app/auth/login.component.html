@@ -1,6 +1,6 @@
 <ion-content no-bounce>
-  <app-header></app-header>
-  <ion-grid class="ion-no-padding">
+  <app-header showAction="signup"></app-header>
+  <ion-grid class="page-content ion-no-padding">
     <ion-row class="ion-no-padding">
       <ion-col
         *ngIf="isWeb"
@@ -64,7 +64,7 @@
               </ion-item> -->
 
               <ion-item lines="none">
-                <a href="#" class="forgot-password-link">Forgot password</a>
+                <a href="#" class="forgot-password-link">Forgot password?</a>
               </ion-item>
             </ion-list>
             <div class="ion-padding-horizontal">
@@ -79,18 +79,18 @@
               </ion-button>
             </div>
 
-            <ion-item lines="none">
+            <div class="social-login">
               <ion-text color="medium"> Or continue with </ion-text>
               <div>
                 <img src="assets/images/facebook.svg" alt="" />
                 <img src="assets/images/google.svg" alt="" />
                 <img src="assets/images/apple.svg" alt="" />
-
-                <!-- <ion-icon [src]="'assets/images/facebook.svg'"></ion-icon>
-                <ion-icon [src]="'assets/images/google.svg'"></ion-icon>
-                <ion-icon [src]="'assets/images/apple.svg'"></ion-icon> -->
               </div>
-            </ion-item>
+            </div>
+
+            <ion-text color="tertiary">
+              <h5 class="switch-page">Do not have an account? <a routerLink="/create-acount"> Sign up here</a>.</h5>
+            </ion-text>
           </form>
         </div>
       </ion-col>

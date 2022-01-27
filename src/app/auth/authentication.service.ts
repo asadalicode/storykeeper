@@ -8,6 +8,10 @@ export interface LoginContext {
   password: string;
   remember?: boolean;
 }
+export interface SignUpContext {
+  username: string;
+  password: string;
+}
 
 /**
  * Provides a base for authentication workflow.
@@ -31,6 +35,17 @@ export class AuthenticationService {
       token: '123456',
     };
     this.credentialsService.setCredentials(data, context.remember);
+    return of(data);
+  }
+
+  signup(context: SignUpContext): Observable<Credentials> {
+    // Replace by proper authentication call
+    const data = {
+      username: context.username,
+      password: context.password,
+      token: '123456',
+    };
+    this.credentialsService.setCredentials(data, true);
     return of(data);
   }
 

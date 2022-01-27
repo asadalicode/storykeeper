@@ -8,20 +8,18 @@ import { finalize } from 'rxjs/operators';
 
 import { environment } from '@env/environment';
 import { Logger, UntilDestroy, untilDestroyed } from '@shared';
-import { AuthenticationService } from './authentication.service';
-
-const log = new Logger('Login');
-
+import { AuthenticationService } from '..';
+const log = new Logger('signup');
 @UntilDestroy()
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  selector: 'app-create-new-account',
+  templateUrl: './create-new-account.component.html',
+  styleUrls: ['./create-new-account.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class CreateNewAccountComponent implements OnInit {
   version: string | null = environment.version;
   error: string | undefined;
-  loginForm!: FormGroup;
+  signupForm!: FormGroup;
   isLoading = false;
 
   constructor(
@@ -37,16 +35,16 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {}
 
-  async login() {
+  async signup() {
     this.isLoading = true;
-    const login$ = this.authenticationService.login(this.loginForm.value);
+    const signup$ = this.authenticationService.signup(this.signupForm.value);
     const loadingOverlay = await this.loadingController.create({});
     const loading$ = from(loadingOverlay.present());
-    forkJoin([login$, loading$])
+    forkJoin([signup$, loading$])
       .pipe(
         map(([credentials, ...rest]) => credentials),
         finalize(() => {
-          this.loginForm.markAsPristine();
+          this.signupForm.markAsPristine();
           this.isLoading = false;
           loadingOverlay.dismiss();
         }),
@@ -54,11 +52,11 @@ export class LoginComponent implements OnInit {
       )
       .subscribe(
         (credentials) => {
-          log.debug(`${credentials.username} successfully logged in`);
+          log.debug(`${credentials.username} successfully signup`);
           this.router.navigate([this.route.snapshot.queryParams['redirect'] || '/'], { replaceUrl: true });
         },
         (error) => {
-          log.debug(`Login error: ${error}`);
+          log.debug(`signup error: ${error}`);
           this.error = error;
         }
       );
@@ -70,10 +68,10 @@ export class LoginComponent implements OnInit {
   }
 
   private createForm() {
-    this.loginForm = this.formBuilder.group({
+    this.signupForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
-      remember: true,
+      confirmPassword: ['', Validators.required],
     });
   }
 }
