@@ -5,16 +5,16 @@
       <ion-col
         *ngIf="isWeb"
         size-sm="8"
-        size-lg="6"
-        size-xl="6"
+        size-lg="7"
+        size-xl="7"
         class="ion-hide-sm-down ion-text-center ion-align-self-center ion-no-padding"
       >
         <img src="assets/images/login-backgroud.svg" alt="signup-backgroud" />
       </ion-col>
-      <ion-col size-sm="12" size-lg="6" size-xl="6" class="ion-align-self-center ion-no-padding">
+      <ion-col size-sm="12" size-lg="5" size-xl="5" class="ion-align-self-center ion-no-padding">
         <div class="signup-container">
           <h1 class="signup-header ion-padding-start" translate>Create_account</h1>
-          <!-- <p class="signup-sub-heading ion-padding-start" translate>Create_account_subheading</p> -->
+          <p class="signup-sub-heading ion-padding-start" translate>Create_account_subheading</p>
           <form (ngSubmit)="signup()" [formGroup]="signupForm" novalidate autocomplete="off">
             <ion-text color="danger" [hidden]="!error || signupForm.dirty || isLoading">
               <span class="ion-padding" translate>Email or password incorrect.</span>
@@ -53,17 +53,26 @@
               </ion-item>
             </ion-list>
 
-            <div class="social-signup">
+            <div class="social-signup" [class.d-flex-column]="!isWeb">
               <ion-text color="medium"> Or continue with </ion-text>
-              <div>
-                <img src="assets/images/facebook.svg" alt="" />
-                <img src="assets/images/google.svg" alt="" />
-                <img src="assets/images/apple.svg" alt="" />
-              </div>
+              <ion-grid class="ion-padding-top">
+                <ion-row>
+                  <ion-col size="4" class="icon">
+                    <img src="assets/images/facebook.svg" alt="" />
+                  </ion-col>
+                  <ion-col size="4" class="icon">
+                    <img src="assets/images/google.svg" alt="" />
+                  </ion-col>
+                  <ion-col size="4" class="icon">
+                    <img src="assets/images/apple.svg" alt="" />
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
             </div>
             <div class="ion-padding-horizontal">
               <ion-button
                 type="submit"
+                class="submit-button"
                 [disabled]="signupForm.invalid || isLoading"
                 color="primary"
                 expand="block"
@@ -81,4 +90,6 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+
+  <app-footer *ngIf="isWeb"></app-footer>
 </ion-content>

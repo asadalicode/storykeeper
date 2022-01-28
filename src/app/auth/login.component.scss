@@ -29,7 +29,7 @@ ion-row {
 }
 
 .login-container {
-  background-color: var(--ion-background-color);
+  background-color: transparent;
   max-width: 350px;
   padding: 10px;
   @media (max-width: 768px) {
@@ -44,7 +44,7 @@ ion-row {
 }
 .form-input {
   margin-top: 15px;
-  padding: 6px 16px !important;
+  padding: 10px 16px !important;
   background-color: var(--ion-color-light);
   color: var(--ion-color-tertiary);
   border-radius: 8px;
@@ -69,7 +69,14 @@ ion-row {
   padding: 0 16px;
   display: flex;
   place-content: space-between;
-  margin-top: 20px;
+  margin: 20px 0 30px 0;
+  align-items: center;
+  margin-top: 32px;
+  margin-bottom: 20px;
+
+  .icon {
+    padding: 0 7px;
+  }
 }
 .switch-page {
   font-size: 14px;

@@ -5,13 +5,13 @@
       <ion-col
         *ngIf="isWeb"
         size-sm="8"
-        size-lg="6"
-        size-xl="6"
+        size-lg="7"
+        size-xl="7"
         class="ion-hide-sm-down ion-text-center ion-align-self-center ion-no-padding"
       >
         <img src="assets/images/login-backgroud.svg" alt="login-backgroud" />
       </ion-col>
-      <ion-col size-sm="12" size-lg="6" size-xl="6" class="ion-align-self-center ion-no-padding">
+      <ion-col size-sm="12" size-lg="5" size-xl="5" class="ion-align-self-center ion-no-padding">
         <!-- <div class="login-header ion-text-center">
           <ion-list *ngIf="isWeb" color="primary" lines="none" class="ion-no-padding">
             <app-language-selector type="select" itemClass="ion-color ion-color-primary item-lines-none">
@@ -70,6 +70,7 @@
             <div class="ion-padding-horizontal">
               <ion-button
                 type="submit"
+                class="submit-button"
                 [disabled]="loginForm.invalid || isLoading"
                 color="primary"
                 expand="block"
@@ -79,13 +80,21 @@
               </ion-button>
             </div>
 
-            <div class="social-login">
+            <div class="social-login" [class.d-flex-column]="!isWeb">
               <ion-text color="medium"> Or continue with </ion-text>
-              <div>
-                <img src="assets/images/facebook.svg" alt="" />
-                <img src="assets/images/google.svg" alt="" />
-                <img src="assets/images/apple.svg" alt="" />
-              </div>
+              <ion-grid class="ion-padding-top">
+                <ion-row>
+                  <ion-col class="icon">
+                    <img src="assets/images/facebook.svg" alt="" />
+                  </ion-col>
+                  <ion-col class="icon">
+                    <img src="assets/images/google.svg" alt="" />
+                  </ion-col>
+                  <ion-col class="icon">
+                    <img src="assets/images/apple.svg" alt="" />
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
             </div>
 
             <ion-text color="tertiary">
@@ -96,4 +105,5 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <app-footer *ngIf="isWeb"></app-footer>
 </ion-content>

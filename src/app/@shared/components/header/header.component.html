@@ -3,7 +3,13 @@
   <ion-list lines="none" class="ion-no-padding bg-transparent">
     <!-- <app-language-selector type="select" itemClass="ion-color ion-color-primary item-lines-none">
     </app-language-selector> -->
-    <div class="action-link" routerLink="/create-account" *ngIf="showAction === 'signup'" translate>Create_account</div>
-    <div class="action-link" routerLink="/login" *ngIf="showAction === 'signin'" translate>Login</div>
+    <div class="action-link" routerLink="/create-account" *ngIf="showAction === 'signup'">
+      <img src="assets/images/user.svg" alt="" />
+      <span translate>Create_account</span>
+    </div>
+    <div class="action-link" routerLink="/login" *ngIf="showAction === 'signin'" translate>
+      <img src="assets/images/user.svg" alt="" />
+      <span translate>Login</span>
+    </div>
   </ion-list>
 </div>

@@ -7,8 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { I18nModule } from '@app/i18n';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login.component';
-import { SharedModule } from '@app/@shared';
 import { CreateNewAccountComponent } from './create-new-account/create-new-account.component';
+import { SharedModule } from '@app/@shared';
 
 @NgModule({
   imports: [
