@@ -1,5 +1,5 @@
 <ion-content no-bounce>
-  <app-header showAction="signup"></app-header>
+  <app-header *ngIf="isWeb" showAction="signup"></app-header>
   <ion-grid class="page-content ion-no-padding">
     <ion-row class="ion-no-padding">
       <ion-col
@@ -20,7 +20,7 @@
         </div> -->
 
         <div class="login-container">
-          <h1 class="login-header ion-padding-start" translate>Sign_In</h1>
+          <h1 [class.ion-text-center]="!isWeb" class="login-header ion-padding-start" translate>Sign_In</h1>
           <!-- <p class="login-sub-heading ion-padding-start" translate>Create_account_subheading</p> -->
           <form (ngSubmit)="login()" [formGroup]="loginForm" novalidate autocomplete="off">
             <ion-text color="danger" [hidden]="!error || loginForm.dirty || isLoading">

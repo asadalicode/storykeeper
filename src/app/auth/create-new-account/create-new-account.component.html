@@ -1,5 +1,5 @@
 <ion-content no-bounce>
-  <app-header showAction="signin"></app-header>
+  <app-header *ngIf="isWeb" showAction="signin"></app-header>
   <ion-grid class="page-content ion-no-padding">
     <ion-row class="ion-no-padding">
       <ion-col
