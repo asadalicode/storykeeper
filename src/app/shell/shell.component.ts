@@ -4,7 +4,7 @@ import { ActionSheetController, AlertController, Platform } from '@ionic/angular
 import { ActionSheetButton, ActionSheetOptions, TextFieldTypes } from '@ionic/core';
 import { TranslateService } from '@ngx-translate/core';
 
-import { I18nService } from '@app/i18n';
+import { I18nService } from '@app/i18n/i18n.service';
 import { AuthenticationService, CredentialsService } from '@app/auth';
 
 @Component({

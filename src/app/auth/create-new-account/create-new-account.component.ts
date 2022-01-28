@@ -63,7 +63,6 @@ export class CreateNewAccountComponent implements OnInit {
   }
 
   get isWeb(): boolean {
-    console.log(this.platform);
     return !this.platform.is('cordova');
   }
 

@@ -11,7 +11,7 @@ import { Keyboard } from '@awesome-cordova-plugins/keyboard/ngx';
 
 import { environment } from '@env/environment';
 import { Logger, UntilDestroy, untilDestroyed } from '@shared';
-import { I18nService } from '@app/i18n';
+import { I18nService } from '@app/i18n/i18n.service';
 
 const log = new Logger('App');
 

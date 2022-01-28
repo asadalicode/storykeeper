@@ -18,8 +18,5 @@
       "FadeSplashScreenDuration": "500",
       "SplashShowOnlyFirstTime": "true"
     }
-  },
-  "server": {
-    "url": "http://192.168.10.9:8100"
   }
 }
