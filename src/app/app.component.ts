@@ -1,4 +1,3 @@
-import { HeaderColor } from '@awesome-cordova-plugins/header-color/ngx';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
@@ -20,7 +19,6 @@ const log = new Logger('App');
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [HeaderColor],
 })
 export class AppComponent implements OnInit, OnDestroy {
   constructor(
@@ -32,13 +30,11 @@ export class AppComponent implements OnInit, OnDestroy {
     private keyboard: Keyboard,
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
-    private i18nService: I18nService,
-    private headerColor: HeaderColor
+    private i18nService: I18nService
   ) {}
 
   async ngOnInit() {
     // Setup logger
-    this.headerColor.tint('#fff');
     if (environment.production) {
       Logger.enableProductionMode();
     }
@@ -85,10 +81,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
     if ((window as any).cordova) {
       log.debug('Cordova init');
-
       this.keyboard.hideFormAccessoryBar(true);
       this.statusBar.styleLightContent();
       this.statusBar.overlaysWebView(false);
+      this.statusBar.backgroundColorByHexString('#242f40');
       this.splashScreen.hide();
     }
   }

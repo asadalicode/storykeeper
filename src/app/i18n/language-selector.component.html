@@ -10,8 +10,7 @@
     </ion-select>
   </ion-item>
 
-  <ion-item *ngSwitchCase="'item'" button (click)="changeLanguage()" [ngClass]="itemClass">
-    <ion-icon name="globe" slot="start"></ion-icon>
+  <ion-item lines="none" *ngSwitchCase="'item'" button (click)="changeLanguage()" [ngClass]="itemClass">
     <ion-label translate>Change language</ion-label>
   </ion-item>
 </ng-container>

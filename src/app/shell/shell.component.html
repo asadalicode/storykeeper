@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header *ngIf="isWeb">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
@@ -7,8 +7,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-split-pane contentId="main-content">
-  <ion-menu side="start" type="overlay" contentId="main-content" class="sidebar">
+<ion-split-pane [class.split-pane-web]="isWeb" contentId="main-content">
+  <ion-menu [side]="isWeb ? 'start' : 'start'" type="overlay" contentId="main-content" class="sidebar">
     <ion-content class="sidebar-content">
       <div ion-fixed class="sidebar-content">
         <ion-list lines="full" class="ion-no-padding bg-transparent">
@@ -28,12 +28,15 @@
 
           <ul class="menu-links">
             <li [routerDirection]="'root'" routerLink="/home" routerLinkActive="active">
+              <ion-icon name="library-outline"></ion-icon>
               <ion-label><span translate>My Library</span></ion-label>
             </li>
             <li [routerDirection]="'root'" routerLink="/home" routerLinkActive="active">
+              <ion-icon name="leaf-outline"></ion-icon>
               <ion-label><span translate>My Books</span></ion-label>
             </li>
             <li [routerDirection]="'root'" routerLink="/tabs/settings" routerLinkActive="active">
+              <ion-icon name="settings-outline"></ion-icon>
               <ion-label><span translate>Settings</span></ion-label>
             </li>
           </ul>

@@ -36,4 +36,8 @@ export class SettingsComponent implements OnInit {
   logout() {
     this.authenticationService.logout().subscribe(() => this.router.navigate(['/login'], { replaceUrl: true }));
   }
+
+  navigateTo(url: string) {
+    this.router.navigate([`/tabs/${url}`]);
+  }
 }

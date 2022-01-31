@@ -1,41 +1,55 @@
-<!-- <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title><span translate>Settings</span></ion-title>
-  </ion-toolbar>
-</ion-header> -->
-
-<ion-header>
-  <ion-toolbar color="primary">
+<ion-header class="ion-no-border">
+  <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-back-button icon="chevron-back-outline" default-href="/tabs/home"></ion-back-button>
     </ion-buttons>
-    <ion-title><span translate>Settings</span></ion-title>
+    <ion-title class="ion-align-items-end ion-text-center">Settings</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <div>
-    <div class="profile ion-text-center ion-padding">
-      <ion-icon class="profile-icon" name="person-circle"></ion-icon>
-      <div class="profile-title">{{ username }}</div>
-    </div>
-  </div>
-  <ion-list>
-    <ion-list-header>
-      <ion-label translate>Account</ion-label>
+  <ion-list [ngClass]="isWeb ? 'p-5' : 'p-3'">
+    <ion-list-header *ngIf="isWeb" class="p-0 mb-2">
+      <ion-label translate> <h1>Settings</h1></ion-label>
     </ion-list-header>
-    <ion-item button>
-      <ion-icon name="person-circle" slot="start"></ion-icon>
-      <ion-label translate>Profile</ion-label>
+    <ion-item button lines="none">
+      <div class="ion-avatar">
+        <img class="avatar-img" src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
+      </div>
+      <ion-label translate>My Profile</ion-label>
+    </ion-item>
+    <ion-item button (click)="navigateTo('help')" lines="none">
+      <div class="ion-avatar">
+        <ion-icon name="help-circle-outline"></ion-icon>
+      </div>
+      <ion-label translate>Help</ion-label>
+    </ion-item>
+    <ion-item button lines="none" (click)="navigateTo('about')">
+      <div class="ion-avatar">
+        <ion-icon name="help-circle-outline"></ion-icon>
+      </div>
+      <ion-label translate>About</ion-label>
+    </ion-item>
+    <ion-item button lines="none" (click)="navigateTo('privacy-policy')">
+      <div class="ion-avatar">
+        <ion-icon name="document-outline"></ion-icon>
+      </div>
+      <ion-label translate>Privacy Policy</ion-label>
+    </ion-item>
+    <ion-item button lines="none" (click)="navigateTo('term-of-services')">
+      <div class="ion-avatar">
+        <ion-icon name="document-outline"></ion-icon>
+      </div>
+      <ion-label translate>Terms of Service</ion-label>
+    </ion-item>
+    <ion-item button lines="none" (click)="navigateTo('language')">
+      <div class="ion-avatar">
+        <ion-icon name="globe"></ion-icon>
+      </div>
+      <app-language-selector type="item"></app-language-selector>
     </ion-item>
     <ion-item button (click)="logout()">
       <ion-icon name="log-out" slot="start"></ion-icon>
       <ion-label translate>Logout</ion-label>
     </ion-item>
-    <ng-container *ngIf="isWeb">
-      <ion-list-header>
-        <ion-label translate>Preferences</ion-label>
-      </ion-list-header>
-      <app-language-selector type="item"></app-language-selector>
-    </ng-container>
   </ion-list>
 </ion-content>
