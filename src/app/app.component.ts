@@ -1,3 +1,4 @@
+import { HeaderColor } from '@awesome-cordova-plugins/header-color/ngx';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
@@ -8,7 +9,6 @@ import { Platform } from '@ionic/angular';
 import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
 import { SplashScreen } from '@awesome-cordova-plugins/splash-screen/ngx';
 import { Keyboard } from '@awesome-cordova-plugins/keyboard/ngx';
-
 import { environment } from '@env/environment';
 import { Logger, UntilDestroy, untilDestroyed } from '@shared';
 import { I18nService } from '@app/i18n/i18n.service';
@@ -20,6 +20,7 @@ const log = new Logger('App');
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  providers: [HeaderColor],
 })
 export class AppComponent implements OnInit, OnDestroy {
   constructor(
@@ -31,11 +32,13 @@ export class AppComponent implements OnInit, OnDestroy {
     private keyboard: Keyboard,
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
-    private i18nService: I18nService
+    private i18nService: I18nService,
+    private headerColor: HeaderColor
   ) {}
 
   async ngOnInit() {
     // Setup logger
+    this.headerColor.tint('#fff');
     if (environment.production) {
       Logger.enableProductionMode();
     }

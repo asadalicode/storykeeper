@@ -1,54 +1,42 @@
-<!-- <ion-tabs>
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="home">
-      <ion-icon name="home"></ion-icon>
-      <ion-label translate>Home</ion-label>
-    </ion-tab-button>
-    <ion-tab-button tab="about">
-      <ion-icon name="logo-angular"></ion-icon>
-      <ion-label translate>About</ion-label>
-    </ion-tab-button>
-    <ion-tab-button tab="settings">
-      <ion-icon name="cog"></ion-icon>
-      <ion-label translate>Settings</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
-</ion-tabs> -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title><span translate>Home p</span></ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-split-pane contentId="main-content">
-  <ion-menu contentId="main-content">
-    <ion-content>
-      <div ion-fixed>
-        <div class="profile ion-text-center ion-padding">
-          <ion-icon class="profile-icon" name="person-circle"></ion-icon>
-          <div>
-            <ion-menu-toggle auto-hide="false">
-              <ion-button
-                class="profile-button"
-                color="light"
-                (click)="showProfileActions()"
-                shape="round"
-                fill="outline"
-                size="small"
-                expand="block"
-              >
-                <ion-icon name="person"></ion-icon> {{ username }}
-              </ion-button>
-            </ion-menu-toggle>
+  <ion-menu side="start" type="overlay" contentId="main-content" class="sidebar">
+    <ion-content class="sidebar-content">
+      <div ion-fixed class="sidebar-content">
+        <ion-list lines="full" class="ion-no-padding bg-transparent">
+          <div lines="none" class="avatar mb-4">
+            <img
+              class="avatar-img"
+              src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+            />
+            <ion-label class="avatar-caption"> {{ username }}</ion-label>
           </div>
-        </div>
-        <ion-list lines="full" class="ion-no-padding">
-          <ion-menu-toggle auto-hide="false">
-            <ion-item [routerDirection]="'root'" routerLink="/home" routerLinkActive="active">
-              <ion-label><span translate>Home</span></ion-label>
-            </ion-item>
-          </ion-menu-toggle>
 
-          <ion-menu-toggle auto-hide="false">
-            <ion-item [routerDirection]="'root'" routerLink="/tabs/settings" routerLinkActive="active">
+          <div class="ion-padding-horizontal">
+            <ion-button type="button" class="primary-button" color="primary" expand="block" translate
+              >Buy New Book</ion-button
+            >
+          </div>
+
+          <ul class="menu-links">
+            <li [routerDirection]="'root'" routerLink="/home" routerLinkActive="active">
+              <ion-label><span translate>My Library</span></ion-label>
+            </li>
+            <li [routerDirection]="'root'" routerLink="/home" routerLinkActive="active">
+              <ion-label><span translate>My Books</span></ion-label>
+            </li>
+            <li [routerDirection]="'root'" routerLink="/tabs/settings" routerLinkActive="active">
               <ion-label><span translate>Settings</span></ion-label>
-            </ion-item>
-          </ion-menu-toggle>
+            </li>
+          </ul>
         </ion-list>
       </div>
     </ion-content>
