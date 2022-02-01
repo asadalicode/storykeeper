@@ -11,9 +11,10 @@ import { HelpComponent } from './help/help.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { TermOfServiceComponent } from './term-of-service/term-of-service.component';
 import { AboutComponent } from './about/about.component';
+import { SharedModule } from '@app/@shared';
 
 @NgModule({
-  imports: [CommonModule, TranslateModule, IonicModule, I18nModule, SettingsRoutingModule],
+  imports: [CommonModule, TranslateModule, IonicModule, I18nModule, SettingsRoutingModule, SharedModule],
   declarations: [
     SettingsComponent,
     LanguageComponent,

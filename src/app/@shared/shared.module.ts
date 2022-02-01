@@ -8,9 +8,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { I18nModule } from '@app/i18n';
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from './components/footer/footer.component';
+import { FindOnSocialComponent } from './components/find-on-social/find-on-social.component';
 @NgModule({
   imports: [IonicModule, TranslateModule, CommonModule, RouterModule, I18nModule],
-  declarations: [LoaderComponent, HeaderComponent, FooterComponent],
-  exports: [LoaderComponent, HeaderComponent, FooterComponent],
+  declarations: [LoaderComponent, HeaderComponent, FooterComponent, FindOnSocialComponent],
+  exports: [LoaderComponent, HeaderComponent, FooterComponent, FindOnSocialComponent],
 })
 export class SharedModule {}

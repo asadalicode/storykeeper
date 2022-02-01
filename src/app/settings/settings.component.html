@@ -1,9 +1,9 @@
-<ion-header class="ion-no-border">
+<ion-header *ngIf="!isWeb" class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button icon="chevron-back-outline" default-href="/tabs/home"></ion-back-button>
     </ion-buttons>
-    <ion-title class="ion-align-items-end ion-text-center">Settings</ion-title>
+    <ion-title class="mr-5 ion-align-items-end ion-text-center">Settings</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -41,14 +41,16 @@
       </div>
       <ion-label translate>Terms of Service</ion-label>
     </ion-item>
-    <ion-item button lines="none" (click)="navigateTo('language')">
+    <ion-item button class="m" lines="none" (click)="navigateTo('language')">
       <div class="ion-avatar">
         <ion-icon name="globe"></ion-icon>
       </div>
       <app-language-selector type="item"></app-language-selector>
     </ion-item>
     <ion-item button (click)="logout()">
-      <ion-icon name="log-out" slot="start"></ion-icon>
+      <div class="ion-avatar">
+        <ion-icon name="log-out"></ion-icon>
+      </div>
       <ion-label translate>Logout</ion-label>
     </ion-item>
   </ion-list>
