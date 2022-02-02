@@ -9,6 +9,7 @@ import { finalize } from 'rxjs/operators';
 import { environment } from '@env/environment';
 import { Logger, UntilDestroy, untilDestroyed } from '@shared';
 import { AuthenticationService } from './authentication.service';
+import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 
 const log = new Logger('Login');
 
@@ -35,8 +36,66 @@ export class LoginComponent implements OnInit {
     this.createForm();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.isWeb) GoogleAuth.init();
+    //  setTimeout(()=> {
+    //    this.checkLoggedIn()
 
+    //  },3000)
+  }
+
+  async doLogin() {
+    console.log('login');
+    this.isLoading = true;
+    const user = await GoogleAuth.signIn();
+    if (user) {
+      let userObj = { username: user.email, password: user.id };
+      const login$ = this.authenticationService.login(userObj);
+      const loadingOverlay = await this.loadingController.create({});
+      const loading$ = from(loadingOverlay.present());
+      forkJoin([login$, loading$])
+        .pipe(
+          map(([credentials, ...rest]) => credentials),
+          finalize(() => {
+            this.loginForm.markAsPristine();
+            this.isLoading = false;
+            loadingOverlay.dismiss();
+          }),
+          untilDestroyed(this)
+        )
+        .subscribe(
+          (credentials) => {
+            log.debug(`${credentials.username} successfully logged in`);
+            this.router.navigate([this.route.snapshot.queryParams['redirect'] || '/'], { replaceUrl: true });
+          },
+          (error) => {
+            log.debug(`Login error: ${error}`);
+            this.error = error;
+          }
+        );
+    }
+    // if (user) { console.log("@@@",user),   this.router.navigate([this.route.snapshot.queryParams['redirect'] || '/'], { replaceUrl: true }); }
+  }
+
+  checkLoggedIn() {
+    GoogleAuth.refresh()
+      .then((data) => {
+        if (data.accessToken) {
+          console.log(data);
+          // already logged in
+          this.logout();
+        }
+      })
+      .catch((e) => {
+        if (e.type === 'userLoggedOut') {
+          console.log(e.type);
+        }
+      });
+  }
+
+  logout() {
+    GoogleAuth.signOut();
+  }
   async login() {
     this.isLoading = true;
     const login$ = this.authenticationService.login(this.loginForm.value);

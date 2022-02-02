@@ -3,6 +3,12 @@
   "appName": "storykeeper",
   "webDir": "www",
   "bundledWebRuntime": false,
+  "plugins": {
+    "GoogleAuth": {
+      "scopes": ["profile", "email"],
+      "serverClientId": "380937119202-k823tfojlvso31flp09chs93uk4ipg81.apps.googleusercontent.com"
+    }
+  },
   "cordova": {
     "preferences": {
       "Hostname": "app",
@@ -20,6 +26,6 @@
     }
   },
   "server": {
-    "url": "http://192.168.186.195:8100"
+    "url": "http://192.168.10.9:8100"
   }
 }

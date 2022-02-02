@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 import { Credentials, CredentialsService } from './credentials.service';
+import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 
 export interface LoginContext {
   username: string;
@@ -55,6 +56,7 @@ export class AuthenticationService {
    */
   logout(): Observable<boolean> {
     // Customize credentials invalidation here
+    GoogleAuth.signOut();
     this.credentialsService.setCredentials();
     return of(true);
   }
