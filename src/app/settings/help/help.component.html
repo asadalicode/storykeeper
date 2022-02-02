@@ -11,7 +11,7 @@
   <ion-accordion-group class="ion-padding">
     <ng-container *ngFor="let faq of FAQs">
       <ion-accordion [value]="faq.header" toggle-icon="caret-down-outline">
-        <ion-item slot="header">
+        <ion-item slot="header" lines="none">
           <ion-label>{{ faq.header }}</ion-label>
         </ion-item>
 

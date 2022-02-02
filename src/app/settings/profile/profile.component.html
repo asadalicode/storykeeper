@@ -1,0 +1,53 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="chevron-back-outline" default-href="/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="mr-5 ion-align-items-end ion-text-center">My Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-horizontal setting-page">
+  <div lines="none" class="avatar mb-4 mt-4">
+    <img class="avatar-img" src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
+  </div>
+
+  <form (ngSubmit)="save()" [formGroup]="profileForm" novalidate autocomplete="off">
+    <ion-list>
+      <ion-item lines="none" color="light">
+        <ion-icon class="ion-align-self-center mr-3" name="person-outline" slot="start"></ion-icon>
+        <ion-label class="form-input-label" position="stacked" translate>My Name</ion-label>
+        <ion-input class="form-input" type="text" formControlName="name" autocomplete="Name"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none" color="light">
+        <ion-icon class="ion-align-self-center mr-3" name="mail-outline" slot="start"></ion-icon>
+        <ion-label class="form-input-label" position="stacked" translate>Email address</ion-label>
+        <ion-input class="form-input" type="email" formControlName="email" autocomplete="new email"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none" color="light">
+        <ion-icon class="ion-align-self-center mr-3" name="lock-closed-outline" slot="start"></ion-icon>
+        <ion-label class="form-input-label" position="stacked" translate>Password</ion-label>
+        <ion-input
+          class="form-input"
+          type="password"
+          formControlName="password"
+          autocomplete="current-password"
+        ></ion-input>
+      </ion-item>
+    </ion-list>
+    <div>
+      <ion-button
+        type="submit"
+        class="submit-button"
+        [disabled]="profileForm.invalid || isLoading"
+        color="primary"
+        expand="block"
+        translate
+      >
+        Save Changes
+      </ion-button>
+    </div>
+  </form>
+</ion-content>

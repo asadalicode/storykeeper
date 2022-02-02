@@ -12,9 +12,20 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 import { TermOfServiceComponent } from './term-of-service/term-of-service.component';
 import { AboutComponent } from './about/about.component';
 import { SharedModule } from '@app/@shared';
+import { ProfileComponent } from './profile/profile.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [CommonModule, TranslateModule, IonicModule, I18nModule, SettingsRoutingModule, SharedModule],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    IonicModule,
+    I18nModule,
+    SettingsRoutingModule,
+    SharedModule,
+    ReactiveFormsModule,
+    FormsModule,
+  ],
   declarations: [
     SettingsComponent,
     LanguageComponent,
@@ -22,6 +33,7 @@ import { SharedModule } from '@app/@shared';
     PrivacyPolicyComponent,
     TermOfServiceComponent,
     AboutComponent,
+    ProfileComponent,
   ],
 })
 export class SettingsModule {}

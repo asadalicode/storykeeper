@@ -13,13 +13,9 @@ import { AuthenticationService, CredentialsService } from '@app/auth';
 export class SettingsComponent implements OnInit {
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private translateService: TranslateService,
     private authenticationService: AuthenticationService,
     private credentialsService: CredentialsService,
-    private platform: Platform,
-    private alertController: AlertController,
-    private actionSheetController: ActionSheetController
+    private platform: Platform
   ) {}
 
   ngOnInit() {}
