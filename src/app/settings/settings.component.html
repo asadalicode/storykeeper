@@ -11,7 +11,7 @@
     <ion-list-header *ngIf="isWeb" class="p-0 mb-2">
       <ion-label translate> <h1>Settings</h1></ion-label>
     </ion-list-header>
-    <ion-item button lines="none">
+    <ion-item button lines="none" color="tertiary" (click)="navigateTo('profile')">
       <div class="ion-avatar">
         <img class="avatar-img" src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
       </div>
@@ -45,9 +45,10 @@
       <div class="ion-avatar">
         <ion-icon name="globe"></ion-icon>
       </div>
-      <app-language-selector type="item"></app-language-selector>
+      <ion-label translate>Language</ion-label>
+      <!-- <app-language-selector type="item"></app-language-selector> -->
     </ion-item>
-    <ion-item button (click)="logout()">
+    <ion-item button (click)="logout()" lines="none">
       <div class="ion-avatar">
         <ion-icon name="log-out"></ion-icon>
       </div>

@@ -3,7 +3,22 @@
     <ion-buttons slot="start">
       <ion-back-button icon="chevron-back-outline" default-href="/tabs/home"></ion-back-button>
     </ion-buttons>
-    <ion-title class="mr-5 ion-align-items-end ion-text-center">Language</ion-title>
+    <ion-title class="mr-5 ion-align-items-end ion-text-center" translate>Language</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content> </ion-content>
+<ion-content class="ion-padding-horizontal setting-page">
+  <ion-list>
+    <ng-container *ngFor="let language of LanguagesList">
+      <ion-item
+        (click)="setLanguage(language.value)"
+        [color]="language.checked ? 'tertiary' : 'light'"
+        button
+        lines="none"
+      >
+        <img class="pr-2" [src]="language.flag" alt="flag" />
+        <ion-label [class.text-white]="language.checked">{{ language.name }}</ion-label>
+        <ion-icon *ngIf="language.checked" name="checkmark-outline" slot="end"></ion-icon>
+      </ion-item>
+    </ng-container>
+  </ion-list>
+</ion-content>
