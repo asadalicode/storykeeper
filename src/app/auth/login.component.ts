@@ -81,15 +81,6 @@ export class LoginComponent implements OnInit {
     await FacebookLogin.logout();
   }
 
-  // async signIn(): Promise<void> {
-  //   const FACEBOOK_PERMISSIONS = ['public_profile', 'email'];
-
-  //   const result = await Plugins.FacebookLogin.login({ permissions: FACEBOOK_PERMISSIONS });
-  //   if (result && result.accessToken) {
-  //     let user = { token: result.accessToken.token, userId: result.accessToken.userId }
-  //   }
-  // }
-
   async doLogin() {
     console.log('login');
     this.isLoading = true;
