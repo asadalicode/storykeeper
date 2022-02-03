@@ -1,4 +1,4 @@
-<ion-header class="ion-no-border">
+<ion-header *ngIf="!isWeb" class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button icon="chevron-back-outline" default-href="/tabs/home"></ion-back-button>
@@ -7,7 +7,10 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding-horizontal setting-page">
-  <ion-list>
+  <ion-list [ngClass]="isWeb ? 'p-5' : 'p-3'">
+    <ion-list-header *ngIf="isWeb" class="p-0 mb-2">
+      <ion-label translate> <h1>Language</h1></ion-label>
+    </ion-list-header>
     <ng-container *ngFor="let language of LanguagesList">
       <ion-item
         (click)="setLanguage(language.value)"

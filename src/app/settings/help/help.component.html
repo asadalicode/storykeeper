@@ -1,4 +1,4 @@
-<ion-header class="ion-no-border">
+<ion-header *ngIf="!isWeb" class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button icon="chevron-back-outline" default-href="/tabs/home"></ion-back-button>
@@ -8,19 +8,24 @@
 </ion-header>
 <ion-content>
   <!-- Basic -->
-  <ion-accordion-group class="ion-padding">
-    <ng-container *ngFor="let faq of FAQs">
-      <ion-accordion [value]="faq.header" toggle-icon="caret-down-outline">
-        <ion-item slot="header" lines="none">
-          <ion-label>{{ faq.header }}</ion-label>
-        </ion-item>
-
-        <ion-list slot="content">
-          <ion-item button *ngFor="let question of faq.questions" lines="none">
-            <ion-label>{{ question.question }}</ion-label>
+  <ion-list [ngClass]="isWeb ? 'p-5' : 'p-3'">
+    <ion-list-header *ngIf="isWeb" class="p-0 mb-2">
+      <ion-label translate> <h1>Help</h1></ion-label>
+    </ion-list-header>
+    <ion-accordion-group>
+      <ng-container *ngFor="let faq of FAQs">
+        <ion-accordion [value]="faq.header" toggle-icon="caret-down-outline">
+          <ion-item slot="header" lines="none">
+            <ion-label>{{ faq.header }}</ion-label>
           </ion-item>
-        </ion-list>
-      </ion-accordion>
-    </ng-container>
-  </ion-accordion-group>
+
+          <ion-list slot="content">
+            <ion-item button *ngFor="let question of faq.questions" lines="none">
+              <ion-label>{{ question.question }}</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-accordion>
+      </ng-container>
+    </ion-accordion-group>
+  </ion-list>
 </ion-content>

@@ -3,3 +3,18 @@ ion-item {
   --border-radius: 8px;
   --padding-start: 28px;
 }
+
+ion-modal {
+  --width: 340px;
+  --height: 600px;
+  --border-radius: 8px;
+}
+
+.setting-page {
+  .form-container {
+    @media (min-width: 768px) {
+      max-width: 460px;
+      margin: auto;
+    }
+  }
+}

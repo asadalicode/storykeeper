@@ -1,3 +1,4 @@
+import { Platform } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { Languages } from '@app/@shared/constants';
 import { I18nService } from '@app/i18n/i18n.service';
@@ -10,10 +11,13 @@ import { I18nService } from '@app/i18n/i18n.service';
 export class LanguageComponent implements OnInit {
   LanguagesName = Languages;
   LanguagesList: any;
-  constructor(private i18nService: I18nService) {}
+  constructor(private i18nService: I18nService, private platform: Platform) {}
 
   ngOnInit(): void {
     this.getLanguages();
+  }
+  get isWeb(): boolean {
+    return !this.platform.is('cordova');
   }
 
   setLanguage(language: string) {

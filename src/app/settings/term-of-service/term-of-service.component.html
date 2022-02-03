@@ -1,4 +1,4 @@
-<ion-header class="ion-no-border">
+<ion-header *ngIf="!isWeb" class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button icon="chevron-back-outline" default-href="/tabs/home"></ion-back-button>
@@ -6,8 +6,11 @@
     <ion-title class="mr-5 ion-align-items-end ion-text-center">Term of Service </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
-  <ion-content class="ion-padding-horizontal setting-page">
+<ion-content class="ion-padding-horizontal setting-page">
+  <ion-list [ngClass]="isWeb ? 'p-5' : 'p-3'">
+    <ion-list-header *ngIf="isWeb" class="p-0 mb-2">
+      <ion-label translate> <h1>Term of Service</h1></ion-label>
+    </ion-list-header>
     <div lines="none" class="avatar mb-4 mt-4">
       <img class="avatar-img" src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
       <ion-text color="primary">
@@ -30,5 +33,5 @@
         collected from users, along with how the data is processed.
       </p>
     </ion-text>
-  </ion-content>
+  </ion-list>
 </ion-content>
