@@ -33,6 +33,28 @@
     <noscript>
       <p>This page requires JavaScript to work properly. Please enable JavaScript in your browser.</p>
     </noscript>
+
+    <script>
+      window.fbAsyncInit = function () {
+        FB.init({
+          appId: '464800185228826',
+          cookie: true, // enable cookies to allow the server to access the session
+          xfbml: true, // parse social plugins on this page
+          version: 'v5.0', // use graph api current version
+        });
+      };
+
+      // Load the SDK asynchronously
+      (function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, 'script', 'facebook-jssdk');
+    </script>
     <!-- Include Cordova script only when needed -->
     <script>
       if (/^app/.test(location.host)) {

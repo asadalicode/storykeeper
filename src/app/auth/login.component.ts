@@ -10,6 +10,7 @@ import { environment } from '@env/environment';
 import { Logger, UntilDestroy, untilDestroyed } from '@shared';
 import { AuthenticationService } from './authentication.service';
 import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
+import { FacebookLogin } from '@capacitor-community/facebook-login';
 
 const log = new Logger('Login');
 
@@ -43,6 +44,51 @@ export class LoginComponent implements OnInit {
 
     //  },3000)
   }
+
+  async getCurrentState(): Promise<boolean> {
+    const result = await FacebookLogin.getCurrentAccessToken().catch(() => undefined);
+    return !(result === undefined || !result.hasOwnProperty('accessToken'));
+  }
+
+  async getEmail(): Promise<any> {
+    const result = await FacebookLogin.getProfile<{
+      email: string;
+    }>({
+      fields: ['email'],
+    }).catch(() => undefined);
+    if (result === undefined) {
+      return null;
+    }
+    return result.email;
+  }
+
+  async signIn(): Promise<void> {
+    console.log('@@@');
+    const FACEBOOK_PERMISSIONS = ['email', 'user_birthday', 'user_photos', 'user_gender'];
+
+    const result = await FacebookLogin.login({
+      permissions: FACEBOOK_PERMISSIONS,
+    });
+    if (result && result.accessToken) {
+      console.log(result);
+      this.getEmail().then((res: any) => {
+        console.log(res);
+      });
+    }
+  }
+
+  async signOut(): Promise<void> {
+    await FacebookLogin.logout();
+  }
+
+  // async signIn(): Promise<void> {
+  //   const FACEBOOK_PERMISSIONS = ['public_profile', 'email'];
+
+  //   const result = await Plugins.FacebookLogin.login({ permissions: FACEBOOK_PERMISSIONS });
+  //   if (result && result.accessToken) {
+  //     let user = { token: result.accessToken.token, userId: result.accessToken.userId }
+  //   }
+  // }
 
   async doLogin() {
     console.log('login');
