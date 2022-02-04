@@ -1,7 +1,5 @@
+import { Platform } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
-import { finalize } from 'rxjs/operators';
-
-import { QuoteService } from './quote.service';
 
 @Component({
   selector: 'app-home',
@@ -11,20 +9,14 @@ import { QuoteService } from './quote.service';
 export class HomeComponent implements OnInit {
   quote: string | undefined;
   isLoading = false;
+  isAuthor = false;
 
-  constructor(private quoteService: QuoteService) {}
+  constructor(private platform: Platform) {}
 
   ngOnInit() {
     this.isLoading = true;
-    this.quoteService
-      .getRandomQuote({ category: 'dev' })
-      .pipe(
-        finalize(() => {
-          this.isLoading = false;
-        })
-      )
-      .subscribe((quote: string) => {
-        this.quote = quote;
-      });
+  }
+  get isWeb(): boolean {
+    return !this.platform.is('cordova');
   }
 }

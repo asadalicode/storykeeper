@@ -18,12 +18,14 @@ import { ShellModule } from './shell/shell.module';
 import { SettingsModule } from './settings/settings.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
     BrowserModule,
     ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production }),
     FormsModule,
+    FlexLayoutModule,
     HttpClientModule,
     RouterModule,
     TranslateModule.forRoot(),

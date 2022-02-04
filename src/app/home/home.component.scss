@@ -7,3 +7,47 @@ q {
   font-style: italic;
   quotes: "« " " »";
 }
+
+ion-card {
+  margin: 0;
+  box-shadow: none;
+  --background: linear-gradient(164.45deg, var(--ion-color-primary) 33.07%, #3b4960 91.99%);
+  --color: #fff;
+  border-radius: 0px 0px 30px 30px;
+}
+
+ion-button {
+  --color: #fff;
+}
+
+.more-icon {
+  width: 30px;
+  font-size: 30px;
+  height: 30px;
+}
+
+.heading {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  padding-top: 4px;
+
+  &.isWeb {
+    font-size: 24px;
+    font-weight: 700;
+  }
+}
+
+.message {
+  line-height: 34px;
+  font-weight: 300;
+  font-size: 24px;
+  margin: 2rem auto;
+  max-width: 70%;
+  text-align: center;
+  color: var(--ion-color-light);
+}
+
+.empty-screen-image {
+  text-align: center;
+}

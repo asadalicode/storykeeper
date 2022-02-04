@@ -14,11 +14,13 @@ import { AboutComponent } from './about/about.component';
 import { SharedModule } from '@app/@shared';
 import { ProfileComponent } from './profile/profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
     CommonModule,
     TranslateModule,
+    FlexLayoutModule,
     IonicModule,
     I18nModule,
     SettingsRoutingModule,

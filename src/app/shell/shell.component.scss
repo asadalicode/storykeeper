@@ -13,7 +13,9 @@ ion-tab-button {
 }
 
 ion-menu {
-  width: 300px;
+  &.menu-width {
+    width: 300px;
+  }
   --background: linear-gradient(164.45deg, var(--ion-color-secondary) 33.07%, var(--ion-color-secondary-shade) 91.99%);
 }
 
@@ -23,7 +25,7 @@ ion-menu::part(backdrop) {
 
 ion-content {
   --background: transparent;
-  width: 300px;
+  --width: 300px;
 
   .sidebar-content {
     padding-top: 65px;

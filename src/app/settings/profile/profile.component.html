@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content class="ion-padding-horizontal setting-page">
-  <ion-list [ngClass]="isWeb ? 'p-5' : 'p-3'">
+  <ion-list [ngClass]="isWeb ? 'p-5' : 'p-1'">
     <ion-list-header *ngIf="isWeb" class="p-0 mb-2">
       <ion-label translate> <h1>My Profile</h1></ion-label>
     </ion-list-header>
@@ -18,7 +18,7 @@
         <img class="avatar-img" src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
       </div>
 
-      <form (ngSubmit)="save()" [formGroup]="profileForm" novalidate autocomplete="off">
+      <form (ngSubmit)="save()" class="profile-form" [formGroup]="profileForm" novalidate autocomplete="off">
         <ion-list>
           <ion-item lines="none" color="light">
             <ion-icon class="ion-align-self-center mr-3" name="person-outline" slot="start"></ion-icon>
@@ -52,14 +52,13 @@
         <div>
           <ion-button
             type="submit"
-            class="submit-button"
+            class="submit-button ion-text-capitalize"
             [disabled]="profileForm.invalid || isLoading"
             color="primary"
             expand="block"
             translate
+            >Save Changes</ion-button
           >
-            Save Changes
-          </ion-button>
         </div>
       </form>
     </div>
@@ -82,8 +81,8 @@
       </ion-text>
       <form (ngSubmit)="UpdatePassword()" [formGroup]="passwordForm" novalidate autocomplete="off">
         <!-- <ion-text color="danger" [hidden]="!error || signupForm.dirty || isLoading">
-          <span class="ion-padding" translate>Email or password incorrect.</span>
-        </ion-text> -->
+            <span class="ion-padding" translate>Email or password incorrect.</span>
+          </ion-text> -->
         <ion-list>
           <ion-item lines="none">
             <ion-label class="form-input-label" position="stacked" translate>Please write your password</ion-label>
@@ -122,7 +121,7 @@
         <div class="ion-padding-horizontal">
           <ion-button
             type="submit"
-            class="submit-button"
+            class="submit-button ion-text-capitalize"
             [disabled]="passwordForm.invalid || isLoading"
             color="primary"
             expand="block"

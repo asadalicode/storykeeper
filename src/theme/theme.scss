@@ -9,10 +9,16 @@ a {
 .bg-transparent {
   background-color: transparent;
 }
+ion-button {
+  --border-radius: 8px;
+}
 
 .submit-button,
-.primary-button {
+.primary-button,
+.default-button {
   height: 56px;
+  font-weight: 700;
+  font-size: 16px;
 }
 
 .d-flex-column {
@@ -69,6 +75,12 @@ a {
   }
 }
 
+ion-title {
+  font-weight: 500;
+  font-size: 21px;
+  line-height: 22px;
+  color: var(--ion-color-primary);
+}
 .setting-page {
   .avatar-caption {
     font-size: 17px;

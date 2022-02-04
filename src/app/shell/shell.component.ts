@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ActionSheetController, AlertController, Platform } from '@ionic/angular';
+import { ActionSheetController, AlertController, MenuController, Platform } from '@ionic/angular';
 import { ActionSheetButton, ActionSheetOptions, TextFieldTypes } from '@ionic/core';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -17,6 +17,7 @@ export class ShellComponent implements OnInit {
     private router: Router,
     private translateService: TranslateService,
     private platform: Platform,
+    private menu: MenuController,
     private alertController: AlertController,
     private actionSheetController: ActionSheetController,
     private authenticationService: AuthenticationService,
@@ -72,7 +73,7 @@ export class ShellComponent implements OnInit {
     return credentials ? credentials.username : null;
   }
 
-  private logout() {
+  logout() {
     this.authenticationService.logout().subscribe(() => this.router.navigate(['/login'], { replaceUrl: true }));
   }
 
@@ -104,5 +105,9 @@ export class ShellComponent implements OnInit {
       ],
     });
     await alertController.present();
+  }
+
+  closeMenu() {
+    this.menu.close();
   }
 }

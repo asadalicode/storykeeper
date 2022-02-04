@@ -7,7 +7,13 @@
 </ion-header>
 
 <ion-split-pane [class.split-pane-web]="isWeb" contentId="main-content">
-  <ion-menu [side]="isWeb ? 'start' : 'start'" type="overlay" contentId="main-content" class="sidebar">
+  <ion-menu
+    [class.menu-width]="isWeb"
+    [side]="isWeb ? 'start' : 'end'"
+    type="overlay"
+    contentId="main-content"
+    class="sidebar"
+  >
     <ion-content class="sidebar-content">
       <div ion-fixed class="sidebar-content">
         <ion-list lines="full" class="ion-no-padding bg-transparent">
@@ -26,17 +32,26 @@
           </div>
 
           <ul class="menu-links">
-            <li [routerDirection]="'root'" routerLink="/home" routerLinkActive="active">
+            <li [routerDirection]="'root'" (click)="closeMenu()" routerLink="/home" routerLinkActive="active">
               <ion-icon name="library-outline"></ion-icon>
               <ion-label><span translate>My Library</span></ion-label>
             </li>
-            <li [routerDirection]="'root'" routerLink="/home" routerLinkActive="active">
+            <li [routerDirection]="'root'" (click)="closeMenu()" routerLink="/home" routerLinkActive="active">
               <ion-icon name="leaf-outline"></ion-icon>
               <ion-label><span translate>My Books</span></ion-label>
             </li>
-            <li [routerDirection]="'root'" routerLink="/tabs/settings" routerLinkActive="active">
+            <li [routerDirection]="'root'" (click)="closeMenu()" routerLink="/tabs/settings" routerLinkActive="active">
               <ion-icon name="settings-outline"></ion-icon>
               <ion-label><span translate>Settings</span></ion-label>
+            </li>
+          </ul>
+        </ion-list>
+
+        <ion-list lines="full" class="ion-no-padding bg-transparent">
+          <ul class="menu-links">
+            <li (click)="logout()">
+              <!-- <ion-icon name="settings-outline"></ion-icon> -->
+              <ion-label><span translate>Logout</span></ion-label>
             </li>
           </ul>
         </ion-list>
