@@ -1,6 +1,21 @@
 $tabs-width: 90px;
 $tabs-height: $tabs-width;
 
+.app-name {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 24px;
+  margin: auto;
+}
+
+.logout-button {
+  font-size: 12px;
+  font-weight: 400;
+  color: #fff;
+  text-transform: none;
+}
+
 .split-pane-web {
   height: calc(100vh - 55px);
   margin-top: 55px;

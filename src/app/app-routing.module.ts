@@ -5,7 +5,7 @@ import { Shell } from '@app/shell/shell.service';
 const routes: Routes = [
   Shell.childRoutes([{ path: 'about', loadChildren: () => import('./about/about.module').then((m) => m.AboutModule) }]),
   // Fallback when no prior route is matched
-  { path: '**', redirectTo: 'tabs/home', pathMatch: 'full' },
+  { path: '**', redirectTo: 'tabs/my-library', pathMatch: 'full' },
 ];
 
 @NgModule({

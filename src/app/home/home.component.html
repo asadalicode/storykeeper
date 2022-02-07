@@ -5,7 +5,7 @@
         <ion-buttons slot="start">
           <ion-back-button icon="chevron-back-outline" default-href="/tabs/home"></ion-back-button>
         </ion-buttons>
-        <ion-title class="text-white mr-5 ion-align-items-end ion-text-center">My Library</ion-title>
+        <ion-title class="text-white ion-align-items-end ion-text-center">My Library</ion-title>
         <ion-icon class="more-icon ion-padding-end" slot="end" name="ellipsis-horizontal-circle-outline"></ion-icon>
       </ion-toolbar>
     </ion-header>
@@ -15,7 +15,14 @@
         <h1 class="text-white" translate>Kate Horushchenko</h1>
       </ion-card-title>
       <div class="ion-padding-horizontal mt-4 mb-3">
-        <ion-button type="button" class="default-button ion-text-capitalize" color="secondary" expand="block" translate>
+        <ion-button
+          type="button"
+          (click)="buyNewBook()"
+          class="default-button ion-text-capitalize"
+          color="secondary"
+          expand="block"
+          translate
+        >
           Buy New Book
         </ion-button>
       </div>

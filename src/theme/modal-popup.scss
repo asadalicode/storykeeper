@@ -1,0 +1,42 @@
+.modal-popup {
+  --border-radius: 8px;
+
+  &.sm {
+    --max-height: 430px;
+    --max-width: 450px;
+  }
+  .ion-page {
+    // background: #FFFFFF;
+    // box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.15);
+
+    .title {
+      font-weight: 600;
+      font-size: 21px;
+      line-height: 44px;
+      margin: 0;
+      color: var(--ion-color-primry);
+    }
+
+    .subtitle {
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 20px;
+      margin: 0;
+      color: var(--ion-color-medium);
+    }
+  }
+
+  ion-radio {
+    &::before {
+      content: url(../assets/images/default_checkbox.svg);
+    }
+    &::part(container) {
+      display: none;
+    }
+    &.radio-checked {
+      &::before {
+        content: url(../assets/images/active_checkbox.svg);
+      }
+    }
+  }
+}

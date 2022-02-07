@@ -1,11 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ActionSheetController, AlertController, MenuController, Platform } from '@ionic/angular';
+import {
+  ActionSheetController,
+  AlertController,
+  IonRouterOutlet,
+  MenuController,
+  ModalController,
+  Platform,
+} from '@ionic/angular';
 import { ActionSheetButton, ActionSheetOptions, TextFieldTypes } from '@ionic/core';
 import { TranslateService } from '@ngx-translate/core';
 
 import { I18nService } from '@app/i18n/i18n.service';
 import { AuthenticationService, CredentialsService } from '@app/auth';
+import { BuyNewBookComponent } from '@app/@shared/popup-components/buy-new-book/buy-new-book.component';
 
 @Component({
   selector: 'app-shell',
@@ -22,7 +30,9 @@ export class ShellComponent implements OnInit {
     private actionSheetController: ActionSheetController,
     private authenticationService: AuthenticationService,
     private credentialsService: CredentialsService,
-    private i18nService: I18nService
+    private i18nService: I18nService,
+    public modalController: ModalController,
+    private routerOutlet: IonRouterOutlet
   ) {}
 
   ngOnInit() {}
@@ -109,5 +119,15 @@ export class ShellComponent implements OnInit {
 
   closeMenu() {
     this.menu.close();
+  }
+
+  async buyNewBook() {
+    const modal = await this.modalController.create({
+      component: BuyNewBookComponent,
+      cssClass: 'modal-popup sm',
+      swipeToClose: true,
+      presentingElement: this.routerOutlet.nativeEl,
+    });
+    return await modal.present();
   }
 }
