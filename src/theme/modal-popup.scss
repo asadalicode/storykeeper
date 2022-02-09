@@ -1,14 +1,13 @@
 .modal-popup {
   --border-radius: 8px;
-
   &.sm {
     --max-height: 430px;
     --max-width: 450px;
+    @include for-phone-only {
+      --max-width: 80% !important;
+    }
   }
   .ion-page {
-    // background: #FFFFFF;
-    // box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.15);
-
     .title {
       font-weight: 600;
       font-size: 21px;

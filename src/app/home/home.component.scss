@@ -41,3 +41,11 @@ ion-button {
 .empty-screen-image {
   text-align: center;
 }
+
+.grid-container {
+  max-width: 100%;
+  display: grid;
+  grid-row-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 0fr));
+  grid-column-gap: 24px;
+}

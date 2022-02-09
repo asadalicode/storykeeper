@@ -11,5 +11,6 @@
 @import "node_modules/bootstrap/scss/bootstrap";
 
 // Theme customization
+@import "theme/mixins";
 @import "theme/theme";
 @import "theme/modal-popup.scss";
