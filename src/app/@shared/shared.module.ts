@@ -11,9 +11,27 @@ import { RouterModule } from '@angular/router';
 import { FooterComponent } from './components/footer/footer.component';
 import { FindOnSocialComponent } from './components/find-on-social/find-on-social.component';
 import { BuyNewBookComponent } from './popup-components/buy-new-book/buy-new-book.component';
+import { ConfirmationInfoComponent } from './popup-components/confirmation-info/confirmation-info.component';
+import { BooksCardComponent } from './components/books-card/books-card.component';
 @NgModule({
   imports: [IonicModule, TranslateModule, CommonModule, RouterModule, I18nModule, FlexLayoutModule],
-  declarations: [LoaderComponent, HeaderComponent, FooterComponent, FindOnSocialComponent, BuyNewBookComponent],
-  exports: [LoaderComponent, HeaderComponent, FooterComponent, FindOnSocialComponent, BuyNewBookComponent],
+  declarations: [
+    LoaderComponent,
+    HeaderComponent,
+    FooterComponent,
+    FindOnSocialComponent,
+    BuyNewBookComponent,
+    ConfirmationInfoComponent,
+    BooksCardComponent,
+  ],
+  exports: [
+    LoaderComponent,
+    HeaderComponent,
+    FooterComponent,
+    FindOnSocialComponent,
+    BuyNewBookComponent,
+    ConfirmationInfoComponent,
+    BooksCardComponent,
+  ],
 })
 export class SharedModule {}

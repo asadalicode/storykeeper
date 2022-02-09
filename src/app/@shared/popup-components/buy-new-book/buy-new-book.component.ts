@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalDismissRole } from '@app/@shared/constants';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-buy-new-book',
@@ -6,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./buy-new-book.component.scss'],
 })
 export class BuyNewBookComponent implements OnInit {
-  constructor() {}
+  constructor(private modalController: ModalController) {}
 
   ngOnInit(): void {}
+
+  dismiss(isSubmitted: boolean = false) {
+    let role = isSubmitted ? ModalDismissRole.submitted : ModalDismissRole.backdroped;
+    this.modalController.dismiss('', role);
+  }
 }
