@@ -93,33 +93,42 @@ export class LoginComponent implements OnInit {
   async doLogin() {
     console.log('login');
     this.isLoading = true;
-    const user = await GoogleAuth.signIn();
-    if (user) {
-      let userObj = { username: user.email, password: user.id };
-      const login$ = this.authenticationService.login(userObj);
-      const loadingOverlay = await this.loadingController.create({});
-      const loading$ = from(loadingOverlay.present());
-      forkJoin([login$, loading$])
-        .pipe(
-          map(([credentials, ...rest]) => credentials),
-          finalize(() => {
-            this.loginForm.markAsPristine();
-            this.isLoading = false;
-            loadingOverlay.dismiss();
-          }),
-          untilDestroyed(this)
-        )
-        .subscribe(
-          (credentials) => {
-            log.debug(`${credentials.username} successfully logged in`);
-            this.router.navigate([this.route.snapshot.queryParams['redirect'] || '/'], { replaceUrl: true });
-          },
-          (error) => {
-            log.debug(`Login error: ${error}`);
-            this.error = error;
-          }
-        );
-    }
+    let u = await GoogleAuth.signIn()
+      .then(async (user: any) => {
+        console.log('res:', user);
+        let userObj = { username: user.email, password: user.id };
+        const login$ = this.authenticationService.login(userObj);
+        const loadingOverlay = await this.loadingController.create({});
+        const loading$ = from(loadingOverlay.present());
+        forkJoin([login$, loading$])
+          .pipe(
+            map(([credentials, ...rest]) => credentials),
+            finalize(() => {
+              this.loginForm.markAsPristine();
+              this.isLoading = false;
+              loadingOverlay.dismiss();
+            }),
+            untilDestroyed(this)
+          )
+          .subscribe(
+            (credentials) => {
+              log.debug(`${credentials.username} successfully logged in`);
+              this.router.navigate([this.route.snapshot.queryParams['redirect'] || '/'], { replaceUrl: true });
+            },
+            (error) => {
+              log.debug(`Login error: ${error}`);
+              this.error = error;
+            }
+          );
+      })
+      .catch((res: any) => {
+        console.log(res);
+      });
+    console.log(u);
+    // const user = await GoogleAuth.signIn()
+    // if (user) {
+
+    // }
     // if (user) { console.log("@@@",user),   this.router.navigate([this.route.snapshot.queryParams['redirect'] || '/'], { replaceUrl: true }); }
   }
 
