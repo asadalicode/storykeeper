@@ -11,6 +11,6 @@ export class HttpService {
   constructor(private http: HttpClient) {}
 
   getBooks(): Observable<any> {
-    return this.http.get<any>(this.baseUrl + 'assets/json-data/books' + '.json');
+    return this.http.get<any>('assets/json-data/books' + '.json');
   }
 }
