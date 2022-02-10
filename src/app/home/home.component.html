@@ -29,7 +29,7 @@
     </ion-card-content>
   </ion-card>
 
-  <div class="ion-padding" [class.p-5]="isWeb">
+  <div class="ion-padding" [class.web-page]="isWeb">
     <ion-text color="primary">
       <h1 class="heading" [class.isWeb]="isWeb">My Books in Library</h1>
 
@@ -50,7 +50,7 @@
       </ion-segment>
     </ion-text>
 
-    <ion-grid>
+    <ion-grid class="p-0 mt-3">
       <div class="grid-container">
         <app-books-card *ngFor="let book of books" [book]="book"></app-books-card>
       </div>

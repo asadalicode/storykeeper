@@ -54,6 +54,13 @@ ion-button {
   }
 }
 
+.web-page {
+  padding: 3rem !important;
+
+  @include for-phone-only {
+    padding: 1rem !important;
+  }
+}
 .avatar {
   text-align: center;
   align-items: center;
@@ -148,4 +155,59 @@ ion-segment {
       bottom: 15px;
     }
   }
+}
+
+.grid-container {
+  max-width: 100%;
+  display: grid;
+  grid-row-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 0fr));
+  grid-column-gap: 24px;
+
+  .book-card {
+    position: relative;
+  }
+  .book-thumbnail {
+    background: #dfe2e9;
+    height: 230px;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .book-title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    padding-top: 15px;
+  }
+
+  .book-details {
+    padding: 8px 0;
+  }
+
+  .small-text {
+    color: var(--ion-color-tertiary);
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  @include for-phone-only {
+    grid-template-columns: repeat(auto-fit, minmax(170px, 0fr));
+    grid-column-gap: 15px;
+    .book-thumbnail {
+      background: #dfe2e9;
+      height: 210px;
+    }
+
+    .book-title {
+      font-size: 14px;
+    }
+  }
+}
+
+ion-button[shape="circle"] {
+  --border-radius: 50%;
+  width: 56px;
+  height: 56px;
 }
