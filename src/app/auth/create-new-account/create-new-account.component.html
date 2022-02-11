@@ -35,21 +35,31 @@
                 <ion-label class="form-input-label" position="stacked" translate>Password</ion-label>
                 <ion-input
                   class="form-input"
-                  type="password"
+                  [type]="isVisiblePassword ? 'text' : 'password'"
                   formControlName="password"
                   autocomplete="current-password"
                   autocomplete="new-password"
                 ></ion-input>
+                <ion-icon
+                  class="eye-icon"
+                  (click)="isVisiblePassword = !isVisiblePassword"
+                  [name]="!isVisiblePassword ? 'eye-off-outline' : 'eye-outline'"
+                ></ion-icon>
               </ion-item>
               <ion-item lines="none">
                 <ion-label class="form-input-label" position="stacked" translate>Confirm Password</ion-label>
                 <ion-input
                   class="form-input"
-                  type="password"
+                  [type]="isVisibleConfirmPassword ? 'text' : 'password'"
                   formControlName="confirmPassword"
                   autocomplete="current-password"
                   autocomplete="new-password"
                 ></ion-input>
+                <ion-icon
+                  class="eye-icon"
+                  (click)="isVisibleConfirmPassword = !isVisibleConfirmPassword"
+                  [name]="!isVisibleConfirmPassword ? 'eye-off-outline' : 'eye-outline'"
+                ></ion-icon>
               </ion-item>
             </ion-list>
 

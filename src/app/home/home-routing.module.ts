@@ -10,7 +10,11 @@ const routes: Routes = [
   Shell.childRoutes([
     { path: '', redirectTo: '/my-library', pathMatch: 'full' },
     { path: 'my-library', component: HomeComponent, data: { title: marker('My Library') } },
-    { path: 'my-library/update-book/:bookId', component: UpdateBookComponent, data: { title: marker('Update Book') } },
+    {
+      path: 'my-library/update-book/:bookId/:bookTitle',
+      component: UpdateBookComponent,
+      data: { title: marker('Update Book') },
+    },
   ]),
 ];
 

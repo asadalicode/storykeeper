@@ -13,6 +13,8 @@ export class ProfileComponent implements OnInit {
   passwordForm!: FormGroup;
   isLoading = false;
   isModalOpen = false;
+  isVisiblePassword = false;
+  isVisibleConfirmPassword = false;
   constructor(private formBuilder: FormBuilder, private platform: Platform, public routerOutlet: IonRouterOutlet) {}
 
   ngOnInit(): void {

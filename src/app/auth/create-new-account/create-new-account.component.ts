@@ -21,7 +21,8 @@ export class CreateNewAccountComponent implements OnInit {
   error: string | undefined;
   signupForm!: FormGroup;
   isLoading = false;
-
+  isVisiblePassword = false;
+  isVisibleConfirmPassword = false;
   constructor(
     private router: Router,
     private route: ActivatedRoute,

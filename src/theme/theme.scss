@@ -55,7 +55,7 @@ ion-button {
 }
 
 .web-page {
-  padding: 3rem !important;
+  padding: 50px 40px !important;
 
   @include for-phone-only {
     padding: 1rem !important;
@@ -131,9 +131,10 @@ ion-title {
   }
   .eye-icon {
     position: absolute;
-    right: 24px;
-    top: 50px;
-    z-index: 18;
+    right: 35px;
+    z-index: 4;
+    top: 55px;
+    cursor: pointer;
   }
 }
 
@@ -210,4 +211,29 @@ ion-button[shape="circle"] {
   --border-radius: 50%;
   width: 56px;
   height: 56px;
+  &[color="light"] {
+    &::part(native) {
+      background-color: rgba(36, 47, 64, 0.5);
+      padding-inline-end: 0;
+      padding-inline-start: 0;
+    }
+  }
+
+  &[color="tranparent"] {
+    &::part(native) {
+      background-color: transparent;
+      padding-inline-end: 0;
+      padding-inline-start: 0;
+      box-shadow: none;
+    }
+  }
+}
+
+ion-breadcrumb {
+  &::part(native) {
+    padding-inline: 0px;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 24px;
+  }
 }

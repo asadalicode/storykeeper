@@ -3,8 +3,8 @@
     <img [src]="book.thumbnail" alt="" />
   </div>
 
-  <ion-button type="button" shape="circle" href="tabs/my-library/update-book/1" class="edit-button" color="light">
-    <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+  <ion-button type="button" shape="circle" (click)="updateBook(book)" class="edit-button" color="light">
+    <img src="assets/images/edit-icon-white.svg" alt="icon" />
   </ion-button>
 
   <div class="book-details">

@@ -41,12 +41,9 @@
               formControlName="password"
               autocomplete="current-password"
             ></ion-input>
-            <ion-icon
-              name="pencil-outline"
-              (click)="openModal()"
-              class="ion-align-self-center ml-3"
-              slot="end"
-            ></ion-icon>
+            <ion-button slot="end" type="button" shape="circle" (click)="openModal()" color="tranparent">
+              <img src="assets/images/edit-ion.svg" alt="icon" />
+            </ion-button>
           </ion-item>
         </ion-list>
         <div>
@@ -100,21 +97,32 @@
             <ion-label class="form-input-label" position="stacked" translate>New Password</ion-label>
             <ion-input
               class="form-input"
-              type="password"
+              [type]="isVisiblePassword ? 'text' : 'password'"
               formControlName="newPassword"
               autocomplete="current-password"
               autocomplete="new-password"
             ></ion-input>
+            <ion-icon
+              class="eye-icon"
+              (click)="isVisiblePassword = !isVisiblePassword"
+              [name]="!isVisiblePassword ? 'eye-off-outline' : 'eye-outline'"
+            ></ion-icon>
           </ion-item>
           <ion-item lines="none">
             <ion-label class="form-input-label" position="stacked" translate>Confirm Your Password</ion-label>
             <ion-input
               class="form-input"
-              type="password"
+              [type]="isVisibleConfirmPassword ? 'text' : 'password'"
               formControlName="confirmPassword"
               autocomplete="current-password"
               autocomplete="new-password"
             ></ion-input>
+            <ion-icon
+              (click)="isVisibleConfirmPassword = !isVisibleConfirmPassword"
+              [name]="!isVisibleConfirmPassword ? 'eye-off-outline' : 'eye-outline'"
+              class="eye-icon"
+              name="eye-off-outline"
+            ></ion-icon>
           </ion-item>
         </ion-list>
 

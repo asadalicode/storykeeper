@@ -1,11 +1,97 @@
-<ion-content>
+<ion-content class="ion-page">
   <div class="ion-padding" [class.web-page]="isWeb">
     <ion-text color="primary">
       <!-- <h1 class="heading" [class.isWeb]="isWeb">My Books in Library</h1> -->
       <ion-breadcrumbs>
-        <ion-breadcrumb href="#"> My Library </ion-breadcrumb>
+        <ion-breadcrumb href="javascript:void(0)" (click)="navigateTo('tabs/my-library')"> My Library </ion-breadcrumb>
         <ion-breadcrumb> Edit </ion-breadcrumb>
       </ion-breadcrumbs>
     </ion-text>
+
+    <ion-header *ngIf="!isWeb" class="ion-no-border">
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button icon="chevron-back-outline" default-href="/tabs/home"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="mr-5 ion-align-items-end ion-text-center">My Profile</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <div [ngSwitch]="step" class="my-form">
+      <!-- step 1 -->
+      <div class="form-container" *ngSwitchCase="1">
+        <ion-text color="primry">
+          <h1>Edit my new Book</h1>
+        </ion-text>
+
+        <form (ngSubmit)="saveStep1()" [formGroup]="step1Form" novalidate autocomplete="off">
+          <ion-list>
+            <ion-item lines="none">
+              <ion-label class="form-input-label" position="stacked" translate>Book Title</ion-label>
+              <ion-input class="form-input" type="text" formControlName="bookTitle" autocomplete="Name"></ion-input>
+            </ion-item>
+
+            <ion-item lines="none">
+              <ion-label class="form-input-label" position="stacked" translate>Recipients Name</ion-label>
+              <ion-input
+                class="form-input"
+                type="text"
+                formControlName="recipientsName"
+                autocomplete="new email"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item lines="none">
+              <ion-label class="form-input-label" position="stacked" translate>Recipients Email</ion-label>
+              <ion-input
+                class="form-input"
+                type="text"
+                formControlName="recipientsEmail"
+                autocomplete="new email"
+              ></ion-input>
+            </ion-item>
+          </ion-list>
+          <div class="ion-padding-horizontal pt-3">
+            <ion-button
+              type="submit"
+              class="submit-button ion-text-capitalize"
+              [disabled]="step1Form.invalid || isLoading"
+              color="primary"
+              expand="block"
+              translate
+              >Next Step</ion-button
+            >
+          </div>
+        </form>
+      </div>
+
+      <!-- step 2 add questions -->
+      <div *ngSwitchCase="2">
+        <ion-text class="ion-text-center" color="primry">
+          <h1>Adding Chapters</h1>
+          <ion-label class="d-block" color="secondary">You have the option to add 24 chapters</ion-label>
+          <p>After adding a question, you can edit the description and title</p>
+        </ion-text>
+
+        <ion-text color="primary">
+          <h1 class="ion-text-left ion-padding-top">Question of My Book</h1>
+        </ion-text>
+
+        <!-- Basic -->
+        <ion-accordion-group>
+          <ion-accordion value="colors">
+            <ion-item slot="header">
+              <ion-label>Added Questions</ion-label>
+            </ion-item>
+
+            <ion-list slot="content">
+              <ion-item lines="none">
+                <ion-label>Red</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-accordion>
+        </ion-accordion-group>
+      </div>
+    </div>
   </div>
 </ion-content>
