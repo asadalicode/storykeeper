@@ -1,0 +1,22 @@
+<ion-card class="ion-text-center">
+  <ion-header class="ion-no-border">
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button icon="chevron-back-outline" [attr.default-href]="backPageUrl"></ion-back-button>
+      </ion-buttons>
+      <ion-title class="text-white ion-align-items-end ion-text-center">
+        <ng-content select=".header-title"></ng-content>
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-icon class="more-icon ion-padding-end" slot="end" name="ellipsis-horizontal-circle-outline"></ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="avatar m-auto">
+    <ng-content select=".avatar"></ng-content>
+  </div>
+  <ion-card-content>
+    <ng-content select=".header-content"></ng-content>
+  </ion-card-content>
+</ion-card>

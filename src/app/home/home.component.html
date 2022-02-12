@@ -2,14 +2,16 @@
   <ion-card class="ion-text-center" *ngIf="!isWeb">
     <ion-header color="primary" class="ion-no-border">
       <ion-toolbar color="primary">
-        <ion-buttons slot="start">
-          <ion-back-button icon="chevron-back-outline" default-href="/tabs/home"></ion-back-button>
-        </ion-buttons>
-        <ion-title class="text-white ion-align-items-end ion-text-center">My Library</ion-title>
+        <!-- <ion-buttons slot="start">
+         <ion-back-button icon="chevron-back-outline" default-href="/tabs/home"></ion-back-button>
+        </ion-buttons> -->
+        <ion-title class="ml-5 text-white ion-align-items-end ion-text-center">My Library</ion-title>
         <ion-icon class="more-icon ion-padding-end" slot="end" name="ellipsis-horizontal-circle-outline"></ion-icon>
       </ion-toolbar>
     </ion-header>
-    <img class="logo" src="assets/images/profile.png" alt="angular logo" />
+    <div class="avatar m-auto">
+      <img class="avatar-img" src="assets/logos/logo-cir-white.png" />
+    </div>
     <ion-card-content>
       <ion-card-title>
         <h1 class="text-white" translate>Kate Horushchenko</h1>

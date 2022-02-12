@@ -13,6 +13,8 @@ import { FindOnSocialComponent } from './components/find-on-social/find-on-socia
 import { BuyNewBookComponent } from './popup-components/buy-new-book/buy-new-book.component';
 import { ConfirmationInfoComponent } from './popup-components/confirmation-info/confirmation-info.component';
 import { BooksCardComponent } from './components/books-card/books-card.component';
+import { MobileHeaderComponent } from './components/mobile-header/mobile-header.component';
+import { QuestionCardComponent } from './components/question-card/question-card.component';
 @NgModule({
   imports: [IonicModule, TranslateModule, CommonModule, RouterModule, I18nModule, FlexLayoutModule],
   declarations: [
@@ -23,6 +25,8 @@ import { BooksCardComponent } from './components/books-card/books-card.component
     BuyNewBookComponent,
     ConfirmationInfoComponent,
     BooksCardComponent,
+    MobileHeaderComponent,
+    QuestionCardComponent,
   ],
   exports: [
     LoaderComponent,
@@ -32,6 +36,8 @@ import { BooksCardComponent } from './components/books-card/books-card.component
     BuyNewBookComponent,
     ConfirmationInfoComponent,
     BooksCardComponent,
+    MobileHeaderComponent,
+    QuestionCardComponent,
   ],
 })
 export class SharedModule {}

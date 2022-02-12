@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class UpdateBookComponent implements OnInit {
   step1Form!: FormGroup;
   isLoading = false;
-  step = 2;
+  step = 1;
   constructor(private platform: Platform, private formBuilder: FormBuilder, private router: Router) {
     this.createForm();
   }
@@ -20,9 +20,9 @@ export class UpdateBookComponent implements OnInit {
 
   private createForm() {
     this.step1Form = this.formBuilder.group({
-      bookTitle: ['', [Validators.required]],
-      recipientsName: ['', [Validators.required]],
-      recipientsEmail: ['', [Validators.required]],
+      bookTitle: ['dsfd', [Validators.required]],
+      recipientsName: ['sdfds', [Validators.required]],
+      recipientsEmail: ['sdf', [Validators.required]],
     });
   }
 

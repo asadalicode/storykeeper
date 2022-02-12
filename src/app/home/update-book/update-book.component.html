@@ -1,26 +1,46 @@
 <ion-content class="ion-page">
+  <app-mobile-header backPageUrl="/tabs/home" *ngIf="!isWeb">
+    <div class="header-title">
+      {{ step === 1 ? '' : 'Adding Chapters' }}
+    </div>
+    <div class="header-content" [ngSwitch]="step">
+      <div class="ion-padding pb-4">
+        <ion-progress-bar color="success" [value]="step === 1 ? '0.33' : '0.66'"></ion-progress-bar>
+      </div>
+
+      <ion-card-title *ngSwitchCase="1">
+        <h1 class="text-white" translate>Edit my new book</h1>
+      </ion-card-title>
+
+      <ion-text class="ion-text-center" color="primry" *ngSwitchCase="2">
+        <ion-label class="d-block" color="secondary">You have the option to add 24 chapters</ion-label>
+        <p>After adding a question, you can edit the description and title</p>
+      </ion-text>
+      <div *ngSwitchCase="2" class="ion-padding-horizontal mt-4 mb-3">
+        <ion-button
+          type="button"
+          fill="outline"
+          class="default-button ion-text-capitalize"
+          color="secondary"
+          expand="block"
+          translate
+        >
+          Add your Question
+        </ion-button>
+      </div>
+    </div>
+  </app-mobile-header>
   <div class="ion-padding" [class.web-page]="isWeb">
-    <ion-text color="primary">
-      <!-- <h1 class="heading" [class.isWeb]="isWeb">My Books in Library</h1> -->
+    <ion-text color="primary" *ngIf="isWeb">
       <ion-breadcrumbs>
         <ion-breadcrumb href="javascript:void(0)" (click)="navigateTo('tabs/my-library')"> My Library </ion-breadcrumb>
         <ion-breadcrumb> Edit </ion-breadcrumb>
       </ion-breadcrumbs>
     </ion-text>
-
-    <ion-header *ngIf="!isWeb" class="ion-no-border">
-      <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-back-button icon="chevron-back-outline" default-href="/tabs/home"></ion-back-button>
-        </ion-buttons>
-        <ion-title class="mr-5 ion-align-items-end ion-text-center">My Profile</ion-title>
-      </ion-toolbar>
-    </ion-header>
-
     <div [ngSwitch]="step" class="my-form">
       <!-- step 1 -->
       <div class="form-container" *ngSwitchCase="1">
-        <ion-text color="primry">
+        <ion-text color="primry" *ngIf="isWeb">
           <h1>Edit my new Book</h1>
         </ion-text>
 
@@ -67,12 +87,11 @@
 
       <!-- step 2 add questions -->
       <div *ngSwitchCase="2">
-        <ion-text class="ion-text-center" color="primry">
+        <ion-text class="ion-text-center" color="primry" *ngIf="isWeb">
           <h1>Adding Chapters</h1>
           <ion-label class="d-block" color="secondary">You have the option to add 24 chapters</ion-label>
           <p>After adding a question, you can edit the description and title</p>
         </ion-text>
-
         <ion-text color="primary">
           <h1 class="ion-text-left ion-padding-top">Question of My Book</h1>
         </ion-text>
@@ -85,9 +104,23 @@
             </ion-item>
 
             <ion-list slot="content">
-              <ion-item lines="none">
-                <ion-label>Red</ion-label>
-              </ion-item>
+              <app-question-card></app-question-card>
+              <app-question-card></app-question-card>
+              <app-question-card></app-question-card>
+              <app-question-card></app-question-card>
+            </ion-list>
+          </ion-accordion>
+
+          <ion-accordion value="family">
+            <ion-item slot="header">
+              <ion-label>Family Questions</ion-label>
+            </ion-item>
+
+            <ion-list slot="content">
+              <app-question-card></app-question-card>
+              <app-question-card></app-question-card>
+              <app-question-card></app-question-card>
+              <app-question-card></app-question-card>
             </ion-list>
           </ion-accordion>
         </ion-accordion-group>
