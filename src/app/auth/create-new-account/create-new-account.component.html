@@ -13,6 +13,9 @@
       </ion-col>
       <ion-col size-sm="12" size-lg="5" size-xl="5" class="ion-align-self-center ion-no-padding">
         <div class="signup-container my-form">
+          <div *ngIf="!isWeb" class="pb-3" [class.ion-text-center]="!isWeb">
+            <img style="width: 240px; object-fit: contain" src="assets/logos/rectangle-logo.png" alt="" />
+          </div>
           <h1 class="signup-header ion-padding-start" translate>Create_account</h1>
           <p class="signup-sub-heading ion-padding-start" translate>Create_account_subheading</p>
           <form (ngSubmit)="signup()" [formGroup]="signupForm" novalidate autocomplete="off">

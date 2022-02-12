@@ -20,7 +20,12 @@
         </div> -->
 
         <div class="login-container">
-          <h1 [class.ion-text-center]="!isWeb" class="login-header ion-padding-start" translate>Sign_In</h1>
+          <div *ngIf="!isWeb" class="pb-3" [class.ion-text-center]="!isWeb">
+            <img style="width: 240px; object-fit: contain" src="assets/logos/rectangle-logo.png" alt="" />
+          </div>
+          <h1 [class.ion-text-center]="!isWeb" [class.ion-padding-start]="isWeb" class="login-header" translate>
+            Sign_In
+          </h1>
           <!-- <p class="login-sub-heading ion-padding-start" translate>Create_account_subheading</p> -->
           <form (ngSubmit)="login()" [formGroup]="loginForm" novalidate autocomplete="off">
             <ion-text color="danger" [hidden]="!error || loginForm.dirty || isLoading">

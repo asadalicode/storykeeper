@@ -14,3 +14,10 @@
 @import "theme/mixins";
 @import "theme/theme";
 @import "theme/modal-popup.scss";
+
+.main-loader {
+  .loading-wrapper {
+    box-shadow: none;
+    background-color: transparent;
+  }
+}

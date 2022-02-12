@@ -154,7 +154,11 @@ export class LoginComponent implements OnInit {
   async login() {
     this.isLoading = true;
     const login$ = this.authenticationService.login(this.loginForm.value);
-    const loadingOverlay = await this.loadingController.create({});
+    const loadingOverlay = await this.loadingController.create({
+      spinner: 'bubbles',
+      showBackdrop: true,
+      cssClass: 'main-loader',
+    });
     const loading$ = from(loadingOverlay.present());
     forkJoin([login$, loading$])
       .pipe(
