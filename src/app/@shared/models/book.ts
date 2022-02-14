@@ -8,3 +8,11 @@ export interface Book {
   status: string;
   author: string;
 }
+
+export interface Qusetion {
+  id: number;
+  thumbnail: string;
+  type: string;
+  question: string;
+  description: string;
+}

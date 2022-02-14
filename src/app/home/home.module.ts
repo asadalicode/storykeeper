@@ -9,6 +9,7 @@ import { SharedModule } from '@shared';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { UpdateBookComponent } from './update-book/update-book.component';
+import { AddNewQuestionComponent } from './add-new-question/add-new-question.component';
 
 @NgModule({
   imports: [
@@ -21,6 +22,6 @@ import { UpdateBookComponent } from './update-book/update-book.component';
     HomeRoutingModule,
     FlexLayoutModule,
   ],
-  declarations: [HomeComponent, UpdateBookComponent],
+  declarations: [HomeComponent, UpdateBookComponent, AddNewQuestionComponent],
 })
 export class HomeModule {}

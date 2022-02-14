@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Qusetion } from '@app/@shared/models/book';
+import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 
 @Component({
   selector: 'app-question-card',
@@ -6,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./question-card.component.scss'],
 })
 export class QuestionCardComponent implements OnInit {
+  @Input() question!: any;
   constructor() {}
 
   ngOnInit(): void {}

@@ -19,3 +19,11 @@ ion-progress-bar {
   --buffer-background: #fff;
   --progress-background: #fff;
 }
+
+.add-new-question {
+  color: var(--ion-color-secondary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  outline: none;
+}

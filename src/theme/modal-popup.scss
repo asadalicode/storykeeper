@@ -1,7 +1,20 @@
 .modal-popup {
   --border-radius: 8px;
+  // --height: auto;
+  .modal-wrapper {
+    height: auto;
+    min-height: 430px;
+  }
   &.sm {
     --max-height: 430px;
+    --max-width: 450px;
+    @include for-phone-only {
+      --max-width: 80% !important;
+    }
+  }
+
+  &.md {
+    --min-height: 550px;
     --max-width: 450px;
     @include for-phone-only {
       --max-width: 80% !important;

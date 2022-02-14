@@ -1,7 +1,10 @@
+import { Qusetion } from './../../@shared/models/book';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Platform } from '@ionic/angular';
+import { Platform, ModalController, IonRouterOutlet } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
+import * as _ from 'lodash';
+import { AddNewQuestionComponent } from '../add-new-question/add-new-question.component';
 
 @Component({
   selector: 'app-update-book',
@@ -12,7 +15,46 @@ export class UpdateBookComponent implements OnInit {
   step1Form!: FormGroup;
   isLoading = false;
   step = 1;
-  constructor(private platform: Platform, private formBuilder: FormBuilder, private router: Router) {
+
+  questions: Qusetion[] = [
+    {
+      id: 1,
+      thumbnail: '',
+      type: 'Added',
+      question: 'string',
+      description: 'string',
+    },
+    {
+      id: 2,
+      thumbnail: '',
+      type: 'Family',
+      question: 'string',
+      description: 'string',
+    },
+    {
+      id: 3,
+      thumbnail: '',
+      type: 'Family',
+      question: 'string',
+      description: 'string',
+    },
+    {
+      id: 4,
+      thumbnail: '',
+      type: 'Family',
+      question: 'string',
+      description: 'string',
+    },
+  ];
+
+  list: any;
+  constructor(
+    private platform: Platform,
+    private formBuilder: FormBuilder,
+    private modalController: ModalController,
+    private routerOutlet: IonRouterOutlet,
+    private router: Router
+  ) {
     this.createForm();
   }
 
@@ -24,6 +66,8 @@ export class UpdateBookComponent implements OnInit {
       recipientsName: ['sdfds', [Validators.required]],
       recipientsEmail: ['sdf', [Validators.required]],
     });
+
+    this.list = _.mapValues(_.groupBy(this.questions, 'type'), (clist) => clist.map((q) => _.omit(q, 'type')));
   }
 
   get isWeb(): boolean {
@@ -36,5 +80,18 @@ export class UpdateBookComponent implements OnInit {
 
   saveStep1() {
     this.step = 2;
+  }
+
+  async newQustion() {
+    const modal = await this.modalController.create({
+      component: AddNewQuestionComponent,
+      cssClass: 'modal-popup md',
+      componentProps: {
+        title: 'New Question',
+      },
+      swipeToClose: true,
+      presentingElement: this.routerOutlet.nativeEl,
+    });
+    return await modal.present();
   }
 }

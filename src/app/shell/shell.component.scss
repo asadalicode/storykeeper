@@ -27,6 +27,9 @@ ion-tab-button {
   flex: 0 1 auto;
 }
 
+ion-toolbar {
+  --min-height: 60px;
+}
 ion-menu {
   &.menu-width {
     width: 300px;
