@@ -1,12 +1,24 @@
 .modal-popup {
   --border-radius: 8px;
-  // --height: auto;
-  .modal-wrapper {
-    height: auto;
-    min-height: 430px;
+  --height: auto;
+  // .modal-wrapper {
+  //   height: auto;
+  //   min-height: 430px;
+  // }
+
+  .ion-page {
+    position: relative;
+    display: block;
+    contain: content;
+
+    .inner-content {
+      max-height: 80vh;
+      overflow: auto;
+      padding: 10px;
+    }
   }
   &.sm {
-    --max-height: 430px;
+    // --max-height: 430px;
     --max-width: 450px;
     @include for-phone-only {
       --max-width: 80% !important;
@@ -14,7 +26,6 @@
   }
 
   &.md {
-    --min-height: 550px;
     --max-width: 450px;
     @include for-phone-only {
       --max-width: 80% !important;

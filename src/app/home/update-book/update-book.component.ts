@@ -16,34 +16,52 @@ export class UpdateBookComponent implements OnInit {
   isLoading = false;
   step = 1;
 
-  questions: Qusetion[] = [
+  List = [
     {
-      id: 1,
-      thumbnail: '',
-      type: 'Added',
-      question: 'string',
-      description: 'string',
+      type: 'Added Questions',
+      questions: [
+        {
+          id: 1,
+          thumbnail: '',
+          question: 'What is your favorite game',
+          description: 'string',
+        },
+        {
+          id: 2,
+          thumbnail: '',
+          question: 'What is your favorite pet',
+          description: 'string',
+        },
+        {
+          id: 3,
+          thumbnail: '',
+          question: 'What is your favorite subject',
+          description: 'string',
+        },
+      ],
     },
     {
-      id: 2,
-      thumbnail: '',
-      type: 'Family',
-      question: 'string',
-      description: 'string',
-    },
-    {
-      id: 3,
-      thumbnail: '',
-      type: 'Family',
-      question: 'string',
-      description: 'string',
-    },
-    {
-      id: 4,
-      thumbnail: '',
-      type: 'Family',
-      question: 'string',
-      description: 'string',
+      type: 'Family Questions',
+      questions: [
+        {
+          id: 4,
+          thumbnail: '',
+          question: 'What is your favorite hobby',
+          description: 'string',
+        },
+        {
+          id: 5,
+          thumbnail: '',
+          question: 'What is your favorite game',
+          description: 'string',
+        },
+        {
+          id: 6,
+          thumbnail: '',
+          question: 'What is your favorite game',
+          description: 'string',
+        },
+      ],
     },
   ];
 
@@ -66,10 +84,7 @@ export class UpdateBookComponent implements OnInit {
       recipientsName: ['sdfds', [Validators.required]],
       recipientsEmail: ['sdf', [Validators.required]],
     });
-
-    this.list = _.mapValues(_.groupBy(this.questions, 'type'), (clist) => clist.map((q) => _.omit(q, 'type')));
   }
-
   get isWeb(): boolean {
     return !this.platform.is('cordova');
   }

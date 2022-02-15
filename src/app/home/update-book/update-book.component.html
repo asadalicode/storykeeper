@@ -5,7 +5,7 @@
     </div>
     <div class="header-content" [ngSwitch]="step">
       <div class="ion-padding pb-4">
-        <ion-progress-bar color="success" [value]="step === 1 ? '0.33' : '0.66'"></ion-progress-bar>
+        <ion-progress-bar [value]="step === 1 ? '0.33' : '0.66'"></ion-progress-bar>
       </div>
 
       <ion-card-title *ngSwitchCase="1">
@@ -23,6 +23,7 @@
           class="default-button ion-text-capitalize"
           color="secondary"
           expand="block"
+          (click)="newQustion()"
           translate
         >
           Add your Question
@@ -37,8 +38,12 @@
         <ion-breadcrumb> Edit </ion-breadcrumb>
       </ion-breadcrumbs>
     </ion-text>
+
     <div [ngSwitch]="step" class="my-form">
       <!-- step 1 -->
+      <div class="ion-padding pb-4 form-container" *ngIf="isWeb">
+        <ion-progress-bar [value]="step === 1 ? '0.33' : '0.66'"></ion-progress-bar>
+      </div>
       <div class="form-container" *ngSwitchCase="1">
         <ion-text color="primry" *ngIf="isWeb">
           <h1>Edit my new Book</h1>
@@ -98,34 +103,20 @@
 
         <!-- Basic -->
         <ion-accordion-group>
-          <ion-accordion value="colors">
+          <ion-accordion *ngFor="let item of List" [value]="item.type">
             <ion-item slot="header">
-              <ion-label>Added Questions</ion-label>
+              <ion-label>{{ item.type }}</ion-label>
             </ion-item>
 
             <ion-list slot="content">
-              <app-question-card></app-question-card>
-              <app-question-card></app-question-card>
-              <app-question-card></app-question-card>
-              <app-question-card></app-question-card>
-            </ion-list>
-          </ion-accordion>
-
-          <ion-accordion value="family">
-            <ion-item slot="header">
-              <ion-label>Family Questions</ion-label>
-            </ion-item>
-
-            <ion-list slot="content">
-              <app-question-card></app-question-card>
-              <app-question-card></app-question-card>
-              <app-question-card></app-question-card>
-              <app-question-card></app-question-card>
+              <ng-container *ngFor="let quest of item.questions">
+                <app-question-card [type]="item.type" [question]="quest"></app-question-card>
+              </ng-container>
             </ion-list>
           </ion-accordion>
         </ion-accordion-group>
 
-        <ion-item lines="none">
+        <ion-item lines="none" *ngIf="isWeb">
           <a (click)="newQustion()" class="add-new-question" href="javascript:void(0)">
             <img src="assets/images/plus-square.svg" alt="icon" />
             <span class="pl-1">Add new Question</span>

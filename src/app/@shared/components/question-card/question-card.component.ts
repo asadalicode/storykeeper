@@ -9,6 +9,7 @@ import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 })
 export class QuestionCardComponent implements OnInit {
   @Input() question!: any;
+  @Input() type!: any;
   constructor() {}
 
   ngOnInit(): void {}

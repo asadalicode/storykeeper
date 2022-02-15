@@ -15,9 +15,11 @@ h1 {
 }
 
 ion-progress-bar {
-  --background: #fff;
-  --buffer-background: #fff;
-  --progress-background: #fff;
+  height: 10px;
+  border-radius: 40px;
+  --background: #dfe2e9;
+  --progress-background: #6d809e;
+  border: 1px solid #dfe2e9;
 }
 
 .add-new-question {
