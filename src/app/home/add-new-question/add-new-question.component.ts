@@ -1,6 +1,9 @@
 import { ModalController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Qusetion } from '@app/@shared/models/book';
+import { random } from 'lodash';
+import { ModalDismissRole } from '@app/@shared/constants';
 
 @Component({
   selector: 'app-add-new-question',
@@ -25,5 +28,17 @@ export class AddNewQuestionComponent implements OnInit {
     this.modalController.dismiss('button clicked');
   }
 
-  save() {}
+  save() {
+    console.log(this.questionForm.value);
+    let quest: Qusetion = {
+      question: this.questionForm.value.question,
+      id: Math.random(),
+      thumbnail: '',
+      type: 'Added Questions',
+      description: 'New Question added',
+    };
+
+    let role = ModalDismissRole.submitted;
+    this.modalController.dismiss(quest, role);
+  }
 }

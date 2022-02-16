@@ -8,6 +8,33 @@
     margin: auto;
   }
 }
+.image-container {
+  background-image: url("../../../assets/images/bg1.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-color: #dfe2e9;
+  opacity: 0.3;
+  margin: 30px auto;
+  display: flex;
+  align-items: center;
+  place-content: center;
+  border-radius: 8px;
+
+  .plus-icon {
+    width: 6rem;
+    height: 6rem;
+    color: #fff;
+  }
+  @media (min-width: 768px) {
+    width: 380px;
+    height: 380px;
+  }
+  @media (max-width: 480px) {
+    max-width: 100%;
+    height: 371px;
+  }
+}
 
 h1 {
   text-align: center;

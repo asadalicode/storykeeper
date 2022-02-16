@@ -8,7 +8,7 @@
       </ion-col>
       <ion-col size="12">
         <ion-text class="ion-text-center">
-          <h1 class="title">Add New Book</h1>
+          <h1 class="title">Add New Question</h1>
         </ion-text>
       </ion-col>
 
@@ -16,7 +16,7 @@
         <form (ngSubmit)="save()" [formGroup]="questionForm" novalidate autocomplete="off">
           <ion-list>
             <ion-item lines="none">
-              <ion-label class="form-input-label" position="stacked" translate>Book Title</ion-label>
+              <ion-label class="form-input-label" position="stacked" translate>Question</ion-label>
               <ion-input class="form-input" type="text" formControlName="question" autocomplete="Name"></ion-input>
             </ion-item>
 
@@ -28,7 +28,7 @@
           <div class="w-100 ion-padding-horizontal mt-4 mb-2">
             <ion-button
               (click)="dismiss(true)"
-              type="button"
+              type="submit"
               class="default-button ion-text-capitalize"
               color="primary"
               expand="block"

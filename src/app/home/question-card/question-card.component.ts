@@ -1,7 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Qusetion } from '@app/@shared/models/book';
-import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
-
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 @Component({
   selector: 'app-question-card',
   templateUrl: './question-card.component.html',
@@ -10,7 +7,16 @@ import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 export class QuestionCardComponent implements OnInit {
   @Input() question!: any;
   @Input() type!: any;
+  @Output() delete = new EventEmitter<any>();
+  @Output() add = new EventEmitter<any>();
   constructor() {}
 
+  onDelete() {
+    this.delete.emit(true);
+  }
+
+  onAdd() {
+    this.add.emit(true);
+  }
   ngOnInit(): void {}
 }

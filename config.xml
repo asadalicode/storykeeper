@@ -43,6 +43,12 @@
     <splash density="port-xhdpi" src="resources/android/splash/drawable-port-xhdpi-screen.png"/>
     <splash density="port-xxhdpi" src="resources/android/splash/drawable-port-xxhdpi-screen.png"/>
     <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png"/>
+    <edit-config
+      file="app/src/main/AndroidManifest.xml"
+      mode="merge"
+      target="/manifest/application">
+    <application android:largeHeap="true" />
+  </edit-config>
   </platform>
 
   <!-- iOS specific -->
@@ -121,4 +127,5 @@
   <plugin name="cordova-plugin-statusbar" spec="^2.4.1"/>
   <plugin name="cordova-plugin-ionic-webview" spec="^4.0.1" />
   <plugin name="cordova-plugin-ionic-keyboard" spec="^2.1.2" />
+
 </widget>

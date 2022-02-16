@@ -14,7 +14,6 @@ import { BuyNewBookComponent } from './popup-components/buy-new-book/buy-new-boo
 import { ConfirmationInfoComponent } from './popup-components/confirmation-info/confirmation-info.component';
 import { BooksCardComponent } from './components/books-card/books-card.component';
 import { MobileHeaderComponent } from './components/mobile-header/mobile-header.component';
-import { QuestionCardComponent } from './components/question-card/question-card.component';
 @NgModule({
   imports: [IonicModule, TranslateModule, CommonModule, RouterModule, I18nModule, FlexLayoutModule],
   declarations: [
@@ -26,7 +25,6 @@ import { QuestionCardComponent } from './components/question-card/question-card.
     ConfirmationInfoComponent,
     BooksCardComponent,
     MobileHeaderComponent,
-    QuestionCardComponent,
   ],
   exports: [
     LoaderComponent,
@@ -37,7 +35,6 @@ import { QuestionCardComponent } from './components/question-card/question-card.
     ConfirmationInfoComponent,
     BooksCardComponent,
     MobileHeaderComponent,
-    QuestionCardComponent,
   ],
 })
 export class SharedModule {}

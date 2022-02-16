@@ -1,14 +1,14 @@
 <ion-content class="ion-page">
   <app-mobile-header backPageUrl="/tabs/home" *ngIf="!isWeb">
     <div class="header-title">
-      {{ step === 1 ? '' : 'Adding Chapters' }}
+      {{ step === (1 || 3) ? '' : 'Adding Chapters' }}
     </div>
     <div class="header-content" [ngSwitch]="step">
       <div class="ion-padding pb-4">
-        <ion-progress-bar [value]="step === 1 ? '0.33' : '0.66'"></ion-progress-bar>
+        <ion-progress-bar [value]="step * 0.34"></ion-progress-bar>
       </div>
 
-      <ion-card-title *ngSwitchCase="1">
+      <ion-card-title *ngSwitchCase="1 || 3">
         <h1 class="text-white" translate>Edit my new book</h1>
       </ion-card-title>
 
@@ -42,7 +42,7 @@
     <div [ngSwitch]="step" class="my-form">
       <!-- step 1 -->
       <div class="ion-padding pb-4 form-container" *ngIf="isWeb">
-        <ion-progress-bar [value]="step === 1 ? '0.33' : '0.66'"></ion-progress-bar>
+        <ion-progress-bar [value]="step * 0.34"></ion-progress-bar>
       </div>
       <div class="form-container" *ngSwitchCase="1">
         <ion-text color="primry" *ngIf="isWeb">
@@ -103,14 +103,18 @@
 
         <!-- Basic -->
         <ion-accordion-group>
-          <ion-accordion *ngFor="let item of List" [value]="item.type">
+          <ion-accordion expand="inset" multiple="true" *ngFor="let item of List" [value]="item.type">
             <ion-item slot="header">
               <ion-label>{{ item.type }}</ion-label>
             </ion-item>
 
             <ion-list slot="content">
               <ng-container *ngFor="let quest of item.questions">
-                <app-question-card [type]="item.type" [question]="quest"></app-question-card>
+                <app-question-card
+                  (delete)="removeQuestion($event)"
+                  [type]="item.type"
+                  [question]="quest"
+                ></app-question-card>
               </ng-container>
             </ion-list>
           </ion-accordion>
@@ -122,6 +126,47 @@
             <span class="pl-1">Add new Question</span>
           </a>
         </ion-item>
+
+        <div class="form-container">
+          <ion-button
+            type="button"
+            class="default-button ion-text-capitalize"
+            color="primary"
+            expand="block"
+            (click)="step = 3"
+            translate
+          >
+            Save Questions
+          </ion-button>
+        </div>
+      </div>
+
+      <!-- step 3 add book image -->
+      <div *ngSwitchCase="3">
+        <div class="form-container">
+          <ion-text color="primry" *ngIf="isWeb">
+            <h1>Edit my new Book</h1>
+          </ion-text>
+
+          <div class="image-container">
+            <ion-icon class="plus-icon" name="add-circle-outline"></ion-icon>
+          </div>
+
+          <ion-text color="tertiary" class="text-center">
+            <p>Adding a picture you can skip</p>
+          </ion-text>
+
+          <ion-button
+            type="button"
+            class="default-button ion-text-capitalize"
+            color="primary"
+            expand="block"
+            (click)="save()"
+            translate
+          >
+            Save
+          </ion-button>
+        </div>
       </div>
     </div>
   </div>

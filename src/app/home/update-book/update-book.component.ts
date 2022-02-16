@@ -5,6 +5,9 @@ import { Platform, ModalController, IonRouterOutlet } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import { AddNewQuestionComponent } from '../add-new-question/add-new-question.component';
+import { Filesystem, Directory } from '@capacitor/filesystem';
+import { ConfirmationInfoComponent } from '@app/@shared/popup-components/confirmation-info/confirmation-info.component';
+import { ModalDismissRole } from '@app/@shared/constants';
 
 @Component({
   selector: 'app-update-book',
@@ -107,6 +110,33 @@ export class UpdateBookComponent implements OnInit {
       swipeToClose: true,
       presentingElement: this.routerOutlet.nativeEl,
     });
+    modal.onDidDismiss().then((data) => {
+      if (data.role == ModalDismissRole.submitted) {
+        debugger;
+      }
+    });
     return await modal.present();
+  }
+
+  async newBookAvailable() {
+    const modal = await this.modalController.create({
+      component: ConfirmationInfoComponent,
+      cssClass: 'modal-popup sm',
+      componentProps: {
+        title: 'New book available',
+        imageUrl: 'assets/images/about-ion.png',
+        confirmbuttonText: 'Ok',
+        confirmbuttonClass: 'primary',
+      },
+      swipeToClose: true,
+      presentingElement: this.routerOutlet.nativeEl,
+    });
+    return await modal.present();
+  }
+
+  removeQuestion(index: any) {}
+  save() {
+    this.router.navigate(['/tabs/my-library']);
+    this.newBookAvailable();
   }
 }

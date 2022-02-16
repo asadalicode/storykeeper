@@ -10,8 +10,7 @@
 
   <!-- <ion-icon name="add-outline" slot="end"></ion-icon> -->
   <ion-buttons slot="end">
-    <img *ngIf="type !== 'Added Questions'" src="assets/images/plus-square.svg" alt="icon" />
-    <img *ngIf="type === 'Added Questions'" src="assets/images/minus-square.svg" alt="icon" />
-    <!-- <ion-icon name="add-circle-outline"></ion-icon> -->
+    <img class="cursor-pointer" *ngIf="type !== 'Added Questions'" src="assets/images/plus-square.svg" alt="icon" />
+    <img class="cursor-pointer" *ngIf="type === 'Added Questions'" src="assets/images/minus-square.svg" alt="icon" />
   </ion-buttons>
 </ion-item>
