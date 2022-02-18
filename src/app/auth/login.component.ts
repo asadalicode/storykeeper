@@ -172,6 +172,7 @@ export class LoginComponent implements OnInit {
       )
       .subscribe(
         (credentials) => {
+          console.log(credentials);
           log.debug(`${credentials.username} successfully logged in`);
           this.router.navigate([this.route.snapshot.queryParams['redirect'] || '/'], { replaceUrl: true });
         },

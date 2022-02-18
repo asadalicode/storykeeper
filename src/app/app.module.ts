@@ -11,7 +11,14 @@ import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
 import { SplashScreen } from '@awesome-cordova-plugins/splash-screen/ngx';
 
 import { environment } from '@env/environment';
-import { RouteReusableStrategy, ApiPrefixInterceptor, ErrorHandlerInterceptor, SharedModule } from '@shared';
+
+import {
+  RouteReusableStrategy,
+  TokenInterceptor,
+  ApiPrefixInterceptor,
+  ErrorHandlerInterceptor,
+  SharedModule,
+} from '@shared';
 import { AuthModule } from '@app/auth';
 import { HomeModule } from './home/home.module';
 import { ShellModule } from './shell/shell.module';
@@ -52,6 +59,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     {
       provide: RouteReuseStrategy,
       useClass: RouteReusableStrategy,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
     },
     Keyboard,
     StatusBar,

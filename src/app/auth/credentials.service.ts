@@ -6,7 +6,7 @@ export interface Credentials {
   token: string;
 }
 
-const credentialsKey = 'credentials';
+const credentialsKey = 'storybook_credentials';
 
 /**
  * Provides storage for authentication credentials.

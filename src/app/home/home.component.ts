@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
   }
 
   getBooks(type: string = 'shared') {
-    this.httpService.getBooks().subscribe((res) => {
+    this.httpService.get('/api/Books').subscribe((res) => {
       if (type == 'all') {
         this.books = res;
       } else {

@@ -10,7 +10,7 @@ export class HttpService {
   baseUrl = environment.serverUrl;
   constructor(private http: HttpClient) {}
 
-  getBooks(): Observable<any> {
-    return this.http.get<any>('assets/json-data/books' + '.json');
+  get(url: any): Observable<any> {
+    return this.http.get<any>(url);
   }
 }
