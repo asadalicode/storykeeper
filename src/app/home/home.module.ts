@@ -11,6 +11,7 @@ import { HomeComponent } from './home.component';
 import { UpdateBookComponent } from './update-book/update-book.component';
 import { AddNewQuestionComponent } from './add-new-question/add-new-question.component';
 import { QuestionCardComponent } from './question-card/question-card.component';
+import { ImagePicker } from '@awesome-cordova-plugins/image-picker/ngx';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { QuestionCardComponent } from './question-card/question-card.component';
     HomeRoutingModule,
     FlexLayoutModule,
   ],
+  providers: [ImagePicker],
   declarations: [HomeComponent, UpdateBookComponent, AddNewQuestionComponent, QuestionCardComponent],
 })
 export class HomeModule {}

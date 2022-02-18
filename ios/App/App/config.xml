@@ -6,6 +6,10 @@
     <param name="ios-package" value="CDVDevice"/>
   </feature>
 
+  <feature name="ImagePicker">
+    <param name="ios-package" value="SOSPicker"/>
+  </feature>
+
   
   <preference name="Hostname" value="app" />
   <preference name="Fullscreen" value="false" />
