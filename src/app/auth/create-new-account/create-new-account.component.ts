@@ -9,6 +9,7 @@ import { finalize } from 'rxjs/operators';
 import { environment } from '@env/environment';
 import { Logger, UntilDestroy, untilDestroyed } from '@shared';
 import { AuthenticationService } from '..';
+import { ToastService } from '@app/@shared/sevices/toast.service';
 const log = new Logger('signup');
 @UntilDestroy()
 @Component({
@@ -29,7 +30,8 @@ export class CreateNewAccountComponent implements OnInit {
     private formBuilder: FormBuilder,
     private platform: Platform,
     private loadingController: LoadingController,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private toastService: ToastService
   ) {
     this.createForm();
   }
@@ -54,11 +56,13 @@ export class CreateNewAccountComponent implements OnInit {
       .subscribe(
         (credentials) => {
           log.debug(`${credentials.username} successfully signup`);
-          this.router.navigate([this.route.snapshot.queryParams['redirect'] || '/'], { replaceUrl: true });
+          this.toastService.showToast('success', `Successfully registered`);
+          this.router.navigate(['/login']);
         },
         (error) => {
           log.debug(`signup error: ${error}`);
           this.error = error;
+          this.toastService.showToast('error', 'Error occurred, Please contact Administrator');
         }
       );
   }
@@ -69,7 +73,7 @@ export class CreateNewAccountComponent implements OnInit {
 
   private createForm() {
     this.signupForm = this.formBuilder.group({
-      username: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required],
     });

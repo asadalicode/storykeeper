@@ -11,7 +11,7 @@ export interface LoginContext {
   remember?: boolean;
 }
 export interface SignUpContext {
-  username: string;
+  email: string;
   password: string;
 }
 
@@ -42,12 +42,18 @@ export class AuthenticationService {
   signup(context: SignUpContext): Observable<Credentials> {
     // Replace by proper authentication call
     const data = {
-      username: context.username,
+      email: context.email,
       password: context.password,
-      token: '123456',
+      firstName: '-',
+      lastName: '-',
+      // birthDate:'',
+      role: 'Administrator',
     };
-    this.credentialsService.setCredentials(data, true);
-    return of(data);
+    return this.http.post<any>(`/api/Users`, data).pipe(
+      map((data) => {
+        return data;
+      })
+    );
   }
 
   /**

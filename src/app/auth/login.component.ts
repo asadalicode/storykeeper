@@ -11,6 +11,8 @@ import { Logger, UntilDestroy, untilDestroyed } from '@shared';
 import { AuthenticationService } from './authentication.service';
 import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 import { FacebookLogin } from '@capacitor-community/facebook-login';
+import { ToastController } from '@ionic/angular';
+import { ToastService } from '@app/@shared/sevices/toast.service';
 
 const log = new Logger('Login');
 
@@ -32,7 +34,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private platform: Platform,
     private loadingController: LoadingController,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private toastService: ToastService
   ) {
     this.createForm();
   }
@@ -174,11 +177,13 @@ export class LoginComponent implements OnInit {
         (credentials) => {
           console.log(credentials);
           log.debug(`${credentials.username} successfully logged in`);
+          this.toastService.showToast('success', `Successfully logged in`);
           this.router.navigate([this.route.snapshot.queryParams['redirect'] || '/'], { replaceUrl: true });
         },
         (error) => {
           log.debug(`Login error: ${error}`);
           this.error = error;
+          this.toastService.showToast('error', 'Email or password incorrect');
         }
       );
   }
