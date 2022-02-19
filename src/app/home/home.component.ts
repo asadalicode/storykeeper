@@ -49,6 +49,7 @@ export class HomeComponent implements OnInit {
   }
   getBooks(type: string = 'shared') {
     this.httpService.get('/api/Books').subscribe((res) => {
+      console.log(res);
       if (type == 'all') {
         this.books = res;
       } else {
