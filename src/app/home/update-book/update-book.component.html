@@ -148,8 +148,9 @@
             <h1>Edit my new Book</h1>
           </ion-text>
 
-          <div class="image-container">
+          <div (click)="getImages()" class="image-container">
             <ion-icon class="plus-icon" name="add-circle-outline"></ion-icon>
+            <img *ngIf="imageUrl" class="img-fluid" [src]="imageUrl" alt="" />
           </div>
 
           <ion-text color="tertiary" class="text-center">

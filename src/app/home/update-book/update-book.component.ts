@@ -8,6 +8,8 @@ import { AddNewQuestionComponent } from '../add-new-question/add-new-question.co
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { ConfirmationInfoComponent } from '@app/@shared/popup-components/confirmation-info/confirmation-info.component';
 import { ModalDismissRole } from '@app/@shared/constants';
+import { ImagePicker } from '@awesome-cordova-plugins/image-picker/ngx';
+import { Utils } from '@shared/appConstants';
 
 @Component({
   selector: 'app-update-book',
@@ -18,6 +20,11 @@ export class UpdateBookComponent implements OnInit {
   step1Form!: FormGroup;
   isLoading = false;
   step = 1;
+  options = {
+    width: 200,
+    quality: 30,
+    outputType: 1,
+  };
 
   List = [
     {
@@ -69,12 +76,14 @@ export class UpdateBookComponent implements OnInit {
   ];
 
   list: any;
+  imageUrl: any;
   constructor(
     private platform: Platform,
     private formBuilder: FormBuilder,
     private modalController: ModalController,
     private routerOutlet: IonRouterOutlet,
-    private router: Router
+    private router: Router,
+    private imagePicker: ImagePicker
   ) {
     this.createForm();
   }
@@ -83,11 +92,28 @@ export class UpdateBookComponent implements OnInit {
 
   private createForm() {
     this.step1Form = this.formBuilder.group({
-      bookTitle: ['dsfd', [Validators.required]],
-      recipientsName: ['sdfds', [Validators.required]],
-      recipientsEmail: ['sdf', [Validators.required]],
+      bookTitle: ['', [Validators.required]],
+      recipientsName: ['', [Validators.required]],
+      recipientsEmail: ['', [Validators.required]],
     });
   }
+
+  getImages() {
+    this.imagePicker.getPictures(this.options).then(
+      (results) => {
+        for (var i = 0; i < results.length; i++) {
+          this.imageUrl = 'data:image/jpeg;base64,' + results[i];
+          Utils.dataUrlToFile('data:image/jpeg;base64,' + results[i], 'image' + Math.random() * 100).then(
+            (res: any) => {
+              console.log(res);
+            }
+          );
+        }
+      },
+      (err) => {}
+    );
+  }
+
   get isWeb(): boolean {
     return !this.platform.is('cordova');
   }

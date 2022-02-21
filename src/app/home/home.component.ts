@@ -5,7 +5,6 @@ import { BuyNewBookComponent } from '@app/@shared/popup-components/buy-new-book/
 import { ModalDismissRole } from '@app/@shared/constants';
 import { HttpService } from '@app/@shared/sevices/http-secvices.service';
 import { Book } from '@app/@shared/models/book';
-import { ImagePicker } from '@awesome-cordova-plugins/image-picker/ngx';
 
 @Component({
   selector: 'app-home',
@@ -16,17 +15,12 @@ export class HomeComponent implements OnInit {
   isLoading = false;
   isAuthor = false;
   books!: Book[];
-  options = {
-    width: 200,
-    quality: 30,
-    outputType: 1,
-  };
+
   constructor(
     private platform: Platform,
     public modalController: ModalController,
     private routerOutlet: IonRouterOutlet,
-    private httpService: HttpService,
-    private imagePicker: ImagePicker
+    private httpService: HttpService
   ) {}
 
   ngOnInit() {
@@ -37,16 +31,6 @@ export class HomeComponent implements OnInit {
     return !this.platform.is('cordova');
   }
 
-  getImages() {
-    this.imagePicker.getPictures(this.options).then(
-      (results) => {
-        for (var i = 0; i < results.length; i++) {
-          console.log('Image URI: ' + results[i]);
-        }
-      },
-      (err) => {}
-    );
-  }
   getBooks(type: string = 'shared') {
     this.httpService.get('/api/Books').subscribe((res) => {
       console.log(res);
