@@ -76,7 +76,7 @@ export class UpdateBookComponent implements OnInit {
   ];
 
   list: any;
-  imageUrl: any;
+  imageUrl: any = '';
   constructor(
     private platform: Platform,
     private formBuilder: FormBuilder,
