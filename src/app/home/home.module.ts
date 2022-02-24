@@ -12,6 +12,7 @@ import { UpdateBookComponent } from './update-book/update-book.component';
 import { AddNewQuestionComponent } from './add-new-question/add-new-question.component';
 import { QuestionCardComponent } from './question-card/question-card.component';
 import { ImagePicker } from '@awesome-cordova-plugins/image-picker/ngx';
+import { StripePayComponent } from './stripe-pay/stripe-pay.component';
 
 @NgModule({
   imports: [
@@ -25,6 +26,12 @@ import { ImagePicker } from '@awesome-cordova-plugins/image-picker/ngx';
     FlexLayoutModule,
   ],
   providers: [ImagePicker],
-  declarations: [HomeComponent, UpdateBookComponent, AddNewQuestionComponent, QuestionCardComponent],
+  declarations: [
+    HomeComponent,
+    UpdateBookComponent,
+    AddNewQuestionComponent,
+    QuestionCardComponent,
+    StripePayComponent,
+  ],
 })
 export class HomeModule {}

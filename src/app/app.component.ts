@@ -11,7 +11,7 @@ import { Keyboard } from '@awesome-cordova-plugins/keyboard/ngx';
 import { environment } from '@env/environment';
 import { Logger, UntilDestroy, untilDestroyed } from '@shared';
 import { I18nService } from '@app/i18n/i18n.service';
-
+import { Stripe } from '@capacitor-community/stripe';
 const log = new Logger('App');
 
 @UntilDestroy()
@@ -31,7 +31,11 @@ export class AppComponent implements OnInit, OnDestroy {
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
     private i18nService: I18nService
-  ) {}
+  ) {
+    Stripe.initialize({
+      publishableKey: environment.strikePK,
+    });
+  }
 
   async ngOnInit() {
     // Setup logger

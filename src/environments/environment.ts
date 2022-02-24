@@ -16,6 +16,8 @@ export const environment = {
   serverUrl: 'http://54.91.228.241:8080',
   defaultLanguage: 'en-US',
   supportedLanguages: ['en-US', 'es-ES'],
+  api: 'https://j3x0ln9gj7.execute-api.ap-northeast-1.amazonaws.com/dev/',
+  strikePK: 'pk_test_YssveZBA1kucfaTfZbeDwauN',
 };
 
 /*

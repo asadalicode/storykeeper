@@ -12,4 +12,6 @@ export const environment = {
   serverUrl: 'http://54.91.228.241:8080',
   defaultLanguage: 'en-US',
   supportedLanguages: ['en-US', 'es-ES'],
+  strikePK:
+    'pk_test_51HnOIGHFh0EYi2CVRcVJxry6vXxI0q8xte5sVPb3jr3SvksSQ6EZAGzNwMVTEPy3rASh9LlWRVZGAqXxmG5sTLM100z8yoU0Qn',
 };

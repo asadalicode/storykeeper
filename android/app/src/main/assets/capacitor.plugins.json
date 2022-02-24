@@ -4,6 +4,10 @@
     "classpath": "com.getcapacitor.community.facebooklogin.FacebookLogin"
   },
   {
+    "pkg": "@capacitor-community/stripe",
+    "classpath": "com.getcapacitor.community.stripe.StripePlugin"
+  },
+  {
     "pkg": "@capacitor/filesystem",
     "classpath": "com.capacitorjs.plugins.filesystem.FilesystemPlugin"
   },
