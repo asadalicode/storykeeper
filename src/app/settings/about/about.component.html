@@ -17,19 +17,16 @@
     </div>
 
     <ion-text color="primary" class="ion-padding-horizontal">
-      <h1>Story Keeper</h1>
+      <h1>{{ dataModel?.title }}</h1>
       <p>
+        {{ dataModel?.description }}
+      </p>
+      <!-- <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
         consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur.
-      </p>
+        pariatur. 
+      </p>-->
     </ion-text>
 
     <app-find-on-social *ngIf="!isWeb" ngClass="social-icons"></app-find-on-social>

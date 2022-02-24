@@ -1,6 +1,7 @@
 import { Faq } from './../../@shared/models/faq';
 import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
+import { ApiService } from '@app/@shared/sevices/api.service';
 
 @Component({
   selector: 'app-help',
@@ -35,11 +36,29 @@ export class HelpComponent implements OnInit {
       ],
     },
   ];
-  constructor(private platform: Platform) {}
+  dataModel: any;
+  constructor(private platform: Platform, private apiService: ApiService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getHelpData();
+  }
 
   get isWeb(): boolean {
     return !this.platform.is('cordova');
+  }
+
+  getHelpData() {
+    this.apiService.get('/api/InfoData/QA').subscribe({
+      complete: () => {
+        console.log('complete');
+      },
+      next: (res: any) => {
+        this.dataModel = res;
+        console.log(this.dataModel);
+      },
+      error: () => {
+        console.log('error');
+      },
+    });
   }
 }

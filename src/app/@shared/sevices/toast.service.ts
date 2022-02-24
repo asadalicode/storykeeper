@@ -18,7 +18,6 @@ export class ToastService {
         animated: true,
       })
       .then((toastData) => {
-        console.log(toastData);
         toastData.present();
       });
   }

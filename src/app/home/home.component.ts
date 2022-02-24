@@ -3,7 +3,7 @@ import { Platform, IonRouterOutlet, ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { BuyNewBookComponent } from '@app/@shared/popup-components/buy-new-book/buy-new-book.component';
 import { ModalDismissRole } from '@app/@shared/constants';
-import { HttpService } from '@app/@shared/sevices/http-secvices.service';
+import { ApiService } from '@app/@shared/sevices/api.service';
 import { Book } from '@app/@shared/models/book';
 
 @Component({
@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     private platform: Platform,
     public modalController: ModalController,
     private routerOutlet: IonRouterOutlet,
-    private httpService: HttpService
+    private apiService: ApiService
   ) {}
 
   ngOnInit() {
@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
   }
 
   getBooks(type: string = 'shared') {
-    this.httpService.get('/api/Books').subscribe((res) => {
+    this.apiService.get('/api/Books').subscribe((res) => {
       console.log(res);
       if (type == 'all') {
         this.books = res;

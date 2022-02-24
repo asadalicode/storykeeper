@@ -42,10 +42,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     if (this.isWeb) GoogleAuth.init();
-    //  setTimeout(()=> {
-    //    this.checkLoggedIn()
-
-    //  },3000)
   }
 
   async getCurrentState(): Promise<boolean> {
@@ -84,22 +80,13 @@ export class LoginComponent implements OnInit {
     await FacebookLogin.logout();
   }
 
-  // async signIn(): Promise<void> {
-  //   const FACEBOOK_PERMISSIONS = ['public_profile', 'email'];
-
-  //   const result = await Plugins.FacebookLogin.login({ permissions: FACEBOOK_PERMISSIONS });
-  //   if (result && result.accessToken) {
-  //     let user = { token: result.accessToken.token, userId: result.accessToken.userId }
-  //   }
-  // }
-
-  async doLogin() {
+  async googleLogin() {
     console.log('login');
     this.isLoading = true;
     let u = await GoogleAuth.signIn()
       .then(async (user: any) => {
-        console.log('res:', user);
         let userObj = { username: user.email, password: user.id };
+        console.log('res:', user);
         const login$ = this.authenticationService.login(userObj);
         const loadingOverlay = await this.loadingController.create({});
         const loading$ = from(loadingOverlay.present());
@@ -121,6 +108,7 @@ export class LoginComponent implements OnInit {
             (error) => {
               log.debug(`Login error: ${error}`);
               this.error = error;
+              this.toastService.showToast('error', 'Google signin not implemented yet');
             }
           );
       })
@@ -128,11 +116,6 @@ export class LoginComponent implements OnInit {
         console.log(res);
       });
     console.log(u);
-    // const user = await GoogleAuth.signIn()
-    // if (user) {
-
-    // }
-    // if (user) { console.log("@@@",user),   this.router.navigate([this.route.snapshot.queryParams['redirect'] || '/'], { replaceUrl: true }); }
   }
 
   checkLoggedIn() {
