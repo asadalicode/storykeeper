@@ -2,6 +2,7 @@ import { Faq } from './../../@shared/models/faq';
 import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { ApiService } from '@app/@shared/sevices/api.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-help',
@@ -48,17 +49,12 @@ export class HelpComponent implements OnInit {
   }
 
   getHelpData() {
-    this.apiService.get('/api/InfoData/QA').subscribe({
-      complete: () => {
-        console.log('complete');
-      },
-      next: (res: any) => {
-        this.dataModel = res;
-        console.log(this.dataModel);
-      },
-      error: () => {
-        console.log('error');
-      },
+    const questionCategories = this.apiService.get('/api/QACategories');
+    const questionAnswers = this.apiService.get('/api/InfoData/QA');
+    forkJoin([questionCategories, questionAnswers]).subscribe((res: any) => {
+      if (res) {
+        console.log(res);
+      }
     });
   }
 }
