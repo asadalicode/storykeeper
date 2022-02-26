@@ -13,16 +13,19 @@
       <ion-label translate> <h1>Help</h1></ion-label>
     </ion-list-header>
     <ion-accordion-group>
-      <ng-container *ngFor="let faq of FAQs">
-        <ion-accordion [value]="faq.header" toggle-icon="caret-down-outline">
-          <ion-item slot="header" lines="none">
-            <ion-label>{{ faq.header }}</ion-label>
+      <ng-container *ngFor="let cat of categories">
+        <ion-accordion [value]="cat.caregoryName" toggle-icon="caret-down-outline">
+          <ion-item (click)="qID = -1" slot="header" lines="none">
+            <ion-label>{{ cat.caregoryName }}</ion-label>
           </ion-item>
 
           <ion-list slot="content">
-            <ion-item button *ngFor="let question of faq.questions" lines="none">
-              <ion-label>{{ question.question }}</ion-label>
-            </ion-item>
+            <ng-container *ngFor="let question of Questions">
+              <ion-item *ngIf="cat.id === question.qaCategoryId" button lines="none">
+                <ion-label (click)="showAns(question.id)">{{ question.title }}</ion-label>
+              </ion-item>
+              <p class="pl-4 pt-2" *ngIf="question.id === qID">{{ question.description }}</p>
+            </ng-container>
           </ion-list>
         </ion-accordion>
       </ng-container>

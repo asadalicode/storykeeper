@@ -4,7 +4,7 @@ export interface Faq {
 }
 
 interface Questions {
-  question: string;
+  title: string;
   externalLink?: string;
-  answer?: string;
+  description?: string;
 }
