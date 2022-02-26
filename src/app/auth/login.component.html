@@ -40,13 +40,21 @@
                   formControlName="username"
                   autocomplete="username"
                   autocomplete="new-email"
+                  pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                  required
                 ></ion-input>
               </ion-item>
-              <!-- <ion-text
-                color="danger"
-                [hidden]="loginForm.controls['username'].valid || loginForm.controls['username'].untouched">
-                <span class="ion-padding" translate>Email is required</span>
-              </ion-text> -->
+              <ion-text color="danger">
+                <span
+                  *ngIf="hasError('username', 'required') && loginForm.controls['username'].touched"
+                  class="ion-padding"
+                  translate
+                  >Email is required</span
+                >
+                <span *ngIf="loginForm.controls['username'].errors?.['pattern']" class="ion-padding" translate>
+                  Please enter a valid email address.
+                </span>
+              </ion-text>
               <ion-item lines="none">
                 <ion-label class="form-input-label" position="stacked" translate>Password</ion-label>
                 <ion-input
@@ -57,12 +65,12 @@
                   autocomplete="new-password"
                 ></ion-input>
               </ion-item>
-              <!-- <ion-text
+              <ion-text
                 color="danger"
                 [hidden]="loginForm.controls['password'].valid || loginForm.controls['password'].untouched"
               >
                 <span class="ion-padding" translate>Password is required</span>
-              </ion-text> -->
+              </ion-text>
               <!-- <ion-item class="ion-padding-top" lines="none">
                 <ion-label translate>Remember me</ion-label>
                 <ion-checkbox slot="start" formControlName="remember"></ion-checkbox>

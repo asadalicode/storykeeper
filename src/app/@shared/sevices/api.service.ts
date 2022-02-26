@@ -13,4 +13,12 @@ export class ApiService {
   get(url: any): Observable<any> {
     return this.http.get<any>(url);
   }
+
+  post(url: any, dataModel: any): Observable<any> {
+    return this.http.post<any>(url, dataModel);
+  }
+
+  put(url: any, dataModel: any): Observable<any> {
+    return this.http.put<any>(url, dataModel);
+  }
 }

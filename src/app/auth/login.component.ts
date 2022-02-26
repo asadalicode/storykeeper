@@ -175,9 +175,13 @@ export class LoginComponent implements OnInit {
     return !this.platform.is('cordova');
   }
 
+  hasError = (controlName: string, errorName: string) => {
+    return this.loginForm.controls[controlName].hasError(errorName);
+  };
+
   private createForm() {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
+      username: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       remember: true,
     });
