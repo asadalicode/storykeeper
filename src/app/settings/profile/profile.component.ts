@@ -46,19 +46,17 @@ export class ProfileComponent implements OnInit {
     this.apiService.get(`/api/Users/${this.userId}`).subscribe((res: any) => {
       console.log(res);
       if (res) {
-        this.profileForm.patchValue({
-          name: res.firstName + ' ' + res.lastName,
-          email: res.email,
-        });
+        this.profileForm.patchValue(res);
       }
     });
   }
   private createForm() {
     this.profileForm = this.formBuilder.group({
-      image: ['', [Validators.required]],
-      name: ['', [Validators.required]],
+      image: [''],
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
       email: ['', [Validators.required]],
-      password: [''],
+      password: ['', Validators.required],
     });
 
     this.passwordForm = this.formBuilder.group({
@@ -68,7 +66,23 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  save() {}
+  save() {
+    this.isLoading = true;
+    this.apiService.put(`/api/Users/${this.userId}`, this.profileForm.value).subscribe({
+      complete: () => {
+        this.isLoading = false;
+      },
+      next: (res: any) => {
+        this.isLoading = false;
+        this.toastService.showToast('success', 'Profile updated successfully');
+      },
+      error: (res: any) => {
+        this.isLoading = false;
+        this.toastService.showToast('error', 'Error occurred!, please try again');
+        console.log('error', res);
+      },
+    });
+  }
 
   UpdatePassword() {
     this.isLoading = true;

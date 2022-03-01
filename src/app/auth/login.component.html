@@ -27,7 +27,7 @@
             Sign_In
           </h1>
           <!-- <p class="login-sub-heading ion-padding-start" translate>Create_account_subheading</p> -->
-          <form (ngSubmit)="login()" [formGroup]="loginForm" novalidate autocomplete="off">
+          <form (ngSubmit)="login()" [formGroup]="loginForm" #form="ngForm" novalidate autocomplete="off">
             <ion-text color="danger" [hidden]="!error || loginForm.dirty || isLoading">
               <span class="ion-padding" translate>Email or password incorrect.</span>
             </ion-text>
@@ -51,7 +51,11 @@
                   translate
                   >Email is required</span
                 >
-                <span *ngIf="loginForm.controls['username'].errors?.['pattern']" class="ion-padding" translate>
+                <span
+                  *ngIf="form.submitted && loginForm.controls['username'].errors?.['pattern']"
+                  class="ion-padding"
+                  translate
+                >
                   Please enter a valid email address.
                 </span>
               </ion-text>

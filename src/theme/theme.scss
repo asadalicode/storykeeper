@@ -171,6 +171,7 @@ ion-segment {
   .book-thumbnail {
     background: #dfe2e9;
     height: 230px;
+    width: fit-content;
     border-radius: 16px;
     overflow: hidden;
     img {
