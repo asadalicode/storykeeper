@@ -1,0 +1,63 @@
+<ion-header *ngIf="!isWeb" class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="chevron-back-outline" default-href="/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="mr-5 ion-align-items-end ion-text-center">Payment method</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding-horizontal setting-page">
+  <ion-list [ngClass]="isWeb ? 'p-5' : 'p-3'">
+    <ion-list-header *ngIf="isWeb" class="p-0 mb-2">
+      <ion-label translate> <h1>Payment method</h1></ion-label>
+    </ion-list-header>
+
+    <ion-col size="12">
+      <ion-list>
+        <ion-radio-group value="biff">
+          <ion-item lines="none" class="item">
+            <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start center">
+              <img src="assets/images/credit-card.svg" alt="icon" />
+              <ion-label>Credit Card</ion-label>
+            </div>
+
+            <ion-radio slot="end" value="stripe"></ion-radio>
+          </ion-item>
+
+          <ion-item lines="none" class="item">
+            <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start center">
+              <img src="assets/images/paypal.svg" alt="icon" />
+              <ion-label>PayPal </ion-label>
+            </div>
+
+            <ion-radio slot="end" value="paypal"></ion-radio>
+          </ion-item>
+
+          <ion-item lines="none" class="item">
+            <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start center">
+              <img src="assets/images/google-icon.svg" alt="icon" />
+              <ion-label>Google Pay</ion-label>
+            </div>
+
+            <ion-radio slot="end" value="google"></ion-radio>
+          </ion-item>
+
+          <ion-item lines="none" class="item">
+            <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start center">
+              <img src="assets/images/apple-icon.svg" alt="icon" />
+              <ion-label>Apple Pay</ion-label>
+            </div>
+
+            <ion-radio slot="end" value="apple"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+
+        <div class="ion-padding-horizontal mt-5 mb-2">
+          <ion-button type="button" class="default-button ion-text-capitalize" color="primary" translate>
+            Pay Now
+          </ion-button>
+        </div>
+      </ion-list>
+    </ion-col>
+  </ion-list>
+</ion-content>
