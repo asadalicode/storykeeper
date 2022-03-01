@@ -23,6 +23,7 @@ import { AuthModule } from '@app/auth';
 import { HomeModule } from './home/home.module';
 import { ShellModule } from './shell/shell.module';
 import { SettingsModule } from './settings/settings.module';
+import { PaymentModule } from './payment/payment.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -42,6 +43,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     HomeModule,
     SettingsModule,
     AuthModule,
+    PaymentModule,
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
   ],
   declarations: [AppComponent],
