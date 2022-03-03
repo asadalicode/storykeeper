@@ -1,6 +1,6 @@
 import { Qusetion } from './../../@shared/models/book';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Platform, ModalController, IonRouterOutlet } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
@@ -10,6 +10,7 @@ import { ConfirmationInfoComponent } from '@app/@shared/popup-components/confirm
 import { ModalDismissRole } from '@app/@shared/constants';
 import { ImagePicker } from '@awesome-cordova-plugins/image-picker/ngx';
 import { Utils } from '@shared/appConstants';
+import { ApiService } from '@app/@shared/sevices/api.service';
 
 @Component({
   selector: 'app-update-book',
@@ -77,24 +78,51 @@ export class UpdateBookComponent implements OnInit {
 
   list: any;
   imageUrl: any = '';
+  uploadCredentials: any;
   constructor(
     private platform: Platform,
     private formBuilder: FormBuilder,
     private modalController: ModalController,
     private routerOutlet: IonRouterOutlet,
     private router: Router,
-    private imagePicker: ImagePicker
+    private imagePicker: ImagePicker,
+    private apiService: ApiService,
+    private route: ActivatedRoute
   ) {
     this.createForm();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getFileCredentials();
+  }
+
+  get routeParams() {
+    let params: any;
+    this.route.params.subscribe((res: any) => {
+      params = res;
+    });
+    return params;
+  }
 
   private createForm() {
     this.step1Form = this.formBuilder.group({
       bookTitle: ['', [Validators.required]],
       recipientsName: ['', [Validators.required]],
       recipientsEmail: ['', [Validators.required]],
+    });
+  }
+
+  getFileCredentials() {
+    console.log(this.routeParams);
+    this.apiService.get(`/api/Files/credentials/${this.routeParams.bookId}`).subscribe({
+      complete: () => {},
+      next: (res: any) => {
+        this.uploadCredentials = res;
+        console.log(this.uploadCredentials);
+      },
+      error: (err: any) => {
+        console.log(err);
+      },
     });
   }
 
@@ -106,6 +134,19 @@ export class UpdateBookComponent implements OnInit {
           Utils.dataUrlToFile('data:image/jpeg;base64,' + results[i], 'image' + Math.random() * 100).then(
             (res: any) => {
               console.log(res);
+              const uploadFileObj = {
+                ...this.uploadCredentials,
+                file: res,
+              };
+              this.apiService.postFormData(this.uploadCredentials.upload_url, uploadFileObj).subscribe({
+                complete: () => {},
+                next: (res: any) => {
+                  console.log(res);
+                },
+                error: (err: any) => {
+                  console.log(err);
+                },
+              });
             }
           );
         }

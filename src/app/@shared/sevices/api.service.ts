@@ -18,6 +18,14 @@ export class ApiService {
     return this.http.post<any>(url, dataModel);
   }
 
+  postFormData(url: any, dataModel: any): Observable<any> {
+    let fd = new FormData();
+    for (var i in dataModel) {
+      fd.append(i, dataModel[i]);
+    }
+    return this.http.post<any>(url, fd);
+  }
+
   put(url: any, dataModel: any): Observable<any> {
     return this.http.put<any>(url, dataModel);
   }
