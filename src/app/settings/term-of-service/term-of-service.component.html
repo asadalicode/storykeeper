@@ -1,0 +1,36 @@
+<ion-header *ngIf="!isWeb" class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="chevron-back-outline" default-href="/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="mr-5 ion-align-items-end ion-text-center">Term of Service </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding-horizontal setting-page">
+  <ion-list [ngClass]="isWeb ? 'p-5' : 'p-3'">
+    <ion-list-header *ngIf="isWeb" class="p-0 mb-2">
+      <ion-label translate> <h1>Term of Service</h1></ion-label>
+    </ion-list-header>
+    <div lines="none" class="avatar mb-4 mt-4">
+      <img class="avatar-img" src="assets/logos/logo-cir-blue.png" />
+      <ion-text color="primary">
+        <ion-label class="avatar-caption">Last Updated on June 2, 2020</ion-label>
+      </ion-text>
+    </div>
+
+    <ion-text color="primary" class="ion-padding-horizontal">
+      <h1>{{ dataModel?.title }}</h1>
+      <p>
+        {{ dataModel?.description }}
+      </p>
+    </ion-text>
+
+    <!-- <ion-text color="primary" class="ion-padding-horizontal">
+      <h1>Service</h1>
+      <p>
+        A Privacy Policy is a legal statement that specifies what the business owner does with the personal data
+        collected from users, along with how the data is processed.
+      </p>
+    </ion-text> -->
+  </ion-list>
+</ion-content>

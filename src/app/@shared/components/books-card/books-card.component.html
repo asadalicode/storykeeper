@@ -1,0 +1,15 @@
+<div class="book-card">
+  <div class="book-thumbnail">
+    <img [src]="book.image" alt="" />
+  </div>
+
+  <ion-button type="button" shape="circle" (click)="updateBook(book)" class="edit-button" color="light">
+    <img src="assets/images/edit-icon-white.svg" alt="icon" />
+  </ion-button>
+
+  <div class="book-details">
+    <ion-label class="book-title">{{ book.title }}</ion-label>
+    <div class="small-text">{{ book.published_at }}</div>
+    <div class="small-text">{{ book.author }}</div>
+  </div>
+</div>

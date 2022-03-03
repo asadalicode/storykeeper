@@ -9,7 +9,10 @@ import { env } from './.env';
 export const environment = {
   production: true,
   version: env['npm_package_version'],
-  serverUrl: 'https://api.chucknorris.io',
+  serverUrl: 'http://54.91.228.241:8080',
   defaultLanguage: 'en-US',
   supportedLanguages: ['en-US', 'es-ES'],
+  api: 'https://j3x0ln9gj7.execute-api.ap-northeast-1.amazonaws.com/dev/',
+  strikePK:
+    'pk_test_51HnOIGHFh0EYi2CVRcVJxry6vXxI0q8xte5sVPb3jr3SvksSQ6EZAGzNwMVTEPy3rASh9LlWRVZGAqXxmG5sTLM100z8yoU0Qn',
 };

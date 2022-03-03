@@ -9,6 +9,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from '@app/app.module';
 import { environment } from '@env/environment';
+import { defineCustomElements } from '@stripe-elements/stripe-elements/loader';
 
 if (environment.production) {
   enableProdMode();
@@ -16,4 +17,5 @@ if (environment.production) {
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
+  .then(() => defineCustomElements(window))
   .catch((err) => console.error(err));

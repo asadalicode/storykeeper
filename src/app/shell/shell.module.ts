@@ -7,9 +7,10 @@ import { IonicModule } from '@ionic/angular';
 import { I18nModule } from '@app/i18n';
 import { AuthModule } from '@app/auth';
 import { ShellComponent } from './shell.component';
+import { SharedModule } from '@app/@shared';
 
 @NgModule({
-  imports: [CommonModule, TranslateModule, IonicModule, AuthModule, I18nModule, RouterModule],
+  imports: [CommonModule, TranslateModule, IonicModule, AuthModule, I18nModule, RouterModule, SharedModule],
   declarations: [ShellComponent],
 })
 export class ShellModule {}

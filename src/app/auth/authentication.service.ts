@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 
 import { Credentials, CredentialsService } from './credentials.service';
+import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
+import { HttpClient } from '@angular/common/http';
 
 export interface LoginContext {
   username: string;
   password: string;
   remember?: boolean;
+}
+export interface SignUpContext {
+  email: string;
+  password: string;
 }
 
 /**
@@ -17,7 +23,7 @@ export interface LoginContext {
   providedIn: 'root',
 })
 export class AuthenticationService {
-  constructor(private credentialsService: CredentialsService) {}
+  constructor(private credentialsService: CredentialsService, private http: HttpClient) {}
 
   /**
    * Authenticates the user.
@@ -25,13 +31,29 @@ export class AuthenticationService {
    * @return The user credentials.
    */
   login(context: LoginContext): Observable<Credentials> {
+    return this.http.post<any>(`/api/Authentication/Login`, context).pipe(
+      map((data) => {
+        this.credentialsService.setCredentials(data, context.remember);
+        return data;
+      })
+    );
+  }
+
+  signup(context: SignUpContext): Observable<Credentials> {
     // Replace by proper authentication call
     const data = {
-      username: context.username,
-      token: '123456',
+      email: context.email,
+      password: context.password,
+      firstName: '-',
+      lastName: '-',
+      // birthDate:'',
+      role: 'Administrator',
     };
-    this.credentialsService.setCredentials(data, context.remember);
-    return of(data);
+    return this.http.post<any>(`/api/Users`, data).pipe(
+      map((data) => {
+        return data;
+      })
+    );
   }
 
   /**
@@ -40,6 +62,7 @@ export class AuthenticationService {
    */
   logout(): Observable<boolean> {
     // Customize credentials invalidation here
+    GoogleAuth.signOut();
     this.credentialsService.setCredentials();
     return of(true);
   }

@@ -8,11 +8,10 @@ import { Platform } from '@ionic/angular';
 import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
 import { SplashScreen } from '@awesome-cordova-plugins/splash-screen/ngx';
 import { Keyboard } from '@awesome-cordova-plugins/keyboard/ngx';
-
 import { environment } from '@env/environment';
 import { Logger, UntilDestroy, untilDestroyed } from '@shared';
-import { I18nService } from '@app/i18n';
-
+import { I18nService } from '@app/i18n/i18n.service';
+import { Stripe } from '@capacitor-community/stripe';
 const log = new Logger('App');
 
 @UntilDestroy()
@@ -32,7 +31,11 @@ export class AppComponent implements OnInit, OnDestroy {
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
     private i18nService: I18nService
-  ) {}
+  ) {
+    Stripe.initialize({
+      publishableKey: environment.strikePK,
+    });
+  }
 
   async ngOnInit() {
     // Setup logger
@@ -82,9 +85,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
     if ((window as any).cordova) {
       log.debug('Cordova init');
-
       this.keyboard.hideFormAccessoryBar(true);
       this.statusBar.styleLightContent();
+      this.statusBar.overlaysWebView(false);
+      this.statusBar.backgroundColorByHexString('#242f40');
       this.splashScreen.hide();
     }
   }

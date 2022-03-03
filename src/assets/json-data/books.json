@@ -1,0 +1,58 @@
+[
+  {
+    "title": "Book #1",
+    "thumbnail": "assets/images/book1.svg",
+    "id": "1",
+    "published_at": "2022",
+    "status": "inprogress",
+    "author": "Lena Petterson"
+  },
+  {
+    "title": "Book #2",
+    "thumbnail": "assets/images/book2.svg",
+    "id": "1",
+    "published_at": "2022",
+    "status": "shared",
+    "author": "Adam Nilson"
+  },
+  {
+    "title": "Book #3",
+    "thumbnail": "assets/images/book1.svg",
+    "id": "1",
+    "published_at": "2022",
+    "status": "shared",
+    "author": "Lena Petterson"
+  },
+  {
+    "title": "Book #4",
+    "thumbnail": "assets/images/book2.svg",
+    "id": "1",
+    "published_at": "2022",
+    "status": "shared",
+    "author": "Adam Nilson"
+  },
+  {
+    "title": "Book #4",
+    "thumbnail": "assets/images/book1.svg",
+    "id": "1",
+    "published_at": "2022",
+    "status": "shared",
+    "author": "Adam Nilson"
+  },
+  {
+    "title": "Book #4",
+    "thumbnail": "assets/images/book2.svg",
+    "id": "1",
+    "published_at": "2022",
+    "status": "published",
+    "author": "Adam Nilson"
+  },
+  {
+    "title": "Book #4",
+    "thumbnail": "assets/images/book2.svg",
+    "id": "1",
+    "published_at": "2022",
+    "status": "published",
+    "author": "Adam Nilson"
+  }
+]

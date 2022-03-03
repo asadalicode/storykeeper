@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "380937119202",
+    "project_id": "storykeeper-19e96",
+    "storage_bucket": "storykeeper-19e96.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380937119202:android:84eba0edc1b4b38bdac5bb",
+        "android_client_info": {
+          "package_name": "com.storykeeperv1.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "380937119202-4mb2mn92oevheq85lnrjpk4dhf1albq3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.storykeeperv1.app",
+            "certificate_hash": "2471635bc5dd2e072de3549fa890f9e9ddea2d30"
+          }
+        },
+        {
+          "client_id": "380937119202-k823tfojlvso31flp09chs93uk4ipg81.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCscizlxjrtUzVREHbHWBMJJeVlPxKXKT8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "380937119202-59cm8u3kvv6tjub7qp918tmcoohk8327.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

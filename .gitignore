@@ -61,3 +61,4 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+/android/app/src/main/assets/capacitor.config.json

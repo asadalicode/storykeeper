@@ -11,19 +11,29 @@ import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
 import { SplashScreen } from '@awesome-cordova-plugins/splash-screen/ngx';
 
 import { environment } from '@env/environment';
-import { RouteReusableStrategy, ApiPrefixInterceptor, ErrorHandlerInterceptor, SharedModule } from '@shared';
+
+import {
+  RouteReusableStrategy,
+  TokenInterceptor,
+  ApiPrefixInterceptor,
+  ErrorHandlerInterceptor,
+  SharedModule,
+} from '@shared';
 import { AuthModule } from '@app/auth';
 import { HomeModule } from './home/home.module';
 import { ShellModule } from './shell/shell.module';
 import { SettingsModule } from './settings/settings.module';
+import { PaymentModule } from './payment/payment.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
     BrowserModule,
     ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production }),
     FormsModule,
+    FlexLayoutModule,
     HttpClientModule,
     RouterModule,
     TranslateModule.forRoot(),
@@ -33,6 +43,7 @@ import { AppRoutingModule } from './app-routing.module';
     HomeModule,
     SettingsModule,
     AuthModule,
+    PaymentModule,
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
   ],
   declarations: [AppComponent],
@@ -50,6 +61,11 @@ import { AppRoutingModule } from './app-routing.module';
     {
       provide: RouteReuseStrategy,
       useClass: RouteReusableStrategy,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
     },
     Keyboard,
     StatusBar,

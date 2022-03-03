@@ -8,6 +8,16 @@
 
 // 3rd party libraries
 @import "~@ionic/angular/css/ionic.bundle.css";
+@import "node_modules/bootstrap/scss/bootstrap";
 
 // Theme customization
+@import "theme/mixins";
 @import "theme/theme";
+@import "theme/modal-popup.scss";
+
+.main-loader {
+  .loading-wrapper {
+    box-shadow: none;
+    background-color: transparent;
+  }
+}

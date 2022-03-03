@@ -1,35 +1,73 @@
 <ion-content no-bounce>
-  <div class="login-background"></div>
-  <ion-grid class="ion-no-padding">
-    <ion-row class="ion-justify-content-center ion-no-padding">
-      <ion-col size-sm="8" size-lg="6" size-xl="4" class="ion-align-self-center ion-no-padding">
-        <div class="login-header ion-text-center">
-          <h1 translate>APP_NAME</h1>
-          <h6>v{{ version }}</h6>
+  <app-header *ngIf="isWeb" showAction="signup"></app-header>
+  <ion-grid class="page-content ion-no-padding">
+    <ion-row class="ion-no-padding">
+      <ion-col
+        *ngIf="isWeb"
+        size-sm="8"
+        size-lg="7"
+        size-xl="7"
+        class="ion-hide-sm-down ion-text-center ion-align-self-center ion-no-padding"
+      >
+        <img src="assets/images/login-backgroud.svg" alt="login-backgroud" />
+      </ion-col>
+      <ion-col size-sm="12" size-lg="5" size-xl="5" class="ion-align-self-center ion-no-padding">
+        <!-- <div class="login-header ion-text-center">
           <ion-list *ngIf="isWeb" color="primary" lines="none" class="ion-no-padding">
             <app-language-selector type="select" itemClass="ion-color ion-color-primary item-lines-none">
             </app-language-selector>
           </ion-list>
-        </div>
+        </div> -->
+
         <div class="login-container">
-          <form (ngSubmit)="login()" [formGroup]="loginForm" novalidate>
+          <div *ngIf="!isWeb" class="pb-3" [class.ion-text-center]="!isWeb">
+            <img style="width: 240px; object-fit: contain" src="assets/logos/rectangle-logo.png" alt="" />
+          </div>
+          <h1 [class.ion-text-center]="!isWeb" [class.ion-padding-start]="isWeb" class="login-header" translate>
+            Sign_In
+          </h1>
+          <!-- <p class="login-sub-heading ion-padding-start" translate>Create_account_subheading</p> -->
+          <form (ngSubmit)="login()" [formGroup]="loginForm" #form="ngForm" novalidate autocomplete="off">
             <ion-text color="danger" [hidden]="!error || loginForm.dirty || isLoading">
-              <span class="ion-padding" translate>Username or password incorrect.</span>
+              <span class="ion-padding" translate>Email or password incorrect.</span>
             </ion-text>
             <ion-list>
-              <ion-item lines="inset">
-                <ion-label color="medium" position="floating" translate>Username</ion-label>
-                <ion-input type="text" formControlName="username" autocomplete="username"></ion-input>
+              <ion-item lines="none">
+                <ion-label class="form-input-label" position="stacked" translate>Enter_email</ion-label>
+                <ion-input
+                  class="form-input"
+                  type="text"
+                  formControlName="username"
+                  autocomplete="username"
+                  autocomplete="new-email"
+                  pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                  required
+                ></ion-input>
               </ion-item>
-              <ion-text
-                color="danger"
-                [hidden]="loginForm.controls['username'].valid || loginForm.controls['username'].untouched"
-              >
-                <span class="ion-padding" translate>Username is required</span>
+              <ion-text color="danger">
+                <span
+                  *ngIf="hasError('username', 'required') && loginForm.controls['username'].touched"
+                  class="ion-padding"
+                  translate
+                  >Email is required</span
+                >
+                <span
+                  *ngIf="form.submitted && loginForm.controls['username'].errors?.['pattern']"
+                  class="ion-padding"
+                  translate
+                >
+                  Please enter a valid email address.
+                </span>
               </ion-text>
-              <ion-item lines="inset">
-                <ion-label color="medium" position="floating" translate>Password</ion-label>
-                <ion-input type="password" formControlName="password" autocomplete="current-password"></ion-input>
+              <ion-item lines="none">
+                <ion-label class="form-input-label" position="stacked" translate>Password</ion-label>
+                <ion-input
+                  class="form-input"
+                  type="password"
+                  formControlName="password"
+                  autocomplete="current-password"
+                  autocomplete="new-password"
+                ></ion-input>
               </ion-item>
               <ion-text
                 color="danger"
@@ -37,25 +75,52 @@
               >
                 <span class="ion-padding" translate>Password is required</span>
               </ion-text>
-              <ion-item class="ion-padding-top" lines="none">
+              <!-- <ion-item class="ion-padding-top" lines="none">
                 <ion-label translate>Remember me</ion-label>
                 <ion-checkbox slot="start" formControlName="remember"></ion-checkbox>
+              </ion-item> -->
+
+              <ion-item lines="none">
+                <a href="#" class="forgot-password-link">Forgot password?</a>
               </ion-item>
             </ion-list>
             <div class="ion-padding-horizontal">
               <ion-button
                 type="submit"
+                class="submit-button"
                 [disabled]="loginForm.invalid || isLoading"
                 color="primary"
                 expand="block"
                 translate
               >
-                Login
+                Sign_In
               </ion-button>
             </div>
+
+            <div class="social-login" [class.d-flex-column]="!isWeb">
+              <ion-text color="medium"> Or continue with </ion-text>
+              <ion-grid class="ion-padding-top">
+                <ion-row>
+                  <ion-col (click)="signIn()" class="icon">
+                    <img src="assets/images/facebook.svg" alt="" />
+                  </ion-col>
+                  <ion-col (click)="googleLogin()" class="icon">
+                    <img src="assets/images/google.svg" alt="" />
+                  </ion-col>
+                  <ion-col class="icon">
+                    <img src="assets/images/apple.svg" alt="" />
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+
+            <ion-text color="tertiary">
+              <h5 class="switch-page">Do not have an account? <a routerLink="/create-acount"> Sign up here</a>.</h5>
+            </ion-text>
           </form>
         </div>
       </ion-col>
     </ion-row>
   </ion-grid>
+  <app-footer *ngIf="isWeb"></app-footer>
 </ion-content>

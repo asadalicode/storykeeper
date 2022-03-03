@@ -1,16 +1,75 @@
-<ion-tabs>
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="home">
-      <ion-icon name="home"></ion-icon>
-      <ion-label translate>Home</ion-label>
-    </ion-tab-button>
-    <ion-tab-button tab="about">
-      <ion-icon name="logo-angular"></ion-icon>
-      <ion-label translate>About</ion-label>
-    </ion-tab-button>
-    <ion-tab-button tab="settings">
-      <ion-icon name="cog"></ion-icon>
-      <ion-label translate>Settings</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
-</ion-tabs>
+<ion-header *ngIf="isWeb">
+  <ion-toolbar class="ion-padding-horizontal" color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-text>
+      <!-- <h1 class="app-name">Story Keeper</h1> -->
+      <img height="40px" src="assets/logos/white.png" alt="Story Keeper" />
+    </ion-text>
+    <ion-button fill="clear" class="logout-button" slot="end" (click)="logout()">Log out</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-split-pane [class.split-pane-web]="isWeb" contentId="main-content">
+  <ion-menu
+    [class.menu-width]="isWeb"
+    [side]="isWeb ? 'start' : 'end'"
+    type="overlay"
+    contentId="main-content"
+    class="sidebar"
+  >
+    <ion-content class="sidebar-content">
+      <div ion-fixed class="sidebar-content">
+        <ion-list lines="full" class="ion-no-padding bg-transparent">
+          <div lines="none" class="avatar mb-4">
+            <img class="avatar-img" src="assets/logos/logo-cir-white.png" />
+            <ion-label class="avatar-caption"> {{ username }}</ion-label>
+          </div>
+
+          <div class="ion-padding-horizontal">
+            <ion-button
+              type="button"
+              (click)="buyNewBook()"
+              class="primary-button"
+              color="primary"
+              expand="block"
+              translate
+              >Buy New Book</ion-button
+            >
+          </div>
+
+          <ul class="menu-links">
+            <li
+              [routerDirection]="'root'"
+              (click)="closeMenu()"
+              routerLink="/tabs/my-library"
+              routerLinkActive="active"
+            >
+              <ion-icon name="library-outline"></ion-icon>
+              <ion-label class="ml-2"><span translate>My Library</span></ion-label>
+            </li>
+            <li [routerDirection]="'root'" (click)="closeMenu()" routerLink="/tabs/home" routerLinkActive="active">
+              <ion-icon name="leaf-outline"></ion-icon>
+              <ion-label class="ml-2"><span translate>My Books</span></ion-label>
+            </li>
+            <li [routerDirection]="'root'" (click)="closeMenu()" routerLink="/tabs/settings" routerLinkActive="active">
+              <ion-icon name="settings-outline"></ion-icon>
+              <ion-label class="ml-2"><span translate>Settings</span></ion-label>
+            </li>
+          </ul>
+        </ion-list>
+
+        <ion-list *ngIf="!isWeb" lines="full" class="ion-no-padding bg-transparent">
+          <ul class="menu-links">
+            <li (click)="logout()">
+              <!-- <ion-icon name="settings-outline"></ion-icon> -->
+              <ion-label><span translate>Logout</span></ion-label>
+            </li>
+          </ul>
+        </ion-list>
+      </div>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+</ion-split-pane>

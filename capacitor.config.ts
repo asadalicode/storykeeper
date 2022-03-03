@@ -5,6 +5,12 @@ const config: CapacitorConfig = {
   appName: 'storykeeper',
   webDir: 'www',
   bundledWebRuntime: false,
+  plugins: {
+    GoogleAuth: {
+      scopes: ['profile', 'email'],
+      serverClientId: '380937119202-k823tfojlvso31flp09chs93uk4ipg81.apps.googleusercontent.com',
+    },
+  },
   cordova: {
     preferences: {
       Hostname: 'app',

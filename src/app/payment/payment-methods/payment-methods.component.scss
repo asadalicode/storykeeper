@@ -1,0 +1,13 @@
+:host {
+  .item {
+    background: #ffffff;
+    border: 0.3px solid rgba(108, 126, 147, 0.25);
+    box-sizing: border-box;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    padding: 10px;
+    &:hover {
+      box-shadow: 6px 29px 40px rgba(57, 89, 163, 0.14);
+    }
+  }
+}

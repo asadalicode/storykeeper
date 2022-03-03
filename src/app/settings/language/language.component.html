@@ -1,0 +1,27 @@
+<ion-header *ngIf="!isWeb" class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="chevron-back-outline" default-href="/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="mr-5 ion-align-items-end ion-text-center" translate>Language</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding-horizontal setting-page">
+  <ion-list [ngClass]="isWeb ? 'p-5' : 'p-3'">
+    <ion-list-header *ngIf="isWeb" class="p-0 mb-2">
+      <ion-label translate> <h1>Language</h1></ion-label>
+    </ion-list-header>
+    <ng-container *ngFor="let language of LanguagesList">
+      <ion-item
+        (click)="setLanguage(language.value)"
+        [color]="language.checked ? 'tertiary' : 'light'"
+        button
+        lines="none"
+      >
+        <img class="pr-2" [src]="language.flag" alt="flag" />
+        <ion-label [class.text-white]="language.checked">{{ language.name }}</ion-label>
+        <ion-icon *ngIf="language.checked" name="checkmark-outline" slot="end"></ion-icon>
+      </ion-item>
+    </ng-container>
+  </ion-list>
+</ion-content>

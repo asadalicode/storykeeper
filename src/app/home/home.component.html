@@ -1,22 +1,74 @@
-<ion-header style="padding-top: 30px">
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title><span translate>Home</span></ion-title>
-  </ion-toolbar>
-</ion-header>
 <ion-content>
-  <ion-card class="ion-text-center">
-    <img class="logo" src="assets/ngx-rocket-logo.png" alt="angular logo" />
+  <ion-card class="ion-text-center" *ngIf="!isWeb">
+    <ion-header color="primary" class="ion-no-border">
+      <ion-toolbar color="primary">
+        <!-- <ion-buttons slot="start">
+         <ion-back-button icon="chevron-back-outline" default-href="/tabs/home"></ion-back-button>
+        </ion-buttons> -->
+        <ion-title class="ml-5 text-white ion-align-items-end ion-text-center">My Library</ion-title>
+        <ion-icon class="more-icon ion-padding-end" slot="end" name="ellipsis-horizontal-circle-outline"></ion-icon>
+      </ion-toolbar>
+    </ion-header>
+    <div class="avatar m-auto">
+      <img class="avatar-img" src="assets/logos/logo-cir-white.png" />
+    </div>
     <ion-card-content>
       <ion-card-title>
-        <span translate>Hello worldsass !</span>
+        <h1 class="text-white" translate>Kate Horushchenko</h1>
       </ion-card-title>
-      <p>
-        <app-loader [isLoading]="isLoading"></app-loader>
-        <q [hidden]="isLoading">{{ quote }}</q>
-      </p>
+      <div class="ion-padding-horizontal mt-4 mb-3">
+        <ion-button
+          type="button"
+          (click)="buyNewBook()"
+          class="default-button ion-text-capitalize"
+          color="secondary"
+          expand="block"
+          translate
+        >
+          Buy New Book
+        </ion-button>
+      </div>
     </ion-card-content>
   </ion-card>
+
+  <div class="ion-padding" [class.web-page]="isWeb">
+    <ion-text color="primary">
+      <h1 class="heading" [class.isWeb]="isWeb">My Books in Library</h1>
+      <button routerLink="/tabs/stripe-pay">stripe</button>
+      <ion-segment scrollable value="shared" (ionChange)="segmentChanged($event)">
+        <ion-segment-button value="all">
+          <ion-label>All</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="published">
+          <ion-label>Published</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="inprogress">
+          <ion-label>In Progress</ion-label>
+        </ion-segment-button>
+
+        <ion-segment-button value="shared">
+          <ion-label>Shared With me</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-text>
+
+    <ion-grid class="p-0 mt-3">
+      <div class="grid-container">
+        <app-books-card *ngFor="let book of books" [book]="book"></app-books-card>
+      </div>
+    </ion-grid>
+
+    <div *ngIf="!isAuthor" [class.p-5]="isWeb" [fxLayout]="isWeb ? 'column-reverse' : 'column'">
+      <ion-text color="primary">
+        <p class="message">We are sorry, you have not become the author of the book yet.</p>
+      </ion-text>
+
+      <div class="empty-screen-image">
+        <img
+          [src]="isWeb ? 'assets/images/emtyscreen-bg-large.png' : 'assets/images/emtyscreen-bg.png'"
+          alt="angular logo"
+        />
+      </div>
+    </div>
+  </div>
 </ion-content>
