@@ -1,3 +1,4 @@
+import { MyLibraryModule } from './my-library/my-library.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -44,6 +45,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     SettingsModule,
     AuthModule,
     PaymentModule,
+    MyLibraryModule,
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
   ],
   declarations: [AppComponent],

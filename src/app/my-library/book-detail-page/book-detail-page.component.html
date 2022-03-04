@@ -1,0 +1,225 @@
+<ion-content class="ion-page">
+  <ion-card class="ion-text-center" [class.header-web]="isWeb">
+    <ion-header class="ion-no-border" *ngIf="!isWeb">
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button icon="chevron-back-outline" default-href="/tabs/home"></ion-back-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-card-content>
+      <ion-card-title>
+        <h1 translate>My New Book#2</h1>
+      </ion-card-title>
+      <div class="ion-padding-horizontal mt-4 mb-3" fxLayout="row" fxLayoutGap="20px">
+        <ion-button
+          fxFlex="50"
+          type="button"
+          class="default-button ion-text-capitalize"
+          color="light"
+          expand="block"
+          fill="outline"
+          translate
+        >
+          <ion-icon class="btn-icon" name="share-social-outline"></ion-icon> Share
+        </ion-button>
+        <ion-button
+          type="button"
+          (click)="EditBook()"
+          fxFlex="50"
+          class="default-button ion-text-capitalize"
+          color="light"
+          expand="block"
+          fill="outline"
+          translate
+        >
+          <ion-icon class="btn-icon" slot="icon-only" src="assets/images/edit-icon-white.svg"></ion-icon> Edit
+        </ion-button>
+      </div>
+      <p>Your book has 16 chapters. There are 24 chapters in total.</p>
+      <ion-text color="secondary">View Sharings </ion-text>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="ion-padding">
+    <ion-grid class="p-0 mt-3">
+      <section>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div class="heading">Chapters of My book</div>
+          <ion-text color="secondary">Edit</ion-text>
+        </div>
+
+        <ion-list slot="content">
+          <ion-item-sliding>
+            <ion-item-options side="end">
+              <ion-item-option style="background: #fff" color="light">
+                <ion-icon class="btn-icon" slot="icon-only" src="assets/images/edit-ion.svg"></ion-icon>
+              </ion-item-option>
+              <ion-item-option style="background: #fff" color="light">
+                <ion-icon class="btn-icon" slot="icon-only" src="assets/images/minus-square.svg"></ion-icon>
+              </ion-item-option>
+            </ion-item-options>
+
+            <ion-item lines="none">
+              <ion-avatar slot="start">
+                <img src="assets/logos/rec-white.png " />
+              </ion-avatar>
+
+              <div class="text-truncate">
+                <h3>My Mom Story</h3>
+                <ion-label color="success">Published• 01/2021 • Lena Horushenko</ion-label>
+              </div>
+              <div class="ion-float-right">
+                <ion-icon class="btn-icon" slot="icon-only" src="assets/images/play.svg"></ion-icon>
+              </div>
+            </ion-item>
+          </ion-item-sliding>
+
+          <ion-item-sliding>
+            <ion-item-options side="end">
+              <ion-item-option style="background: #fff" color="light">
+                <ion-icon class="btn-icon" slot="icon-only" src="assets/images/edit-ion.svg"></ion-icon>
+              </ion-item-option>
+              <ion-item-option style="background: #fff" color="light">
+                <ion-icon class="btn-icon" slot="icon-only" src="assets/images/minus-square.svg"></ion-icon>
+              </ion-item-option>
+            </ion-item-options>
+
+            <ion-item lines="none">
+              <ion-avatar slot="start">
+                <img src="assets/logos/rec-white.png " />
+              </ion-avatar>
+
+              <div class="text-truncate">
+                <h3>My Mom Story</h3>
+                <ion-label color="success">Published• 01/2021 • Lena Horushenko</ion-label>
+              </div>
+              <div class="ion-float-right">
+                <ion-icon class="btn-icon" slot="icon-only" src="assets/images/play.svg"></ion-icon>
+              </div>
+            </ion-item>
+          </ion-item-sliding>
+          <ion-item-sliding>
+            <ion-item-options side="end">
+              <ion-item-option style="background: #fff" color="light">
+                <ion-icon class="btn-icon" slot="icon-only" src="assets/images/edit-ion.svg"></ion-icon>
+              </ion-item-option>
+              <ion-item-option style="background: #fff" color="light">
+                <ion-icon class="btn-icon" slot="icon-only" src="assets/images/minus-square.svg"></ion-icon>
+              </ion-item-option>
+            </ion-item-options>
+
+            <ion-item lines="none">
+              <ion-avatar slot="start">
+                <img src="assets/logos/rec-white.png " />
+              </ion-avatar>
+
+              <div class="text-truncate">
+                <h3>My Mom Story</h3>
+                <ion-label color="success">Published• 01/2021 • Lena Horushenko</ion-label>
+              </div>
+              <div class="ion-float-right">
+                <ion-icon class="btn-icon" slot="icon-only" src="assets/images/play.svg"></ion-icon>
+              </div>
+            </ion-item>
+          </ion-item-sliding>
+        </ion-list>
+      </section>
+
+      <section>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div class="heading">Chapters in progress</div>
+        </div>
+
+        <ion-list slot="content">
+          <ion-item-sliding>
+            <ion-item-options side="end">
+              <ion-item-option style="background: #fff" color="light">
+                <ion-icon class="btn-icon" slot="icon-only" src="assets/images/edit-ion.svg"></ion-icon>
+              </ion-item-option>
+              <ion-item-option style="background: #fff" color="light">
+                <ion-icon class="btn-icon" slot="icon-only" src="assets/images/minus-square.svg"></ion-icon>
+              </ion-item-option>
+            </ion-item-options>
+
+            <ion-item lines="none">
+              <ion-avatar slot="start">
+                <img src="assets/logos/rec-white.png " />
+              </ion-avatar>
+
+              <div class="text-truncate">
+                <h3>My Mom Story</h3>
+                <ion-label color="success">Published• 01/2021 • Lena Horushenko</ion-label>
+              </div>
+            </ion-item>
+          </ion-item-sliding>
+
+          <ion-item-sliding>
+            <ion-item-options side="end">
+              <ion-item-option style="background: #fff" color="light">
+                <ion-icon class="btn-icon" slot="icon-only" src="assets/images/edit-ion.svg"></ion-icon>
+              </ion-item-option>
+              <ion-item-option style="background: #fff" color="light">
+                <ion-icon class="btn-icon" slot="icon-only" src="assets/images/minus-square.svg"></ion-icon>
+              </ion-item-option>
+            </ion-item-options>
+
+            <ion-item lines="none">
+              <ion-avatar slot="start">
+                <img src="assets/logos/rec-white.png " />
+              </ion-avatar>
+
+              <div>
+                <h3>My Mom Story</h3>
+                <ion-label color="success">Published• 01/2021 • Lena Horushenko</ion-label>
+              </div>
+            </ion-item>
+          </ion-item-sliding>
+
+          <ion-item-sliding>
+            <ion-item-options side="end">
+              <ion-item-option style="background: #fff" color="light">
+                <ion-icon class="btn-icon" slot="icon-only" src="assets/images/edit-ion.svg"></ion-icon>
+              </ion-item-option>
+              <ion-item-option style="background: #fff" color="light">
+                <ion-icon class="btn-icon" slot="icon-only" src="assets/images/minus-square.svg"></ion-icon>
+              </ion-item-option>
+            </ion-item-options>
+
+            <ion-item lines="none">
+              <ion-avatar slot="start">
+                <img src="assets/logos/rec-white.png " />
+              </ion-avatar>
+
+              <div>
+                <h3>My Mom Story</h3>
+                <ion-label color="success">Published• 01/2021 • Lena Horushenko</ion-label>
+              </div>
+            </ion-item>
+          </ion-item-sliding>
+          <ion-item-sliding>
+            <ion-item-options side="end">
+              <ion-item-option style="background: #fff" color="light">
+                <ion-icon class="btn-icon" slot="icon-only" src="assets/images/edit-ion.svg"></ion-icon>
+              </ion-item-option>
+              <ion-item-option style="background: #fff" color="light">
+                <ion-icon class="btn-icon" slot="icon-only" src="assets/images/minus-square.svg"></ion-icon>
+              </ion-item-option>
+            </ion-item-options>
+
+            <ion-item lines="none">
+              <ion-avatar slot="start">
+                <img src="assets/logos/rec-white.png " />
+              </ion-avatar>
+
+              <div>
+                <h3>My Mom Story</h3>
+                <ion-label color="success">Published• 01/2021 • Lena Horushenko</ion-label>
+              </div>
+            </ion-item>
+          </ion-item-sliding>
+        </ion-list>
+      </section>
+    </ion-grid>
+  </div>
+</ion-content>

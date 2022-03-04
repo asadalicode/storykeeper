@@ -2,7 +2,7 @@ import { ConfirmationInfoComponent } from './../@shared/popup-components/confirm
 import { Platform, IonRouterOutlet, ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { BuyNewBookComponent } from '@app/@shared/popup-components/buy-new-book/buy-new-book.component';
-import { ModalDismissRole } from '@app/@shared/constants';
+import { ModalDismissRole, myLibraryTabs } from '@app/@shared/constants';
 import { ApiService } from '@app/@shared/sevices/api.service';
 import { Book } from '@app/@shared/models/book';
 
@@ -31,15 +31,29 @@ export class HomeComponent implements OnInit {
     return !this.platform.is('cordova');
   }
 
-  getBooks(type: string = 'shared') {
+  getBooks(status: number = 0) {
+    this.isLoading = true;
     this.apiService.get('/api/Books').subscribe((res) => {
       console.log(res);
-      if (type == 'all') {
-        this.books = res;
+      res.push({
+        bookName: 'TestBook3',
+        title: 'TestBook3',
+        id: 5,
+        image: 'https://www.linkpicture.com/q/book1.svg',
+        recipientUser: '',
+        senderUser: '',
+        status: 2,
+        type: 1,
+      });
+      this.isLoading = false;
+      if (status == 0) {
+        this.books = [...res];
       } else {
         this.books = res.filter((e: Book) => {
-          return e.status === type;
+          return e.status == status;
         });
+
+        this.books = [...this.books];
       }
 
       this.isAuthor = this.books.length > 0 ? true : false;
@@ -77,6 +91,6 @@ export class HomeComponent implements OnInit {
   }
 
   segmentChanged(event: any) {
-    this.getBooks(event.detail.value);
+    this.getBooks(myLibraryTabs[event.detail.value]);
   }
 }
