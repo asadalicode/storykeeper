@@ -1,3 +1,4 @@
+import { ViewSharingComponent } from './view-sharing/view-sharing.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { marker } from '@biesbjerg/ngx-translate-extract-marker';
@@ -17,6 +18,11 @@ const routes: Routes = [
     {
       path: 'my-library/book/edit/:bookId/:bookTitle',
       component: EditBookComponent,
+      data: { title: marker('Update Book') },
+    },
+    {
+      path: 'my-library/book/sharing/:bookId',
+      component: ViewSharingComponent,
       data: { title: marker('Update Book') },
     },
   ]),
