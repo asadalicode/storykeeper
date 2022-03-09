@@ -1,4 +1,3 @@
-import { ViewSharingComponent } from './../view-sharing/view-sharing.component';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Platform, ModalController, IonRouterOutlet } from '@ionic/angular';
@@ -42,6 +41,6 @@ export class BookDetailPageComponent implements OnInit {
   }
 
   async ViewSharing() {
-    this.router.navigate(['tab/my-library/book/sharing/1']);
+    this.router.navigate([`tabs/my-library/sharing/1`]);
   }
 }

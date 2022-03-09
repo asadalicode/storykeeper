@@ -1,6 +1,3 @@
-import { ConfirmationInfoComponent } from './../../@shared/popup-components/confirmation-info/confirmation-info.component';
-import { ModalDismissRole } from './../../@shared/constants';
-import { AddNewQuestionComponent } from './../../home/add-new-question/add-new-question.component';
 import { ApiService } from './../../@shared/sevices/api.service';
 import { ImagePicker } from '@awesome-cordova-plugins/image-picker/ngx';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -80,7 +77,6 @@ export class EditBookComponent implements OnInit {
     private platform: Platform,
     private formBuilder: FormBuilder,
     private modalController: ModalController,
-    private routerOutlet: IonRouterOutlet,
     private router: Router,
     private imagePicker: ImagePicker,
     private apiService: ApiService,
@@ -112,16 +108,16 @@ export class EditBookComponent implements OnInit {
 
   getFileCredentials() {
     console.log(this.routeParams);
-    this.apiService.get(`/api/Files/credentials/${this.routeParams.bookId}`).subscribe({
-      complete: () => {},
-      next: (res: any) => {
-        this.uploadCredentials = res;
-        console.log(this.uploadCredentials);
-      },
-      error: (err: any) => {
-        console.log(err);
-      },
-    });
+    // this.apiService.get(`/api/Files/credentials/${this.routeParams.bookId}`).subscribe({
+    //   complete: () => {},
+    //   next: (res: any) => {
+    //     this.uploadCredentials = res;
+    //     console.log(this.uploadCredentials);
+    //   },
+    //   error: (err: any) => {
+    //     console.log(err);
+    //   },
+    // });
   }
 
   getImages() {

@@ -1,3 +1,4 @@
+import { Platform } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-sharing.component.scss'],
 })
 export class ViewSharingComponent implements OnInit {
-  constructor() {}
+  constructor(private platform: Platform) {}
 
   ngOnInit(): void {}
+  get isWeb(): boolean {
+    return !this.platform.is('cordova');
+  }
 }

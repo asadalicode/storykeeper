@@ -9,6 +9,7 @@ import { SharedModule } from '@shared';
 import { EditBookComponent } from './edit-book/edit-book.component';
 import { BookDetailPageComponent } from './book-detail-page/book-detail-page.component';
 import { ViewSharingComponent } from './view-sharing/view-sharing.component';
+import { ImagePicker } from '@awesome-cordova-plugins/image-picker/ngx';
 @NgModule({
   imports: [
     CommonModule,
@@ -20,7 +21,7 @@ import { ViewSharingComponent } from './view-sharing/view-sharing.component';
     IonicModule,
     FlexLayoutModule,
   ],
-  providers: [],
+  providers: [ImagePicker],
   declarations: [EditBookComponent, BookDetailPageComponent, ViewSharingComponent],
 })
 export class MyLibraryModule {}
