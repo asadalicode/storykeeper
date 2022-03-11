@@ -1,0 +1,56 @@
+<ion-content class="ion-page">
+  <div [class.web-page]="isWeb">
+    <ion-text color="primary" *ngIf="isWeb">
+      <ion-breadcrumbs>
+        <ion-breadcrumb href="javascript:void(0)"> My Library </ion-breadcrumb>
+        <ion-breadcrumb href="javascript:void(0)"> My Book #2 </ion-breadcrumb>
+        <ion-breadcrumb> Sharing </ion-breadcrumb>
+      </ion-breadcrumbs>
+    </ion-text>
+    <div [ngClass]="isWeb ? 'ion-no-padding' : 'ion-padding'">
+      <ion-grid class="p-0 mt-3">
+        <ion-text>
+          <h4>Sharing</h4>
+        </ion-text>
+
+        <ion-list>
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-label>lena@gmail.com</ion-label>
+
+            <ion-label color="danger" class="cursor-pointer">
+              <span>Repeal</span>
+              <ion-icon slot="end" color="danger" name="close-outline"></ion-icon>
+            </ion-label>
+          </ion-item>
+
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-label>user1@gmail.com</ion-label>
+
+            <ion-label color="danger" class="cursor-pointer">
+              <span>Repeal</span>
+              <ion-icon slot="end" color="danger" name="close-outline"></ion-icon>
+            </ion-label>
+          </ion-item>
+
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-label>user2@gmail.com</ion-label>
+
+            <ion-label color="danger" class="cursor-pointer">
+              <span>Repeal</span>
+              <ion-icon slot="end" color="danger" name="close-outline"></ion-icon>
+            </ion-label>
+          </ion-item>
+
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-label>user3@gmail.com</ion-label>
+
+            <ion-label color="danger" class="cursor-pointer">
+              <span>Repeal</span>
+              <ion-icon slot="end" color="danger" name="close-outline"></ion-icon>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>

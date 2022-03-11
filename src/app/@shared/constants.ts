@@ -8,3 +8,11 @@ export enum ModalDismissRole {
   'canceled' = 'canceled',
   'backdroped' = 'backdroped',
 }
+
+export enum myLibraryTabs {
+  'all' = '0',
+  'pending' = '1',
+  'inprogress' = '2',
+  'published' = '3',
+  'shared' = '4',
+}

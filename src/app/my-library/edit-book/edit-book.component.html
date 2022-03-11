@@ -1,0 +1,68 @@
+<ion-content>
+  <div class="ion-padding">
+    <div class="my-form">
+      <div class="form-container">
+        <ion-text color="primry">
+          <h1>Edit Book</h1>
+        </ion-text>
+
+        <form (ngSubmit)="save()" [formGroup]="step1Form" novalidate autocomplete="off">
+          <ion-list>
+            <ion-item lines="none">
+              <ion-label class="form-input-label" position="stacked" translate>Book Title</ion-label>
+              <ion-input class="form-input" type="text" formControlName="bookTitle" autocomplete="Name"></ion-input>
+            </ion-item>
+
+            <ion-item lines="none">
+              <ion-label class="form-input-label" position="stacked" translate>Recipients Name</ion-label>
+              <ion-input
+                class="form-input"
+                type="text"
+                formControlName="recipientsName"
+                autocomplete="new email"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item lines="none">
+              <ion-label class="form-input-label" position="stacked" translate>Recipients Email</ion-label>
+              <ion-input
+                class="form-input"
+                type="text"
+                formControlName="recipientsEmail"
+                autocomplete="new email"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item lines="none">
+              <div (click)="getImages()" class="image-container bg">
+                <ion-icon *ngIf="!imageUrl" class="plus-icon" name="add-circle-outline"></ion-icon>
+                <img *ngIf="imageUrl" class="img-fluid" [src]="imageUrl" alt="" />
+              </div>
+            </ion-item>
+          </ion-list>
+          <div class="ion-padding-horizontal pt-3">
+            <ion-button
+              type="submit"
+              class="submit-button ion-text-capitalize"
+              [disabled]="step1Form.invalid || isLoading"
+              color="primary"
+              expand="block"
+              translate
+              >Save Edit</ion-button
+            >
+            <ion-button
+              type="button"
+              (click)="navigateTo('/tabs/home')"
+              class="default-button ion-text-capitalize mt-4"
+              color="secondary"
+              expand="block"
+              fill="outline"
+              translate
+              >Cancel</ion-button
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</ion-content>

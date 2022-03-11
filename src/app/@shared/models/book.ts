@@ -2,11 +2,15 @@ import { StringChain } from 'lodash';
 
 export interface Book {
   title: string;
+  bookName?: string;
   image: string;
-  id: string;
-  published_at: StringChain;
-  status: string;
-  author: string;
+  recipientUser?: string;
+  senderUser?: string;
+  id: any;
+  published_at?: StringChain;
+  status: number;
+  type?: number;
+  author?: string;
 }
 
 export interface Qusetion {

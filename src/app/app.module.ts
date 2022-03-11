@@ -25,6 +25,7 @@ import { ShellModule } from './shell/shell.module';
 import { SettingsModule } from './settings/settings.module';
 import { PaymentModule } from './payment/payment.module';
 import { AppComponent } from './app.component';
+import { MyLibraryModule } from './my-library/my-library.module';
 import { AppRoutingModule } from './app-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -41,6 +42,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     SharedModule,
     ShellModule,
     HomeModule,
+    MyLibraryModule,
     SettingsModule,
     AuthModule,
     PaymentModule,

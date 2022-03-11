@@ -34,16 +34,20 @@
   <div class="ion-padding" [class.web-page]="isWeb">
     <ion-text color="primary">
       <h1 class="heading" [class.isWeb]="isWeb">My Books in Library</h1>
-      <button routerLink="/tabs/stripe-pay">stripe</button>
-      <ion-segment scrollable value="shared" (ionChange)="segmentChanged($event)">
+      <ion-segment scrollable value="all" (ionChange)="segmentChanged($event)">
         <ion-segment-button value="all">
           <ion-label>All</ion-label>
         </ion-segment-button>
         <ion-segment-button value="published">
           <ion-label>Published</ion-label>
         </ion-segment-button>
+
         <ion-segment-button value="inprogress">
           <ion-label>In Progress</ion-label>
+        </ion-segment-button>
+
+        <ion-segment-button value="pending">
+          <ion-label>Pending</ion-label>
         </ion-segment-button>
 
         <ion-segment-button value="shared">
@@ -53,9 +57,11 @@
     </ion-text>
 
     <ion-grid class="p-0 mt-3">
-      <div class="grid-container">
+      <div *ngIf="!isLoading" class="grid-container">
         <app-books-card *ngFor="let book of books" [book]="book"></app-books-card>
       </div>
+
+      <app-loader *ngIf="isLoading" [isLoading]="isLoading"></app-loader>
     </ion-grid>
 
     <div *ngIf="!isAuthor" [class.p-5]="isWeb" [fxLayout]="isWeb ? 'column-reverse' : 'column'">

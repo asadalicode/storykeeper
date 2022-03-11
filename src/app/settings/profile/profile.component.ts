@@ -57,6 +57,7 @@ export class ProfileComponent implements OnInit {
       lastName: ['', [Validators.required]],
       email: ['', [Validators.required]],
       password: ['', Validators.required],
+      role: ['Administrator'],
     });
 
     this.passwordForm = this.formBuilder.group({
