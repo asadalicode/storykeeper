@@ -9,10 +9,30 @@ ion-card {
   }
 
   &.header-web {
+    text-align: left !important;
+    position: relative;
+    right: 0;
+    top: 11px;
     --background: #fff !important;
     --color: #242f40;
+    margin-bottom: 32px;
+    border-radius: 0;
     h1 {
       color: #242f40;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+      font-weight: 300;
+    }
+    .actions {
+      position: absolute;
+      right: 0;
+      top: 15px;
+      margin: 0 !important;
     }
   }
 }
@@ -48,5 +68,13 @@ section {
     color: #242f40;
     font-size: 18px;
     font-weight: 600;
+  }
+}
+
+ion-item {
+  &::part(native) {
+    .input-wrapper {
+      place-content: space-between center;
+    }
   }
 }

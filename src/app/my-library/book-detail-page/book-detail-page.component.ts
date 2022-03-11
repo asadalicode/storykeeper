@@ -39,4 +39,8 @@ export class BookDetailPageComponent implements OnInit {
     });
     return await modal.present();
   }
+
+  async ViewSharing() {
+    this.router.navigate([`tabs/my-library/sharing/1`]);
+  }
 }
