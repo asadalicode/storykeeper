@@ -1,4 +1,15 @@
 <ion-content class="ion-page">
+  <app-mobile-header backPageUrl="/tabs/home" *ngIf="!isWeb">
+    <div class="header-content">
+      <ion-card-title class="mb-3">
+        <h1 class="text-white" translate>Edit my new book</h1>
+      </ion-card-title>
+
+      <ion-text class="ion-text-center" color="primry">
+        <p>Your book has 16 chapters. There are 24 chapters in total.</p>
+      </ion-text>
+    </div>
+  </app-mobile-header>
   <div [class.web-page]="isWeb">
     <ion-text color="primary" *ngIf="isWeb">
       <ion-breadcrumbs>
@@ -17,8 +28,8 @@
           <ion-item lines="none" class="ion-no-padding">
             <ion-label>lena@gmail.com</ion-label>
 
-            <ion-label color="danger" class="cursor-pointer">
-              <span>Repeal</span>
+            <ion-label color="danger" class="cursor-pointer" [ngClass]="isWeb ? 'text-center' : 'text-right'">
+              <span *ngIf="isWeb">Repeal</span>
               <ion-icon slot="end" color="danger" name="close-outline"></ion-icon>
             </ion-label>
           </ion-item>
@@ -26,8 +37,8 @@
           <ion-item lines="none" class="ion-no-padding">
             <ion-label>user1@gmail.com</ion-label>
 
-            <ion-label color="danger" class="cursor-pointer">
-              <span>Repeal</span>
+            <ion-label color="danger" class="cursor-pointer" [ngClass]="isWeb ? 'text-center' : 'text-right'">
+              <span *ngIf="isWeb">Repeal</span>
               <ion-icon slot="end" color="danger" name="close-outline"></ion-icon>
             </ion-label>
           </ion-item>
@@ -35,8 +46,8 @@
           <ion-item lines="none" class="ion-no-padding">
             <ion-label>user2@gmail.com</ion-label>
 
-            <ion-label color="danger" class="cursor-pointer">
-              <span>Repeal</span>
+            <ion-label color="danger" class="cursor-pointer" [ngClass]="isWeb ? 'text-center' : 'text-right'">
+              <span *ngIf="isWeb">Repeal</span>
               <ion-icon slot="end" color="danger" name="close-outline"></ion-icon>
             </ion-label>
           </ion-item>
@@ -44,11 +55,43 @@
           <ion-item lines="none" class="ion-no-padding">
             <ion-label>user3@gmail.com</ion-label>
 
-            <ion-label color="danger" class="cursor-pointer">
-              <span>Repeal</span>
+            <ion-label color="danger" class="cursor-pointer" [ngClass]="isWeb ? 'text-center' : 'text-right'">
+              <span *ngIf="isWeb">Repeal</span>
               <ion-icon slot="end" color="danger" name="close-outline"></ion-icon>
             </ion-label>
           </ion-item>
+
+          <ion-item lines="none" class="ion-no-padding" fxLayout="column">
+            <div>
+              <ion-label
+                fxLayout="row"
+                fxLayoutGap="10px"
+                fxLayoutAlign="start center"
+                color="secondary"
+                class="cursor-pointer mt-3"
+                [ngClass]="isWeb ? 'text-left' : 'text-center'"
+              >
+                <ion-icon slot="end" color="danger" src="assets/images/plus-square.svg"></ion-icon>
+                <span>Add new Listener</span>
+              </ion-label>
+              <p class="mt-2">You have empty 8 chapters out of 24</p>
+            </div>
+          </ion-item>
+
+          <div class="btns-container pt-3">
+            <ion-button type="submit" class="submit-button ion-text-capitalize" color="primary" expand="block" translate
+              >Save Edits</ion-button
+            >
+            <ion-button
+              type="button"
+              class="default-button ion-text-capitalize mt-4"
+              color="secondary"
+              expand="block"
+              fill="outline"
+              translate
+              >Cancel</ion-button
+            >
+          </div>
         </ion-list>
       </ion-grid>
     </div>

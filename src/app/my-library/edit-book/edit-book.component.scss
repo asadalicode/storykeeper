@@ -1,3 +1,11 @@
+.modal-height {
+  @media (min-width: 768px) {
+    height: 80vh;
+  }
+  @media (max-width: 480px) {
+    height: 90vh;
+  }
+}
 .form-container {
   @media (min-width: 768px) {
     max-width: 460px;
