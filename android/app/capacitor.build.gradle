@@ -13,6 +13,7 @@ dependencies {
     implementation project(':capacitor-community-stripe')
     implementation project(':capacitor-filesystem')
     implementation project(':codetrix-studio-capacitor-google-auth')
+    implementation project(':capacitor-voice-recorder')
     implementation "com.android.support:appcompat-v7:27.+"
 }
 apply from: "../../node_modules/cordova-plugin-telerik-imagepicker/src/android/ignorelinterrors.gradle"
