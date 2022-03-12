@@ -21,30 +21,32 @@ export class AudioPlayerComponent implements OnInit {
   isPlaying = false;
   constructor(public waveService: WaveService, private cdr: ChangeDetectorRef) {}
 
-  ngOnInit(): void {
-    VoiceRecorder.canDeviceVoiceRecord().then((result: GenericResponse) => console.log(result.value));
-    VoiceRecorder.requestAudioRecordingPermission().then((result: GenericResponse) => console.log(result.value));
-    VoiceRecorder.hasAudioRecordingPermission().then((result: GenericResponse) => console.log(result.value));
+  ngOnInit(): void {}
+
+  startRecording() {
     VoiceRecorder.startRecording()
       .then((result: GenericResponse) => console.log(result.value))
       .catch((error) => console.log(error));
-
-    setTimeout(() => {
-      VoiceRecorder.stopRecording()
-        .then((result: RecordingData) => {
-          console.log(result.value);
-          // this.playSound(result);
-        })
-
-        .catch((error) => console.log(error));
-    }, 4000);
   }
 
-  playSound(result: any) {
+  stopRecording() {
+    VoiceRecorder.stopRecording().then((result: RecordingData) => {
+      console.log(result.value);
+      this.playRecordedSound(result);
+    });
+  }
+
+  setRecordingEvents() {
+    VoiceRecorder.canDeviceVoiceRecord().then((result: GenericResponse) => console.log(result.value));
+    VoiceRecorder.requestAudioRecordingPermission().then((result: GenericResponse) => console.log(result.value));
+    VoiceRecorder.hasAudioRecordingPermission().then((result: GenericResponse) => console.log(result.value));
+  }
+
+  playRecordedSound(result: any) {
     const base64Sound = result.value.recordDataBase64; // from plugin
     const mimeType = result.value.mimeType; // from plugin
-    const audioRef = new Audio(`${base64Sound}`);
-    // const audioRef = new Audio(`data:${mimeType};base64,${base64Sound}`);
+    const audioRef = new Audio(`${base64Sound}`); //For web
+    // const audioRef = new Audio(`data:${mimeType};base64,${base64Sound}`); //For mobile
     // console.log(audioRef);
     audioRef.load();
     audioRef.oncanplaythrough = (e: any) => {
@@ -72,61 +74,11 @@ export class AudioPlayerComponent implements OnInit {
       partialRender: true,
       pixelRatio: 1,
       responsive: true,
-      // interact: true,
-      // mediaControls:true
-      // cursorColor:'transparent',
-      // plugins: [
-      //   MicrophonePlugin.create({}),
-      //   MicrophonePlugin.create({
-      //     bufferSize: 4096,
-      //     numberOfInputChannels: 1,
-      //     numberOfOutputChannels: 1,
-      //     constraints: {
-      //     audio:true,
-      //     video:false
-      //     },
-
-      //   }),
-      // ],
     });
     this.wave.load('//www.kennethcaple.com/api/mp3/richinlovemutedguitarechoing.mp3', [1, 1]);
     this.wave.stop();
 
     this.loadEvents();
-
-    // var mediaRecorder: any;
-    // const audioChunks: any = [];
-    // let $this = this;
-    // setTimeout(() => {
-    //   this.wave.microphone.on('deviceReady', function (stream: any) {
-    //     console.log('Device ready!');
-    //     mediaRecorder = new MediaRecorder(stream);
-    //     mediaRecorder.start();
-    //     mediaRecorder.addEventListener('dataavailable', (event: any) => {
-    //       audioChunks.push(event.data);
-    //     });
-
-    //     setTimeout(() => {
-    //       $this.wave.microphone.stop();
-    //       mediaRecorder.stop();
-    //     }, 10000);
-
-    //     mediaRecorder.addEventListener('stop', () => {
-    //       const audioBlob = new Blob(audioChunks);
-    //       const audioUrl = URL.createObjectURL(audioBlob);
-    //       const audio = new Audio(audioUrl);
-    //       console.log(audio);
-    //       audio.play();
-    //     });
-    //   });
-
-    //   this.wave.microphone.on('deviceError', function (code) {
-    //     console.warn('Device error: ' + code);
-    //   });
-
-    //   // start the microphone
-    //   this.wave.microphone.start();
-    // }, 4000);
   }
 
   loadEvents() {
