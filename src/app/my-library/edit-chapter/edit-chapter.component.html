@@ -1,0 +1,46 @@
+<ion-content class="ion-page modal-height">
+  <div class="ion-padding">
+    <div class="my-form">
+      <div class="form-container">
+        <ion-text color="primry">
+          <h1>Edit Chapter</h1>
+        </ion-text>
+
+        <form (ngSubmit)="save()" [formGroup]="form" novalidate autocomplete="off">
+          <ion-list>
+            <ion-item lines="none">
+              <ion-label class="form-input-label" position="stacked" translate>Name of Chapter</ion-label>
+              <ion-input class="form-input" type="text" formControlName="chapterName" autocomplete="Name"></ion-input>
+            </ion-item>
+
+            <ion-item lines="none">
+              <ion-label class="form-input-label" position="stacked" translate>Description</ion-label>
+              <ion-textarea class="form-input" formControlName="description"></ion-textarea>
+            </ion-item>
+          </ion-list>
+          <div class="ion-padding-horizontal pt-3">
+            <ion-button
+              type="submit"
+              class="submit-button ion-text-capitalize"
+              [disabled]="form.invalid || isLoading"
+              color="primary"
+              expand="block"
+              translate
+              >Save Edit</ion-button
+            >
+            <ion-button
+              type="button"
+              (click)="dismiss()"
+              class="default-button ion-text-capitalize mt-4"
+              color="secondary"
+              expand="block"
+              fill="outline"
+              translate
+              >Cancel</ion-button
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</ion-content>

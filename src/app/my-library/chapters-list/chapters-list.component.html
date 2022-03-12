@@ -1,0 +1,48 @@
+<ion-content class="ion-page">
+  <div [class.web-page]="isWeb">
+    <ion-card class="ion-text-center" [class.header-web]="isWeb">
+      <ion-header class="ion-no-padding ion-no-border" *ngIf="!isWeb">
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-back-button icon="chevron-back-outline" default-href="/tabs/home"></ion-back-button>
+          </ion-buttons>
+          <ion-title class="text-white ion-align-items-end ion-text-center"> Editing Chapters</ion-title>
+          <ion-icon
+            color="light"
+            class="more-icon ion-padding-end"
+            slot="end"
+            name="ellipsis-horizontal-circle-outline"
+          ></ion-icon>
+        </ion-toolbar>
+      </ion-header>
+      <ion-card-content [ngClass]="isWeb ? 'ion-no-padding' : 'ion-padding'" [class.mb-4]="isWeb">
+        <ion-text color="primary" *ngIf="isWeb">
+          <ion-breadcrumbs>
+            <ion-breadcrumb routerLink="/tabs/my-library"> My Library </ion-breadcrumb>
+            <ion-breadcrumb routerLink="/tabs/my-library/book/5/TestBook3"> My Book #2 </ion-breadcrumb>
+            <ion-breadcrumb>Editing Chapters </ion-breadcrumb>
+          </ion-breadcrumbs>
+        </ion-text>
+        <p>After adding a question, you can edit the description and title</p>
+        <ion-button
+          *ngIf="!isWeb"
+          type="button"
+          fill="outline"
+          class="default-button mt-4 ion-text-capitalize"
+          color="secondary"
+          expand="block"
+          (click)="newQustion()"
+          translate
+        >
+          Add your Question
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <div [ngClass]="isWeb ? 'ion-no-padding' : 'ion-padding'">
+      <ion-grid class="p-0 mt-3">
+        <app-book-chapters></app-book-chapters>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>

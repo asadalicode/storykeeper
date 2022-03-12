@@ -1,3 +1,4 @@
+import { EditChapterComponent } from './edit-chapter/edit-chapter.component';
 import { AudioRecordingComponent } from './audio-recording/audio-recording.component';
 import { ViewSharingComponent } from './view-sharing/view-sharing.component';
 import { NgModule } from '@angular/core';
@@ -5,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { marker } from '@biesbjerg/ngx-translate-extract-marker';
 import { Shell } from '@app/shell/shell.service';
 import { BookDetailPageComponent } from './book-detail-page/book-detail-page.component';
+import { ChaptersListComponent } from './chapters-list/chapters-list.component';
 
 const routes: Routes = [
   Shell.childRoutes([
@@ -23,6 +25,11 @@ const routes: Routes = [
     {
       path: 'my-library/recording/:bookId/:storyId',
       component: AudioRecordingComponent,
+      data: { title: marker('View Shared') },
+    },
+    {
+      path: 'my-library/edit-chapter/:bookId',
+      component: ChaptersListComponent,
       data: { title: marker('View Shared') },
     },
   ]),

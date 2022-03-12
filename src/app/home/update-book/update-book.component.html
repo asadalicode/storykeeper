@@ -91,54 +91,14 @@
       </div>
 
       <!-- step 2 add questions -->
+
       <div *ngSwitchCase="2">
         <ion-text class="ion-text-center" color="primry" *ngIf="isWeb">
           <h1>Adding Chapters</h1>
           <ion-label class="d-block" color="secondary">You have the option to add 24 chapters</ion-label>
           <p>After adding a question, you can edit the description and title</p>
         </ion-text>
-        <ion-text color="primary">
-          <h1 class="ion-text-left ion-padding-top">Question of My Book</h1>
-        </ion-text>
-
-        <!-- Basic -->
-        <ion-accordion-group>
-          <ion-accordion expand="inset" multiple="true" *ngFor="let item of List" [value]="item.type">
-            <ion-item slot="header">
-              <ion-label>{{ item.type }}</ion-label>
-            </ion-item>
-
-            <ion-list slot="content">
-              <ng-container *ngFor="let quest of item.questions">
-                <app-question-card
-                  (delete)="removeQuestion($event)"
-                  [type]="item.type"
-                  [question]="quest"
-                ></app-question-card>
-              </ng-container>
-            </ion-list>
-          </ion-accordion>
-        </ion-accordion-group>
-
-        <ion-item lines="none" *ngIf="isWeb">
-          <a (click)="newQustion()" class="add-new-question" href="javascript:void(0)">
-            <img src="assets/images/plus-square.svg" alt="icon" />
-            <span class="pl-1">Add new Question</span>
-          </a>
-        </ion-item>
-
-        <div class="form-container">
-          <ion-button
-            type="button"
-            class="default-button ion-text-capitalize"
-            color="primary"
-            expand="block"
-            (click)="step = 3"
-            translate
-          >
-            Save Questions
-          </ion-button>
-        </div>
+        <app-book-chapters [showSaveButton]="true" (save)="step = 3"></app-book-chapters>
       </div>
 
       <!-- step 3 add book image -->
