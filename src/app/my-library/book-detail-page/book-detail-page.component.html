@@ -52,10 +52,10 @@
         <section>
           <div fxLayout="row" fxLayoutAlign="space-between center">
             <div class="heading">Chapters of My book</div>
-            <ion-text color="secondary">Edit</ion-text>
+            <ion-text class="link ion-padding-end" color="secondary"> <span>Edit</span> </ion-text>
           </div>
 
-          <ion-list slot="content">
+          <ion-list>
             <ion-item-sliding>
               <ion-item-options side="end">
                 <ion-item-option style="background: #fff" color="light">
@@ -70,13 +70,18 @@
                 <ion-avatar slot="start">
                   <img src="assets/logos/rec-white.png " />
                 </ion-avatar>
-                <div>
-                  <h3>My Mom Story</h3>
-                  <ion-label color="success">Published• 01/2021 • Lena Horushenko</ion-label>
-                </div>
-                <div class="ion-float-right">
-                  <ion-icon class="btn-icon" slot="icon-only" src="assets/images/play.svg"></ion-icon>
-                </div>
+                <ion-label class="ion-text-wrap">
+                  <ion-text>
+                    <h3>My Mom Story</h3>
+                    <ion-label color="success">Published• 01/2021 • Lena Horushenko</ion-label>
+                  </ion-text>
+                </ion-label>
+                <ion-icon
+                  slot="end"
+                  (click)="play()"
+                  class="cursor-pointer btn-icon"
+                  src="assets/images/play.svg"
+                ></ion-icon>
               </ion-item>
             </ion-item-sliding>
 
@@ -94,14 +99,18 @@
                 <ion-avatar slot="start">
                   <img src="assets/logos/rec-white.png " />
                 </ion-avatar>
-
-                <div class="text-truncate">
-                  <h3>My Mom Story</h3>
-                  <ion-label color="success">Published• 01/2021 • Lena Horushenko</ion-label>
-                </div>
-                <div class="ion-float-right">
-                  <ion-icon class="btn-icon" slot="icon-only" src="assets/images/play.svg"></ion-icon>
-                </div>
+                <ion-label class="ion-text-wrap">
+                  <ion-text>
+                    <h3>My Mom Story</h3>
+                    <ion-label color="success">Published• 01/2021 • Lena Horushenko</ion-label>
+                  </ion-text>
+                </ion-label>
+                <ion-icon
+                  slot="end"
+                  (click)="play()"
+                  class="cursor-pointer btn-icon"
+                  src="assets/images/play.svg"
+                ></ion-icon>
               </ion-item>
             </ion-item-sliding>
             <ion-item-sliding>
@@ -118,14 +127,18 @@
                 <ion-avatar slot="start">
                   <img src="assets/logos/rec-white.png " />
                 </ion-avatar>
-
-                <div class="text-truncate">
-                  <h3>My Mom Story</h3>
-                  <ion-label color="success">Published• 01/2021 • Lena Horushenko</ion-label>
-                </div>
-                <div class="ion-float-right">
-                  <ion-icon class="btn-icon" slot="icon-only" src="assets/images/play.svg"></ion-icon>
-                </div>
+                <ion-label class="ion-text-wrap">
+                  <ion-text>
+                    <h3>My Mom Story</h3>
+                    <ion-label color="success">Published• 01/2021 • Lena Horushenko</ion-label>
+                  </ion-text>
+                </ion-label>
+                <ion-icon
+                  slot="end"
+                  (click)="play()"
+                  class="cursor-pointer btn-icon"
+                  src="assets/images/play.svg"
+                ></ion-icon>
               </ion-item>
             </ion-item-sliding>
           </ion-list>
@@ -154,7 +167,7 @@
 
                 <div class="text-truncate">
                   <h3>My Mom Story</h3>
-                  <ion-label color="success">Published• 01/2021 • Lena Horushenko</ion-label>
+                  <ion-label color="success">In progress</ion-label>
                 </div>
               </ion-item>
             </ion-item-sliding>
@@ -176,7 +189,7 @@
 
                 <div>
                   <h3>My Mom Story</h3>
-                  <ion-label color="success">Published• 01/2021 • Lena Horushenko</ion-label>
+                  <ion-label color="success">In progress</ion-label>
                 </div>
               </ion-item>
             </ion-item-sliding>
@@ -198,7 +211,7 @@
 
                 <div>
                   <h3>My Mom Story</h3>
-                  <ion-label color="success">Published• 01/2021 • Lena Horushenko</ion-label>
+                  <ion-label color="success">In progress</ion-label>
                 </div>
               </ion-item>
             </ion-item-sliding>
@@ -219,7 +232,7 @@
 
                 <div>
                   <h3>My Mom Story</h3>
-                  <ion-label color="success">Published• 01/2021 • Lena Horushenko</ion-label>
+                  <ion-label color="success">In progress</ion-label>
                 </div>
               </ion-item>
             </ion-item-sliding>

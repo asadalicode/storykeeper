@@ -1,6 +1,12 @@
-<div class="waveform" (click)="wave.playPause()" id="waveform"></div>
-<div class="btn-group">
-  <button (click)="wave.play()" class="btn btn-primary active">play</button>
-  <button (click)="wave.pause()" class="btn btn-primary">pause</button>
-  <button (click)="wave.stop()" class="btn btn-primary">stop</button>
+<div class="waveform" (click)="wave.playPause()" id="waveform">
+  <p class="audio-time">
+    <span class="ml-auto">00:10</span>
+    <span class="mr-auto">01:10</span>
+  </p>
+</div>
+
+<div class="d-flex justify-content-center mt-3">
+  <ion-button (click)="wave.playPause()" type="button" shape="circle" class="control-button" color="light">
+    <ion-img [src]="isPlaying ? 'assets/images/stop.svg' : 'assets/images/play.svg'" alt="icon"></ion-img>
+  </ion-button>
 </div>

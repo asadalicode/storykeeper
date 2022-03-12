@@ -162,7 +162,7 @@ export class EditBookComponent implements OnInit {
   }
 
   save() {
-    this.router.navigate(['/tabs/my-library']);
+    this.dismiss();
   }
   dismiss() {
     this.modalController.dismiss('button clicked');

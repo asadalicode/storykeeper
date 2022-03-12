@@ -1,6 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { WaveService } from 'angular-wavesurfer-service';
 import MicrophonePlugin from 'wavesurfer.js/src/plugin/microphone';
+import {
+  VoiceRecorder,
+  VoiceRecorderPlugin,
+  RecordingData,
+  GenericResponse,
+  CurrentRecordingStatus,
+} from 'capacitor-voice-recorder';
+import { Utils } from '@app/@shared/appConstants';
+import WaveSurfer from 'wavesurfer.js';
 
 @Component({
   selector: 'app-audio-player',
@@ -9,77 +18,109 @@ import MicrophonePlugin from 'wavesurfer.js/src/plugin/microphone';
 })
 export class AudioPlayerComponent implements OnInit {
   wave!: WaveSurfer;
-
-  constructor(public waveService: WaveService) {}
+  isPlaying = false;
+  constructor(public waveService: WaveService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {}
+
+  startRecording() {
+    VoiceRecorder.startRecording()
+      .then((result: GenericResponse) => console.log(result.value))
+      .catch((error) => console.log(error));
+  }
+
+  stopRecording() {
+    VoiceRecorder.stopRecording().then((result: RecordingData) => {
+      console.log(result.value);
+      this.playRecordedSound(result);
+    });
+  }
+
+  setRecordingEvents() {
+    VoiceRecorder.canDeviceVoiceRecord().then((result: GenericResponse) => console.log(result.value));
+    VoiceRecorder.requestAudioRecordingPermission().then((result: GenericResponse) => console.log(result.value));
+    VoiceRecorder.hasAudioRecordingPermission().then((result: GenericResponse) => console.log(result.value));
+  }
+
+  playRecordedSound(result: any) {
+    const base64Sound = result.value.recordDataBase64; // from plugin
+    const mimeType = result.value.mimeType; // from plugin
+    const audioRef = new Audio(`${base64Sound}`); //For web
+    // const audioRef = new Audio(`data:${mimeType};base64,${base64Sound}`); //For mobile
+    // console.log(audioRef);
+    audioRef.load();
+    audioRef.oncanplaythrough = (e: any) => {
+      this.wave.load(e.path[0].currentSrc);
+      // Utils.dataUrlToFile(e.path[0].currentSrc, "abc.mp3").then((res:any)=> {
+      //   console.log(res)
+
+      // })
+      audioRef.play();
+    };
+  }
 
   ngAfterViewInit(): void {
     this.wave = this.waveService.create({
       container: '#waveform',
-      barWidth: 2,
-      barGap: 2,
-      waveColor: '#c54b4b',
-      barHeight: 1,
+      barWidth: 1000,
+      barGap: 0,
+      waveColor: '#242F40',
+      progressColor: '#BF9C3F',
+      barHeight: 10,
       backend: 'WebAudio',
       barRadius: 2,
-      height: 64,
+      height: 10,
       normalize: true,
       partialRender: true,
       pixelRatio: 1,
       responsive: true,
-      interact: true,
-      // mediaControls:true
-      // cursorColor:'transparent',
-      plugins: [
-        MicrophonePlugin.create({}),
-        // MicrophonePlugin.create({
-        //   bufferSize: 4096,
-        //   numberOfInputChannels: 1,
-        //   numberOfOutputChannels: 1,
-        //   constraints: {
-        //   audio:true,
-        //   video:false
-        //   },
-
-        // }),
-      ],
     });
-    this.wave.load('//www.kennethcaple.com/api/mp3/richinlovemutedguitarechoing.mp3');
+    this.wave.load('//www.kennethcaple.com/api/mp3/richinlovemutedguitarechoing.mp3', [1, 1]);
+    this.wave.stop();
 
-    var mediaRecorder: any;
-    const audioChunks: any = [];
-    let $this = this;
-    setTimeout(() => {
-      this.wave.microphone.on('deviceReady', function (stream: any) {
-        console.log('Device ready!');
-        mediaRecorder = new MediaRecorder(stream);
-        mediaRecorder.start();
-        mediaRecorder.addEventListener('dataavailable', (event: any) => {
-          audioChunks.push(event.data);
-        });
+    this.loadEvents();
+  }
 
-        setTimeout(() => {
-          $this.wave.microphone.stop();
-          mediaRecorder.stop();
-        }, 10000);
+  loadEvents() {
+    this.onReady();
+    this.onPlay();
+    this.onPause();
+    this.onAudioProcessing();
+    this.onFinish();
+    this.onError();
+  }
 
-        mediaRecorder.addEventListener('stop', () => {
-          const audioBlob = new Blob(audioChunks);
-          const audioUrl = URL.createObjectURL(audioBlob);
-          const audio = new Audio(audioUrl);
-          console.log(audio);
-          audio.play();
-        });
-      });
+  onReady() {
+    this.wave.on('ready', () => {
+      console.log('ready');
+    });
+  }
 
-      this.wave.microphone.on('deviceError', function (code) {
-        console.warn('Device error: ' + code);
-      });
+  onPause() {
+    this.wave.on('pause', () => {
+      this.isPlaying = false;
+    });
+  }
 
-      // start the microphone
-      this.wave.microphone.start();
-    }, 4000);
+  onPlay() {
+    this.wave.on('play', () => {
+      console.log('play');
+      this.isPlaying = true;
+    });
+  }
+
+  onAudioProcessing() {
+    this.wave.on('audioprocess', function () {});
+  }
+
+  onFinish() {
+    this.wave.on('finish', function () {
+      console.log('finish');
+    });
+  }
+
+  onError() {
+    this.wave.on('error', function () {});
   }
 
   ngOnDestroy() {
