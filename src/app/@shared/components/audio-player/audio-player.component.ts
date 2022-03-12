@@ -8,6 +8,7 @@ import {
   GenericResponse,
   CurrentRecordingStatus,
 } from 'capacitor-voice-recorder';
+import { Utils } from '@app/@shared/appConstants';
 
 @Component({
   selector: 'app-audio-player',
@@ -35,18 +36,22 @@ export class AudioPlayerComponent implements OnInit {
         })
 
         .catch((error) => console.log(error));
-    }, 19000);
+    }, 4000);
   }
 
   playSound(result: any) {
     const base64Sound = result.value.recordDataBase64; // from plugin
     const mimeType = result.value.mimeType; // from plugin
-    // const audioRef = new Audio(`${base64Sound}`)
-    const audioRef = new Audio(`data:${mimeType};base64,${base64Sound}`);
-    console.log(audioRef);
+    const audioRef = new Audio(`${base64Sound}`);
+    // const audioRef = new Audio(`data:${mimeType};base64,${base64Sound}`);
+    // console.log(audioRef);
     audioRef.load();
     audioRef.oncanplaythrough = (e: any) => {
-      console.log('@@@', e);
+      this.wave.load(e.path[0].currentSrc);
+      // Utils.dataUrlToFile(e.path[0].currentSrc, "abc.mp3").then((res:any)=> {
+      //   console.log(res)
+
+      // })
       audioRef.play();
     };
   }
@@ -82,7 +87,7 @@ export class AudioPlayerComponent implements OnInit {
         // }),
       ],
     });
-    this.wave.load('//www.kennethcaple.com/api/mp3/richinlovemutedguitarechoing.mp3');
+    // this.wave.load('//www.kennethcaple.com/api/mp3/richinlovemutedguitarechoing.mp3');
 
     // var mediaRecorder: any;
     // const audioChunks: any = [];
