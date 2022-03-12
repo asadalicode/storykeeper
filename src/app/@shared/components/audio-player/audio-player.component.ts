@@ -18,6 +18,7 @@ import {
 export class AudioPlayerComponent implements OnInit {
   wave!: WaveSurfer;
   isPlaying = false;
+  isPlayable = false;
   constructor(public waveService: WaveService, private cdr: ChangeDetectorRef, private platform: Platform) {}
 
   ngOnInit(): void {}
@@ -67,12 +68,13 @@ export class AudioPlayerComponent implements OnInit {
       progressColor: '#242F40',
       barHeight: 6,
       backend: 'WebAudio',
-      barRadius: 2,
+      barRadius: 4,
       height: 6,
       normalize: true,
       partialRender: true,
       pixelRatio: 1,
       responsive: true,
+      cursorColor: 'transparent',
     });
     this.wave.load('//www.kennethcaple.com/api/mp3/richinlovemutedguitarechoing.mp3', [1, 1]);
     this.wave.stop();
@@ -91,6 +93,7 @@ export class AudioPlayerComponent implements OnInit {
 
   onReady() {
     this.wave.on('ready', () => {
+      this.isPlayable = true;
       console.log('ready');
     });
   }
@@ -113,7 +116,11 @@ export class AudioPlayerComponent implements OnInit {
   }
 
   onFinish() {
-    this.wave.on('finish', function () {
+    this.wave.on('finish', () => {
+      this.wave.stop();
+      this.isPlaying = false;
+      this.cdr.detectChanges();
+      this.cdr.checkNoChanges();
       console.log('finish');
     });
   }
@@ -122,11 +129,11 @@ export class AudioPlayerComponent implements OnInit {
     this.wave.on('error', function () {});
   }
 
-  ngOnDestroy() {
-    this.wave.destroy();
-  }
-
   get isWeb(): boolean {
     return !this.platform.is('cordova');
+  }
+
+  ngOnDestroy() {
+    this.wave.destroy();
   }
 }
