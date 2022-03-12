@@ -88,7 +88,7 @@
                 </ion-label>
                 <ion-icon
                   slot="end"
-                  (click)="play()"
+                  (click)="recordingScreen('published')"
                   class="cursor-pointer btn-icon"
                   src="assets/images/play.svg"
                 ></ion-icon>
@@ -117,7 +117,7 @@
                 </ion-label>
                 <ion-icon
                   slot="end"
-                  (click)="play()"
+                  (click)="recordingScreen('published')"
                   class="cursor-pointer btn-icon"
                   src="assets/images/play.svg"
                 ></ion-icon>
@@ -145,7 +145,7 @@
                 </ion-label>
                 <ion-icon
                   slot="end"
-                  (click)="play()"
+                  (click)="recordingScreen('published')"
                   class="cursor-pointer btn-icon"
                   src="assets/images/play.svg"
                 ></ion-icon>
@@ -170,7 +170,7 @@
                 </ion-item-option>
               </ion-item-options>
 
-              <ion-item lines="none" class="ion-no-padding">
+              <ion-item (click)="recordingScreen('inprogress')" lines="none" class="ion-no-padding">
                 <ion-avatar slot="start">
                   <img src="assets/logos/rec-white.png " />
                 </ion-avatar>
@@ -192,7 +192,7 @@
                 </ion-item-option>
               </ion-item-options>
 
-              <ion-item lines="none" class="ion-no-padding">
+              <ion-item (click)="recordingScreen('inprogress')" lines="none" class="ion-no-padding">
                 <ion-avatar slot="start">
                   <img src="assets/logos/rec-white.png " />
                 </ion-avatar>
@@ -214,13 +214,13 @@
                 </ion-item-option>
               </ion-item-options>
 
-              <ion-item lines="none" class="ion-no-padding">
+              <ion-item (click)="recordingScreen('inprogress')" lines="none" class="ion-no-padding">
                 <ion-avatar slot="start">
                   <img src="assets/logos/rec-white.png " />
                 </ion-avatar>
 
                 <div>
-                  <h3>My Mom Story</h3>
+                  <h3>My College life Story</h3>
                   <ion-label color="success">In progress</ion-label>
                 </div>
               </ion-item>
@@ -235,13 +235,13 @@
                 </ion-item-option>
               </ion-item-options>
 
-              <ion-item lines="none" class="ion-no-padding">
+              <ion-item (click)="recordingScreen('inprogress')" lines="none" class="ion-no-padding">
                 <ion-avatar slot="start">
                   <img src="assets/logos/rec-white.png " />
                 </ion-avatar>
 
                 <div>
-                  <h3>My Mom Story</h3>
+                  <h3>My Dad's Story</h3>
                   <ion-label color="success">In progress</ion-label>
                 </div>
               </ion-item>
