@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Platform, ModalController, IonRouterOutlet } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
-import { AddNewQuestionComponent } from '../add-new-question/add-new-question.component';
+import { AddNewQuestionComponent } from '@app/book-shared/add-new-question/add-new-question.component';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { ConfirmationInfoComponent } from '@app/@shared/popup-components/confirmation-info/confirmation-info.component';
 import { ModalDismissRole } from '@app/@shared/constants';
@@ -26,55 +26,6 @@ export class UpdateBookComponent implements OnInit {
     quality: 30,
     outputType: 1,
   };
-
-  List = [
-    {
-      type: 'Added Questions',
-      questions: [
-        {
-          id: 1,
-          thumbnail: '',
-          question: 'What is your favorite game',
-          description: 'string',
-        },
-        {
-          id: 2,
-          thumbnail: '',
-          question: 'What is your favorite pet',
-          description: 'string',
-        },
-        {
-          id: 3,
-          thumbnail: '',
-          question: 'What is your favorite subject',
-          description: 'string',
-        },
-      ],
-    },
-    {
-      type: 'Family Questions',
-      questions: [
-        {
-          id: 4,
-          thumbnail: '',
-          question: 'What is your favorite hobby',
-          description: 'string',
-        },
-        {
-          id: 5,
-          thumbnail: '',
-          question: 'What is your favorite game',
-          description: 'string',
-        },
-        {
-          id: 6,
-          thumbnail: '',
-          question: 'What is your favorite game',
-          description: 'string',
-        },
-      ],
-    },
-  ];
 
   list: any;
   imageUrl: any = '';

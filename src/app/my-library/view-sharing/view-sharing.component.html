@@ -13,8 +13,8 @@
   <div [class.web-page]="isWeb">
     <ion-text color="primary" *ngIf="isWeb">
       <ion-breadcrumbs>
-        <ion-breadcrumb href="javascript:void(0)"> My Library </ion-breadcrumb>
-        <ion-breadcrumb href="javascript:void(0)"> My Book #2 </ion-breadcrumb>
+        <ion-breadcrumb routerLink="/tabs/my-library"> My Library </ion-breadcrumb>
+        <ion-breadcrumb routerLink="/tabs/my-library/book/5/TestBook3"> My Book #2 </ion-breadcrumb>
         <ion-breadcrumb> Sharing </ion-breadcrumb>
       </ion-breadcrumbs>
     </ion-text>

@@ -1,11 +1,17 @@
 <ion-content class="ion-page">
   <div [class.web-page]="isWeb">
     <ion-card class="ion-text-center" [class.header-web]="isWeb">
-      <ion-header class="ion-no-padding" *ngIf="!isWeb">
+      <ion-header class="ion-no-padding ion-no-border" *ngIf="!isWeb">
         <ion-toolbar>
           <ion-buttons slot="start">
             <ion-back-button icon="chevron-back-outline" default-href="/tabs/home"></ion-back-button>
           </ion-buttons>
+          <ion-icon
+            color="light"
+            class="more-icon ion-padding-end"
+            slot="end"
+            name="ellipsis-horizontal-circle-outline"
+          ></ion-icon>
         </ion-toolbar>
       </ion-header>
       <ion-card-content [ngClass]="isWeb ? 'ion-no-padding' : 'ion-padding'" [class.mb-4]="isWeb">
@@ -19,6 +25,7 @@
             class="default-button sm ion-text-capitalize"
             [color]="isWeb ? 'primary' : 'light'"
             expand="block"
+            (click)="shareBook()"
             fill="outline"
             translate
           >
@@ -52,7 +59,10 @@
         <section>
           <div fxLayout="row" fxLayoutAlign="space-between center">
             <div class="heading">Chapters of My book</div>
-            <ion-text class="link ion-padding-end" color="secondary"> <span>Edit</span> </ion-text>
+
+            <ion-text (click)="editChapter()" class="link ion-padding-end" color="secondary">
+              <span>Edit</span>
+            </ion-text>
           </div>
 
           <ion-list>

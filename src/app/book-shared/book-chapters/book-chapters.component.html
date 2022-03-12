@@ -1,0 +1,38 @@
+<ion-text color="primary">
+  <h1 class="ion-text-left ion-padding-top">Question of My Book</h1>
+</ion-text>
+
+<!-- Basic -->
+<ion-accordion-group class="ion-no-padding">
+  <ion-accordion expand="inset" multiple="true" *ngFor="let item of List" [value]="item.type">
+    <ion-item slot="header" lines="none">
+      <ion-label>{{ item.type }}</ion-label>
+    </ion-item>
+
+    <ion-list slot="content">
+      <ng-container *ngFor="let quest of item.questions">
+        <app-question-card (delete)="removeQuestion($event)" [type]="item.type" [question]="quest"></app-question-card>
+      </ng-container>
+    </ion-list>
+  </ion-accordion>
+</ion-accordion-group>
+
+<ion-item lines="none" *ngIf="isWeb">
+  <a (click)="newQustion()" class="add-new-question" href="javascript:void(0)">
+    <ion-icon color="primary" class="btn-icon" slot="icon-only" src="assets/images/plus-square.svg"></ion-icon>
+    <span class="pl-1">Add new Question</span>
+  </a>
+</ion-item>
+
+<div class="form-container" *ngIf="showSaveButton">
+  <ion-button
+    type="button"
+    (click)="onSave()"
+    class="default-button ion-text-capitalize"
+    color="primary"
+    expand="block"
+    translate
+  >
+    Save Questions
+  </ion-button>
+</div>

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Platform, ModalController, IonRouterOutlet } from '@ionic/angular';
 import { EditBookComponent } from '../edit-book/edit-book.component';
 import { ModalDismissRole } from '@app/@shared/constants';
+import { ShareBookComponent } from '@app/book-shared/share-book/share-book.component';
 
 @Component({
   selector: 'app-book-detail-page',
@@ -40,11 +41,32 @@ export class BookDetailPageComponent implements OnInit {
     return await modal.present();
   }
 
+  async shareBook() {
+    const modal = await this.modalController.create({
+      component: ShareBookComponent,
+      cssClass: 'modal-popup md',
+      componentProps: {
+        title: 'Share Book',
+      },
+      swipeToClose: true,
+      presentingElement: this.routerOutlet.nativeEl,
+    });
+    modal.onDidDismiss().then((data) => {
+      if (data.role == ModalDismissRole.submitted) {
+        debugger;
+      }
+    });
+    return await modal.present();
+  }
+
   async ViewSharing() {
     this.router.navigate([`tabs/my-library/sharing/1`]);
   }
 
   async play() {
     this.router.navigate(['tabs/my-library/recording/1/1']);
+  }
+  async editChapter() {
+    this.router.navigate(['tabs/my-library/edit-chapter/1']);
   }
 }

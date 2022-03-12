@@ -1,3 +1,4 @@
+import { EditChapterComponent } from './edit-chapter/edit-chapter.component';
 import { AudioRecordingComponent } from './audio-recording/audio-recording.component';
 import { ViewSharingComponent } from './view-sharing/view-sharing.component';
 import { NgModule } from '@angular/core';
@@ -23,6 +24,11 @@ const routes: Routes = [
     {
       path: 'my-library/recording/:bookId/:storyId',
       component: AudioRecordingComponent,
+      data: { title: marker('View Shared') },
+    },
+    {
+      path: 'my-library/edit-chapter/:bookId',
+      component: EditChapterComponent,
       data: { title: marker('View Shared') },
     },
   ]),
