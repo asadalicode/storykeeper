@@ -10,6 +10,7 @@ import { EditBookComponent } from './edit-book/edit-book.component';
 import { BookDetailPageComponent } from './book-detail-page/book-detail-page.component';
 import { ViewSharingComponent } from './view-sharing/view-sharing.component';
 import { ImagePicker } from '@awesome-cordova-plugins/image-picker/ngx';
+import { AudioRecordingComponent } from './audio-recording/audio-recording.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -22,6 +23,6 @@ import { ImagePicker } from '@awesome-cordova-plugins/image-picker/ngx';
     FlexLayoutModule,
   ],
   providers: [ImagePicker],
-  declarations: [EditBookComponent, BookDetailPageComponent, ViewSharingComponent],
+  declarations: [EditBookComponent, BookDetailPageComponent, ViewSharingComponent, AudioRecordingComponent],
 })
 export class MyLibraryModule {}
