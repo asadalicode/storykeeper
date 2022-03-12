@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AudioRecordingComponent implements OnInit {
   date = '1/1/2020';
-  status = 'inprogress';
+  status = 'published';
   constructor(private platform: Platform) {}
 
   ngOnInit(): void {}

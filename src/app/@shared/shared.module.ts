@@ -14,8 +14,19 @@ import { BuyNewBookComponent } from './popup-components/buy-new-book/buy-new-boo
 import { ConfirmationInfoComponent } from './popup-components/confirmation-info/confirmation-info.component';
 import { BooksCardComponent } from './components/books-card/books-card.component';
 import { MobileHeaderComponent } from './components/mobile-header/mobile-header.component';
+import { AudioPlayerComponent } from './components/audio-player/audio-player.component';
+import { AngularWavesurferServiceModule } from 'angular-wavesurfer-service';
+
 @NgModule({
-  imports: [IonicModule, TranslateModule, CommonModule, RouterModule, I18nModule, FlexLayoutModule],
+  imports: [
+    IonicModule,
+    TranslateModule,
+    CommonModule,
+    RouterModule,
+    I18nModule,
+    FlexLayoutModule,
+    AngularWavesurferServiceModule,
+  ],
   declarations: [
     LoaderComponent,
     HeaderComponent,
@@ -25,6 +36,7 @@ import { MobileHeaderComponent } from './components/mobile-header/mobile-header.
     ConfirmationInfoComponent,
     BooksCardComponent,
     MobileHeaderComponent,
+    AudioPlayerComponent,
   ],
   exports: [
     LoaderComponent,
@@ -35,6 +47,7 @@ import { MobileHeaderComponent } from './components/mobile-header/mobile-header.
     ConfirmationInfoComponent,
     BooksCardComponent,
     MobileHeaderComponent,
+    AudioPlayerComponent,
   ],
 })
 export class SharedModule {}
