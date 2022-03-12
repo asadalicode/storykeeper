@@ -43,4 +43,8 @@ export class BookDetailPageComponent implements OnInit {
   async ViewSharing() {
     this.router.navigate([`tabs/my-library/sharing/1`]);
   }
+
+  async play() {
+    this.router.navigate(['tabs/my-library/recording/1/1']);
+  }
 }

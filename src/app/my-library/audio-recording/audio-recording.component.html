@@ -1,0 +1,49 @@
+<ion-content class="ion-page bg" [class.bg]="!isWeb">
+  <ion-header class="ion-no-padding ion-no-border" *ngIf="!isWeb">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button icon="chevron-back-outline" default-href="/tabs/home"></ion-back-button>
+      </ion-buttons>
+      <ion-title *ngIf="status === 'published'" class="text-white ion-align-items-end ion-text-center">
+        Now Playing</ion-title
+      >
+      <ion-icon
+        color="light"
+        class="more-icon ion-padding-end"
+        slot="end"
+        name="ellipsis-horizontal-circle-outline"
+      ></ion-icon>
+    </ion-toolbar>
+  </ion-header>
+
+  <div [class.web-page]="isWeb">
+    <ion-text color="primary" *ngIf="isWeb">
+      <ion-breadcrumbs>
+        <ion-breadcrumb href="javascript:void(0)"> My Library </ion-breadcrumb>
+        <ion-breadcrumb href="javascript:void(0)"> My Book #2 </ion-breadcrumb>
+        <ion-breadcrumb> Recording </ion-breadcrumb>
+      </ion-breadcrumbs>
+    </ion-text>
+
+    <div class="ion-text-center mt-5">
+      <div class="placeholder">
+        <img src="assets/images/recording-placeholder.png" alt="image" />
+      </div>
+
+      <ion-text>
+        <h2 class="story-title mt-3 mb-0" [class.text-white]="!isWeb">My mom's stroy</h2>
+        <p *ngIf="status === 'inprogress'" class="story-sub-title">In Progress</p>
+
+        <ng-container *ngIf="status === 'published'">
+          <p class="story-sub-title">Published * {{ date }}</p>
+          <p class="story-author">Author: Lena Horushchenko</p>
+        </ng-container>
+      </ion-text>
+
+      <ion-text color="primary" *ngIf="status === 'inprogress'">
+        <h1 class="message message-margin-top">Recording in progress</h1>
+        <h1 class="message">Please Wait</h1>
+      </ion-text>
+    </div>
+  </div>
+</ion-content>

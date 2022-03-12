@@ -1,3 +1,4 @@
+import { AudioRecordingComponent } from './audio-recording/audio-recording.component';
 import { ViewSharingComponent } from './view-sharing/view-sharing.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -17,6 +18,11 @@ const routes: Routes = [
     {
       path: 'my-library/sharing/:bookId',
       component: ViewSharingComponent,
+      data: { title: marker('View Shared') },
+    },
+    {
+      path: 'my-library/recording/:bookId/:storyId',
+      component: AudioRecordingComponent,
       data: { title: marker('View Shared') },
     },
   ]),
