@@ -1,6 +1,7 @@
 <div class="waveform" (click)="wave.playPause()" id="waveform"></div>
-<div class="btn-group">
-  <button (click)="wave.play()" class="btn btn-primary active">play</button>
-  <button (click)="wave.pause()" class="btn btn-primary">pause</button>
-  <button (click)="wave.stop()" class="btn btn-primary">stop</button>
+
+<div class="d-flex justify-content-center">
+  <ion-button (click)="wave.playPause()" type="button" shape="circle" class="control-button" color="light">
+    <ion-img [src]="isPlaying ? 'assets/images/stop.svg' : 'assets/images/play.svg'" alt="icon"></ion-img>
+  </ion-button>
 </div>

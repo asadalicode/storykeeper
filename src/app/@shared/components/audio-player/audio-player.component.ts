@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { WaveService } from 'angular-wavesurfer-service';
 import MicrophonePlugin from 'wavesurfer.js/src/plugin/microphone';
 import {
@@ -9,6 +9,7 @@ import {
   CurrentRecordingStatus,
 } from 'capacitor-voice-recorder';
 import { Utils } from '@app/@shared/appConstants';
+import WaveSurfer from 'wavesurfer.js';
 
 @Component({
   selector: 'app-audio-player',
@@ -17,8 +18,8 @@ import { Utils } from '@app/@shared/appConstants';
 })
 export class AudioPlayerComponent implements OnInit {
   wave!: WaveSurfer;
-
-  constructor(public waveService: WaveService) {}
+  isPlaying = false;
+  constructor(public waveService: WaveService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     VoiceRecorder.canDeviceVoiceRecord().then((result: GenericResponse) => console.log(result.value));
@@ -32,7 +33,7 @@ export class AudioPlayerComponent implements OnInit {
       VoiceRecorder.stopRecording()
         .then((result: RecordingData) => {
           console.log(result.value);
-          this.playSound(result);
+          // this.playSound(result);
         })
 
         .catch((error) => console.log(error));
@@ -59,35 +60,39 @@ export class AudioPlayerComponent implements OnInit {
   ngAfterViewInit(): void {
     this.wave = this.waveService.create({
       container: '#waveform',
-      barWidth: 2,
-      barGap: 2,
-      waveColor: '#c54b4b',
-      barHeight: 1,
+      barWidth: 1000,
+      barGap: 0,
+      waveColor: '#242F40',
+      progressColor: '#BF9C3F',
+      barHeight: 10,
       backend: 'WebAudio',
       barRadius: 2,
-      height: 64,
+      height: 10,
       normalize: true,
       partialRender: true,
       pixelRatio: 1,
       responsive: true,
-      interact: true,
+      // interact: true,
       // mediaControls:true
       // cursorColor:'transparent',
-      plugins: [
-        MicrophonePlugin.create({}),
-        // MicrophonePlugin.create({
-        //   bufferSize: 4096,
-        //   numberOfInputChannels: 1,
-        //   numberOfOutputChannels: 1,
-        //   constraints: {
-        //   audio:true,
-        //   video:false
-        //   },
+      // plugins: [
+      //   MicrophonePlugin.create({}),
+      //   MicrophonePlugin.create({
+      //     bufferSize: 4096,
+      //     numberOfInputChannels: 1,
+      //     numberOfOutputChannels: 1,
+      //     constraints: {
+      //     audio:true,
+      //     video:false
+      //     },
 
-        // }),
-      ],
+      //   }),
+      // ],
     });
-    // this.wave.load('//www.kennethcaple.com/api/mp3/richinlovemutedguitarechoing.mp3');
+    this.wave.load('//www.kennethcaple.com/api/mp3/richinlovemutedguitarechoing.mp3', [1, 1]);
+    this.wave.stop();
+
+    this.loadEvents();
 
     // var mediaRecorder: any;
     // const audioChunks: any = [];
@@ -122,6 +127,48 @@ export class AudioPlayerComponent implements OnInit {
     //   // start the microphone
     //   this.wave.microphone.start();
     // }, 4000);
+  }
+
+  loadEvents() {
+    this.onReady();
+    this.onPlay();
+    this.onPause();
+    this.onAudioProcessing();
+    this.onFinish();
+    this.onError();
+  }
+
+  onReady() {
+    this.wave.on('ready', () => {
+      console.log('ready');
+    });
+  }
+
+  onPause() {
+    this.wave.on('pause', () => {
+      this.isPlaying = false;
+    });
+  }
+
+  onPlay() {
+    this.wave.on('play', () => {
+      console.log('play');
+      this.isPlaying = true;
+    });
+  }
+
+  onAudioProcessing() {
+    this.wave.on('audioprocess', function () {});
+  }
+
+  onFinish() {
+    this.wave.on('finish', function () {
+      console.log('finish');
+    });
+  }
+
+  onError() {
+    this.wave.on('error', function () {});
   }
 
   ngOnDestroy() {

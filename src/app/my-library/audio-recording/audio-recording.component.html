@@ -37,6 +37,9 @@
         <ng-container *ngIf="status === 'published'">
           <p class="story-sub-title">Published * {{ date }}</p>
           <p class="story-author">Author: Lena Horushchenko</p>
+          <div class="w-75 m-auto">
+            <app-audio-player></app-audio-player>
+          </div>
         </ng-container>
       </ion-text>
 
