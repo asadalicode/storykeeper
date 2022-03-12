@@ -5,8 +5,15 @@
   </p>
 </div>
 
-<div class="d-flex justify-content-center mt-3">
-  <ion-button (click)="wave.playPause()" type="button" shape="circle" class="control-button" color="light">
-    <ion-img [src]="isPlaying ? 'assets/images/stop.svg' : 'assets/images/play.svg'" alt="icon"></ion-img>
+<div class="d-flex justify-content-center mt-5">
+  <ion-button
+    (click)="wave.playPause()"
+    type="button"
+    shape="circle"
+    class="control-button ion-border"
+    color="tranparent"
+  >
+    <ion-icon [color]="!isPlaying ? 'tertiary' : 'danger'" [name]="isPlaying ? 'square' : 'play'"></ion-icon>
+    <!-- <ion-img [src]="isPlaying ? 'assets/images/stop.svg' : 'assets/images/play.svg'" alt="icon"></ion-img> -->
   </ion-button>
 </div>

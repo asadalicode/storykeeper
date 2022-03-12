@@ -1,3 +1,4 @@
+import { EditChapterComponent } from './../edit-chapter/edit-chapter.component';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Platform, ModalController, IonRouterOutlet } from '@ionic/angular';
@@ -29,6 +30,24 @@ export class BookDetailPageComponent implements OnInit {
       cssClass: 'modal-popup md',
       componentProps: {
         title: 'Edit Book',
+      },
+      swipeToClose: true,
+      presentingElement: this.routerOutlet.nativeEl,
+    });
+    modal.onDidDismiss().then((data) => {
+      if (data.role == ModalDismissRole.submitted) {
+        debugger;
+      }
+    });
+    return await modal.present();
+  }
+
+  async EditChapter() {
+    const modal = await this.modalController.create({
+      component: EditChapterComponent,
+      cssClass: 'modal-popup md',
+      componentProps: {
+        title: 'Edit Chapter',
       },
       swipeToClose: true,
       presentingElement: this.routerOutlet.nativeEl,

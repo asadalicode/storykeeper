@@ -1,3 +1,4 @@
+import { Platform } from '@ionic/angular';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { WaveService } from 'angular-wavesurfer-service';
 import MicrophonePlugin from 'wavesurfer.js/src/plugin/microphone';
@@ -8,8 +9,6 @@ import {
   GenericResponse,
   CurrentRecordingStatus,
 } from 'capacitor-voice-recorder';
-import { Utils } from '@app/@shared/appConstants';
-import WaveSurfer from 'wavesurfer.js';
 
 @Component({
   selector: 'app-audio-player',
@@ -19,7 +18,7 @@ import WaveSurfer from 'wavesurfer.js';
 export class AudioPlayerComponent implements OnInit {
   wave!: WaveSurfer;
   isPlaying = false;
-  constructor(public waveService: WaveService, private cdr: ChangeDetectorRef) {}
+  constructor(public waveService: WaveService, private cdr: ChangeDetectorRef, private platform: Platform) {}
 
   ngOnInit(): void {}
 
@@ -64,12 +63,12 @@ export class AudioPlayerComponent implements OnInit {
       container: '#waveform',
       barWidth: 1000,
       barGap: 0,
-      waveColor: '#242F40',
-      progressColor: '#BF9C3F',
-      barHeight: 10,
+      waveColor: this.isWeb ? '#ccc' : '#fff',
+      progressColor: '#242F40',
+      barHeight: 6,
       backend: 'WebAudio',
       barRadius: 2,
-      height: 10,
+      height: 6,
       normalize: true,
       partialRender: true,
       pixelRatio: 1,
@@ -125,5 +124,9 @@ export class AudioPlayerComponent implements OnInit {
 
   ngOnDestroy() {
     this.wave.destroy();
+  }
+
+  get isWeb(): boolean {
+    return !this.platform.is('cordova');
   }
 }

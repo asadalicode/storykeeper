@@ -17,4 +17,12 @@
   span:nth-of-type(2) {
     right: 0;
   }
+  .ml-auto {
+    font-size: 12px;
+  }
+}
+
+ion-button {
+  border: 2px solid var(--ion-color-tertiary);
+  border-radius: 50%;
 }

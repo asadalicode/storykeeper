@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { marker } from '@biesbjerg/ngx-translate-extract-marker';
 import { Shell } from '@app/shell/shell.service';
 import { BookDetailPageComponent } from './book-detail-page/book-detail-page.component';
+import { ChaptersListComponent } from './chapters-list/chapters-list.component';
 
 const routes: Routes = [
   Shell.childRoutes([
@@ -28,7 +29,7 @@ const routes: Routes = [
     },
     {
       path: 'my-library/edit-chapter/:bookId',
-      component: EditChapterComponent,
+      component: ChaptersListComponent,
       data: { title: marker('View Shared') },
     },
   ]),

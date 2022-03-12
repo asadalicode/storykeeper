@@ -13,6 +13,7 @@ import { ViewSharingComponent } from './view-sharing/view-sharing.component';
 import { ImagePicker } from '@awesome-cordova-plugins/image-picker/ngx';
 import { AudioRecordingComponent } from './audio-recording/audio-recording.component';
 import { EditChapterComponent } from './edit-chapter/edit-chapter.component';
+import { ChaptersListComponent } from './chapters-list/chapters-list.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -32,6 +33,7 @@ import { EditChapterComponent } from './edit-chapter/edit-chapter.component';
     ViewSharingComponent,
     AudioRecordingComponent,
     EditChapterComponent,
+    ChaptersListComponent,
   ],
 })
 export class MyLibraryModule {}
