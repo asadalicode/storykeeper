@@ -1,14 +1,6 @@
 import { Platform } from '@ionic/angular';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, NgZone, OnInit } from '@angular/core';
 import { WaveService } from 'angular-wavesurfer-service';
-import MicrophonePlugin from 'wavesurfer.js/src/plugin/microphone';
-import {
-  VoiceRecorder,
-  VoiceRecorderPlugin,
-  RecordingData,
-  GenericResponse,
-  CurrentRecordingStatus,
-} from 'capacitor-voice-recorder';
 
 @Component({
   selector: 'app-audio-player',
@@ -22,42 +14,6 @@ export class AudioPlayerComponent implements OnInit {
   constructor(public waveService: WaveService, private cdr: ChangeDetectorRef, private platform: Platform) {}
 
   ngOnInit(): void {}
-
-  startRecording() {
-    VoiceRecorder.startRecording()
-      .then((result: GenericResponse) => console.log(result.value))
-      .catch((error) => console.log(error));
-  }
-
-  stopRecording() {
-    VoiceRecorder.stopRecording().then((result: RecordingData) => {
-      console.log(result.value);
-      this.playRecordedSound(result);
-    });
-  }
-
-  setRecordingEvents() {
-    VoiceRecorder.canDeviceVoiceRecord().then((result: GenericResponse) => console.log(result.value));
-    VoiceRecorder.requestAudioRecordingPermission().then((result: GenericResponse) => console.log(result.value));
-    VoiceRecorder.hasAudioRecordingPermission().then((result: GenericResponse) => console.log(result.value));
-  }
-
-  playRecordedSound(result: any) {
-    const base64Sound = result.value.recordDataBase64; // from plugin
-    const mimeType = result.value.mimeType; // from plugin
-    const audioRef = new Audio(`${base64Sound}`); //For web
-    // const audioRef = new Audio(`data:${mimeType};base64,${base64Sound}`); //For mobile
-    // console.log(audioRef);
-    audioRef.load();
-    audioRef.oncanplaythrough = (e: any) => {
-      this.wave.load(e.path[0].currentSrc);
-      // Utils.dataUrlToFile(e.path[0].currentSrc, "abc.mp3").then((res:any)=> {
-      //   console.log(res)
-
-      // })
-      audioRef.play();
-    };
-  }
 
   ngAfterViewInit(): void {
     this.wave = this.waveService.create({

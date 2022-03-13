@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!-- needs to be right at the top to prevent Chrome from reloading favicon on every route change -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <title>Story Keeper</title>
+    <base href="/" />
+    <meta
+      name="viewport"
+      content="viewport-fit=cover, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="theme-color" content="#4e8ef7" />
+    <link rel="manifest" href="manifest.webmanifest" />
+
+    <!-- add to homescreen for ios -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <meta
+      name="google-signin-client_id"
+      content="380937119202-k823tfojlvso31flp09chs93uk4ipg81.apps.googleusercontent.com"
+    />
+    <style>
+      @charset "UTF-8";
+      @import 'https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap';
+      @supports (padding-top: 20px) {
+        html {
+          --ion-safe-area-top: var(--ion-statusbar-padding);
+        }
+      }
+      @supports (padding-top: constant(safe-area-inset-top)) {
+        html {
+          --ion-safe-area-top: constant(safe-area-inset-top);
+          --ion-safe-area-bottom: constant(safe-area-inset-bottom);
+          --ion-safe-area-left: constant(safe-area-inset-left);
+          --ion-safe-area-right: constant(safe-area-inset-right);
+        }
+      }
+      @supports (padding-top: env(safe-area-inset-top)) {
+        html {
+          --ion-safe-area-top: env(safe-area-inset-top);
+          --ion-safe-area-bottom: env(safe-area-inset-bottom);
+          --ion-safe-area-left: env(safe-area-inset-left);
+          --ion-safe-area-right: env(safe-area-inset-right);
+        }
+      }
+      * {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+      }
+      html {
+        --ion-font-family: var(--ion-default-font);
+        width: 100%;
+        height: 100%;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+        font-family: var(--ion-font-family);
+      }
+      html:not(.hydrated) body {
+        display: none;
+      }
+      body {
+        background: var(--ion-background-color);
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        position: fixed;
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        max-height: 100%;
+        text-rendering: optimizeLegibility;
+        overflow: hidden;
+        touch-action: manipulation;
+        -webkit-user-drag: none;
+        -ms-content-zooming: none;
+        word-wrap: break-word;
+        overscroll-behavior-y: none;
+        -webkit-text-size-adjust: none;
+        text-size-adjust: none;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --ion-color-primary: #242f40;
+        --ion-color-primary-rgb: 36, 47, 64;
+        --ion-color-primary-contrast: #ffffff;
+        --ion-color-primary-contrast-rgb: 255, 255, 255;
+        --ion-color-primary-shade: #202938;
+        --ion-color-primary-tint: #3a4453;
+        --ion-color-secondary: #cca43b;
+        --ion-color-secondary-rgb: 204, 164, 59;
+        --ion-color-secondary-contrast: #fff;
+        --ion-color-secondary-contrast-rgb: 0, 0, 0;
+        --ion-color-secondary-shade: #f9dc8f;
+        --ion-color-secondary-tint: #d1ad4f;
+        --ion-color-tertiary: #6d809e;
+        --ion-color-tertiary-rgb: 109, 128, 158;
+        --ion-color-tertiary-contrast: #ffffff;
+        --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+        --ion-color-tertiary-shade: #60718b;
+        --ion-color-tertiary-tint: #7c8da8;
+        --ion-color-success: #10dc60;
+        --ion-color-success-rgb: 16, 220, 96;
+        --ion-color-success-contrast: #fff;
+        --ion-color-success-contrast-rgb: 255, 255, 255;
+        --ion-color-success-shade: #0ec254;
+        --ion-color-success-tint: #28e070;
+        --ion-color-warning: #ffce00;
+        --ion-color-warning-rgb: 255, 206, 0;
+        --ion-color-warning-contrast: #fff;
+        --ion-color-warning-contrast-rgb: 255, 255, 255;
+        --ion-color-warning-shade: #e0b500;
+        --ion-color-warning-tint: #ffd31a;
+        --ion-color-danger: #c54b4b;
+        --ion-color-danger-rgb: 197, 75, 75;
+        --ion-color-danger-contrast: #ffffff;
+        --ion-color-danger-contrast-rgb: 255, 255, 255;
+        --ion-color-danger-shade: #ad4242;
+        --ion-color-danger-tint: #cb5d5d;
+        --ion-color-danger-opacity: #ffefef;
+        --ion-color-dark: #222428;
+        --ion-color-dark-rgb: 34, 34, 34;
+        --ion-color-dark-contrast: #fff;
+        --ion-color-dark-contrast-rgb: 255, 255, 255;
+        --ion-color-dark-shade: #1e2023;
+        --ion-color-dark-tint: #383a3e;
+        --ion-color-medium: #727272;
+        --ion-color-medium-rgb: 114, 114, 114;
+        --ion-color-medium-contrast: #ffffff;
+        --ion-color-medium-contrast-rgb: 255, 255, 255;
+        --ion-color-medium-shade: #646464;
+        --ion-color-medium-tint: #808080;
+        --ion-color-light: #dfe2e9;
+        --ion-color-light-rgb: 223, 226, 233;
+        --ion-color-light-contrast: #000000;
+        --ion-color-light-contrast-rgb: 0, 0, 0;
+        --ion-color-light-shade: #c4c7cd;
+        --ion-color-light-tint: #e2e5eb;
+        --ion-background-color: #fff;
+        --ion-background-color-rgb: 255, 255, 255;
+        --ion-background-color-step-50: #f2f2f2;
+        --ion-background-color-step-100: #e6e6e6;
+        --ion-background-color-step-150: #d9d9d9;
+        --ion-background-color-step-200: #ccc;
+        --ion-background-color-step-250: #bfbfbf;
+        --ion-background-color-step-300: #b3b3b3;
+        --ion-background-color-step-350: #a6a6a6;
+        --ion-background-color-step-400: #999;
+        --ion-background-color-step-450: #8c8c8c;
+        --ion-background-color-step-500: #808080;
+        --ion-background-color-step-550: #737373;
+        --ion-background-color-step-600: #666;
+        --ion-background-color-step-650: #595959;
+        --ion-background-color-step-700: #4d4d4d;
+        --ion-background-color-step-750: #404040;
+        --ion-background-color-step-800: #333;
+        --ion-background-color-step-850: #262626;
+        --ion-background-color-step-900: #191919;
+        --ion-background-color-step-950: #0d0d0d;
+        --ion-background-color-step-1000: #000;
+        --ion-content-margin: 16px;
+        --ion-content-padding: 16px;
+        --ion-font-family: 'Inter';
+        --side-width: 200px;
+      }
+      :root {
+        --blue: #007bff;
+        --indigo: #6610f2;
+        --purple: #6f42c1;
+        --pink: #e83e8c;
+        --red: #dc3545;
+        --orange: #fd7e14;
+        --yellow: #ffc107;
+        --green: #28a745;
+        --teal: #20c997;
+        --cyan: #17a2b8;
+        --white: #fff;
+        --gray: #6c757d;
+        --gray-dark: #343a40;
+        --primary: #007bff;
+        --secondary: #6c757d;
+        --success: #28a745;
+        --info: #17a2b8;
+        --warning: #ffc107;
+        --danger: #dc3545;
+        --light: #f8f9fa;
+        --dark: #343a40;
+        --breakpoint-xs: 0;
+        --breakpoint-sm: 576px;
+        --breakpoint-md: 768px;
+        --breakpoint-lg: 992px;
+        --breakpoint-xl: 1200px;
+        --font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+          'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+          'Noto Color Emoji';
+        --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+      }
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box;
+      }
+      html {
+        font-family: sans-serif;
+        line-height: 1.15;
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      }
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans,
+          Liberation Sans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', Segoe UI Symbol, 'Noto Color Emoji';
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        background-color: #fff;
+      }
+      @media print {
+        *,
+        *:before,
+        *:after {
+          text-shadow: none !important;
+          box-shadow: none !important;
+        }
+        @page {
+          size: a3;
+        }
+        body {
+          min-width: 992px !important;
+        }
+      }
+      :root {
+        --blue: #007bff;
+        --indigo: #6610f2;
+        --purple: #6f42c1;
+        --pink: #e83e8c;
+        --red: #dc3545;
+        --orange: #fd7e14;
+        --yellow: #ffc107;
+        --green: #28a745;
+        --teal: #20c997;
+        --cyan: #17a2b8;
+        --white: #fff;
+        --gray: #6c757d;
+        --gray-dark: #343a40;
+        --primary: #007bff;
+        --secondary: #6c757d;
+        --success: #28a745;
+        --info: #17a2b8;
+        --warning: #ffc107;
+        --danger: #dc3545;
+        --light: #f8f9fa;
+        --dark: #343a40;
+        --breakpoint-xs: 0;
+        --breakpoint-sm: 576px;
+        --breakpoint-md: 768px;
+        --breakpoint-lg: 992px;
+        --breakpoint-xl: 1200px;
+        --font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+          'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+          'Noto Color Emoji';
+        --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+      }
+      *,
+      :after,
+      :before {
+        box-sizing: border-box;
+      }
+      html {
+        font-family: sans-serif;
+        line-height: 1.15;
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: transparent;
+      }
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans,
+          Liberation Sans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', Segoe UI Symbol, 'Noto Color Emoji';
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        background-color: #fff;
+      }
+      @media print {
+        *,
+        :after,
+        :before {
+          text-shadow: none !important;
+          box-shadow: none !important;
+        }
+        @page {
+          size: a3;
+        }
+        body {
+          min-width: 992px !important;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="styles.c8cada299f20b5ce.css" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="styles.c8cada299f20b5ce.css" /></noscript>
+  </head>
+  <body>
+    <!--[if lte IE 11]>
+      <p>
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <noscript>
+      <p>This page requires JavaScript to work properly. Please enable JavaScript in your browser.</p>
+    </noscript>
+
+    <script>
+      window.fbAsyncInit = function () {
+        FB.init({
+          appId: '464800185228826',
+          cookie: true, // enable cookies to allow the server to access the session
+          xfbml: true, // parse social plugins on this page
+          version: 'v5.0', // use graph api current version
+        });
+      };
+
+      // Load the SDK asynchronously
+      (function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, 'script', 'facebook-jssdk');
+    </script>
+    <!-- Include Cordova script only when needed -->
+    <script>
+      if (/^app/.test(location.host)) {
+        /**
+         * https://github.com/angular/angular/issues/22509
+         * Prevent cordova.js 5.2.4+ routing bug
+         **/
+        window.addEventListener = function () {
+          EventTarget.prototype.addEventListener.apply(this, arguments);
+        };
+        window.removeEventListener = function () {
+          EventTarget.prototype.removeEventListener.apply(this, arguments);
+        };
+        document.addEventListener = function () {
+          EventTarget.prototype.addEventListener.apply(this, arguments);
+        };
+        document.removeEventListener = function () {
+          EventTarget.prototype.removeEventListener.apply(this, arguments);
+        };
+        document.write('<script src="cordova.js"><\/script>');
+      }
+    </script>
+    <app-root></app-root>
+    <script src="runtime.926a07aaf685552a.js" type="module"></script>
+    <script src="polyfills.525362d90f3d19a9.js" type="module"></script>
+    <script src="main.5aa1fa8fb92ac58a.js" type="module"></script>
+  </body>
+</html>

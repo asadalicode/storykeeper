@@ -1,0 +1,56 @@
+<div class="waveform" (click)="wave.playPause()" id="waveformR"></div>
+<div *ngIf="isRecorded">
+  <p class="audio-time">
+    <span>00:10</span>
+    <span>01:10</span>
+  </p>
+</div>
+
+<div class="d-flex justify-content-center mt-5">
+  <ion-button
+    *ngIf="!isRecStarted && !isRecorded"
+    [disabled]="!hasRecordingPermission"
+    (click)="startRecording()"
+    type="button"
+    shape="circle"
+    class="control-button ion-border"
+    color="tranparent"
+  >
+    <ion-icon [color]="'danger'" [name]="'mic'"></ion-icon>
+  </ion-button>
+
+  <ion-button
+    *ngIf="isRecStarted && !isRecorded"
+    [disabled]="!hasRecordingPermission"
+    (click)="!isPlaying ? resumeRecording() : pauseRecording()"
+    type="button"
+    shape="circle"
+    class="control-button ion-border"
+    color="tranparent"
+  >
+    <ion-icon [color]="!isPlaying ? 'tertiary' : 'danger'" [name]="isPlaying ? 'pause' : 'play'"></ion-icon>
+  </ion-button>
+
+  <ion-button
+    *ngIf="isRecStarted && !isRecorded"
+    [disabled]="!hasRecordingPermission"
+    (click)="stopRecording()"
+    type="button"
+    shape="circle"
+    class="control-button ion-border"
+    color="tranparent"
+  >
+    <ion-icon [color]="'danger'" [name]="'square'"></ion-icon>
+  </ion-button>
+
+  <ion-button
+    *ngIf="isRecorded"
+    (click)="wave.playPause()"
+    type="button"
+    shape="circle"
+    class="control-button ion-border"
+    color="tranparent"
+  >
+    <ion-icon [color]="!isPlaying ? 'tertiary' : 'danger'" [name]="isPlaying ? 'square' : 'play'"></ion-icon>
+  </ion-button>
+</div>

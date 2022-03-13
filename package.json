@@ -72,6 +72,7 @@
     "cordova-plugin-splashscreen": "^6.0.0",
     "cordova-plugin-statusbar": "^3.0.0",
     "cordova-plugin-telerik-imagepicker": "^2.3.6",
+    "get-blob-duration": "^1.2.0",
     "jetifier": "^2.0.0",
     "lodash": "^4.17.20",
     "moment": "^2.29.1",
