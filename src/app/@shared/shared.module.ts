@@ -16,6 +16,7 @@ import { BooksCardComponent } from './components/books-card/books-card.component
 import { MobileHeaderComponent } from './components/mobile-header/mobile-header.component';
 import { AudioPlayerComponent } from './components/audio-player/audio-player.component';
 import { AngularWavesurferServiceModule } from 'angular-wavesurfer-service';
+import { RecordingPlayerComponent } from './components/recording-player/recording-player.component';
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { AngularWavesurferServiceModule } from 'angular-wavesurfer-service';
     BooksCardComponent,
     MobileHeaderComponent,
     AudioPlayerComponent,
+    RecordingPlayerComponent,
   ],
   exports: [
     LoaderComponent,
@@ -48,6 +50,7 @@ import { AngularWavesurferServiceModule } from 'angular-wavesurfer-service';
     BooksCardComponent,
     MobileHeaderComponent,
     AudioPlayerComponent,
+    RecordingPlayerComponent,
   ],
 })
 export class SharedModule {}
