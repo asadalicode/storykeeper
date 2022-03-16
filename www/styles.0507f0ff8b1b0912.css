@@ -7079,6 +7079,17 @@ ion-toolbar ion-back-button {
 .main-loader .loading-wrapper {
   box-shadow: none;
   background-color: transparent;
+}
+.blink {
+  animation: blinker 1.5s cubic-bezier(0.5, 0, 1, 1) infinite alternate;
+}
+@keyframes blinker {
+  0% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 } /*!
  * Bootstrap v4.6.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

@@ -28,7 +28,11 @@
     class="control-button ion-border"
     color="tranparent"
   >
-    <ion-icon [color]="!isPlaying ? 'tertiary' : 'danger'" [name]="isPlaying ? 'pause' : 'play'"></ion-icon>
+    <ion-icon
+      [ngClass]="isPlaying ? 'blink' : ''"
+      [color]="!isPlaying ? 'tertiary' : 'danger'"
+      [name]="isPlaying ? 'pause' : 'play'"
+    ></ion-icon>
   </ion-button>
 
   <ion-button
