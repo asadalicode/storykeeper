@@ -44,7 +44,7 @@
                   required
                 ></ion-input>
               </ion-item>
-              <ion-text color="danger">
+              <!-- <ion-text color="danger">
                 <span
                   *ngIf="hasError('username', 'required') && loginForm.controls['username'].touched"
                   class="ion-padding"
@@ -58,7 +58,7 @@
                 >
                   Please enter a valid email address.
                 </span>
-              </ion-text>
+              </ion-text> -->
               <ion-item lines="none">
                 <ion-label class="form-input-label" position="stacked" translate>Password</ion-label>
                 <ion-input
@@ -69,12 +69,12 @@
                   autocomplete="new-password"
                 ></ion-input>
               </ion-item>
-              <ion-text
+              <!-- <ion-text
                 color="danger"
                 [hidden]="loginForm.controls['password'].valid || loginForm.controls['password'].untouched"
               >
                 <span class="ion-padding" translate>Password is required</span>
-              </ion-text>
+              </ion-text> -->
               <!-- <ion-item class="ion-padding-top" lines="none">
                 <ion-label translate>Remember me</ion-label>
                 <ion-checkbox slot="start" formControlName="remember"></ion-checkbox>

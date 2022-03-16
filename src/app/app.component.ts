@@ -4,7 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { merge } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
-import { Platform } from '@ionic/angular';
+import { AlertController, Platform } from '@ionic/angular';
 import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
 import { SplashScreen } from '@awesome-cordova-plugins/splash-screen/ngx';
 import { Keyboard } from '@awesome-cordova-plugins/keyboard/ngx';
@@ -12,6 +12,8 @@ import { environment } from '@env/environment';
 import { Logger, UntilDestroy, untilDestroyed } from '@shared';
 import { I18nService } from '@app/i18n/i18n.service';
 import { Stripe } from '@capacitor-community/stripe';
+import { App as CapacitorApp } from '@capacitor/app';
+import { Location } from '@angular/common';
 const log = new Logger('App');
 
 @UntilDestroy()
@@ -30,7 +32,9 @@ export class AppComponent implements OnInit, OnDestroy {
     private keyboard: Keyboard,
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
-    private i18nService: I18nService
+    private i18nService: I18nService,
+    private _location: Location,
+    public alertController: AlertController
   ) {
     Stripe.initialize({
       publishableKey: environment.strikePK,
@@ -38,6 +42,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   async ngOnInit() {
+    // this.handleAppBackBtn()
     // Setup logger
     if (environment.production) {
       Logger.enableProductionMode();
@@ -74,6 +79,75 @@ export class AppComponent implements OnInit, OnDestroy {
     // Cordova platform and plugins initialization
     await this.platform.ready();
     this.onCordovaReady();
+  }
+  handleAppBackBtn() {
+    CapacitorApp.addListener('backButton', ({ canGoBack }) => {
+      if (!canGoBack) {
+        CapacitorApp.exitApp();
+      } else {
+        window.history.back();
+        // if (this._location.isCurrentPathEqualTo('/login')) {
+        //   CapacitorApp.exitApp();
+        // }
+      }
+    });
+
+    // this.platform.backButton.subscribeWithPriority(10, (processNextHandler) => {
+    //   console.log('$$$$$$$$$$$$!')
+    //   console.log('Back press handler!', this._location.path());
+    //   if (this._location.isCurrentPathEqualTo('/login')) {
+
+    //     // Show Exit Alert!
+    //     console.log('Show Exit Alert!');
+    //     this.showExitConfirm();
+    //     processNextHandler();
+    //   } else {
+
+    //     // Navigate to back page
+    //     console.log('Navigate to back page');
+    //     this._location.back();
+
+    //   }
+
+    // });
+
+    // this.platform.backButton.subscribeWithPriority(5, () => {
+    //   console.log('Handler called to force close!');
+    //   this.alertController.getTop().then(r => {
+    //     if (r) {
+    //       navigator['app'].exitApp();
+    //     }
+    //   }).catch(e => {
+    //     console.log(e);
+    //   })
+    // });
+  }
+
+  showExitConfirm() {
+    this.alertController
+      .create({
+        header: 'App termination',
+        message: 'Do you want to close the app?',
+        backdropDismiss: false,
+        buttons: [
+          {
+            text: 'Stay',
+            role: 'cancel',
+            handler: () => {
+              console.log('Application exit prevented!');
+            },
+          },
+          {
+            text: 'Exit',
+            handler: () => {
+              navigator['app'].exitApp();
+            },
+          },
+        ],
+      })
+      .then((alert) => {
+        alert.present();
+      });
   }
 
   ngOnDestroy() {

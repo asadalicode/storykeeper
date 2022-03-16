@@ -90,6 +90,8 @@ export class AudioPlayerComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.wave.destroy();
+    if (this.wave) {
+      this.wave.destroy();
+    }
   }
 }
