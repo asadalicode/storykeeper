@@ -1,11 +1,18 @@
-<ion-content class="ion-page modal-height">
-  <div class="ion-padding">
-    <div class="my-form">
-      <div class="form-container">
-        <ion-text color="primry">
+<div class="ion-page modal-height">
+  <ion-grid class="m-0 inner-content">
+    <ion-row>
+      <ion-col class="ion-no-padding" size="12">
+        <ion-button (click)="dismiss()" size="small" fill="clear" class="ion-float-end">
+          <ion-icon name="close-outline" color="primary"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col class="ion-no-padding" size="12">
+        <ion-text class="ion-text-center">
           <h1>Edit Chapter</h1>
         </ion-text>
+      </ion-col>
 
+      <ion-col size="12" class="my-form">
         <form (ngSubmit)="save()" [formGroup]="form" novalidate autocomplete="off">
           <ion-list>
             <ion-item lines="none">
@@ -40,7 +47,7 @@
             >
           </div>
         </form>
-      </div>
-    </div>
-  </div>
-</ion-content>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>

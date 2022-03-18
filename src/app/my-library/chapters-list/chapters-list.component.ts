@@ -32,7 +32,6 @@ export class ChaptersListComponent implements OnInit {
     });
     modal.onDidDismiss().then((data) => {
       if (data.role == ModalDismissRole.submitted) {
-        debugger;
       }
     });
     return await modal.present();
