@@ -10,9 +10,18 @@ import { QuestionCardComponent } from './question-card/question-card.component';
 import { IonicModule } from '@ionic/angular';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ShareBookComponent } from './share-book/share-book.component';
+import { ListItemComponent } from './list-item/list-item.component';
+import { RequestPopupComponent } from './request-popup/request-popup.component';
 
 @NgModule({
-  declarations: [BookChaptersComponent, AddNewQuestionComponent, QuestionCardComponent, ShareBookComponent],
+  declarations: [
+    BookChaptersComponent,
+    AddNewQuestionComponent,
+    QuestionCardComponent,
+    ShareBookComponent,
+    ListItemComponent,
+    RequestPopupComponent,
+  ],
   imports: [
     CommonModule,
     TranslateModule,
@@ -22,6 +31,6 @@ import { ShareBookComponent } from './share-book/share-book.component';
     IonicModule,
     FlexLayoutModule,
   ],
-  exports: [BookChaptersComponent, AddNewQuestionComponent, QuestionCardComponent],
+  exports: [BookChaptersComponent, AddNewQuestionComponent, QuestionCardComponent, ListItemComponent],
 })
 export class BookSharedModule {}
