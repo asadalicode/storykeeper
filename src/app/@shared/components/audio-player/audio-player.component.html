@@ -1,7 +1,7 @@
 <div class="waveform" (click)="wave.playPause()" id="waveform"></div>
 <p class="audio-time">
-  <span>00:10</span>
-  <span>01:10</span>
+  <span>{{ elapsedTime }}</span>
+  <span>{{ remainingTime }}</span>
 </p>
 
 <div class="d-flex justify-content-center mt-5">

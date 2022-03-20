@@ -11,6 +11,8 @@ export class AudioPlayerComponent implements OnInit {
   wave!: WaveSurfer;
   isPlaying = false;
   isPlayable = false;
+  elapsedTime: any = '00:00';
+  remainingTime: any = '00:00';
   constructor(public waveService: WaveService, private cdr: ChangeDetectorRef, private platform: Platform) {}
 
   ngOnInit(): void {}
@@ -50,6 +52,7 @@ export class AudioPlayerComponent implements OnInit {
   onReady() {
     this.wave.on('ready', () => {
       this.isPlayable = true;
+      this.remainingTime = this.elapsedTimer(this.wave.getDuration());
       console.log('ready');
     });
   }
@@ -68,7 +71,14 @@ export class AudioPlayerComponent implements OnInit {
   }
 
   onAudioProcessing() {
-    this.wave.on('audioprocess', function () {});
+    this.wave.on('audioprocess', () => {
+      if (this.wave.isPlaying()) {
+        this.elapsedTime = this.elapsedTimer(this.wave.getCurrentTime());
+        this.remainingTime = this.elapsedTimer(this.wave.getDuration() - this.wave.getCurrentTime());
+        this.cdr.detectChanges();
+        this.cdr.checkNoChanges();
+      }
+    });
   }
 
   onFinish() {
@@ -87,6 +97,22 @@ export class AudioPlayerComponent implements OnInit {
 
   get isWeb(): boolean {
     return !this.platform.is('cordova');
+  }
+
+  elapsedTimer(seconds: any) {
+    seconds = Math.floor(seconds);
+    let h: any = Math.floor(seconds / 3600);
+    let m: any = Math.floor((seconds - h * 3600) / 60);
+    let s: any = seconds - h * 3600 - m * 60;
+
+    h = h < 10 ? '0' + h : h;
+    m = m < 10 ? '0' + m : m;
+    s = s < 10 ? '0' + s : s;
+    if (h > 0) {
+      return h + ':' + m + ':' + s;
+    } else {
+      return m + ':' + s;
+    }
   }
 
   ngOnDestroy() {
