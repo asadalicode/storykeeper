@@ -1,6 +1,6 @@
 import { ModalController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-share-book',
@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShareBookComponent implements OnInit {
   shareFrom!: FormGroup;
+  @Input() title: string = '';
   constructor(private formBuilder: FormBuilder, private modalController: ModalController) {}
 
   ngOnInit(): void {

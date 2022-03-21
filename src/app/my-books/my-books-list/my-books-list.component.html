@@ -1,0 +1,93 @@
+<ion-content class="ion-page">
+  <div [class.web-page]="isWeb">
+    <ion-card class="ion-text-center" [class.header-web]="isWeb">
+      <ion-header class="ion-no-padding ion-no-border" *ngIf="!isWeb">
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-back-button icon="chevron-back-outline" default-href="/tabs/home"></ion-back-button>
+          </ion-buttons>
+          <ion-icon
+            color="light"
+            class="more-icon ion-padding-end"
+            slot="end"
+            name="ellipsis-horizontal-circle-outline"
+          ></ion-icon>
+        </ion-toolbar>
+      </ion-header>
+      <ion-card-content [ngClass]="isWeb ? 'ion-no-padding' : 'ion-padding'" [class.mb-4]="isWeb">
+        <ion-card-title>
+          <h1 translate>My books</h1>
+        </ion-card-title>
+      </ion-card-content>
+    </ion-card>
+
+    <div [ngClass]="isWeb ? 'ion-no-padding' : 'ion-padding'">
+      <ion-grid class="p-0 mt-3">
+        <section>
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="heading">My books</div>
+          </div>
+
+          <ion-list>
+            <app-list-item></app-list-item>
+            <app-list-item></app-list-item>
+          </ion-list>
+        </section>
+
+        <section>
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="heading">Chapters in progress</div>
+          </div>
+
+          <ion-list slot="content">
+            <ion-item lines="none" class="ion-no-padding">
+              <ion-label
+                class="ion-text-wrap"
+                fxLayout.xs="column"
+                fxLayout="row"
+                fxLayoutAlign.gt-xs="space-between center"
+              >
+                <app-list-item></app-list-item>
+                <div class="action-button">
+                  <ion-button
+                    type="button"
+                    (click)="openRequestPopup()"
+                    class="default-button sm ion-text-capitalize"
+                    [color]="'primary'"
+                    expand="block"
+                    translate
+                  >
+                    Request Pending
+                  </ion-button>
+                </div>
+              </ion-label>
+            </ion-item>
+
+            <ion-item lines="none" class="ion-no-padding">
+              <ion-label
+                class="ion-text-wrap"
+                fxLayout.xs="column"
+                fxLayout="row"
+                fxLayoutAlign.gt-xs="space-between center"
+              >
+                <app-list-item></app-list-item>
+                <div class="action-button">
+                  <ion-button
+                    type="button"
+                    (click)="openRequestPopup()"
+                    class="default-button sm ion-text-capitalize"
+                    [color]="'primary'"
+                    expand="block"
+                    translate
+                  >
+                    Request Pending
+                  </ion-button>
+                </div>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </section>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>
