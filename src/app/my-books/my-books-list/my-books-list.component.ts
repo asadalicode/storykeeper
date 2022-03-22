@@ -10,6 +10,40 @@ import { ConfirmationInfoComponent } from '@app/@shared/popup-components/confirm
   styleUrls: ['./my-books-list.component.scss'],
 })
 export class MyBooksListComponent implements OnInit {
+  mybooks = [
+    {
+      id: 1,
+      title: 'Book about Cat',
+      status: 'finished',
+      year: '2021',
+      author: 'John',
+    },
+    {
+      id: 2,
+      title: 'Book about Dog',
+      status: 'inprogress',
+      year: '2021',
+      author: 'Lena Horushenko',
+    },
+  ];
+
+  bookForApproval = [
+    {
+      id: 1,
+      title: 'Book about Cat',
+      status: 'pending',
+      year: '2021',
+      author: 'John',
+    },
+    {
+      id: 2,
+      title: 'Book about Dog',
+      status: 'pending',
+      year: '2021',
+      author: 'Lena Horushenko',
+    },
+  ];
+
   constructor(
     private platform: Platform,
     private routerOutlet: IonRouterOutlet,

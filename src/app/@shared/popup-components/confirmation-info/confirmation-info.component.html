@@ -21,7 +21,7 @@
         <ion-list>
           <div class="ion-padding-horizontal mt-2 mb-2">
             <ion-button
-              (click)="dismiss()"
+              (click)="submit()"
               type="button"
               class="default-button ion-text-capitalize"
               [color]="confirmbuttonClass"
@@ -29,6 +29,19 @@
               translate
             >
               {{ confirmbuttonText }}
+            </ion-button>
+
+            <ion-button
+              *ngIf="cancelbuttonText !== ''"
+              (click)="dismiss()"
+              type="button"
+              class="default-button mt-3 ion-text-capitalize"
+              [color]="cancelbuttonClass"
+              expand="block"
+              fill="outline"
+              translate
+            >
+              {{ cancelbuttonText }}
             </ion-button>
           </div>
         </ion-list>

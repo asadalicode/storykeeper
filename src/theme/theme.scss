@@ -182,7 +182,7 @@ ion-segment {
   .book-thumbnail {
     background: #dfe2e9;
     height: 230px;
-    width: fit-content;
+    width: 100%;
     border-radius: 16px;
     overflow: hidden;
     img {
@@ -270,4 +270,54 @@ ion-toolbar {
   width: 30px;
   font-size: 30px;
   height: 30px;
+}
+
+.ion-card-as-header {
+  margin: 0;
+  box-shadow: none;
+  --background: linear-gradient(164.45deg, var(--ion-color-primary) 33.07%, #3b4960 91.99%);
+  --color: #fff;
+  border-radius: 0px 0px 30px 30px;
+  h1 {
+    color: #fff;
+  }
+
+  &.header-web {
+    text-align: left !important;
+    position: relative;
+    right: 0;
+    top: 11px;
+    --background: #fff !important;
+    --color: #242f40;
+    margin-bottom: 32px;
+    border-radius: 0;
+    h1 {
+      color: #242f40;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+      font-weight: 300;
+    }
+    .actions {
+      position: absolute;
+      right: 0;
+      top: 15px;
+      margin: 0 !important;
+    }
+  }
+}
+
+.status-finished,
+.status-published {
+  color: var(--ion-color-success);
+}
+.status-inprogress {
+  color: #5ea7dc;
+}
+.status-pending {
+  color: var(--ion-color-danger);
 }

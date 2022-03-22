@@ -1,3 +1,4 @@
+import { ModalDismissRole } from './../../constants';
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
@@ -12,10 +13,16 @@ export class ConfirmationInfoComponent implements OnInit {
   @Input() imageUrl: string = 'assets/images/about-ion.png';
   @Input() confirmbuttonText: string = '';
   @Input() confirmbuttonClass: string = 'primary';
+  @Input() cancelbuttonText: string = '';
+  @Input() cancelbuttonClass: string = 'secondary';
   constructor(private modalController: ModalController) {}
 
   ngOnInit(): void {}
   dismiss() {
     this.modalController.dismiss('button clicked');
+  }
+
+  submit() {
+    this.modalController.dismiss(ModalDismissRole.submitted);
   }
 }

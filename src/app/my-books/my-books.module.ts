@@ -8,9 +8,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { BookDetailsComponent } from './book-details/book-details.component';
+import { RecordStoryComponent } from './record-story/record-story.component';
 
 @NgModule({
-  declarations: [MyBooksListComponent],
+  declarations: [MyBooksListComponent, BookDetailsComponent, RecordStoryComponent],
   imports: [
     CommonModule,
     TranslateModule,

@@ -1,0 +1,112 @@
+<ion-content class="ion-page">
+  <div [class.web-page]="isWeb">
+    <ion-card class="ion-text-center ion-card-as-header" [class.header-web]="isWeb">
+      <ion-header class="ion-no-padding ion-no-border" *ngIf="!isWeb">
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-back-button icon="chevron-back-outline" default-href="/tabs/home"></ion-back-button>
+          </ion-buttons>
+          <ion-icon
+            color="light"
+            class="more-icon ion-padding-end"
+            slot="end"
+            name="ellipsis-horizontal-circle-outline"
+          ></ion-icon>
+        </ion-toolbar>
+      </ion-header>
+      <ion-card-content [ngClass]="isWeb ? 'ion-no-padding' : 'ion-padding'" [class.mb-4]="isWeb">
+        <ion-card-title>
+          <ion-breadcrumbs *ngIf="isWeb">
+            <ion-breadcrumb routerLink="/tabs/my-books"> My Books </ion-breadcrumb>
+            <ion-breadcrumb>Book About Cat </ion-breadcrumb>
+          </ion-breadcrumbs>
+
+          <h1 *ngIf="!isWeb">Book About Cat</h1>
+        </ion-card-title>
+      </ion-card-content>
+    </ion-card>
+
+    <div [ngClass]="isWeb ? 'ion-no-padding' : 'ion-padding'">
+      <ion-grid class="p-0 mt-3">
+        <section>
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="heading">Chapter of Book</div>
+          </div>
+
+          <div class="no-published-book">
+            <p>You don't have recorded stories</p>
+            <div class="text-center">
+              <img src="assets/images/no-published-book.svg" alt="image" />
+            </div>
+          </div>
+          <ion-list>
+            <ng-container>
+              <ion-item lines="none" class="ion-no-padding">
+                <ion-avatar slot="start">
+                  <ion-img src="assets/logos/rec-white.png "></ion-img>
+                </ion-avatar>
+                <ion-label class="ion-text-wrap">
+                  <ion-text>
+                    <h3>My Mom Story</h3>
+                    <ion-label>
+                      <span class="status-published">Published • 01/2021 • Lena Horushenko</span>
+                    </ion-label>
+                  </ion-text>
+                </ion-label>
+                <ion-icon
+                  slot="end"
+                  (click)="gotoRecording()"
+                  class="cursor-pointer btn-icon"
+                  src="assets/images/play.svg"
+                ></ion-icon>
+              </ion-item>
+              <ion-item lines="none" class="ion-no-padding">
+                <ion-avatar slot="start">
+                  <ion-img src="assets/logos/rec-white.png "></ion-img>
+                </ion-avatar>
+                <ion-label class="ion-text-wrap">
+                  <ion-text>
+                    <h3>My Mom Story</h3>
+                    <ion-label>
+                      <span class="status-published">Published • 01/2021 • Lena Horushenko</span>
+                    </ion-label>
+                  </ion-text>
+                </ion-label>
+                <ion-icon
+                  slot="end"
+                  (click)="gotoRecording()"
+                  class="cursor-pointer btn-icon"
+                  src="assets/images/play.svg"
+                ></ion-icon>
+              </ion-item>
+            </ng-container>
+          </ion-list>
+        </section>
+
+        <section>
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="heading">Chapters in progress</div>
+          </div>
+
+          <ion-list slot="content">
+            <ng-container>
+              <ion-item lines="none" class="ion-no-padding">
+                <ion-avatar slot="start">
+                  <ion-img src="assets/logos/rec-white.png "></ion-img>
+                </ion-avatar>
+                <ion-label class="ion-text-wrap">
+                  <ion-text>
+                    <h3 (click)="gotoRecording()">My Mom Story</h3>
+                    <ion-label>
+                      <span class="status-inprogress">Inprogress • 01/2021 • Lena Horushenko</span>
+                    </ion-label>
+                  </ion-text>
+                </ion-label>
+              </ion-item>
+            </ng-container>
+          </ion-list>
+        </section>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>

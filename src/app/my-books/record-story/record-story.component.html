@@ -1,0 +1,65 @@
+<ion-content class="ion-page bg" [class.bg]="!isWeb">
+  <ion-header class="ion-no-padding ion-no-border" *ngIf="!isWeb">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button icon="chevron-back-outline" default-href="/tabs/my-books"></ion-back-button>
+      </ion-buttons>
+      <ion-title class="text-white ion-align-items-end ion-text-center">Recording</ion-title>
+      <ion-icon
+        color="light"
+        class="more-icon ion-padding-end"
+        slot="end"
+        name="ellipsis-horizontal-circle-outline"
+      ></ion-icon>
+    </ion-toolbar>
+  </ion-header>
+
+  <div [class.web-page]="isWeb">
+    <ion-text color="primary" *ngIf="isWeb">
+      <ion-breadcrumbs>
+        <ion-breadcrumb routerLink="/tabs/my-books"> My Books </ion-breadcrumb>
+        <ion-breadcrumb routerLink="/tabs/my-books/book-detail/1"> Book About Cat </ion-breadcrumb>
+        <ion-breadcrumb> New Recording </ion-breadcrumb>
+      </ion-breadcrumbs>
+    </ion-text>
+
+    <div class="ion-text-center mt-5 content-container">
+      <ion-text *ngIf="isWeb">
+        <h2 class="story-title mt-3 mb-3">Title of Chapter</h2>
+      </ion-text>
+      <div class="placeholder">
+        <img src="assets/images/recording-placeholder.png" alt="image" />
+      </div>
+
+      <ion-text [color]="isWeb ? 'primary' : 'light'">
+        <h2 class="story-title mt-3 mb-3" *ngIf="!isWeb">Title of Chapter</h2>
+        <p class="story-sub-title mt-3">Tell me a time you went on an adventure</p>
+      </ion-text>
+
+      <ion-button
+        type="button"
+        class="default-button sm ion-text-capitalize"
+        [color]="'primary'"
+        expand="block"
+        translate
+      >
+        Recording
+      </ion-button>
+      <ion-button
+        type="button"
+        (click)="sendStory()"
+        class="default-button sm ion-text-capitalize"
+        [color]="'primary'"
+        expand="block"
+        translate
+      >
+        Send Story
+      </ion-button>
+
+      <ion-text>
+        <p class="text-button">Upload Recording</p>
+        <p class="text-button" (click)="reRecordStory()">Delete and Rerecord</p>
+      </ion-text>
+    </div>
+  </div>
+</ion-content>
