@@ -1,6 +1,7 @@
 import { Platform } from '@ionic/angular';
 import { ChangeDetectorRef, Component, NgZone, OnInit } from '@angular/core';
 import { WaveService } from 'angular-wavesurfer-service';
+import { Utils } from '@app/@shared/appConstants';
 
 @Component({
   selector: 'app-audio-player',
@@ -11,6 +12,8 @@ export class AudioPlayerComponent implements OnInit {
   wave!: WaveSurfer;
   isPlaying = false;
   isPlayable = false;
+  elapsedTime: any = '00:00';
+  remainingTime: any = '00:00';
   constructor(public waveService: WaveService, private cdr: ChangeDetectorRef, private platform: Platform) {}
 
   ngOnInit(): void {}
@@ -50,6 +53,7 @@ export class AudioPlayerComponent implements OnInit {
   onReady() {
     this.wave.on('ready', () => {
       this.isPlayable = true;
+      this.remainingTime = Utils.elapsedTimer(this.wave.getDuration());
       console.log('ready');
     });
   }
@@ -68,7 +72,14 @@ export class AudioPlayerComponent implements OnInit {
   }
 
   onAudioProcessing() {
-    this.wave.on('audioprocess', function () {});
+    this.wave.on('audioprocess', () => {
+      if (this.wave.isPlaying()) {
+        this.elapsedTime = Utils.elapsedTimer(this.wave.getCurrentTime());
+        this.remainingTime = Utils.elapsedTimer(this.wave.getDuration() - this.wave.getCurrentTime());
+        this.cdr.detectChanges();
+        this.cdr.checkNoChanges();
+      }
+    });
   }
 
   onFinish() {
