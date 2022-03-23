@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ListItemComponent implements OnInit {
   @Input() item: any;
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
+
+  gotoDetail(id: any) {
+    this.router.navigate(['tabs/my-books/book-detail/1']);
+  }
 }
