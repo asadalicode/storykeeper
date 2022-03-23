@@ -1,6 +1,9 @@
-ion-grid,
-ion-row {
-  height: 100%;
+@import "../../../theme/mixins.scss";
+@include for-phone-only {
+  ion-grid,
+  ion-row {
+    height: 100%;
+  }
 }
 
 .signup-background {
