@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { BuyNewBookComponent } from '@app/@shared/popup-components/buy-new-book/buy-new-book.component';
 import { ModalDismissRole, myLibraryTabs } from '@app/@shared/constants';
 import { ApiService } from '@app/@shared/sevices/api.service';
-import { Book } from '@app/@shared/models/book';
+import { Book } from '@app/@shared/models';
 
 @Component({
   selector: 'app-home',
@@ -33,12 +33,11 @@ export class HomeComponent implements OnInit {
 
   getBooks(status: number = 0) {
     this.isLoading = true;
-    this.apiService.get('/api/Books').subscribe((res) => {
-      console.log(res);
+    this.apiService.get('/api/Books', Book).subscribe((res) => {
       res.push({
-        bookName: 'TestBook3',
-        title: 'TestBook3',
-        id: 5,
+        bookName: 'InProgressBook',
+        title: 'InProgressBook',
+        id: Math.random(),
         image: 'https://www.linkpicture.com/q/book1.svg',
         recipientUser: '',
         senderUser: '',
@@ -55,6 +54,7 @@ export class HomeComponent implements OnInit {
 
         this.books = [...this.books];
       }
+      console.log(this.books);
 
       this.isAuthor = this.books.length > 0 ? true : false;
     });

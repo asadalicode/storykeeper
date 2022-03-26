@@ -1,11 +1,9 @@
-import { Qusetion } from './../../@shared/models/book';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Platform, ModalController, IonRouterOutlet } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import { AddNewQuestionComponent } from '@app/book-shared/add-new-question/add-new-question.component';
-import { Filesystem, Directory } from '@capacitor/filesystem';
 import { ConfirmationInfoComponent } from '@app/@shared/popup-components/confirmation-info/confirmation-info.component';
 import { ModalDismissRole } from '@app/@shared/constants';
 import { ImagePicker } from '@awesome-cordova-plugins/image-picker/ngx';
@@ -57,9 +55,11 @@ export class UpdateBookComponent implements OnInit {
 
   private createForm() {
     this.step1Form = this.formBuilder.group({
+      name: [''],
+      image: [''],
       bookTitle: ['', [Validators.required]],
       recipientsName: ['', [Validators.required]],
-      recipientsEmail: ['', [Validators.required]],
+      recipientEmail: ['', [Validators.required]],
     });
   }
 

@@ -2,6 +2,7 @@ import { catchError, map, Observable, of } from 'rxjs';
 import { environment } from './../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Book } from '../models/book';
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +11,11 @@ export class ApiService {
   baseUrl = environment.serverUrl;
   constructor(private http: HttpClient) {}
 
-  get(url: any): Observable<any> {
-    return this.http.get<any>(url);
+  get(url: any, dataModel?: any): Observable<any> {
+    return this.http.get<any>(url).pipe(
+      // Adapt each item in the raw data array
+      map((data: any[]) => data.map((item) => dataModel.adapt(item)))
+    );
   }
 
   post(url: any, dataModel: any): Observable<any> {

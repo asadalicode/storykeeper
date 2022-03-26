@@ -71,20 +71,21 @@
               <ion-input
                 class="form-input"
                 type="text"
-                formControlName="recipientsEmail"
+                formControlName="recipientEmail"
                 autocomplete="new email"
               ></ion-input>
             </ion-item>
           </ion-list>
           <div class="ion-padding-horizontal pt-3">
             <ion-button
+              style="text-transform: none"
               type="submit"
-              class="submit-button ion-text-capitalize"
+              class="submit-button"
               [disabled]="step1Form.invalid || isLoading"
               color="primary"
               expand="block"
               translate
-              >Next Step</ion-button
+              >Save and Continue</ion-button
             >
           </div>
         </form>

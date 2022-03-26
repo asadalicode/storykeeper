@@ -1,22 +1,29 @@
-import { StringChain } from 'lodash';
+export class Book {
+  constructor(
+    public id: number,
+    public title: string,
+    public bookName: string,
+    public image: string,
+    public recipientUser: string,
+    public senderUser: string,
+    public published_at: Date,
+    public status: number,
+    public type: number,
+    public author: string
+  ) {}
 
-export interface Book {
-  title: string;
-  bookName?: string;
-  image: string;
-  recipientUser?: string;
-  senderUser?: string;
-  id: any;
-  published_at?: StringChain;
-  status: number;
-  type?: number;
-  author?: string;
-}
-
-export interface Qusetion {
-  id: number;
-  thumbnail: string;
-  type: string;
-  question: string;
-  description: string;
+  public static adapt(item: any): Book {
+    return new Book(
+      item.id,
+      item.bookName,
+      item.bookName,
+      item.image,
+      item.recipientUser,
+      item.senderUser,
+      item?.published_at,
+      item.status,
+      item.type,
+      item?.author
+    );
+  }
 }
