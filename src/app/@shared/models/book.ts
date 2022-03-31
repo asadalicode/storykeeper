@@ -27,3 +27,31 @@ export class Book {
     );
   }
 }
+
+export class BookDetail {
+  constructor(
+    public id: number,
+    public title: string,
+    public bookName: string,
+    public image: string,
+    public recipientEmail: string,
+    public recipientName: string,
+    public senderUser: Date,
+    public status: number,
+    public type: number
+  ) {}
+
+  public static adapt(item: any): BookDetail {
+    return new BookDetail(
+      item.id,
+      item.bookName,
+      item.bookName,
+      item.image,
+      item.recipientEmail,
+      item.recipientName,
+      item?.senderUser,
+      item.status,
+      item.type
+    );
+  }
+}

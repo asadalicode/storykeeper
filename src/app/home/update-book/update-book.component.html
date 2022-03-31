@@ -61,7 +61,7 @@
               <ion-input
                 class="form-input"
                 type="text"
-                formControlName="recipientsName"
+                formControlName="recipientName"
                 autocomplete="new email"
               ></ion-input>
             </ion-item>
@@ -99,7 +99,7 @@
           <ion-label class="d-block" color="secondary">You have the option to add 24 chapters</ion-label>
           <p>After adding a question, you can edit the description and title</p>
         </ion-text>
-        <app-book-chapters [showSaveButton]="true" (save)="step = 3"></app-book-chapters>
+        <app-book-chapters [routeParams]="routeParams" [showSaveButton]="true" (save)="step = 3"></app-book-chapters>
       </div>
 
       <!-- step 3 add book image -->

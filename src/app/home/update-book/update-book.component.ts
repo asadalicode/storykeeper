@@ -1,3 +1,4 @@
+import { Book, BookDetail } from '@app/@shared/models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Platform, ModalController, IonRouterOutlet } from '@ionic/angular';
@@ -18,6 +19,7 @@ import { ApiService } from '@app/@shared/sevices/api.service';
 export class UpdateBookComponent implements OnInit {
   step1Form!: FormGroup;
   isLoading = false;
+  book!: BookDetail;
   step = 1;
   options = {
     width: 200,
@@ -42,6 +44,7 @@ export class UpdateBookComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getBookDetails();
     this.getFileCredentials();
   }
 
@@ -58,8 +61,22 @@ export class UpdateBookComponent implements OnInit {
       name: [''],
       image: [''],
       bookTitle: ['', [Validators.required]],
-      recipientsName: ['', [Validators.required]],
+      recipientName: ['', [Validators.required]],
       recipientEmail: ['', [Validators.required]],
+    });
+  }
+
+  getBookDetails() {
+    this.apiService.getDetails(`/api/Books/${this.routeParams.bookId}`, BookDetail).subscribe((res) => {
+      console.log(res);
+      this.book = res;
+      this.step1Form.setValue({
+        name: this.book.bookName,
+        bookTitle: this.book.title,
+        image: this.book.image,
+        recipientName: this.book.recipientName,
+        recipientEmail: this.book.recipientEmail,
+      });
     });
   }
 
@@ -115,7 +132,10 @@ export class UpdateBookComponent implements OnInit {
   }
 
   saveStep1() {
-    this.step = 2;
+    this.apiService.put(`/api/Books/${this.routeParams.bookId}`, this.step1Form.value).subscribe((res) => {
+      console.log(res);
+      this.step = 2;
+    });
   }
 
   async newQustion() {

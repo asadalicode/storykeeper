@@ -1,9 +1,11 @@
+import { ApiService } from '@app/@shared/sevices/api.service';
 import { ModalController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { random } from 'lodash';
 import { ModalDismissRole } from '@app/@shared/constants';
 import { Question } from '@app/@shared/models';
+import { Story } from '@app/@shared/models/bookQuestion';
 
 @Component({
   selector: 'app-add-new-question',
@@ -13,7 +15,11 @@ import { Question } from '@app/@shared/models';
 export class AddNewQuestionComponent implements OnInit {
   questionForm!: FormGroup;
   isLoading = false;
-  constructor(private formBuilder: FormBuilder, private modalController: ModalController) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private apiService: ApiService,
+    private modalController: ModalController
+  ) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -24,6 +30,7 @@ export class AddNewQuestionComponent implements OnInit {
       description: ['', [Validators.required]],
     });
   }
+
   dismiss(value = false) {
     this.modalController.dismiss('button clicked');
   }
@@ -38,7 +45,13 @@ export class AddNewQuestionComponent implements OnInit {
       description: 'New Question added',
     };
 
-    let role = ModalDismissRole.submitted;
-    this.modalController.dismiss(quest, role);
+    let story: Story = {
+      question: this.questionForm.value.question,
+      description: this.questionForm.value.description,
+    };
+
+    this.apiService.post(`/api/books/5/Stories`, story).subscribe((res) => {
+      this.modalController.dismiss(story, ModalDismissRole.submitted);
+    });
   }
 }

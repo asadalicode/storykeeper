@@ -1,7 +1,10 @@
+import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from '@app/@shared/sevices/api.service';
 import { ModalDismissRole } from '@app/@shared/constants';
 import { Platform, IonRouterOutlet, ModalController } from '@ionic/angular';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { AddNewQuestionComponent } from '../add-new-question/add-new-question.component';
+import { Story } from '@app/@shared/models/bookQuestion';
 
 @Component({
   selector: 'app-book-chapters',
@@ -10,31 +13,34 @@ import { AddNewQuestionComponent } from '../add-new-question/add-new-question.co
 })
 export class BookChaptersComponent implements OnInit {
   @Input() showSaveButton = false;
+  @Input() routeParams: any;
   @Output() save = new EventEmitter<any>();
+
+  addedQuestionList: Story[] = [];
   List = [
-    {
-      type: 'Added Questions',
-      questions: [
-        {
-          id: 1,
-          thumbnail: '',
-          question: 'What is your favorite game',
-          description: 'string',
-        },
-        {
-          id: 2,
-          thumbnail: '',
-          question: 'What is your favorite pet',
-          description: 'string',
-        },
-        {
-          id: 3,
-          thumbnail: '',
-          question: 'What is your favorite subject',
-          description: 'string',
-        },
-      ],
-    },
+    // {
+    //   type: 'Added Questions',
+    //   questions: [
+    //     {
+    //       id: 1,
+    //       thumbnail: '',
+    //       question: 'What is your favorite game',
+    //       description: 'string',
+    //     },
+    //     {
+    //       id: 2,
+    //       thumbnail: '',
+    //       question: 'What is your favorite pet',
+    //       description: 'string',
+    //     },
+    //     {
+    //       id: 3,
+    //       thumbnail: '',
+    //       question: 'What is your favorite subject',
+    //       description: 'string',
+    //     },
+    //   ],
+    // },
     {
       type: 'Family Questions',
       questions: [
@@ -63,13 +69,24 @@ export class BookChaptersComponent implements OnInit {
   constructor(
     private platform: Platform,
     private modalController: ModalController,
+    private apiService: ApiService,
+    private route: ActivatedRoute,
     private routerOutlet: IonRouterOutlet
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getAddedQuestions();
+  }
 
   get isWeb(): boolean {
     return !this.platform.is('cordova');
+  }
+
+  getAddedQuestions() {
+    this.apiService.get(`/api/books/${this.routeParams.bookId}/Stories`, Story).subscribe((res) => {
+      console.log(res);
+      this.addedQuestionList = res;
+    });
   }
 
   removeQuestion(event: any) {}
@@ -86,7 +103,7 @@ export class BookChaptersComponent implements OnInit {
     });
     modal.onDidDismiss().then((data) => {
       if (data.role == ModalDismissRole.submitted) {
-        debugger;
+        this.getAddedQuestions();
       }
     });
     return await modal.present();

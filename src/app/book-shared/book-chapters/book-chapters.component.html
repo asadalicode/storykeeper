@@ -4,6 +4,21 @@
 
 <!-- Basic -->
 <ion-accordion-group class="ion-no-padding">
+  <ion-accordion expand="inset" multiple="true" *ngFor="let item of List" value="Added Questions">
+    <ion-item slot="header" lines="none">
+      <ion-label>Added Questions</ion-label>
+    </ion-item>
+
+    <ion-list slot="content">
+      <ng-container *ngFor="let quest of addedQuestionList">
+        <app-question-card
+          (delete)="removeQuestion($event)"
+          [type]="'Added Questions'"
+          [question]="quest"
+        ></app-question-card>
+      </ng-container>
+    </ion-list>
+  </ion-accordion>
   <ion-accordion expand="inset" multiple="true" *ngFor="let item of List" [value]="item.type">
     <ion-item slot="header" lines="none">
       <ion-label>{{ item.type }}</ion-label>
