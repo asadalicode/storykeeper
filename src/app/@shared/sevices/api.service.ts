@@ -36,4 +36,8 @@ export class ApiService {
   put(url: any, dataModel: any): Observable<any> {
     return this.http.put<any>(url, dataModel);
   }
+
+  delete(url: any): Observable<any> {
+    return this.http.delete<any>(url);
+  }
 }

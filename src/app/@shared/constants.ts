@@ -16,3 +16,8 @@ export enum myLibraryTabs {
   'published' = '3',
   'shared' = '4',
 }
+
+export enum ConfirmationMessages {
+  DeletePopupLabel = 'Delete Confirmation',
+  DeletePopupConfirmationMessage = 'Are you sure you want to delete?',
+}

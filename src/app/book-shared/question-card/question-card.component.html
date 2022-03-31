@@ -8,18 +8,16 @@
     <ion-label color="success">{{ question.description }}</ion-label>
   </div>
 
-  <ion-buttons slot="end">
-    <ion-icon
-      class="btn-icon"
-      *ngIf="type !== 'Added Questions'"
-      slot="icon-only"
-      src="assets/images/plus-square.svg"
-    ></ion-icon>
-    <ion-icon
-      class="btn-icon"
-      *ngIf="type === 'Added Questions'"
-      slot="icon-only"
-      src="assets/images/minus-square.svg"
-    ></ion-icon>
-  </ion-buttons>
+  <ion-button shape="circle" color="tranparent" slot="end" (click)="onAdd(question)" *ngIf="type !== 'Added Questions'">
+    <ion-icon class="btn-icon" slot="icon-only" src="assets/images/plus-square.svg"></ion-icon>
+  </ion-button>
+  <ion-button
+    shape="circle"
+    color="tranparent"
+    slot="end"
+    (click)="onDelete(question)"
+    *ngIf="type === 'Added Questions'"
+  >
+    <ion-icon class="btn-icon" slot="icon-only" src="assets/images/minus-square.svg"></ion-icon>
+  </ion-button>
 </ion-item>

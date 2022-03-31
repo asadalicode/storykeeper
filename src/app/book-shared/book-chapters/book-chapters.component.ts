@@ -1,10 +1,14 @@
+import { forkJoin, map } from 'rxjs';
+import { ConfirmationInfoComponent } from '@app/@shared/popup-components/confirmation-info/confirmation-info.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '@app/@shared/sevices/api.service';
-import { ModalDismissRole } from '@app/@shared/constants';
-import { Platform, IonRouterOutlet, ModalController } from '@ionic/angular';
+import { ConfirmationMessages, ModalDismissRole } from '@app/@shared/constants';
+import { Platform, IonRouterOutlet, ModalController, ToastController } from '@ionic/angular';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { AddNewQuestionComponent } from '../add-new-question/add-new-question.component';
 import { Story } from '@app/@shared/models/bookQuestion';
+import { Category, TemplateQuestion } from '@app/@shared/models';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-book-chapters',
@@ -17,65 +21,21 @@ export class BookChaptersComponent implements OnInit {
   @Output() save = new EventEmitter<any>();
 
   addedQuestionList: Story[] = [];
-  List = [
-    // {
-    //   type: 'Added Questions',
-    //   questions: [
-    //     {
-    //       id: 1,
-    //       thumbnail: '',
-    //       question: 'What is your favorite game',
-    //       description: 'string',
-    //     },
-    //     {
-    //       id: 2,
-    //       thumbnail: '',
-    //       question: 'What is your favorite pet',
-    //       description: 'string',
-    //     },
-    //     {
-    //       id: 3,
-    //       thumbnail: '',
-    //       question: 'What is your favorite subject',
-    //       description: 'string',
-    //     },
-    //   ],
-    // },
-    {
-      type: 'Family Questions',
-      questions: [
-        {
-          id: 4,
-          thumbnail: '',
-          question: 'What is your favorite hobby',
-          description: 'string',
-        },
-        {
-          id: 5,
-          thumbnail: '',
-          question: 'What is your favorite game',
-          description: 'string',
-        },
-        {
-          id: 6,
-          thumbnail: '',
-          question: 'What is your favorite game',
-          description: 'string',
-        },
-      ],
-    },
-  ];
+  categoryQuestions: Category[] = [];
+  categoryTemplateQuestions: any;
 
   constructor(
     private platform: Platform,
     private modalController: ModalController,
     private apiService: ApiService,
     private route: ActivatedRoute,
+    public toastController: ToastController,
     private routerOutlet: IonRouterOutlet
   ) {}
 
   ngOnInit(): void {
     this.getAddedQuestions();
+    this.getCategoryQuestions();
   }
 
   get isWeb(): boolean {
@@ -89,7 +49,69 @@ export class BookChaptersComponent implements OnInit {
     });
   }
 
-  removeQuestion(event: any) {}
+  getCategoryQuestions() {
+    this.apiService.get('/api/Categories', Category).subscribe((res: any) => {
+      this.categoryQuestions = res;
+      this.getGroupedCategories();
+    });
+  }
+
+  getGroupedCategories() {
+    forkJoin(
+      this.categoryQuestions.map((categ: any) =>
+        // console.log(p),
+        this.apiService.get(`/api/Categories/${categ.id}/TemplateQuestions`, TemplateQuestion).pipe(
+          // map each Location to a cloned provider object
+          map((response) =>
+            response.map((item: any) => {
+              return {
+                ...categ,
+                templateQuestions: item,
+              };
+            })
+          )
+        )
+      )
+    ).subscribe((p: any) => {
+      let result: any = [];
+      p.forEach((element: any, index: any) => {
+        element.forEach((el: any) => {
+          result.push(el);
+        });
+      });
+      this.categoryTemplateQuestions = _(result)
+        .groupBy((meeting) => meeting.caregoryName)
+        .map((questions, caregoryName) => ({ caregoryName, questions }))
+        .value();
+      console.log(this.categoryTemplateQuestions);
+    });
+  }
+
+  async removeQuestion(event: any) {
+    console.log('delete emitted', event);
+    const modal = await this.modalController.create({
+      component: ConfirmationInfoComponent,
+      cssClass: 'modal-popup md',
+      componentProps: {
+        title: ConfirmationMessages.DeletePopupLabel,
+        subtitle: ConfirmationMessages.DeletePopupConfirmationMessage,
+        confirmbuttonText: 'Delete',
+        confirmbuttonClass: 'danger',
+        cancelbuttonText: 'Cancel',
+      },
+      swipeToClose: true,
+      presentingElement: this.routerOutlet.nativeEl,
+    });
+    modal.onDidDismiss().then((data) => {
+      if (data.role == ModalDismissRole.submitted) {
+        this.apiService.delete(`/api/books/${this.routeParams.bookId}/Stories/${event.id}`).subscribe((res) => {
+          this.getAddedQuestions();
+          this.toasterNotification('Question deleted successfully.');
+        });
+      }
+    });
+    return await modal.present();
+  }
 
   async newQustion() {
     const modal = await this.modalController.create({
@@ -97,6 +119,7 @@ export class BookChaptersComponent implements OnInit {
       cssClass: 'modal-popup md',
       componentProps: {
         title: 'New Question',
+        bookId: this.routeParams.bookId,
       },
       swipeToClose: true,
       presentingElement: this.routerOutlet.nativeEl,
@@ -104,12 +127,34 @@ export class BookChaptersComponent implements OnInit {
     modal.onDidDismiss().then((data) => {
       if (data.role == ModalDismissRole.submitted) {
         this.getAddedQuestions();
+        this.toasterNotification('Question added successfully.');
       }
     });
     return await modal.present();
   }
 
+  addTemplateQuestion(question: any) {
+    let story: Story = {
+      question: question.question,
+      description: question.description,
+    };
+
+    this.apiService.post(`/api/books/${this.routeParams.bookId}/Stories`, story).subscribe((res) => {
+      this.getAddedQuestions();
+      this.toasterNotification('Question added successfully.');
+    });
+  }
   onSave() {
     this.save.emit(3);
+  }
+
+  async toasterNotification(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000,
+      color: 'success',
+      position: 'top',
+    });
+    toast.present();
   }
 }

@@ -12,12 +12,12 @@ export class QuestionCardComponent implements OnInit {
   @Output() add = new EventEmitter<any>();
   constructor() {}
 
-  onDelete() {
-    this.delete.emit(true);
+  onDelete(question: any) {
+    this.delete.emit(question);
   }
 
-  onAdd() {
-    this.add.emit(true);
+  onAdd(question: any) {
+    this.add.emit(question);
   }
   ngOnInit(): void {}
 }

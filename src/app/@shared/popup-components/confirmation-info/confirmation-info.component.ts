@@ -23,6 +23,6 @@ export class ConfirmationInfoComponent implements OnInit {
   }
 
   submit() {
-    this.modalController.dismiss(ModalDismissRole.submitted);
+    this.modalController.dismiss('', ModalDismissRole.submitted);
   }
 }

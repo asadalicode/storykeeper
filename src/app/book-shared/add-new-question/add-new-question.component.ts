@@ -15,6 +15,7 @@ import { Story } from '@app/@shared/models/bookQuestion';
 export class AddNewQuestionComponent implements OnInit {
   questionForm!: FormGroup;
   isLoading = false;
+  bookId!: number;
   constructor(
     private formBuilder: FormBuilder,
     private apiService: ApiService,
@@ -50,7 +51,7 @@ export class AddNewQuestionComponent implements OnInit {
       description: this.questionForm.value.description,
     };
 
-    this.apiService.post(`/api/books/5/Stories`, story).subscribe((res) => {
+    this.apiService.post(`/api/books/${this.bookId}/Stories`, story).subscribe((res) => {
       this.modalController.dismiss(story, ModalDismissRole.submitted);
     });
   }
