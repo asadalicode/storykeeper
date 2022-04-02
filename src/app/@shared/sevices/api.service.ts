@@ -1,6 +1,6 @@
 import { catchError, map, Observable, of } from 'rxjs';
 import { environment } from './../../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Book } from '../models/book';
 
@@ -26,11 +26,15 @@ export class ApiService {
   }
 
   postFormData(url: any, dataModel: any): Observable<any> {
+    var header = {
+      headers: new HttpHeaders().set('Authorization', dataModel.policy),
+    };
+
     let fd = new FormData();
     for (var i in dataModel) {
       fd.append(i, dataModel[i]);
     }
-    return this.http.post<any>(url, fd);
+    return this.http.post<any>(url, fd, header);
   }
 
   put(url: any, dataModel: any): Observable<any> {

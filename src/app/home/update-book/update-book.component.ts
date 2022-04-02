@@ -1,4 +1,4 @@
-import { Book, BookDetail } from '@app/@shared/models';
+import { Book, BookDetail, ImageCredientials } from '@app/@shared/models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Platform, ModalController, IonRouterOutlet } from '@ionic/angular';
@@ -20,7 +20,7 @@ export class UpdateBookComponent implements OnInit {
   step1Form!: FormGroup;
   isLoading = false;
   book!: BookDetail;
-  step = 1;
+  step = 3;
   options = {
     width: 200,
     quality: 30,
@@ -45,7 +45,7 @@ export class UpdateBookComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBookDetails();
-    this.getFileCredentials();
+    // this.getFileCredentials();
   }
 
   get routeParams() {
@@ -80,9 +80,9 @@ export class UpdateBookComponent implements OnInit {
     });
   }
 
-  getFileCredentials() {
+  getFileCredentials(fileName: string) {
     console.log(this.routeParams);
-    this.apiService.get(`/api/Files/credentials/${this.routeParams.bookId}`).subscribe({
+    this.apiService.get(`/api/Files/credentials/${this.routeParams.bookId}?fileName?`).subscribe({
       complete: () => {},
       next: (res: any) => {
         this.uploadCredentials = res;
@@ -100,21 +100,30 @@ export class UpdateBookComponent implements OnInit {
         for (var i = 0; i < results.length; i++) {
           this.imageUrl = 'data:image/jpeg;base64,' + results[i];
           Utils.dataUrlToFile('data:image/jpeg;base64,' + results[i], 'image' + Math.random() * 100).then(
-            (res: any) => {
-              console.log(res);
-              const uploadFileObj = {
-                ...this.uploadCredentials,
-                file: res,
-              };
-              this.apiService.postFormData(this.uploadCredentials.upload_url, uploadFileObj).subscribe({
-                complete: () => {},
-                next: (res: any) => {
-                  console.log(res);
-                },
-                error: (err: any) => {
-                  console.log(err);
-                },
-              });
+            (imageData: any) => {
+              console.log(imageData);
+              let fileName = `image${this.routeParams.bookId}.png`;
+              this.apiService
+                .getDetails(
+                  `/api/Files/credentials/book/${this.routeParams.bookId}?fileName=${fileName}`,
+                  ImageCredientials
+                )
+                .subscribe({
+                  complete: () => {},
+                  next: (res: any) => {
+                    this.uploadCredentials = res;
+                    debugger;
+                    // console.log(this.uploadCredentials);
+                    const uploadFileObj = {
+                      ...this.uploadCredentials,
+                      file: imageData,
+                    };
+                    this.postFile(uploadFileObj);
+                  },
+                  error: (err: any) => {
+                    console.log(err);
+                  },
+                });
             }
           );
         }
@@ -123,6 +132,17 @@ export class UpdateBookComponent implements OnInit {
     );
   }
 
+  postFile(uploadFileObj: any) {
+    this.apiService.postFormData(this.uploadCredentials.upload_url, uploadFileObj).subscribe({
+      complete: () => {},
+      next: (res: any) => {
+        console.log(res);
+      },
+      error: (err: any) => {
+        console.log(err);
+      },
+    });
+  }
   get isWeb(): boolean {
     return !this.platform.is('cordova');
   }
