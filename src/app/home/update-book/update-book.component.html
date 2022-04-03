@@ -109,8 +109,15 @@
             <h1>Edit my new Book</h1>
           </ion-text>
 
-          <div (click)="getImages()" class="image-container bg">
-            <ion-icon *ngIf="!imageUrl" class="plus-icon" name="add-circle-outline"></ion-icon>
+          <div (click)="isWeb ? fileInput.click() : getImages()" class="image-container bg">
+            <ion-icon *ngIf="!imageUrl" for="fileInput" class="plus-icon" name="add-circle-outline"></ion-icon>
+            <input
+              id="fileInput"
+              type="file"
+              #fileInput
+              (change)="onFileChange($event)"
+              style="visibility: hidden; position: absolute"
+            />
             <img *ngIf="imageUrl" class="img-fluid" [src]="imageUrl" alt="" />
           </div>
 
@@ -123,7 +130,7 @@
             class="default-button ion-text-capitalize"
             color="primary"
             expand="block"
-            (click)="save()"
+            (click)="postFile()"
             translate
           >
             Save

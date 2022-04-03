@@ -2,7 +2,7 @@ import { Book, BookDetail, ImageCredientials } from '@app/@shared/models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Platform, ModalController, IonRouterOutlet } from '@ionic/angular';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as _ from 'lodash';
 import { AddNewQuestionComponent } from '@app/book-shared/add-new-question/add-new-question.component';
 import { ConfirmationInfoComponent } from '@app/@shared/popup-components/confirmation-info/confirmation-info.component';
@@ -23,13 +23,17 @@ export class UpdateBookComponent implements OnInit {
   step = 3;
   options = {
     width: 200,
-    quality: 30,
+    maximumImagesCount: 1,
+    quality: 100,
     outputType: 1,
   };
 
-  list: any;
   imageUrl: any = '';
   uploadCredentials: any;
+  @ViewChild('fileInput') public fileInput!: ElementRef;
+  fileReader: any = [];
+  dumyImages: any = [];
+  uploadFileObj: any;
   constructor(
     private platform: Platform,
     private formBuilder: FormBuilder,
@@ -80,18 +84,18 @@ export class UpdateBookComponent implements OnInit {
     });
   }
 
-  getFileCredentials(fileName: string) {
-    console.log(this.routeParams);
-    this.apiService.get(`/api/Files/credentials/${this.routeParams.bookId}?fileName?`).subscribe({
-      complete: () => {},
-      next: (res: any) => {
-        this.uploadCredentials = res;
-        console.log(this.uploadCredentials);
-      },
-      error: (err: any) => {
-        console.log(err);
-      },
-    });
+  onFileChange(e: any) {
+    var files = e.target.files;
+    if (files && files.length > 0) {
+      for (var i = 0; i < files.length; i++) {
+        this.fileReader[i] = new FileReader();
+        this.fileReader[i].readAsDataURL(files[i]);
+        this.fileReader[i].onload = (e: any) => {
+          this.imageUrl = e.target.result;
+        };
+        this.getFileCredentials(files[i]);
+      }
+    }
   }
 
   getImages() {
@@ -99,44 +103,43 @@ export class UpdateBookComponent implements OnInit {
       (results) => {
         for (var i = 0; i < results.length; i++) {
           this.imageUrl = 'data:image/jpeg;base64,' + results[i];
-          Utils.dataUrlToFile('data:image/jpeg;base64,' + results[i], 'image' + Math.random() * 100).then(
-            (imageData: any) => {
-              console.log(imageData);
-              let fileName = `image${this.routeParams.bookId}.png`;
-              this.apiService
-                .getDetails(
-                  `/api/Files/credentials/book/${this.routeParams.bookId}?fileName=${fileName}`,
-                  ImageCredientials
-                )
-                .subscribe({
-                  complete: () => {},
-                  next: (res: any) => {
-                    this.uploadCredentials = res;
-                    debugger;
-                    // console.log(this.uploadCredentials);
-                    const uploadFileObj = {
-                      ...this.uploadCredentials,
-                      file: imageData,
-                    };
-                    this.postFile(uploadFileObj);
-                  },
-                  error: (err: any) => {
-                    console.log(err);
-                  },
-                });
-            }
-          );
+          Utils.dataUrlToFile(
+            'data:image/jpeg;base64,' + results[i],
+            `image${(Math.random() * 100 + 1).toFixed()}.png`
+          ).then((imageData: any) => {
+            this.getFileCredentials(imageData);
+          });
         }
       },
       (err) => {}
     );
   }
 
-  postFile(uploadFileObj: any) {
-    this.apiService.postFormData(this.uploadCredentials.upload_url, uploadFileObj).subscribe({
+  getFileCredentials(file: any) {
+    this.apiService
+      .getDetails(`/api/Files/credentials/book/${this.routeParams.bookId}?fileName=${file.name}`, ImageCredientials)
+      .subscribe({
+        complete: () => {},
+        next: (res: any) => {
+          this.uploadCredentials = res;
+          this.uploadFileObj = {
+            ...this.uploadCredentials,
+            file: file,
+          };
+        },
+        error: (err: any) => {
+          console.log(err);
+        },
+      });
+  }
+
+  postFile() {
+    this.apiService.postFormData(this.uploadCredentials.upload_url, this.uploadFileObj).subscribe({
       complete: () => {},
       next: (res: any) => {
         console.log(res);
+        this.router.navigate(['/tabs/my-library']);
+        this.newBookAvailable();
       },
       error: (err: any) => {
         console.log(err);
@@ -153,7 +156,6 @@ export class UpdateBookComponent implements OnInit {
 
   saveStep1() {
     this.apiService.put(`/api/Books/${this.routeParams.bookId}`, this.step1Form.value).subscribe((res) => {
-      console.log(res);
       this.step = 2;
     });
   }
@@ -190,11 +192,5 @@ export class UpdateBookComponent implements OnInit {
       presentingElement: this.routerOutlet.nativeEl,
     });
     return await modal.present();
-  }
-
-  removeQuestion(index: any) {}
-  save() {
-    this.router.navigate(['/tabs/my-library']);
-    this.newBookAvailable();
   }
 }
