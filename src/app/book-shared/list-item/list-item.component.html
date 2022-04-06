@@ -4,8 +4,16 @@
   </ion-avatar>
   <ion-label class="ion-text-wrap">
     <ion-text>
-      <h3>My Mom Story</h3>
-      <ion-label color="success">Published• 01/2021 • Lena Horushenko</ion-label>
+      <h3 *ngIf="item?.status !== 'pending'; else pending" class="link" (click)="gotoDetail(1)">{{ item?.title }}</h3>
+      <ng-template #pending>
+        <h3>{{ item?.title }}</h3>
+      </ng-template>
+
+      <ion-label>
+        <span class="{{ 'status-' + item?.status }} text-capitalize"
+          >{{ item?.status }} • {{ item?.year }} • Sender: {{ item?.author }}</span
+        >
+      </ion-label>
     </ion-text>
   </ion-label>
 </ion-item>

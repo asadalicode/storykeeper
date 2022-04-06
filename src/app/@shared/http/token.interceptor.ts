@@ -14,12 +14,15 @@ export class TokenInterceptor implements HttpInterceptor {
     }
 
     if (token) {
-      req = req.clone({
-        setHeaders: {
-          Authorization: `Bearer ${token}`,
-          // Authorization: token
-        },
-      });
+      let t = '';
+      if (!req.url.includes('s3.amazonaws.com')) {
+        req = req.clone({
+          setHeaders: {
+            Authorization: `Bearer ${token}`,
+            // Authorization: token
+          },
+        });
+      }
     }
 
     return next.handle(req);

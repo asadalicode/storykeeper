@@ -4,60 +4,60 @@
     g = {},
     v = {};
   function f(e) {
-    var c = v[e];
-    if (void 0 !== c) return c.exports;
-    var a = (v[e] = { exports: {} });
-    return g[e](a, a.exports, f), a.exports;
+    var d = v[e];
+    if (void 0 !== d) return d.exports;
+    var a = (v[e] = { id: e, loaded: !1, exports: {} });
+    return g[e].call(a.exports, a, a.exports, f), (a.loaded = !0), a.exports;
   }
   (f.m = g),
     (e = []),
-    (f.O = (c, a, d, b) => {
+    (f.O = (d, a, c, n) => {
       if (!a) {
         var t = 1 / 0;
         for (r = 0; r < e.length; r++) {
-          for (var [a, d, b] = e[r], i = !0, n = 0; n < a.length; n++)
-            (!1 & b || t >= b) && Object.keys(f.O).every((p) => f.O[p](a[n]))
-              ? a.splice(n--, 1)
-              : ((i = !1), b < t && (t = b));
+          for (var [a, c, n] = e[r], i = !0, b = 0; b < a.length; b++)
+            (!1 & n || t >= n) && Object.keys(f.O).every((p) => f.O[p](a[b]))
+              ? a.splice(b--, 1)
+              : ((i = !1), n < t && (t = n));
           if (i) {
             e.splice(r--, 1);
-            var l = d();
-            void 0 !== l && (c = l);
+            var l = c();
+            void 0 !== l && (d = l);
           }
         }
-        return c;
+        return d;
       }
-      b = b || 0;
-      for (var r = e.length; r > 0 && e[r - 1][2] > b; r--) e[r] = e[r - 1];
-      e[r] = [a, d, b];
+      n = n || 0;
+      for (var r = e.length; r > 0 && e[r - 1][2] > n; r--) e[r] = e[r - 1];
+      e[r] = [a, c, n];
     }),
     (f.n = (e) => {
-      var c = e && e.__esModule ? () => e.default : () => e;
-      return f.d(c, { a: c }), c;
+      var d = e && e.__esModule ? () => e.default : () => e;
+      return f.d(d, { a: d }), d;
     }),
     (() => {
-      var c,
+      var d,
         e = Object.getPrototypeOf ? (a) => Object.getPrototypeOf(a) : (a) => a.__proto__;
-      f.t = function (a, d) {
+      f.t = function (a, c) {
         if (
-          (1 & d && (a = this(a)),
-          8 & d || ('object' == typeof a && a && ((4 & d && a.__esModule) || (16 & d && 'function' == typeof a.then))))
+          (1 & c && (a = this(a)),
+          8 & c || ('object' == typeof a && a && ((4 & c && a.__esModule) || (16 & c && 'function' == typeof a.then))))
         )
           return a;
-        var b = Object.create(null);
-        f.r(b);
+        var n = Object.create(null);
+        f.r(n);
         var r = {};
-        c = c || [null, e({}), e([]), e(e)];
-        for (var t = 2 & d && a; 'object' == typeof t && !~c.indexOf(t); t = e(t))
+        d = d || [null, e({}), e([]), e(e)];
+        for (var t = 2 & c && a; 'object' == typeof t && !~d.indexOf(t); t = e(t))
           Object.getOwnPropertyNames(t).forEach((i) => (r[i] = () => a[i]));
-        return (r.default = () => a), f.d(b, r), b;
+        return (r.default = () => a), f.d(n, r), n;
       };
     })(),
-    (f.d = (e, c) => {
-      for (var a in c) f.o(c, a) && !f.o(e, a) && Object.defineProperty(e, a, { enumerable: !0, get: c[a] });
+    (f.d = (e, d) => {
+      for (var a in d) f.o(d, a) && !f.o(e, a) && Object.defineProperty(e, a, { enumerable: !0, get: d[a] });
     }),
     (f.f = {}),
-    (f.e = (e) => Promise.all(Object.keys(f.f).reduce((c, a) => (f.f[a](e, c), c), []))),
+    (f.e = (e) => Promise.all(Object.keys(f.f).reduce((d, a) => (f.f[a](e, d), d), []))),
     (f.u = (e) =>
       (({ 2214: 'polyfills-core-js', 6748: 'polyfills-dom', 8592: 'common' }[e] || e) +
       '.' +
@@ -130,18 +130,18 @@
       }[e] +
       '.js')),
     (f.miniCssF = (e) => {}),
-    (f.o = (e, c) => Object.prototype.hasOwnProperty.call(e, c)),
+    (f.o = (e, d) => Object.prototype.hasOwnProperty.call(e, d)),
     (() => {
       var e = {},
-        c = 'ngx-new:';
-      f.l = (a, d, b, r) => {
-        if (e[a]) e[a].push(d);
+        d = 'ngx-new:';
+      f.l = (a, c, n, r) => {
+        if (e[a]) e[a].push(c);
         else {
           var t, i;
-          if (void 0 !== b)
-            for (var n = document.getElementsByTagName('script'), l = 0; l < n.length; l++) {
-              var o = n[l];
-              if (o.getAttribute('src') == a || o.getAttribute('data-webpack') == c + b) {
+          if (void 0 !== n)
+            for (var b = document.getElementsByTagName('script'), l = 0; l < b.length; l++) {
+              var o = b[l];
+              if (o.getAttribute('src') == a || o.getAttribute('data-webpack') == d + n) {
                 t = o;
                 break;
               }
@@ -152,17 +152,17 @@
             (t.charset = 'utf-8'),
             (t.timeout = 120),
             f.nc && t.setAttribute('nonce', f.nc),
-            t.setAttribute('data-webpack', c + b),
+            t.setAttribute('data-webpack', d + n),
             (t.src = f.tu(a))),
-            (e[a] = [d]);
-          var u = (_, p) => {
-              (t.onerror = t.onload = null), clearTimeout(s);
-              var m = e[a];
-              if ((delete e[a], t.parentNode && t.parentNode.removeChild(t), m && m.forEach((y) => y(p)), _))
+            (e[a] = [c]);
+          var s = (_, p) => {
+              (t.onerror = t.onload = null), clearTimeout(u);
+              var y = e[a];
+              if ((delete e[a], t.parentNode && t.parentNode.removeChild(t), y && y.forEach((h) => h(p)), _))
                 return _(p);
             },
-            s = setTimeout(u.bind(null, void 0, { type: 'timeout', target: t }), 12e4);
-          (t.onerror = u.bind(null, t.onerror)), (t.onload = u.bind(null, t.onload)), i && document.head.appendChild(t);
+            u = setTimeout(s.bind(null, void 0, { type: 'timeout', target: t }), 12e4);
+          (t.onerror = s.bind(null, t.onerror)), (t.onload = s.bind(null, t.onload)), i && document.head.appendChild(t);
         }
       };
     })(),
@@ -172,61 +172,62 @@
         Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
         Object.defineProperty(e, '__esModule', { value: !0 });
     }),
+    (f.nmd = (e) => ((e.paths = []), e.children || (e.children = []), e)),
     (() => {
       var e;
-      f.tu = (c) => (
+      f.tu = (d) => (
         void 0 === e &&
           ((e = { createScriptURL: (a) => a }),
           'undefined' != typeof trustedTypes &&
             trustedTypes.createPolicy &&
             (e = trustedTypes.createPolicy('angular#bundler', e))),
-        e.createScriptURL(c)
+        e.createScriptURL(d)
       );
     })(),
     (f.p = ''),
     (() => {
       var e = { 3666: 0 };
-      (f.f.j = (d, b) => {
-        var r = f.o(e, d) ? e[d] : void 0;
+      (f.f.j = (c, n) => {
+        var r = f.o(e, c) ? e[c] : void 0;
         if (0 !== r)
-          if (r) b.push(r[2]);
-          else if (3666 != d) {
-            var t = new Promise((o, u) => (r = e[d] = [o, u]));
-            b.push((r[2] = t));
-            var i = f.p + f.u(d),
-              n = new Error();
+          if (r) n.push(r[2]);
+          else if (3666 != c) {
+            var t = new Promise((o, s) => (r = e[c] = [o, s]));
+            n.push((r[2] = t));
+            var i = f.p + f.u(c),
+              b = new Error();
             f.l(
               i,
               (o) => {
-                if (f.o(e, d) && (0 !== (r = e[d]) && (e[d] = void 0), r)) {
-                  var u = o && ('load' === o.type ? 'missing' : o.type),
-                    s = o && o.target && o.target.src;
-                  (n.message = 'Loading chunk ' + d + ' failed.\n(' + u + ': ' + s + ')'),
-                    (n.name = 'ChunkLoadError'),
-                    (n.type = u),
-                    (n.request = s),
-                    r[1](n);
+                if (f.o(e, c) && (0 !== (r = e[c]) && (e[c] = void 0), r)) {
+                  var s = o && ('load' === o.type ? 'missing' : o.type),
+                    u = o && o.target && o.target.src;
+                  (b.message = 'Loading chunk ' + c + ' failed.\n(' + s + ': ' + u + ')'),
+                    (b.name = 'ChunkLoadError'),
+                    (b.type = s),
+                    (b.request = u),
+                    r[1](b);
                 }
               },
-              'chunk-' + d,
-              d
+              'chunk-' + c,
+              c
             );
-          } else e[d] = 0;
+          } else e[c] = 0;
       }),
-        (f.O.j = (d) => 0 === e[d]);
-      var c = (d, b) => {
-          var n,
+        (f.O.j = (c) => 0 === e[c]);
+      var d = (c, n) => {
+          var b,
             l,
-            [r, t, i] = b,
+            [r, t, i] = n,
             o = 0;
-          if (r.some((s) => 0 !== e[s])) {
-            for (n in t) f.o(t, n) && (f.m[n] = t[n]);
-            if (i) var u = i(f);
+          if (r.some((u) => 0 !== e[u])) {
+            for (b in t) f.o(t, b) && (f.m[b] = t[b]);
+            if (i) var s = i(f);
           }
-          for (d && d(b); o < r.length; o++) f.o(e, (l = r[o])) && e[l] && e[l][0](), (e[r[o]] = 0);
-          return f.O(u);
+          for (c && c(n); o < r.length; o++) f.o(e, (l = r[o])) && e[l] && e[l][0](), (e[r[o]] = 0);
+          return f.O(s);
         },
         a = (self.webpackChunkngx_new = self.webpackChunkngx_new || []);
-      a.forEach(c.bind(null, 0)), (a.push = c.bind(null, a.push.bind(a)));
+      a.forEach(d.bind(null, 0)), (a.push = d.bind(null, a.push.bind(a)));
     })();
 })();

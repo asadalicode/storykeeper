@@ -1,6 +1,6 @@
 <ion-content class="ion-page">
   <div [class.web-page]="isWeb">
-    <ion-card class="ion-text-center" [class.header-web]="isWeb">
+    <ion-card class="ion-text-center ion-card-as-header" [class.header-web]="isWeb">
       <ion-header class="ion-no-padding ion-no-border" *ngIf="!isWeb">
         <ion-toolbar>
           <ion-buttons slot="start">
@@ -29,8 +29,9 @@
           </div>
 
           <ion-list>
-            <app-list-item></app-list-item>
-            <app-list-item></app-list-item>
+            <ng-container *ngFor="let book of mybooks">
+              <app-list-item [item]="book"></app-list-item>
+            </ng-container>
           </ion-list>
         </section>
 
@@ -40,51 +41,30 @@
           </div>
 
           <ion-list slot="content">
-            <ion-item lines="none" class="ion-no-padding">
-              <ion-label
-                class="ion-text-wrap"
-                fxLayout.xs="column"
-                fxLayout="row"
-                fxLayoutAlign.gt-xs="space-between center"
-              >
-                <app-list-item></app-list-item>
-                <div class="action-button">
-                  <ion-button
-                    type="button"
-                    (click)="openRequestPopup()"
-                    class="default-button sm ion-text-capitalize"
-                    [color]="'primary'"
-                    expand="block"
-                    translate
-                  >
-                    Request Pending
-                  </ion-button>
-                </div>
-              </ion-label>
-            </ion-item>
-
-            <ion-item lines="none" class="ion-no-padding">
-              <ion-label
-                class="ion-text-wrap"
-                fxLayout.xs="column"
-                fxLayout="row"
-                fxLayoutAlign.gt-xs="space-between center"
-              >
-                <app-list-item></app-list-item>
-                <div class="action-button">
-                  <ion-button
-                    type="button"
-                    (click)="openRequestPopup()"
-                    class="default-button sm ion-text-capitalize"
-                    [color]="'primary'"
-                    expand="block"
-                    translate
-                  >
-                    Request Pending
-                  </ion-button>
-                </div>
-              </ion-label>
-            </ion-item>
+            <ng-container *ngFor="let book of bookForApproval">
+              <ion-item lines="none" class="ion-no-padding">
+                <ion-label
+                  class="ion-text-wrap"
+                  fxLayout.xs="column"
+                  fxLayout="row"
+                  fxLayoutAlign.gt-xs="space-between center"
+                >
+                  <app-list-item [item]="book"></app-list-item>
+                  <div class="action-button">
+                    <ion-button
+                      type="button"
+                      (click)="openRequestPopup()"
+                      class="default-button sm ion-text-capitalize"
+                      [color]="'primary'"
+                      expand="block"
+                      translate
+                    >
+                      Request Pending
+                    </ion-button>
+                  </div>
+                </ion-label>
+              </ion-item>
+            </ng-container>
           </ion-list>
         </section>
       </ion-grid>

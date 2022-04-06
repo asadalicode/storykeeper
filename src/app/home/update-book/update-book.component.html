@@ -61,7 +61,7 @@
               <ion-input
                 class="form-input"
                 type="text"
-                formControlName="recipientsName"
+                formControlName="recipientName"
                 autocomplete="new email"
               ></ion-input>
             </ion-item>
@@ -71,20 +71,21 @@
               <ion-input
                 class="form-input"
                 type="text"
-                formControlName="recipientsEmail"
+                formControlName="recipientEmail"
                 autocomplete="new email"
               ></ion-input>
             </ion-item>
           </ion-list>
           <div class="ion-padding-horizontal pt-3">
             <ion-button
+              style="text-transform: none"
               type="submit"
-              class="submit-button ion-text-capitalize"
+              class="submit-button"
               [disabled]="step1Form.invalid || isLoading"
               color="primary"
               expand="block"
               translate
-              >Next Step</ion-button
+              >Save and Continue</ion-button
             >
           </div>
         </form>
@@ -98,7 +99,7 @@
           <ion-label class="d-block" color="secondary">You have the option to add 24 chapters</ion-label>
           <p>After adding a question, you can edit the description and title</p>
         </ion-text>
-        <app-book-chapters [showSaveButton]="true" (save)="step = 3"></app-book-chapters>
+        <app-book-chapters [routeParams]="routeParams" [showSaveButton]="true" (save)="step = 3"></app-book-chapters>
       </div>
 
       <!-- step 3 add book image -->
@@ -108,8 +109,15 @@
             <h1>Edit my new Book</h1>
           </ion-text>
 
-          <div (click)="getImages()" class="image-container bg">
-            <ion-icon *ngIf="!imageUrl" class="plus-icon" name="add-circle-outline"></ion-icon>
+          <div (click)="isWeb ? fileInput.click() : getImages()" class="image-container bg">
+            <ion-icon *ngIf="!imageUrl" for="fileInput" class="plus-icon" name="add-circle-outline"></ion-icon>
+            <input
+              id="fileInput"
+              type="file"
+              #fileInput
+              (change)="onFileChange($event)"
+              style="visibility: hidden; position: absolute"
+            />
             <img *ngIf="imageUrl" class="img-fluid" [src]="imageUrl" alt="" />
           </div>
 
@@ -122,7 +130,7 @@
             class="default-button ion-text-capitalize"
             color="primary"
             expand="block"
-            (click)="save()"
+            (click)="postFile()"
             translate
           >
             Save

@@ -1,3 +1,4 @@
+import { Book } from '@app/@shared/models';
 import { ApiService } from './../../@shared/sevices/api.service';
 import { ImagePicker } from '@awesome-cordova-plugins/image-picker/ngx';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -15,6 +16,7 @@ export class EditBookComponent implements OnInit {
   step1Form!: FormGroup;
   isLoading = false;
   step = 1;
+  book!: Book;
   options = {
     width: 200,
     quality: 30,
@@ -86,7 +88,8 @@ export class EditBookComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getFileCredentials();
+    // this.getFileCredentials();
+    this.getBookDetails();
   }
 
   get routeParams() {
@@ -106,6 +109,16 @@ export class EditBookComponent implements OnInit {
     });
   }
 
+  getBookDetails() {
+    this.apiService.get(`/api/Books/${this.routeParams.bookId}`, Book).subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
   getFileCredentials() {
     console.log(this.routeParams);
     // this.apiService.get(`/api/Files/credentials/${this.routeParams.bookId}`).subscribe({

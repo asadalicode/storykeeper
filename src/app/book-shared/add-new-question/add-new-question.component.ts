@@ -1,9 +1,11 @@
+import { ApiService } from '@app/@shared/sevices/api.service';
 import { ModalController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Qusetion } from '@app/@shared/models/book';
 import { random } from 'lodash';
 import { ModalDismissRole } from '@app/@shared/constants';
+import { Question } from '@app/@shared/models';
+import { Story } from '@app/@shared/models/bookQuestion';
 
 @Component({
   selector: 'app-add-new-question',
@@ -13,7 +15,12 @@ import { ModalDismissRole } from '@app/@shared/constants';
 export class AddNewQuestionComponent implements OnInit {
   questionForm!: FormGroup;
   isLoading = false;
-  constructor(private formBuilder: FormBuilder, private modalController: ModalController) {}
+  bookId!: number;
+  constructor(
+    private formBuilder: FormBuilder,
+    private apiService: ApiService,
+    private modalController: ModalController
+  ) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -24,21 +31,26 @@ export class AddNewQuestionComponent implements OnInit {
       description: ['', [Validators.required]],
     });
   }
+
   dismiss(value = false) {
     this.modalController.dismiss('button clicked');
   }
 
   save() {
-    console.log(this.questionForm.value);
-    let quest: Qusetion = {
+    this.isLoading = true;
+    let story: Story = {
       question: this.questionForm.value.question,
-      id: Math.random(),
-      thumbnail: '',
-      type: 'Added Questions',
-      description: 'New Question added',
+      description: this.questionForm.value.description,
     };
 
-    let role = ModalDismissRole.submitted;
-    this.modalController.dismiss(quest, role);
+    this.apiService.post(`/api/books/${this.bookId}/Stories`, story).subscribe(
+      (res) => {
+        this.modalController.dismiss(story, ModalDismissRole.submitted);
+        this.isLoading = false;
+      },
+      (error) => {
+        this.isLoading = false;
+      }
+    );
   }
 }

@@ -6949,8 +6949,7 @@ ion-segment ion-segment-button::part(indicator) {
 .grid-container .book-thumbnail {
   background: #dfe2e9;
   height: 230px;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 100%;
   border-radius: 16px;
   overflow: hidden;
 }
@@ -7023,6 +7022,53 @@ ion-toolbar ion-back-button {
   font-size: 30px;
   height: 30px;
 }
+.ion-card-as-header {
+  margin: 0;
+  box-shadow: none;
+  --background: linear-gradient(164.45deg, var(--ion-color-primary) 33.07%, #3b4960 91.99%);
+  --color: #fff;
+  border-radius: 0 0 30px 30px;
+}
+.ion-card-as-header h1 {
+  color: #fff;
+}
+.ion-card-as-header.header-web {
+  text-align: left !important;
+  position: relative;
+  right: 0;
+  top: 11px;
+  --background: #fff !important;
+  --color: #242f40;
+  margin-bottom: 32px;
+  border-radius: 0;
+}
+.ion-card-as-header.header-web h1 {
+  color: #242f40;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.ion-card-as-header.header-web p {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 300;
+}
+.ion-card-as-header.header-web .actions {
+  position: absolute;
+  right: 0;
+  top: 15px;
+  margin: 0 !important;
+}
+.status-finished,
+.status-published {
+  color: var(--ion-color-success);
+}
+.status-inprogress {
+  color: #5ea7dc;
+}
+.status-pending {
+  color: var(--ion-color-danger);
+}
 .modal-popup {
   --border-radius: 8px;
   --height: auto;
@@ -7063,8 +7109,8 @@ ion-toolbar ion-back-button {
 .modal-popup .ion-page .subtitle {
   font-weight: 400;
   font-size: 18px;
-  line-height: 20px;
-  margin: 0;
+  line-height: 30px;
+  margin: 10px;
   color: var(--ion-color-medium);
 }
 .modal-popup ion-radio:before {
