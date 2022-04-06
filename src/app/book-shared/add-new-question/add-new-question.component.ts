@@ -37,22 +37,20 @@ export class AddNewQuestionComponent implements OnInit {
   }
 
   save() {
-    console.log(this.questionForm.value);
-    let quest: Question = {
-      question: this.questionForm.value.question,
-      id: Math.random(),
-      thumbnail: '',
-      type: 'Added Questions',
-      description: 'New Question added',
-    };
-
+    this.isLoading = true;
     let story: Story = {
       question: this.questionForm.value.question,
       description: this.questionForm.value.description,
     };
 
-    this.apiService.post(`/api/books/${this.bookId}/Stories`, story).subscribe((res) => {
-      this.modalController.dismiss(story, ModalDismissRole.submitted);
-    });
+    this.apiService.post(`/api/books/${this.bookId}/Stories`, story).subscribe(
+      (res) => {
+        this.modalController.dismiss(story, ModalDismissRole.submitted);
+        this.isLoading = false;
+      },
+      (error) => {
+        this.isLoading = false;
+      }
+    );
   }
 }

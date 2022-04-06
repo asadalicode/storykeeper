@@ -20,7 +20,7 @@ export class UpdateBookComponent implements OnInit {
   step1Form!: FormGroup;
   isLoading = false;
   book!: BookDetail;
-  step = 3;
+  step = 1;
   options = {
     width: 200,
     maximumImagesCount: 1,
@@ -155,9 +155,16 @@ export class UpdateBookComponent implements OnInit {
   }
 
   saveStep1() {
-    this.apiService.put(`/api/Books/${this.routeParams.bookId}`, this.step1Form.value).subscribe((res) => {
-      this.step = 2;
-    });
+    this.isLoading = true;
+    this.apiService.put(`/api/Books/${this.routeParams.bookId}`, this.step1Form.value).subscribe(
+      (res) => {
+        this.step = 2;
+        this.isLoading = false;
+      },
+      (error) => {
+        this.isLoading = false;
+      }
+    );
   }
 
   async newQustion() {

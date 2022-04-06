@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1648022521911,
+  "timestamp": 1649237398248,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -76,13 +76,13 @@
         "/common.bdb20ed26f91228d.js",
         "/favicon.ico",
         "/index.html",
-        "/main.7a7121a71538c34b.js",
+        "/main.a720347a8246866a.js",
         "/manifest.webmanifest",
         "/polyfills-core-js.08fb6cb7ffd5bf44.js",
         "/polyfills-dom.de5aa1c0480698a8.js",
         "/polyfills.525362d90f3d19a9.js",
-        "/runtime.ffdfad8d89820ff8.js",
-        "/styles.0507f0ff8b1b0912.css"
+        "/runtime.e37e409fb4a09770.js",
+        "/styles.9350be49c5dbc0af.css"
       ],
       "patterns": []
     },
@@ -123,12 +123,14 @@
         "/assets/images/instagram.svg",
         "/assets/images/login-backgroud.svg",
         "/assets/images/minus-square.svg",
+        "/assets/images/no-published-book.svg",
         "/assets/images/paypal.svg",
         "/assets/images/people.svg",
         "/assets/images/play.svg",
         "/assets/images/plus-square.svg",
         "/assets/images/profile.png",
         "/assets/images/recording-placeholder.png",
+        "/assets/images/sendstory.svg",
         "/assets/images/sorry.svg",
         "/assets/images/stop.svg",
         "/assets/images/twiter.svg",
@@ -244,12 +246,14 @@
     "/assets/images/instagram.svg": "7451e099d6f59c2bdfbc5fe0987f8edcc5e3de1f",
     "/assets/images/login-backgroud.svg": "513e82fc10a37315f6cebdcb960adffa6f48d930",
     "/assets/images/minus-square.svg": "825454d37e907953a8d1ad06b7a8b609d554c378",
+    "/assets/images/no-published-book.svg": "2dc7701f7e6d8296cd0658cc31deba2aa501171e",
     "/assets/images/paypal.svg": "a0e2759613bdeb9006e3d2442a92171e15b5ea98",
     "/assets/images/people.svg": "ff2d35edd56da6af4e9d550ed7844d8a8bf36cd6",
     "/assets/images/play.svg": "7aefdf4767375b0f59770aab6fd22cacae72629b",
     "/assets/images/plus-square.svg": "7b132738bbdedd4cc6014310406035cf3ab19eee",
     "/assets/images/profile.png": "6f5e147127fa9b64dcc6a5ab72375017376ec23b",
     "/assets/images/recording-placeholder.png": "d6a04689352600e951eaa2b55643f220e539de3d",
+    "/assets/images/sendstory.svg": "8a21829bd90009367a01bba60398c1fee4f0f80d",
     "/assets/images/sorry.svg": "5a4dc1d73e2502e1b291a1e1c40a7afcf7070573",
     "/assets/images/stop.svg": "8b1796d30d5299fee50c9d6d097c030ecbc8b227",
     "/assets/images/twiter.svg": "6c40715541e8d56e05f58ca962c2e7b6f5f32396",
@@ -270,14 +274,14 @@
     "/common.bdb20ed26f91228d.js": "d76143342ef8004ce307ab4255e156158ec6d29a",
     "/default_checkbox.b09829c4cd0ef2ee.svg": "da5ddcad0d47a6e1187376f094060200534b4470",
     "/favicon.ico": "b65083d46bbf63692d5d2cdd69622e6d7ecae317",
-    "/index.html": "c6b04259f01a343a5e7447edbafa38a93bd4f545",
-    "/main.7a7121a71538c34b.js": "7470d3d3f6bc2353447f583aa05b66fddd377596",
+    "/index.html": "23047b34ad727fe263ae7694538e58b8dc0d9e13",
+    "/main.a720347a8246866a.js": "88d78df2eee6b2a073320e0282049b5a9f495670",
     "/manifest.webmanifest": "e4db7587bbdfd9713d0d76ef42a3f162fd3ec59d",
     "/polyfills-core-js.08fb6cb7ffd5bf44.js": "1c0affce64761aa61df671dc621e87882d4fe684",
     "/polyfills-dom.de5aa1c0480698a8.js": "c6cdaed5253f39111504b988ef6c4df86ce19753",
     "/polyfills.525362d90f3d19a9.js": "ef4604fa68046fc5d94f9e26c1b5a01531108829",
-    "/runtime.ffdfad8d89820ff8.js": "fbb885da43bf0861cc29017436f47c45032dd19f",
-    "/styles.0507f0ff8b1b0912.css": "952b4e981b503187f2ba538c9a710ef4dfd57df1"
+    "/runtime.e37e409fb4a09770.js": "3cdbaed5c459f328ed1409d800e2271dd7c0bb3c",
+    "/styles.9350be49c5dbc0af.css": "a8ebe3a852fce91ac21cc0829fbd6228d6bae3ef"
   },
   "navigationUrls": [
     {

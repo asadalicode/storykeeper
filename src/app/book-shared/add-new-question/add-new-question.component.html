@@ -28,6 +28,7 @@
           <div class="w-100 ion-padding-horizontal mt-4 mb-2">
             <ion-button
               type="submit"
+              [disabled]="questionForm.invalid || isLoading"
               class="default-button ion-text-capitalize"
               color="primary"
               expand="block"
