@@ -9,7 +9,7 @@ import { env } from './.env';
 export const environment = {
   production: true,
   version: env['npm_package_version'],
-  serverUrl: 'http://54.91.228.241:8080',
+  serverUrl: 'https://api.storykeeper.app',
   defaultLanguage: 'en-US',
   supportedLanguages: ['en-US', 'es-ES'],
   api: 'https://j3x0ln9gj7.execute-api.ap-northeast-1.amazonaws.com/dev/',
