@@ -12,8 +12,8 @@ export enum ModalDismissRole {
 export enum myLibraryTabs {
   'all' = '0',
   'pending' = '1',
-  'inprogress' = '2',
-  'published' = '3',
+  'inprogress' = '3',
+  'published' = '5',
   'shared' = '4',
 }
 

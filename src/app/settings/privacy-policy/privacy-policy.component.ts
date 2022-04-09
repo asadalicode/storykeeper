@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SettingsData } from '@app/@shared/models';
+import { QACategory, SettingsData } from '@app/@shared/models';
 import { ApiService } from '@app/@shared/sevices/api.service';
 import { Platform } from '@ionic/angular';
 
@@ -20,7 +20,7 @@ export class PrivacyPolicyComponent implements OnInit {
   }
 
   getPrivacyData() {
-    this.apiService.get('/api/InfoData/GetByType/2').subscribe({
+    this.apiService.get('/api/InfoData/GetByType/2', QACategory).subscribe({
       complete: () => {
         console.log('complate');
       },

@@ -1,3 +1,4 @@
+import { ApiService } from './../../@shared/sevices/api.service';
 import { ModalController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit, Input } from '@angular/core';
@@ -10,11 +11,16 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ShareBookComponent implements OnInit {
   shareFrom!: FormGroup;
   @Input() title: string = '';
-  constructor(private formBuilder: FormBuilder, private modalController: ModalController) {}
+  @Input() bookId: string = '';
+  constructor(
+    private formBuilder: FormBuilder,
+    private apiService: ApiService,
+    private modalController: ModalController
+  ) {}
 
   ngOnInit(): void {
     this.shareFrom = this.formBuilder.group({
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
     });
   }
 
@@ -24,6 +30,12 @@ export class ShareBookComponent implements OnInit {
 
   save() {
     console.log(this.shareFrom.value);
+    this.apiService.post(`/api/Books/${this.bookId}/share`, this.shareFrom.value).subscribe(
+      (res) => {},
+      (error) => {
+        console.log(error);
+      }
+    );
     this.dismiss(false);
   }
 }

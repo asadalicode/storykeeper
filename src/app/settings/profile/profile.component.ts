@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Profile } from '@app/@shared/models';
 import { ApiService } from '@app/@shared/sevices/api.service';
 import { ToastService } from '@app/@shared/sevices/toast.service';
 import { CredentialsService } from '@app/auth';
@@ -43,7 +44,7 @@ export class ProfileComponent implements OnInit {
 
   getUserInfo() {
     console.log(this.userId);
-    this.apiService.get(`/api/Users/${this.userId}`).subscribe((res: any) => {
+    this.apiService.getDetails(`/api/Users/${this.userId}`, Profile).subscribe((res: any) => {
       console.log(res);
       if (res) {
         this.profileForm.patchValue(res);

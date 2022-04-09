@@ -18,6 +18,8 @@
           [question]="quest"
         ></app-question-card>
       </ng-container>
+
+      <app-no-data-found message="No question added yet." *ngIf="!addedQuestionList.length"></app-no-data-found>
     </ion-list>
   </ion-accordion>
   <ion-accordion

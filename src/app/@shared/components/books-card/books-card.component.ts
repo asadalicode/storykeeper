@@ -15,8 +15,10 @@ export class BooksCardComponent implements OnInit {
 
   updateBook(book: Book) {
     if (book.status == 1) {
+      // pending
       this.router.navigate([`tabs/my-library/update-book/${book.id}/${book.title}`]);
-    } else if (book.status == 2) {
+    } else if (book.status == 3) {
+      // inprogress
       this.router.navigate([`tabs/my-library/book/${book.id}/${book.title}`]);
     }
   }

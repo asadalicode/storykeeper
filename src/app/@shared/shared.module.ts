@@ -17,6 +17,7 @@ import { MobileHeaderComponent } from './components/mobile-header/mobile-header.
 import { AudioPlayerComponent } from './components/audio-player/audio-player.component';
 import { AngularWavesurferServiceModule } from 'angular-wavesurfer-service';
 import { RecordingPlayerComponent } from './components/recording-player/recording-player.component';
+import { NoDataFoundComponent } from './components/no-data-found/no-data-found.component';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { RecordingPlayerComponent } from './components/recording-player/recordin
     MobileHeaderComponent,
     AudioPlayerComponent,
     RecordingPlayerComponent,
+    NoDataFoundComponent,
   ],
   exports: [
     LoaderComponent,
@@ -51,6 +53,7 @@ import { RecordingPlayerComponent } from './components/recording-player/recordin
     MobileHeaderComponent,
     AudioPlayerComponent,
     RecordingPlayerComponent,
+    NoDataFoundComponent,
   ],
 })
 export class SharedModule {}
