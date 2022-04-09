@@ -14518,7 +14518,7 @@
         }
       }
       function Ic(o, c) {
-        1 & o && (e.TgZ(0, 'span', 39), e._uU(1, 'Passwords does not match'), e.qZA());
+        1 & o && (e.TgZ(0, 'span', 39), e._uU(1, 'Passwords do not match'), e.qZA());
       }
       function Pc(o, c) {
         1 & o && e._UZ(0, 'app-footer');
@@ -14789,7 +14789,7 @@
               e.YNc(62, Ic, 2, 0, 'span', 20),
               e._uU(63, '\n              '),
               e.qZA(),
-              e._uU(64, '\n        \n            '),
+              e._uU(64, '\n            '),
               e.qZA(),
               e._uU(65, '\n\n            '),
               e.TgZ(66, 'div', 21),
