@@ -7069,6 +7069,9 @@ ion-toolbar ion-back-button {
 .status-pending {
   color: var(--ion-color-danger);
 }
+.small-errortext {
+  font-size: small;
+}
 .modal-popup {
   --border-radius: 8px;
   --height: auto;

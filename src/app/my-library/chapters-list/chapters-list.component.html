@@ -41,7 +41,7 @@
 
     <div [ngClass]="isWeb ? 'ion-no-padding' : 'ion-padding'">
       <ion-grid class="p-0 mt-3">
-        <app-book-chapters></app-book-chapters>
+        <app-book-chapters [routeParams]="routeParams"></app-book-chapters>
       </ion-grid>
     </div>
   </div>

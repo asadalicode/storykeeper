@@ -1,3 +1,4 @@
+import { QACategory } from './../../@shared/models/Category';
 import { Component, OnInit } from '@angular/core';
 import { SettingsData } from '@app/@shared/models';
 import { ApiService } from '@app/@shared/sevices/api.service';
@@ -9,7 +10,7 @@ import { Platform } from '@ionic/angular';
   styleUrls: ['./about.component.scss'],
 })
 export class AboutComponent implements OnInit {
-  dataModel!: SettingsData;
+  dataModel!: QACategory;
   constructor(private platform: Platform, private apiService: ApiService) {}
 
   ngOnInit(): void {
@@ -21,7 +22,7 @@ export class AboutComponent implements OnInit {
   }
 
   getAboutUs() {
-    this.apiService.get('/api/InfoData/GetByType/1').subscribe({
+    this.apiService.getDetails('/api/InfoData/GetByType/1', QACategory).subscribe({
       complete: () => {
         console.log('complate');
       },

@@ -4,6 +4,7 @@ import { IonAccordionGroup, Platform } from '@ionic/angular';
 import { ApiService } from '@app/@shared/sevices/api.service';
 import { forkJoin } from 'rxjs';
 import * as _ from 'lodash';
+import { Category, QACategory } from '@app/@shared/models';
 @Component({
   selector: 'app-help',
   templateUrl: './help.component.html',
@@ -52,8 +53,8 @@ export class HelpComponent implements OnInit {
   }
 
   getHelpData() {
-    const questionCategories = this.apiService.get('/api/QACategories');
-    const questionAnswers = this.apiService.get('/api/InfoData/QA');
+    const questionCategories = this.apiService.get('/api/QACategories', Category);
+    const questionAnswers = this.apiService.get('/api/InfoData/QA', QACategory);
     forkJoin([questionCategories, questionAnswers]).subscribe((res: any) => {
       if (res) {
         this.categories = res[0];

@@ -26,37 +26,10 @@
 
         <ion-list>
           <ion-item lines="none" class="ion-no-padding">
-            <ion-label>lena@gmail.com</ion-label>
-
-            <ion-label color="danger" class="cursor-pointer" [ngClass]="isWeb ? 'text-center' : 'text-right'">
-              <span *ngIf="isWeb">Repeat</span>
-              <ion-icon slot="end" color="danger" name="close-outline"></ion-icon>
-            </ion-label>
-          </ion-item>
-
-          <ion-item lines="none" class="ion-no-padding">
-            <ion-label>user1@gmail.com</ion-label>
-
-            <ion-label color="danger" class="cursor-pointer" [ngClass]="isWeb ? 'text-center' : 'text-right'">
-              <span *ngIf="isWeb">Repeat</span>
-              <ion-icon slot="end" color="danger" name="close-outline"></ion-icon>
-            </ion-label>
-          </ion-item>
-
-          <ion-item lines="none" class="ion-no-padding">
-            <ion-label>user2@gmail.com</ion-label>
-
-            <ion-label color="danger" class="cursor-pointer" [ngClass]="isWeb ? 'text-center' : 'text-right'">
-              <span *ngIf="isWeb">Repeat</span>
-              <ion-icon slot="end" color="danger" name="close-outline"></ion-icon>
-            </ion-label>
-          </ion-item>
-
-          <ion-item lines="none" class="ion-no-padding">
             <ion-label>user3@gmail.com</ion-label>
 
             <ion-label color="danger" class="cursor-pointer" [ngClass]="isWeb ? 'text-center' : 'text-right'">
-              <span *ngIf="isWeb">Repeat</span>
+              <span *ngIf="isWeb">Delete</span>
               <ion-icon slot="end" color="danger" name="close-outline"></ion-icon>
             </ion-label>
           </ion-item>
@@ -75,11 +48,11 @@
                 <ion-icon slot="end" color="danger" src="assets/images/plus-square.svg"></ion-icon>
                 <span>Add new Listener</span>
               </ion-label>
-              <p class="mt-2">You have empty 8 chapters out of 24</p>
+              <!-- <p class="mt-2">You have empty 8 chapters out of 24</p> -->
             </div>
           </ion-item>
 
-          <div class="btns-container pt-3">
+          <!-- <div class="btns-container pt-3">
             <ion-button type="submit" class="submit-button ion-text-capitalize" color="primary" expand="block" translate
               >Save Edits</ion-button
             >
@@ -92,7 +65,7 @@
               translate
               >Cancel</ion-button
             >
-          </div>
+          </div> -->
         </ion-list>
       </ion-grid>
     </div>

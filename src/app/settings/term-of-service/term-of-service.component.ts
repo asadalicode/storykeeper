@@ -1,7 +1,7 @@
 import { Platform } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '@app/@shared/sevices/api.service';
-import { SettingsData } from '@app/@shared/models';
+import { QACategory, SettingsData } from '@app/@shared/models';
 
 @Component({
   selector: 'app-term-of-service',
@@ -9,7 +9,7 @@ import { SettingsData } from '@app/@shared/models';
   styleUrls: ['./term-of-service.component.scss'],
 })
 export class TermOfServiceComponent implements OnInit {
-  dataModel!: SettingsData;
+  dataModel!: QACategory;
   constructor(private platform: Platform, private apiService: ApiService) {}
 
   ngOnInit(): void {
@@ -20,7 +20,7 @@ export class TermOfServiceComponent implements OnInit {
   }
 
   getTermsData() {
-    this.apiService.get('/api/InfoData/GetByType/3').subscribe({
+    this.apiService.getDetails('/api/InfoData/GetByType/3', QACategory).subscribe({
       complete: () => {
         console.log('complate');
       },

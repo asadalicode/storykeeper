@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AbstractControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoadingController, Platform } from '@ionic/angular';
 import { map } from 'rxjs/operators';
 import { forkJoin, from } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 
 import { environment } from '@env/environment';
-import { Logger, UntilDestroy, untilDestroyed } from '@shared';
+import { Logger, UntilDestroy, untilDestroyed, Utils } from '@shared';
 import { AuthenticationService } from '..';
 import { ToastService } from '@app/@shared/sevices/toast.service';
+
 const log = new Logger('signup');
 @UntilDestroy()
 @Component({
@@ -38,6 +39,10 @@ export class CreateNewAccountComponent implements OnInit {
 
   ngOnInit() {}
 
+  get f(): { [key: string]: AbstractControl } {
+    return this.signupForm?.controls;
+  }
+
   async signup() {
     this.isLoading = true;
     const signup$ = this.authenticationService.signup(this.signupForm.value);
@@ -62,7 +67,11 @@ export class CreateNewAccountComponent implements OnInit {
         (error) => {
           log.debug(`signup error: ${error}`);
           this.error = error;
-          this.toastService.showToast('error', 'Error occurred, Please contact Administrator');
+          for (var i in error.error) {
+            this.toastService.showToast('error', error.error[i][0]);
+          }
+
+          // this.toastService.showToast('error', 'Error occurred, Please contact Administrator');
         }
       );
   }
@@ -72,10 +81,15 @@ export class CreateNewAccountComponent implements OnInit {
   }
 
   private createForm() {
-    this.signupForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
-    });
+    this.signupForm = this.formBuilder.group(
+      {
+        email: ['', Validators.required],
+        password: ['', Validators.required],
+        confirmPassword: ['', Validators.required],
+      },
+      {
+        validators: [Utils.match('password', 'confirmPassword')],
+      }
+    );
   }
 }

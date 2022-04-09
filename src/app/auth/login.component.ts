@@ -166,7 +166,7 @@ export class LoginComponent implements OnInit {
         (error) => {
           log.debug(`Login error: ${error}`);
           this.error = error;
-          this.toastService.showToast('error', 'Email or password incorrect');
+          // this.toastService.showToast('error', 'Email or password incorrect');
         }
       );
   }

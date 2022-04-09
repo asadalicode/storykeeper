@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 
 import { environment } from '@env/environment';
 import { Logger } from '../logger.service';
+import { ToastService } from '@app/@shared/sevices/toast.service';
 
 const log = new Logger('ErrorHandlerInterceptor');
 
@@ -15,6 +16,7 @@ const log = new Logger('ErrorHandlerInterceptor');
   providedIn: 'root',
 })
 export class ErrorHandlerInterceptor implements HttpInterceptor {
+  constructor(private toastService: ToastService) {}
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(catchError((error) => this.errorHandler(error)));
   }
@@ -25,6 +27,17 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
       // Do something with the error
       log.error('Request error', response);
     }
+    let error: any = response;
+    if (typeof error.error == 'string') {
+      this.toastService.showToast('error', error?.error);
+    } else if (error.error.isSuccess == false) {
+      this.toastService.showToast('error', error?.error?.error);
+    } else if (error.error.responseMessage) {
+      this.toastService.showToast('error', error?.error?.responseMessage);
+    } else {
+      this.toastService.showToast('error', error?.message);
+    }
+
     throw response;
   }
 }
