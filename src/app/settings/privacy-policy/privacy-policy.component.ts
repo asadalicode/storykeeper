@@ -9,7 +9,7 @@ import { Platform } from '@ionic/angular';
   styleUrls: ['./privacy-policy.component.scss'],
 })
 export class PrivacyPolicyComponent implements OnInit {
-  dataModel!: SettingsData;
+  dataModel!: QACategory;
   constructor(private platform: Platform, private apiService: ApiService) {}
 
   ngOnInit(): void {
@@ -20,7 +20,7 @@ export class PrivacyPolicyComponent implements OnInit {
   }
 
   getPrivacyData() {
-    this.apiService.get('/api/InfoData/GetByType/2', QACategory).subscribe({
+    this.apiService.getDetails('/api/InfoData/GetByType/2', QACategory).subscribe({
       complete: () => {
         console.log('complate');
       },
