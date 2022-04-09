@@ -2,6 +2,7 @@ import { ApiService } from './../../@shared/sevices/api.service';
 import { ModalController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit, Input } from '@angular/core';
+import { ToastService } from '@app/@shared/sevices/toast.service';
 
 @Component({
   selector: 'app-share-book',
@@ -15,7 +16,8 @@ export class ShareBookComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private apiService: ApiService,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private toastService: ToastService
   ) {}
 
   ngOnInit(): void {
@@ -30,12 +32,14 @@ export class ShareBookComponent implements OnInit {
 
   save() {
     console.log(this.shareFrom.value);
-    this.apiService.post(`/api/Books/${this.bookId}/share`, this.shareFrom.value).subscribe(
-      (res) => {},
-      (error) => {
-        console.log(error);
-      }
-    );
-    this.dismiss(false);
+    this.apiService.post(`/api/Books/${this.bookId}/share`, this.shareFrom.value).subscribe({
+      complete: () => {
+        console.log('complate');
+      },
+      next: (res: any) => {
+        this.dismiss(false);
+      },
+      error: (error: any) => {},
+    });
   }
 }

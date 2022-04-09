@@ -64,6 +64,11 @@
                   [name]="!isVisibleConfirmPassword ? 'eye-off-outline' : 'eye-outline'"
                 ></ion-icon>
               </ion-item>
+              <ion-text color="danger">
+                <span *ngIf="f?.['confirmPassword']?.errors?.['matching']" class="ion-padding small-errortext" translate
+                  >Passwords does not match</span
+                >
+              </ion-text>
             </ion-list>
 
             <div class="social-signup" [class.d-flex-column]="!isWeb">
