@@ -4,7 +4,7 @@ import { Platform, ModalController, IonRouterOutlet } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { ShareBookComponent } from '@app/book-shared/share-book/share-book.component';
 import { ActivatedRoute } from '@angular/router';
-import { Book } from '@app/@shared/models';
+import { BookShare } from '@app/@shared/models';
 
 @Component({
   selector: 'app-view-sharing',
@@ -12,6 +12,7 @@ import { Book } from '@app/@shared/models';
   styleUrls: ['./view-sharing.component.scss'],
 })
 export class ViewSharingComponent implements OnInit {
+  sharedPeople: any = [];
   constructor(
     private platform: Platform,
     private routerOutlet: IonRouterOutlet,
@@ -35,8 +36,9 @@ export class ViewSharingComponent implements OnInit {
   }
 
   getListeners() {
-    this.apiService.get(`/api/Books/${this.routeParams.bookId}/shares`, Book).subscribe((res) => {
+    this.apiService.get(`/api/Books/${this.routeParams.bookId}/shares`, BookShare).subscribe((res) => {
       console.log(res);
+      this.sharedPeople = res;
     });
   }
 

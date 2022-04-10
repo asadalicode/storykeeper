@@ -25,14 +25,17 @@
         </ion-text>
 
         <ion-list>
-          <ion-item lines="none" class="ion-no-padding">
-            <ion-label>user3@gmail.com</ion-label>
-
-            <ion-label color="danger" class="cursor-pointer" [ngClass]="isWeb ? 'text-center' : 'text-right'">
-              <span *ngIf="isWeb">Delete</span>
-              <ion-icon slot="end" color="danger" name="close-outline"></ion-icon>
-            </ion-label>
-          </ion-item>
+          <div *ngIf="sharedPeople.length; then content; else no_content"></div>
+          <ng-template #content>
+            <ion-item *ngFor="let people of sharedPeople" lines="none" class="ion-no-padding">
+              <ion-label>{{ people?.email }}</ion-label>
+              <ion-label color="danger" class="cursor-pointer" [ngClass]="isWeb ? 'text-center' : 'text-right'">
+                <span *ngIf="isWeb">Delete</span>
+                <ion-icon slot="end" color="danger" name="close-outline"></ion-icon>
+              </ion-label>
+            </ion-item>
+          </ng-template>
+          <ng-template #no_content> <p class="small-errortext">The book has not been shared yet</p> </ng-template>
 
           <ion-item lines="none" class="ion-no-padding" fxLayout="column">
             <div>

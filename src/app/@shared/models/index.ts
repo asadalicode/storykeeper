@@ -6,3 +6,4 @@ export * from './Category';
 export * from './TemplateQuestions';
 export * from './settings';
 export * from './ImageCredientials';
+export * from './bookShare';
