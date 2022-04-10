@@ -34,17 +34,17 @@ export class HomeComponent implements OnInit {
   getBooks(status: number = 0) {
     this.isLoading = true;
     this.apiService.get('/api/Books', Book).subscribe((res) => {
-      res.push({
-        bookName: 'InProgressBook',
-        title: 'InProgressBook',
-        id: Math.random(),
-        image: 'https://www.linkpicture.com/q/book1.svg',
-        recipientUser: '',
-        senderUser: '',
-        status: 2,
-        type: 1,
-      });
-      this.isLoading = false;
+      // res.push({
+      //   bookName: 'InProgressBook',
+      //   title: 'InProgressBook',
+      //   id: Math.random(),
+      //   image: 'https://www.linkpicture.com/q/book1.svg',
+      //   recipientUser: '',
+      //   senderUser: '',
+      //   status: 1,
+      //   type: 1,
+      // });
+
       if (status == 0) {
         this.books = [...res];
       } else {
@@ -54,6 +54,7 @@ export class HomeComponent implements OnInit {
 
         this.books = [...this.books];
       }
+      this.isLoading = false;
       console.log(this.books);
 
       this.isAuthor = this.books.length > 0 ? true : false;

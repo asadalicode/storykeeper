@@ -30,6 +30,8 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
     let error: any = response;
     if (typeof error.error == 'string') {
       this.toastService.showToast('error', error?.error);
+    } else if (typeof error.error.errorMessage == 'string') {
+      this.toastService.showToast('error', error?.error?.errorMessage);
     } else if (error.error.isSuccess == false) {
       this.toastService.showToast('error', error?.error?.error);
     } else if (error.error.responseMessage) {
