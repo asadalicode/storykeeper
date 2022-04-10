@@ -16,7 +16,7 @@
       </ion-header>
       <ion-card-content [ngClass]="isWeb ? 'ion-no-padding' : 'ion-padding'" [class.mb-4]="isWeb">
         <ion-card-title>
-          <h1 translate>My New Book#2</h1>
+          <h1 translate>{{ routeParams ? routeParams.bookTitle : 'My New Book' }}</h1>
         </ion-card-title>
         <div class="ion-padding-horizontal mt-4 mb-3 actions" fxLayout="row" fxLayoutGap="20px">
           <ion-button
