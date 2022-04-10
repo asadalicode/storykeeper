@@ -7070,6 +7070,7 @@ ion-toolbar ion-back-button {
   color: var(--ion-color-danger);
 }
 .small-errortext {
+  color: var(--ion-color-tertiary);
   font-size: small;
 }
 .modal-popup {
