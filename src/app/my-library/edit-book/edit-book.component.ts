@@ -7,6 +7,7 @@ import { Platform, ModalController, IonRouterOutlet } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, Input } from '@angular/core';
 import { Utils } from '@app/@shared';
+import { ToastService } from '@app/@shared/sevices/toast.service';
 
 @Component({
   selector: 'app-edit-book',
@@ -34,7 +35,8 @@ export class EditBookComponent implements OnInit {
     private router: Router,
     private imagePicker: ImagePicker,
     private apiService: ApiService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toastService: ToastService
   ) {
     this.createForm();
   }
@@ -46,7 +48,7 @@ export class EditBookComponent implements OnInit {
 
   private createForm() {
     this.step1Form = this.formBuilder.group({
-      bookTitle: ['', [Validators.required]],
+      name: ['', [Validators.required]],
       recipientName: ['', [Validators.required]],
       recipientEmail: ['', [Validators.required, Validators.email]],
       image: [''],
@@ -57,7 +59,7 @@ export class EditBookComponent implements OnInit {
     this.apiService.getDetails(`/api/Books/${this.bookId}`, BookDetail).subscribe((res) => {
       this.book = res;
       this.step1Form.setValue({
-        bookTitle: this.book.title,
+        name: this.book.title,
         image: this.book.image,
         recipientName: this.book.recipientName,
         recipientEmail: this.book.recipientEmail,
@@ -115,12 +117,19 @@ export class EditBookComponent implements OnInit {
     this.router.navigate([url]);
   }
 
-  saveStep1() {
-    this.step = 2;
-  }
-
   save() {
-    this.dismiss();
+    this.isLoading = true;
+    this.apiService.put(`/api/Books/${this.bookId}`, this.step1Form.value).subscribe(
+      (res) => {
+        this.step = 2;
+        this.toastService.showToast('success', 'Book updated successfully');
+        this.dismiss();
+        this.isLoading = false;
+      },
+      (error) => {
+        this.isLoading = false;
+      }
+    );
   }
   dismiss() {
     this.modalController.dismiss('button clicked');
