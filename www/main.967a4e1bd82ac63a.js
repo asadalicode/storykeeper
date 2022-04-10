@@ -61,7 +61,7 @@
         }
       }
       const _e = (Se) => {
-          var Re, pe, Ae, Ee, Ue;
+          var Re, pe, Ae, Te, Ue;
           const J = Se.CapacitorCustomPlatform || null,
             fe = Se.Capacitor || {},
             Q = (fe.Plugins = fe.Plugins || {}),
@@ -100,7 +100,7 @@
                 return !(!(null == We ? void 0 : We.platforms.has(G())) && !Fe(je));
               }),
             Fe =
-              (null === (Ee = null == B ? void 0 : B.currentPlatform) || void 0 === Ee ? void 0 : Ee.getPluginHeader) ||
+              (null === (Te = null == B ? void 0 : B.currentPlatform) || void 0 === Te ? void 0 : Te.getPluginHeader) ||
               ((je) => {
                 var We;
                 return null === (We = fe.PluginHeaders) || void 0 === We ? void 0 : We.find((pt) => pt.name === je);
@@ -295,7 +295,7 @@
         }
         notifyListeners(Re, pe) {
           const Ae = this.listeners[Re];
-          Ae && Ae.forEach((Ee) => Ee(pe));
+          Ae && Ae.forEach((Te) => Te(pe));
         }
         hasListeners(Re) {
           return !!this.listeners[Re].length;
@@ -319,9 +319,9 @@
         removeListener(Re, pe) {
           var Ae = this;
           return (0, l.Z)(function* () {
-            const Ee = Ae.listeners[Re];
-            if (!Ee) return;
-            const Ue = Ee.indexOf(pe);
+            const Te = Ae.listeners[Re];
+            if (!Te) return;
+            const Ue = Te.indexOf(pe);
             Ae.listeners[Re].splice(Ue, 1), Ae.listeners[Re].length || Ae.removeWindowListener(Ae.windowListeners[Re]);
           })();
         }
@@ -407,7 +407,7 @@
         ye = (k(2733), k(9533));
       k(2335), k(2993), k(5893), k(2441), k(9955);
       var B = k(4671),
-        R = k(4482),
+        U = k(4482),
         G = k(5403);
       function F(g, N) {
         return g === N;
@@ -431,15 +431,15 @@
           : setTimeout(g);
       let Ht = (() => {
         class g {
-          constructor(m, U) {
-            (this.injector = m), (this.el = U), (this.onChange = () => {}), (this.onTouched = () => {});
+          constructor(m, O) {
+            (this.injector = m), (this.el = O), (this.onChange = () => {}), (this.onTouched = () => {});
           }
           writeValue(m) {
             (this.el.nativeElement.value = this.lastValue = null == m ? '' : m), nn(this.el);
           }
-          handleChangeEvent(m, U) {
+          handleChangeEvent(m, O) {
             m === this.el.nativeElement &&
-              (U !== this.lastValue && ((this.lastValue = U), this.onChange(U)), nn(this.el));
+              (O !== this.lastValue && ((this.lastValue = O), this.onChange(O)), nn(this.el));
           }
           _handleBlurEvent(m) {
             m === this.el.nativeElement && (this.onTouched(), nn(this.el));
@@ -463,13 +463,13 @@
             } catch (he) {}
             if (!m) return;
             m.statusChanges && (this.statusChanges = m.statusChanges.subscribe(() => nn(this.el)));
-            const U = m.control;
-            U &&
+            const O = m.control;
+            O &&
               ['markAsTouched', 'markAllAsTouched', 'markAsUntouched', 'markAsDirty', 'markAsPristine'].forEach(
                 (gt) => {
-                  if (void 0 !== U[gt]) {
-                    const jt = U[gt].bind(U);
-                    U[gt] = (...on) => {
+                  if (void 0 !== O[gt]) {
+                    const jt = O[gt].bind(O);
+                    O[gt] = (...on) => {
                       jt(...on), nn(this.el);
                     };
                   }
@@ -483,10 +483,10 @@
           }),
           (g.ɵdir = l.lG2({
             type: g,
-            hostBindings: function (m, U) {
+            hostBindings: function (m, O) {
               1 & m &&
                 l.NdJ('ionBlur', function (gt) {
-                  return U._handleBlurEvent(gt.target);
+                  return O._handleBlurEvent(gt.target);
                 });
             },
           })),
@@ -498,31 +498,31 @@
             const N = g.nativeElement,
               m = Sn(N);
             ri(N, m);
-            const U = N.closest('ion-item');
-            U && ri(U, m);
+            const O = N.closest('ion-item');
+            O && ri(O, m);
           });
         },
         Sn = (g) => {
           const N = g.classList,
             m = [];
-          for (let U = 0; U < N.length; U++) {
-            const he = N.item(U);
+          for (let O = 0; O < N.length; O++) {
+            const he = N.item(O);
             null !== he && bi(he, 'ng-') && m.push(`ion-${he.substr(3)}`);
           }
           return m;
         },
         ri = (g, N) => {
           const m = g.classList;
-          ['ion-valid', 'ion-invalid', 'ion-touched', 'ion-untouched', 'ion-dirty', 'ion-pristine'].forEach((U) =>
-            m.remove(U)
+          ['ion-valid', 'ion-invalid', 'ion-touched', 'ion-untouched', 'ion-dirty', 'ion-pristine'].forEach((O) =>
+            m.remove(O)
           ),
-            N.forEach((U) => m.add(U));
+            N.forEach((O) => m.add(O));
         },
         bi = (g, N) => g.substr(0, N.length) === N;
       let Mi = (() => {
           class g extends Ht {
-            constructor(m, U) {
-              super(m, U);
+            constructor(m, O) {
+              super(m, O);
             }
             _handleIonSelect(m) {
               this.handleChangeEvent(m, m.checked);
@@ -535,10 +535,10 @@
             (g.ɵdir = l.lG2({
               type: g,
               selectors: [['ion-radio']],
-              hostBindings: function (m, U) {
+              hostBindings: function (m, O) {
                 1 & m &&
                   l.NdJ('ionSelect', function (gt) {
-                    return U._handleIonSelect(gt.target);
+                    return O._handleIonSelect(gt.target);
                   });
               },
               features: [l._Bn([{ provide: e.JU, useExisting: g, multi: !0 }]), l.qOj],
@@ -548,8 +548,8 @@
         })(),
         qn = (() => {
           class g extends Ht {
-            constructor(m, U) {
-              super(m, U);
+            constructor(m, O) {
+              super(m, O);
             }
             _handleChangeEvent(m) {
               this.handleChangeEvent(m, m.value);
@@ -562,10 +562,10 @@
             (g.ɵdir = l.lG2({
               type: g,
               selectors: [['ion-range'], ['ion-select'], ['ion-radio-group'], ['ion-segment'], ['ion-datetime']],
-              hostBindings: function (m, U) {
+              hostBindings: function (m, O) {
                 1 & m &&
                   l.NdJ('ionChange', function (gt) {
-                    return U._handleChangeEvent(gt.target);
+                    return O._handleChangeEvent(gt.target);
                   });
               },
               features: [l._Bn([{ provide: e.JU, useExisting: g, multi: !0 }]), l.qOj],
@@ -575,8 +575,8 @@
         })(),
         An = (() => {
           class g extends Ht {
-            constructor(m, U) {
-              super(m, U);
+            constructor(m, O) {
+              super(m, O);
             }
             _handleInputEvent(m) {
               this.handleChangeEvent(m, m.value);
@@ -589,10 +589,10 @@
             (g.ɵdir = l.lG2({
               type: g,
               selectors: [['ion-input', 3, 'type', 'number'], ['ion-textarea'], ['ion-searchbar']],
-              hostBindings: function (m, U) {
+              hostBindings: function (m, O) {
                 1 & m &&
                   l.NdJ('ionChange', function (gt) {
-                    return U._handleInputEvent(gt.target);
+                    return O._handleInputEvent(gt.target);
                   });
               },
               features: [l._Bn([{ provide: e.JU, useExisting: g, multi: !0 }]), l.qOj],
@@ -602,39 +602,39 @@
         })();
       const fi = (g, N) => {
           const m = g.prototype;
-          N.forEach((U) => {
-            Object.defineProperty(m, U, {
+          N.forEach((O) => {
+            Object.defineProperty(m, O, {
               get() {
-                return this.el[U];
+                return this.el[O];
               },
               set(he) {
-                this.z.runOutsideAngular(() => (this.el[U] = he));
+                this.z.runOutsideAngular(() => (this.el[O] = he));
               },
             });
           });
         },
         Ei = (g, N) => {
           const m = g.prototype;
-          N.forEach((U) => {
-            m[U] = function () {
+          N.forEach((O) => {
+            m[O] = function () {
               const he = arguments;
-              return this.z.runOutsideAngular(() => this.el[U].apply(this.el, he));
+              return this.z.runOutsideAngular(() => this.el[O].apply(this.el, he));
             };
           });
         },
         Xt = (g, N, m) => {
-          m.forEach((U) => (g[U] = (0, oe.R)(N, U)));
+          m.forEach((O) => (g[O] = (0, oe.R)(N, O)));
         };
       function Ot(g) {
         return function (m) {
-          const { defineCustomElementFn: U, inputs: he, methods: gt } = g;
-          return void 0 !== U && U(), he && fi(m, he), gt && Ei(m, gt), m;
+          const { defineCustomElementFn: O, inputs: he, methods: gt } = g;
+          return void 0 !== O && O(), he && fi(m, he), gt && Ei(m, gt), m;
         };
       }
       let Ti = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement);
             }
           };
           return (
@@ -655,7 +655,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -675,8 +675,8 @@
         })(),
         Zn = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement), Xt(this, this.el, ['ionChange']);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement), Xt(this, this.el, ['ionChange']);
             }
           };
           return (
@@ -698,7 +698,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -718,8 +718,8 @@
         })(),
         Jt = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement);
             }
           };
           return (
@@ -732,7 +732,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -744,8 +744,8 @@
         })(),
         _n = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement);
             }
           };
           return (
@@ -758,7 +758,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -770,8 +770,8 @@
         })(),
         fr = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement);
             }
           };
           return (
@@ -794,7 +794,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -814,8 +814,8 @@
         })(),
         br = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement), Xt(this, this.el, ['ionFocus', 'ionBlur']);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement), Xt(this, this.el, ['ionFocus', 'ionBlur']);
             }
           };
           return (
@@ -841,7 +841,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -873,8 +873,8 @@
         })(),
         Zi = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement), Xt(this, this.el, ['ionCollapsedClick']);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement), Xt(this, this.el, ['ionCollapsedClick']);
             }
           };
           return (
@@ -894,7 +894,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -914,8 +914,8 @@
         })(),
         Ki = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement), Xt(this, this.el, ['ionFocus', 'ionBlur']);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement), Xt(this, this.el, ['ionFocus', 'ionBlur']);
             }
           };
           return (
@@ -946,7 +946,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -983,8 +983,8 @@
         })(),
         un = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement);
             }
           };
           return (
@@ -998,7 +998,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -1010,8 +1010,8 @@
         })(),
         ti = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement);
             }
           };
           return (
@@ -1037,7 +1037,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -1069,8 +1069,8 @@
         })(),
         Dn = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement);
             }
           };
           return (
@@ -1084,7 +1084,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -1096,8 +1096,8 @@
         })(),
         Ii = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement);
             }
           };
           return (
@@ -1111,7 +1111,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -1123,8 +1123,8 @@
         })(),
         lr = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement);
             }
           };
           return (
@@ -1163,7 +1163,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -1208,10 +1208,10 @@
         })(),
         Vi = (() => {
           let g = class {
-            constructor(m, U, he) {
+            constructor(m, O, he) {
               (this.z = he),
                 m.detach(),
-                (this.el = U.nativeElement),
+                (this.el = O.nativeElement),
                 Xt(this, this.el, ['ionScrollStart', 'ionScroll', 'ionScrollEnd']);
             }
           };
@@ -1233,7 +1233,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -1254,8 +1254,8 @@
         })(),
         $ = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement);
             }
           };
           return (
@@ -1269,7 +1269,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -1281,8 +1281,8 @@
         })(),
         Qt = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement);
             }
           };
           return (
@@ -1296,7 +1296,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -1308,8 +1308,8 @@
         })(),
         Ie = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement);
             }
           };
           return (
@@ -1335,7 +1335,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -1355,10 +1355,10 @@
         })(),
         Le = (() => {
           let g = class {
-            constructor(m, U, he) {
+            constructor(m, O, he) {
               (this.z = he),
                 m.detach(),
-                (this.el = U.nativeElement),
+                (this.el = O.nativeElement),
                 Xt(this, this.el, ['ionImgWillLoad', 'ionImgDidLoad', 'ionError']);
             }
           };
@@ -1373,7 +1373,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -1385,10 +1385,10 @@
         })(),
         ut = (() => {
           let g = class {
-            constructor(m, U, he) {
+            constructor(m, O, he) {
               (this.z = he),
                 m.detach(),
-                (this.el = U.nativeElement),
+                (this.el = O.nativeElement),
                 Xt(this, this.el, ['ionInput', 'ionChange', 'ionBlur', 'ionFocus']);
             }
           };
@@ -1432,7 +1432,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -1482,8 +1482,8 @@
         })(),
         xt = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement);
             }
           };
           return (
@@ -1515,7 +1515,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -1553,8 +1553,8 @@
         })(),
         Nt = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement);
             }
           };
           return (
@@ -1578,7 +1578,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -1598,8 +1598,8 @@
         })(),
         Gt = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement), Xt(this, this.el, ['ionSwipe']);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement), Xt(this, this.el, ['ionSwipe']);
             }
           };
           return (
@@ -1613,7 +1613,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -1625,8 +1625,8 @@
         })(),
         Yt = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement), Xt(this, this.el, ['ionDrag']);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement), Xt(this, this.el, ['ionDrag']);
             }
           };
           return (
@@ -1640,7 +1640,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -1661,8 +1661,8 @@
         })(),
         xn = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement);
             }
           };
           return (
@@ -1676,7 +1676,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -1688,8 +1688,8 @@
         })(),
         Pn = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement);
             }
           };
           return (
@@ -1703,7 +1703,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -1724,8 +1724,8 @@
         })(),
         St = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement);
             }
           };
           return (
@@ -1739,7 +1739,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -1751,10 +1751,10 @@
         })(),
         gn = (() => {
           let g = class {
-            constructor(m, U, he) {
+            constructor(m, O, he) {
               (this.z = he),
                 m.detach(),
-                (this.el = U.nativeElement),
+                (this.el = O.nativeElement),
                 Xt(this, this.el, ['ionWillOpen', 'ionWillClose', 'ionDidOpen', 'ionDidClose']);
             }
           };
@@ -1777,7 +1777,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -1798,8 +1798,8 @@
         })(),
         Hn = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement);
             }
           };
           return (
@@ -1820,7 +1820,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -1840,8 +1840,8 @@
         })(),
         oi = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement);
             }
           };
           return (
@@ -1862,7 +1862,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -1877,8 +1877,8 @@
         })(),
         hr = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement), Xt(this, this.el, ['ionFocus', 'ionBlur']);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement), Xt(this, this.el, ['ionFocus', 'ionBlur']);
             }
           };
           return (
@@ -1892,7 +1892,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -1907,8 +1907,8 @@
         })(),
         Ci = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement), Xt(this, this.el, ['ionChange']);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement), Xt(this, this.el, ['ionChange']);
             }
           };
           return (
@@ -1922,7 +1922,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -1937,8 +1937,8 @@
         })(),
         er = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement);
             }
           };
           return (
@@ -1951,7 +1951,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -1963,8 +1963,8 @@
         })(),
         ee = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement), Xt(this, this.el, ['ionChange']);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement), Xt(this, this.el, ['ionChange']);
             }
           };
           return (
@@ -1986,7 +1986,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -2006,8 +2006,8 @@
         })(),
         we = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement);
             }
           };
           return (
@@ -2021,7 +2021,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -2036,8 +2036,8 @@
         })(),
         yt = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement);
             }
           };
           return (
@@ -2051,7 +2051,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -2066,8 +2066,8 @@
         })(),
         _t = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement), Xt(this, this.el, ['ionSplitPaneVisible']);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement), Xt(this, this.el, ['ionSplitPaneVisible']);
             }
           };
           return (
@@ -2081,7 +2081,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -2093,8 +2093,8 @@
         })(),
         dn = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement);
             }
           };
           return (
@@ -2108,7 +2108,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -2120,10 +2120,10 @@
         })(),
         Bn = (() => {
           let g = class {
-            constructor(m, U, he) {
+            constructor(m, O, he) {
               (this.z = he),
                 m.detach(),
-                (this.el = U.nativeElement),
+                (this.el = O.nativeElement),
                 Xt(this, this.el, ['ionChange', 'ionInput', 'ionBlur', 'ionFocus']);
             }
           };
@@ -2160,7 +2160,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -2203,8 +2203,8 @@
         })(),
         xi = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement);
             }
           };
           return (
@@ -2218,7 +2218,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -2230,8 +2230,8 @@
         })(),
         cr = (() => {
           let g = class {
-            constructor(m, U, he) {
-              (this.z = he), m.detach(), (this.el = U.nativeElement);
+            constructor(m, O, he) {
+              (this.z = he), m.detach(), (this.el = O.nativeElement);
             }
           };
           return (
@@ -2245,7 +2245,7 @@
               ngContentSelectors: Je,
               decls: 1,
               vars: 0,
-              template: function (m, U) {
+              template: function (m, O) {
                 1 & m && (l.F$t(), l.Hsn(0));
               },
               encapsulation: 2,
@@ -2265,11 +2265,11 @@
       }
       let Sr = (() => {
         class g {
-          constructor(m, U) {
-            (this.zone = m), (this.appRef = U);
+          constructor(m, O) {
+            (this.zone = m), (this.appRef = O);
           }
-          create(m, U, he) {
-            return new to(m, U, he, this.appRef, this.zone);
+          create(m, O, he) {
+            return new to(m, O, he, this.appRef, this.zone);
           }
         }
         return (
@@ -2281,16 +2281,16 @@
         );
       })();
       class to {
-        constructor(N, m, U, he, gt) {
+        constructor(N, m, O, he, gt) {
           (this.resolver = N),
             (this.injector = m),
-            (this.location = U),
+            (this.location = O),
             (this.appRef = he),
             (this.zone = gt),
             (this.elRefMap = new WeakMap()),
             (this.elEventsMap = new WeakMap());
         }
-        attachViewToDom(N, m, U, he) {
+        attachViewToDom(N, m, O, he) {
           return this.zone.run(
             () =>
               new Promise((gt) => {
@@ -2305,7 +2305,7 @@
                     this.elEventsMap,
                     N,
                     m,
-                    U,
+                    O,
                     he
                   )
                 );
@@ -2315,29 +2315,29 @@
         removeViewFromDom(N, m) {
           return this.zone.run(
             () =>
-              new Promise((U) => {
+              new Promise((O) => {
                 const he = this.elRefMap.get(m);
                 if (he) {
                   he.destroy(), this.elRefMap.delete(m);
                   const gt = this.elEventsMap.get(m);
                   gt && (gt(), this.elEventsMap.delete(m));
                 }
-                U();
+                O();
               })
           );
         }
       }
-      const Mr = (g, N, m, U, he, gt, jt, on, hi, Ni, yi) => {
+      const Mr = (g, N, m, O, he, gt, jt, on, hi, Ni, yi) => {
           const tr = N.resolveComponentFactory(hi),
             Hi = l.zs3.create({ providers: wo(Ni), parent: m }),
-            Ur = U ? U.createComponent(tr, U.length, Hi) : tr.create(Hi),
+            Ur = O ? O.createComponent(tr, O.length, Hi) : tr.create(Hi),
             qo = Ur.instance,
             zr = Ur.location.nativeElement;
           if ((Ni && Object.assign(qo, Ni), yi)) for (const ja of yi) zr.classList.add(ja);
           const Ho = Fr(g, qo, zr);
           return (
             on.appendChild(zr),
-            U || he.attachView(Ur.hostView),
+            O || he.attachView(Ur.hostView),
             Ur.changeDetectorRef.reattach(),
             gt.set(zr, Ur),
             jt.set(zr, Ho),
@@ -2347,11 +2347,11 @@
         Yo = [te.L, te.a, te.b, te.c, te.d],
         Fr = (g, N, m) =>
           g.run(() => {
-            const U = Yo.filter((he) => 'function' == typeof N[he]).map((he) => {
+            const O = Yo.filter((he) => 'function' == typeof N[he]).map((he) => {
               const gt = (jt) => N[he](jt.detail);
               return m.addEventListener(he, gt), () => m.removeEventListener(he, gt);
             });
-            return () => U.forEach((he) => he());
+            return () => O.forEach((he) => he());
           }),
         no = new l.OlP('NavParamsToken'),
         wo = (g) => [
@@ -2367,9 +2367,9 @@
         L = (g, N) => {
           if (!g) return;
           const m = W(N);
-          for (let U = 0; U < m.length; U++) {
-            if (U >= g.length) return m[U];
-            if (m[U] !== g[U]) return;
+          for (let O = 0; O < m.length; O++) {
+            if (O >= g.length) return m[O];
+            if (m[O] !== g[O]) return;
           }
         },
         W = (g) =>
@@ -2381,9 +2381,9 @@
           g && (g.ref.destroy(), g.unlistenEvents());
         };
       class He {
-        constructor(N, m, U, he, gt, jt) {
+        constructor(N, m, O, he, gt, jt) {
           (this.containerEl = m),
-            (this.router = U),
+            (this.router = O),
             (this.navCtrl = he),
             (this.zone = gt),
             (this.location = jt),
@@ -2393,9 +2393,9 @@
             (this.tabsPrefix = void 0 !== N ? W(N) : void 0);
         }
         createView(N, m) {
-          var U;
+          var O;
           const he = si(this.router, m),
-            gt = null === (U = null == N ? void 0 : N.location) || void 0 === U ? void 0 : U.nativeElement,
+            gt = null === (O = null == N ? void 0 : N.location) || void 0 === O ? void 0 : O.nativeElement,
             jt = Fr(this.zone, N.instance, gt);
           return {
             id: this.nextId++,
@@ -2408,11 +2408,11 @@
         }
         getExistingView(N) {
           const m = si(this.router, N),
-            U = this.views.find((he) => he.url === m);
-          return U && U.ref.changeDetectorRef.reattach(), U;
+            O = this.views.find((he) => he.url === m);
+          return O && O.ref.changeDetectorRef.reattach(), O;
         }
         setActive(N) {
-          var m, U;
+          var m, O;
           const he = this.navCtrl.consumeTransition();
           let { direction: gt, animation: jt, animationBuilder: on } = he;
           const hi = this.activeView,
@@ -2424,7 +2424,7 @@
           Hi.getCurrentNavigation
             ? (tr = Hi.getCurrentNavigation())
             : (null === (m = Hi.navigations) || void 0 === m ? void 0 : m.value) && (tr = Hi.navigations.value),
-            (null === (U = null == tr ? void 0 : tr.extras) || void 0 === U ? void 0 : U.replaceUrl) &&
+            (null === (O = null == tr ? void 0 : tr.extras) || void 0 === O ? void 0 : O.replaceUrl) &&
               this.views.length > 0 &&
               this.views.splice(-1, 1);
           const Ur = this.views.includes(N),
@@ -2452,7 +2452,7 @@
         }
         pop(N, m = this.getActiveStackId()) {
           return this.zone.run(() => {
-            var U, he;
+            var O, he;
             const gt = this.getStack(m);
             if (gt.length <= N) return Promise.resolve(!1);
             const jt = gt[gt.length - N - 1];
@@ -2461,7 +2461,7 @@
             if (hi) {
               const yi = hi.get('primary');
               (null ===
-                (he = null === (U = null == yi ? void 0 : yi.route) || void 0 === U ? void 0 : U._routerState) ||
+                (he = null === (O = null == yi ? void 0 : yi.route) || void 0 === O ? void 0 : O._routerState) ||
               void 0 === he
                 ? void 0
                 : he.snapshot.url) && (on = yi.route._routerState.snapshot.url);
@@ -2476,9 +2476,9 @@
           const N = this.activeView;
           if (N) {
             const m = this.getStack(N.stackId),
-              U = m[m.length - 2],
-              he = U.animationBuilder;
-            return this.wait(() => this.transition(U, N, 'back', this.canGoBack(2), !0, he));
+              O = m[m.length - 2],
+              he = O.animationBuilder;
+            return this.wait(() => this.transition(O, N, 'back', this.canGoBack(2), !0, he));
           }
           return Promise.resolve();
         }
@@ -2515,16 +2515,16 @@
                 ? Ir(g, N)
                 : 'forward' === m
                 ? ((g, N) => (
-                    g.indexOf(N) >= 0 ? (g = g.filter((U) => U.stackId !== N.stackId || U.id <= N.id)) : g.push(N), g
+                    g.indexOf(N) >= 0 ? (g = g.filter((O) => O.stackId !== N.stackId || O.id <= N.id)) : g.push(N), g
                   ))(g, N)
-                : ((g, N) => (g.indexOf(N) >= 0 ? g.filter((U) => U.stackId !== N.stackId || U.id <= N.id) : Ir(g, N)))(
+                : ((g, N) => (g.indexOf(N) >= 0 ? g.filter((O) => O.stackId !== N.stackId || O.id <= N.id) : Ir(g, N)))(
                     g,
                     N
                   ))(this.views, N, m)),
             this.views.slice()
           );
         }
-        transition(N, m, U, he, gt, jt) {
+        transition(N, m, O, he, gt, jt) {
           if (this.skipTransition) return (this.skipTransition = !1), Promise.resolve(!1);
           if (m === N) return Promise.resolve(!1);
           const on = N ? N.element : void 0,
@@ -2538,8 +2538,8 @@
             Ni.commit)
             ? Ni.commit(on, hi, {
                 deepWait: !0,
-                duration: void 0 === U ? 0 : void 0,
-                direction: U,
+                duration: void 0 === O ? 0 : void 0,
+                direction: O,
                 showGoBack: he,
                 progressAnimation: gt,
                 animationBuilder: jt,
@@ -2554,18 +2554,18 @@
           });
         }
       }
-      const Ne = (g, N, m, U) =>
+      const Ne = (g, N, m, O) =>
           'function' == typeof requestAnimationFrame
             ? new Promise((he) => {
                 requestAnimationFrame(() => {
-                  ct(g, N, m, U), he();
+                  ct(g, N, m, O), he();
                 });
               })
             : Promise.resolve(),
-        ct = (g, N, m, U) => {
+        ct = (g, N, m, O) => {
           m.filter((he) => !N.includes(he)).forEach(de),
             N.forEach((he) => {
-              const jt = U.path().split('?')[0].split('#')[0];
+              const jt = O.path().split('?')[0].split('#')[0];
               if (he !== g && he.url !== jt) {
                 const on = he.element;
                 on.setAttribute('aria-hidden', 'true'),
@@ -2576,17 +2576,17 @@
         };
       let Mt = (() => {
         class g {
-          get(m, U) {
+          get(m, O) {
             const he = an();
-            return he ? he.get(m, U) : null;
+            return he ? he.get(m, O) : null;
           }
-          getBoolean(m, U) {
+          getBoolean(m, O) {
             const he = an();
-            return !!he && he.getBoolean(m, U);
+            return !!he && he.getBoolean(m, O);
           }
-          getNumber(m, U) {
+          getNumber(m, O) {
             const he = an();
-            return he ? he.getNumber(m, U) : 0;
+            return he ? he.getNumber(m, O) : 0;
           }
         }
         return (
@@ -2607,7 +2607,7 @@
         };
       let En = (() => {
         class g {
-          constructor(m, U) {
+          constructor(m, O) {
             (this.doc = m),
               (this.backButton = new xe.x()),
               (this.keyboardDidShow = new xe.x()),
@@ -2615,12 +2615,12 @@
               (this.pause = new xe.x()),
               (this.resume = new xe.x()),
               (this.resize = new xe.x()),
-              U.run(() => {
+              O.run(() => {
                 var he;
                 let gt;
                 (this.win = m.defaultView),
                   (this.backButton.subscribeWithPriority = function (jt, on) {
-                    return this.subscribe((hi) => hi.register(jt, (Ni) => U.run(() => on(Ni))));
+                    return this.subscribe((hi) => hi.register(jt, (Ni) => O.run(() => on(Ni))));
                   }),
                   mn(this.pause, m, 'pause'),
                   mn(this.resume, m, 'resume'),
@@ -2661,14 +2661,14 @@
             return !this.isPortrait();
           }
           isPortrait() {
-            var m, U;
-            return null === (U = (m = this.win).matchMedia) || void 0 === U
+            var m, O;
+            return null === (O = (m = this.win).matchMedia) || void 0 === O
               ? void 0
-              : U.call(m, '(orientation: portrait)').matches;
+              : O.call(m, '(orientation: portrait)').matches;
           }
           testUserAgent(m) {
-            const U = this.win.navigator;
-            return !!((null == U ? void 0 : U.userAgent) && U.userAgent.indexOf(m) >= 0);
+            const O = this.win.navigator;
+            return !!((null == O ? void 0 : O.userAgent) && O.userAgent.indexOf(m) >= 0);
           }
           url() {
             return this.win.location.href;
@@ -2690,19 +2690,19 @@
       })();
       const fn = (g, N) => {
           N = N.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
-          const U = new RegExp('[\\?&]' + N + '=([^&#]*)').exec(g);
-          return U ? decodeURIComponent(U[1].replace(/\+/g, ' ')) : null;
+          const O = new RegExp('[\\?&]' + N + '=([^&#]*)').exec(g);
+          return O ? decodeURIComponent(O[1].replace(/\+/g, ' ')) : null;
         },
         mn = (g, N, m) => {
           N &&
-            N.addEventListener(m, (U) => {
-              g.next(null != U ? U.detail : void 0);
+            N.addEventListener(m, (O) => {
+              g.next(null != O ? O.detail : void 0);
             });
         };
       let Un = (() => {
         class g {
-          constructor(m, U, he, gt) {
-            (this.location = U),
+          constructor(m, O, he, gt) {
+            (this.location = O),
               (this.serializer = he),
               (this.router = gt),
               (this.direction = vn),
@@ -2722,14 +2722,14 @@
                 this.pop(), jt();
               });
           }
-          navigateForward(m, U = {}) {
-            return this.setDirection('forward', U.animated, U.animationDirection, U.animation), this.navigate(m, U);
+          navigateForward(m, O = {}) {
+            return this.setDirection('forward', O.animated, O.animationDirection, O.animation), this.navigate(m, O);
           }
-          navigateBack(m, U = {}) {
-            return this.setDirection('back', U.animated, U.animationDirection, U.animation), this.navigate(m, U);
+          navigateBack(m, O = {}) {
+            return this.setDirection('back', O.animated, O.animationDirection, O.animation), this.navigate(m, O);
           }
-          navigateRoot(m, U = {}) {
-            return this.setDirection('root', U.animated, U.animationDirection, U.animation), this.navigate(m, U);
+          navigateRoot(m, O = {}) {
+            return this.setDirection('root', O.animated, O.animationDirection, O.animation), this.navigate(m, O);
           }
           back(m = { animated: !0, animationDirection: 'back' }) {
             return this.setDirection('back', m.animated, m.animationDirection, m.animation), this.location.back();
@@ -2740,34 +2740,34 @@
               for (; m && !(yield m.pop()); ) m = m.parentOutlet;
             });
           }
-          setDirection(m, U, he, gt) {
-            (this.direction = m), (this.animated = hn(m, U, he)), (this.animationBuilder = gt);
+          setDirection(m, O, he, gt) {
+            (this.direction = m), (this.animated = hn(m, O, he)), (this.animationBuilder = gt);
           }
           setTopOutlet(m) {
             this.topOutlet = m;
           }
           consumeTransition() {
-            let U,
+            let O,
               m = 'root';
             const he = this.animationBuilder;
             return (
               'auto' === this.direction
-                ? ((m = this.guessDirection), (U = this.guessAnimation))
-                : ((U = this.animated), (m = this.direction)),
+                ? ((m = this.guessDirection), (O = this.guessAnimation))
+                : ((O = this.animated), (m = this.direction)),
               (this.direction = vn),
               (this.animated = ni),
               (this.animationBuilder = void 0),
-              { direction: m, animation: U, animationBuilder: he }
+              { direction: m, animation: O, animationBuilder: he }
             );
           }
-          navigate(m, U) {
-            if (Array.isArray(m)) return this.router.navigate(m, U);
+          navigate(m, O) {
+            if (Array.isArray(m)) return this.router.navigate(m, O);
             {
               const he = this.serializer.parse(m.toString());
               return (
-                void 0 !== U.queryParams && (he.queryParams = Object.assign({}, U.queryParams)),
-                void 0 !== U.fragment && (he.fragment = U.fragment),
-                this.router.navigateByUrl(he, U)
+                void 0 !== O.queryParams && (he.queryParams = Object.assign({}, O.queryParams)),
+                void 0 !== O.fragment && (he.fragment = O.fragment),
+                this.router.navigateByUrl(he, O)
               );
             }
           }
@@ -2791,9 +2791,9 @@
         ni = void 0;
       let Qn = (() => {
         class g {
-          constructor(m, U, he, gt, jt, on, hi, Ni, yi, tr, Hi, Ur, qo) {
+          constructor(m, O, he, gt, jt, on, hi, Ni, yi, tr, Hi, Ur, qo) {
             (this.parentContexts = m),
-              (this.location = U),
+              (this.location = O),
               (this.resolver = he),
               (this.config = on),
               (this.navCtrl = hi),
@@ -2824,7 +2824,7 @@
                 ? {
                     canStart: () => this.stackCtrl.canGoBack(1) && !this.stackCtrl.hasRunningTask(),
                     onStart: () => this.stackCtrl.startBackTransition(),
-                    onEnd: (U) => this.stackCtrl.endBackTransition(U),
+                    onEnd: (O) => this.stackCtrl.endBackTransition(O),
                   }
                 : void 0);
           }
@@ -2861,21 +2861,21 @@
           detach() {
             throw new Error('incompatible reuse strategy');
           }
-          attach(m, U) {
+          attach(m, O) {
             throw new Error('incompatible reuse strategy');
           }
           deactivate() {
             if (this.activated) {
               if (this.activatedView) {
-                const U = this.getContext();
-                this.activatedView.savedData = new Map(U.children.contexts);
+                const O = this.getContext();
+                this.activatedView.savedData = new Map(O.children.contexts);
                 const he = this.activatedView.savedData.get('primary');
                 if (
-                  (he && U.route && (he.route = Object.assign({}, U.route)),
+                  (he && O.route && (he.route = Object.assign({}, O.route)),
                   (this.activatedView.savedExtras = {}),
-                  U.route)
+                  O.route)
                 ) {
-                  const gt = U.route.snapshot;
+                  const gt = O.route.snapshot;
                   (this.activatedView.savedExtras.queryParams = gt.queryParams),
                     (this.activatedView.savedExtras.fragment = gt.fragment);
                 }
@@ -2887,7 +2887,7 @@
                 this.deactivateEvents.emit(m);
             }
           }
-          activateWith(m, U) {
+          activateWith(m, O) {
             if (this.isActivated) throw new Error('Cannot activate an already activated outlet');
             this._activatedRoute = m;
             let he,
@@ -2897,7 +2897,7 @@
               const jt = gt.savedData;
               jt && (this.getContext().children.contexts = jt), this.updateActivatedRouteProxy(he.instance, m);
             } else {
-              const hi = (U = U || this.resolver).resolveComponentFactory(m._futureSnapshot.routeConfig.component),
+              const hi = (O = O || this.resolver).resolveComponentFactory(m._futureSnapshot.routeConfig.component),
                 Ni = this.parentContexts.getOrCreateContext(this.name).children,
                 yi = new le.X(null),
                 tr = this.createActivatedRouteProxy(yi, m),
@@ -2913,15 +2913,15 @@
                 this.navCtrl.setTopOutlet(this), this.activateEvents.emit(he.instance), this.stackEvents.emit(jt);
               });
           }
-          canGoBack(m = 1, U) {
-            return this.stackCtrl.canGoBack(m, U);
+          canGoBack(m = 1, O) {
+            return this.stackCtrl.canGoBack(m, O);
           }
-          pop(m = 1, U) {
-            return this.stackCtrl.pop(m, U);
+          pop(m = 1, O) {
+            return this.stackCtrl.pop(m, O);
           }
           getLastUrl(m) {
-            const U = this.stackCtrl.getLastUrl(m);
-            return U ? U.url : void 0;
+            const O = this.stackCtrl.getLastUrl(m);
+            return O ? O.url : void 0;
           }
           getLastRouteView(m) {
             return this.stackCtrl.getLastUrl(m);
@@ -2932,14 +2932,14 @@
           getActiveStackId() {
             return this.stackCtrl.getActiveStackId();
           }
-          createActivatedRouteProxy(m, U) {
+          createActivatedRouteProxy(m, O) {
             const he = new Y.gz();
             return (
-              (he._futureSnapshot = U._futureSnapshot),
-              (he._routerState = U._routerState),
-              (he.snapshot = U.snapshot),
-              (he.outlet = U.outlet),
-              (he.component = U.component),
+              (he._futureSnapshot = O._futureSnapshot),
+              (he._routerState = O._routerState),
+              (he.snapshot = O.snapshot),
+              (he.outlet = O.outlet),
+              (he.component = O.component),
               (he._paramMap = this.proxyObservable(m, 'paramMap')),
               (he._queryParamMap = this.proxyObservable(m, 'queryParamMap')),
               (he.url = this.proxyObservable(m, 'url')),
@@ -2950,23 +2950,23 @@
               he
             );
           }
-          proxyObservable(m, U) {
+          proxyObservable(m, O) {
             return m.pipe(
               (0, Ve.h)((he) => !!he),
               (0, nt.w)((he) =>
                 this.currentActivatedRoute$.pipe(
                   (0, Ve.h)((gt) => null !== gt && gt.component === he),
-                  (0, nt.w)((gt) => gt && gt.activatedRoute[U]),
+                  (0, nt.w)((gt) => gt && gt.activatedRoute[O]),
                   (function j(g, N = B.y) {
                     return (
                       (g = null != g ? g : F),
-                      (0, R.e)((m, U) => {
+                      (0, U.e)((m, O) => {
                         let he,
                           gt = !0;
                         m.subscribe(
-                          new G.Q(U, (jt) => {
+                          new G.Q(O, (jt) => {
                             const on = N(jt);
-                            (gt || !g(he, on)) && ((gt = !1), (he = on), U.next(jt));
+                            (gt || !g(he, on)) && ((gt = !1), (he = on), O.next(jt));
                           })
                         );
                       })
@@ -2976,15 +2976,15 @@
               )
             );
           }
-          updateActivatedRouteProxy(m, U) {
+          updateActivatedRouteProxy(m, O) {
             const he = this.proxyMap.get(m);
             if (!he) throw new Error('Could not find activated route proxy for view');
-            (he._futureSnapshot = U._futureSnapshot),
-              (he._routerState = U._routerState),
-              (he.snapshot = U.snapshot),
-              (he.outlet = U.outlet),
-              (he.component = U.component),
-              this.currentActivatedRoute$.next({ component: m, activatedRoute: U });
+            (he._futureSnapshot = O._futureSnapshot),
+              (he._routerState = O._routerState),
+              (he.snapshot = O.snapshot),
+              (he.outlet = O.outlet),
+              (he.component = O.component),
+              this.currentActivatedRoute$.next({ component: m, activatedRoute: O });
           }
         }
         return (
@@ -3016,8 +3016,8 @@
         );
       })();
       class ur {
-        constructor(N, m, U) {
-          (this.route = N), (this.childContexts = m), (this.parent = U);
+        constructor(N, m, O) {
+          (this.route = N), (this.childContexts = m), (this.parent = O);
         }
         get(N, m) {
           return N === Y.gz ? this.route : N === Y.y6 ? this.childContexts : this.parent.get(N, m);
@@ -3025,13 +3025,13 @@
       }
       let In = (() => {
           class g {
-            constructor(m, U, he) {
-              (this.routerOutlet = m), (this.navCtrl = U), (this.config = he);
+            constructor(m, O, he) {
+              (this.routerOutlet = m), (this.navCtrl = O), (this.config = he);
             }
             onClick(m) {
-              var U;
+              var O;
               const he = this.defaultHref || this.config.get('backButtonDefaultHref');
-              (null === (U = this.routerOutlet) || void 0 === U ? void 0 : U.canGoBack())
+              (null === (O = this.routerOutlet) || void 0 === O ? void 0 : O.canGoBack())
                 ? (this.navCtrl.setDirection('back', void 0, void 0, this.routerAnimation),
                   this.routerOutlet.pop(),
                   m.preventDefault())
@@ -3046,10 +3046,10 @@
             (g.ɵdir = l.lG2({
               type: g,
               selectors: [['ion-back-button']],
-              hostBindings: function (m, U) {
+              hostBindings: function (m, O) {
                 1 & m &&
                   l.NdJ('click', function (gt) {
-                    return U.onClick(gt);
+                    return O.onClick(gt);
                   });
               },
               inputs: { defaultHref: 'defaultHref', routerAnimation: 'routerAnimation' },
@@ -3059,9 +3059,9 @@
         })(),
         zn = (() => {
           class g {
-            constructor(m, U, he, gt, jt) {
+            constructor(m, O, he, gt, jt) {
               (this.locationStrategy = m),
-                (this.navCtrl = U),
+                (this.navCtrl = O),
                 (this.elementRef = he),
                 (this.router = gt),
                 (this.routerLink = jt),
@@ -3093,10 +3093,10 @@
             (g.ɵdir = l.lG2({
               type: g,
               selectors: [['', 'routerLink', '']],
-              hostBindings: function (m, U) {
+              hostBindings: function (m, O) {
                 1 & m &&
                   l.NdJ('click', function (gt) {
-                    return U.onClick(gt);
+                    return O.onClick(gt);
                   });
               },
               inputs: { routerDirection: 'routerDirection', routerAnimation: 'routerAnimation' },
@@ -3107,10 +3107,10 @@
         })(),
         Ge = (() => {
           let g = class {
-            constructor(m, U, he) {
+            constructor(m, O, he) {
               (this.z = he),
                 (this.isCmpOpen = !1),
-                (this.el = U.nativeElement),
+                (this.el = O.nativeElement),
                 this.el.addEventListener('willPresent', () => {
                   (this.isCmpOpen = !0), m.detectChanges();
                 }),
@@ -3136,10 +3136,10 @@
             (g.ɵcmp = l.Xpm({
               type: g,
               selectors: [['ion-modal']],
-              contentQueries: function (m, U, he) {
+              contentQueries: function (m, O, he) {
                 if ((1 & m && l.Suo(he, l.Rgc, 5), 2 & m)) {
                   let gt;
-                  l.iGM((gt = l.CRH())) && (U.template = gt.first);
+                  l.iGM((gt = l.CRH())) && (O.template = gt.first);
                 }
               },
               inputs: {
@@ -3168,8 +3168,8 @@
                 [3, 'ngTemplateOutlet', 4, 'ngIf'],
                 [3, 'ngTemplateOutlet'],
               ],
-              template: function (m, U) {
-                1 & m && l.YNc(0, pt, 1, 1, 'ng-container', 0), 2 & m && l.Q6J('ngIf', U.isCmpOpen);
+              template: function (m, O) {
+                1 & m && l.YNc(0, pt, 1, 1, 'ng-container', 0), 2 & m && l.Q6J('ngIf', O.isCmpOpen);
               },
               directives: [qe.O5, qe.tP],
               encapsulation: 2,
@@ -3213,8 +3213,8 @@
         create(N) {
           return this.ctrl.create(N || {});
         }
-        dismiss(N, m, U) {
-          return this.ctrl.dismiss(N, m, U);
+        dismiss(N, m, O) {
+          return this.ctrl.dismiss(N, m, O);
         }
         getTop() {
           return this.ctrl.getTop();
@@ -3273,11 +3273,11 @@
             toggle(m) {
               return ne.m.toggle(m);
             }
-            enable(m, U) {
-              return ne.m.enable(m, U);
+            enable(m, O) {
+              return ne.m.enable(m, O);
             }
-            swipeGesture(m, U) {
-              return ne.m.swipeGesture(m, U);
+            swipeGesture(m, O) {
+              return ne.m.swipeGesture(m, O);
             }
             isOpen(m) {
               return ne.m.isOpen(m);
@@ -3305,8 +3305,8 @@
         })(),
         P = (() => {
           class g extends At {
-            constructor(m, U, he) {
-              super(se.m), (this.angularDelegate = m), (this.resolver = U), (this.injector = he);
+            constructor(m, O, he) {
+              super(se.m), (this.angularDelegate = m), (this.resolver = O), (this.injector = he);
             }
             create(m) {
               return super.create(
@@ -3326,8 +3326,8 @@
         })(),
         E = (() => {
           class g extends At {
-            constructor(m, U, he) {
-              super(se.c), (this.angularDelegate = m), (this.resolver = U), (this.injector = he);
+            constructor(m, O, he) {
+              super(se.c), (this.angularDelegate = m), (this.resolver = O), (this.injector = he);
             }
             create(m) {
               return super.create(
@@ -3390,8 +3390,8 @@
                   !N.fetch ||
                   !(function () {
                     try {
-                      var U = new URL('b', 'http://a');
-                      return (U.pathname = 'c%20d'), 'http://a/c%20d' === U.href && U.searchParams;
+                      var O = new URL('b', 'http://a');
+                      return (O.pathname = 'c%20d'), 'http://a/c%20d' === O.href && O.searchParams;
                     } catch (he) {
                       return !1;
                     }
@@ -3494,12 +3494,12 @@
             ot,
             je,
             We,
-            Ee = [],
+            Te = [],
             Ue = [],
             J = [],
             fe = !1,
             B = {},
-            R = [],
+            U = [],
             G = [],
             j = {},
             F = 0,
@@ -3564,7 +3564,7 @@
                   ((() => {
                     bn(), ar.forEach((ft) => ft()), rn.forEach((ft) => ft());
                     const me = Be ? 1 : 0,
-                      Oe = R,
+                      Oe = U,
                       ze = G,
                       Xe = j;
                     Ht.forEach((ft) => {
@@ -3596,7 +3596,7 @@
                     }
                 }),
                 ge
-              ))(Ee);
+              ))(Te);
               Ht.forEach((ze) => {
                 if (Oe.length > 0) {
                   const Xe = ((ge = []) =>
@@ -3659,10 +3659,10 @@
                   for (const yt in ze) ze.hasOwnProperty(yt) && le(Xe, yt, ze[yt]);
                 });
               })(),
-                Ee.length > 0 &&
+                Te.length > 0 &&
                   (An
                     ? (Ht.forEach((me) => {
-                        const Oe = me.animate(Ee, {
+                        const Oe = me.animate(Te, {
                           id: pt,
                           delay: Li(),
                           duration: Vi(),
@@ -3688,7 +3688,7 @@
               else {
                 const Oe = `-${Vi() * me}ms`;
                 Ht.forEach((ze) => {
-                  Ee.length > 0 && (le(ze, 'animation-delay', Oe), le(ze, 'animation-play-state', 'paused'));
+                  Te.length > 0 && (le(ze, 'animation-delay', Oe), le(ze, 'animation-play-state', 'paused'));
                 });
               }
             },
@@ -3761,16 +3761,16 @@
                     ? (Mi.forEach((me) => {
                         me.play();
                       }),
-                      (0 === Ee.length || 0 === Ht.length) && Gt())
+                      (0 === Te.length || 0 === Ht.length) && Gt())
                     : (() => {
                         if (
                           (bn(),
                           (0, l.r)(() => {
                             Ht.forEach((me) => {
-                              Ee.length > 0 && le(me, 'animation-play-state', 'running');
+                              Te.length > 0 && le(me, 'animation-play-state', 'running');
                             });
                           }),
-                          0 === Ee.length || 0 === Ht.length)
+                          0 === Te.length || 0 === Ht.length)
                         )
                           Gt();
                         else {
@@ -3806,10 +3806,10 @@
                       })();
               }),
             Nr = (me, Oe) => {
-              const ze = Ee[0];
+              const ze = Te[0];
               return (
                 void 0 === ze || (void 0 !== ze.offset && 0 !== ze.offset)
-                  ? (Ee = [{ offset: 0, [me]: Oe }, ...Ee])
+                  ? (Te = [{ offset: 0, [me]: Oe }, ...Te])
                   : (ze[me] = Oe),
                 We
               );
@@ -3822,10 +3822,10 @@
             animationFinish: Gt,
             from: Nr,
             to: (me, Oe) => {
-              const ze = Ee[Ee.length - 1];
+              const ze = Te[Te.length - 1];
               return (
                 void 0 === ze || (void 0 !== ze.offset && 1 !== ze.offset)
-                  ? (Ee = [...Ee, { offset: 1, [me]: Oe }])
+                  ? (Te = [...Te, { offset: 1, [me]: Oe }])
                   : (ze[me] = Oe),
                 We
               );
@@ -3864,7 +3864,7 @@
               })(me),
               (Ht.length = 0),
               (nn.length = 0),
-              (Ee.length = 0),
+              (Te.length = 0),
               (wt.length = 0),
               (yn.length = 0),
               (fe = !1),
@@ -3872,9 +3872,9 @@
               We
             ),
             keyframes: (me) => {
-              const Oe = Ee !== me;
+              const Oe = Te !== me;
               return (
-                (Ee = me),
+                (Te = me),
                 Oe &&
                   ((me) => {
                     An
@@ -3886,7 +3886,7 @@
                           }
                         })
                       : Yt();
-                  })(Ee),
+                  })(Te),
                 We
               );
             },
@@ -3911,7 +3911,7 @@
             easing: (me) => ((Se = me), ei(!0), We),
             delay: (me) => ((ye = me), ei(!0), We),
             getWebAnimations: Ei,
-            getKeyframes: () => Ee,
+            getKeyframes: () => Te,
             getFill: Ui,
             getDirection: kr,
             getDelay: Li,
@@ -3926,7 +3926,7 @@
             },
             afterStyles: (me = {}) => ((j = me), We),
             afterRemoveClass: (me) => ((G = ne(G, me)), We),
-            afterAddClass: (me) => ((R = ne(R, me)), We),
+            afterAddClass: (me) => ((U = ne(U, me)), We),
             beforeAddRead: (me) => (ri.push(me), We),
             beforeAddWrite: (me) => (bi.push(me), We),
             beforeClearStyles: (me = []) => {
@@ -4374,67 +4374,67 @@
         t: () => l,
       });
       const l = (pe, Ae = 0) =>
-          new Promise((Ee) => {
-            e(pe, Ae, Ee);
+          new Promise((Te) => {
+            e(pe, Ae, Te);
           }),
-        e = (pe, Ae = 0, Ee) => {
+        e = (pe, Ae = 0, Te) => {
           let Ue, J;
           const fe = { passive: !0 },
             B = () => {
               Ue && Ue();
             },
-            R = (G) => {
-              (void 0 === G || pe === G.target) && (B(), Ee(G));
+            U = (G) => {
+              (void 0 === G || pe === G.target) && (B(), Te(G));
             };
           return (
             pe &&
-              (pe.addEventListener('webkitTransitionEnd', R, fe),
-              pe.addEventListener('transitionend', R, fe),
-              (J = setTimeout(R, Ae + 500)),
+              (pe.addEventListener('webkitTransitionEnd', U, fe),
+              pe.addEventListener('transitionend', U, fe),
+              (J = setTimeout(U, Ae + 500)),
               (Ue = () => {
                 J && (clearTimeout(J), (J = void 0)),
-                  pe.removeEventListener('webkitTransitionEnd', R, fe),
-                  pe.removeEventListener('transitionend', R, fe);
+                  pe.removeEventListener('webkitTransitionEnd', U, fe),
+                  pe.removeEventListener('transitionend', U, fe);
               })),
             B
           );
         },
         ie = (pe, Ae) => {
-          pe.componentOnReady ? pe.componentOnReady().then((Ee) => Ae(Ee)) : q(() => Ae(pe));
+          pe.componentOnReady ? pe.componentOnReady().then((Te) => Ae(Te)) : q(() => Ae(pe));
         },
         oe = (pe, Ae = []) => {
-          const Ee = {};
+          const Te = {};
           return (
             Ae.forEach((Ue) => {
               pe.hasAttribute(Ue) &&
-                (null !== pe.getAttribute(Ue) && (Ee[Ue] = pe.getAttribute(Ue)), pe.removeAttribute(Ue));
+                (null !== pe.getAttribute(Ue) && (Te[Ue] = pe.getAttribute(Ue)), pe.removeAttribute(Ue));
             }),
-            Ee
+            Te
           );
         },
-        xe = (pe, Ae, Ee, Ue) => {
+        xe = (pe, Ae, Te, Ue) => {
           if ('undefined' != typeof window) {
             const J = window,
               fe = J && J.Ionic && J.Ionic.config;
             if (fe) {
               const Q = fe.get('_ael');
-              if (Q) return Q(pe, Ae, Ee, Ue);
-              if (fe._ael) return fe._ael(pe, Ae, Ee, Ue);
+              if (Q) return Q(pe, Ae, Te, Ue);
+              if (fe._ael) return fe._ael(pe, Ae, Te, Ue);
             }
           }
-          return pe.addEventListener(Ae, Ee, Ue);
+          return pe.addEventListener(Ae, Te, Ue);
         },
-        le = (pe, Ae, Ee, Ue) => {
+        le = (pe, Ae, Te, Ue) => {
           if ('undefined' != typeof window) {
             const J = window,
               fe = J && J.Ionic && J.Ionic.config;
             if (fe) {
               const Q = fe.get('_rel');
-              if (Q) return Q(pe, Ae, Ee, Ue);
-              if (fe._rel) return fe._rel(pe, Ae, Ee, Ue);
+              if (Q) return Q(pe, Ae, Te, Ue);
+              if (fe._rel) return fe._rel(pe, Ae, Te, Ue);
             }
           }
-          return pe.removeEventListener(Ae, Ee, Ue);
+          return pe.removeEventListener(Ae, Te, Ue);
         },
         Y = (pe, Ae = pe) => pe.shadowRoot || Ae,
         q = (pe) =>
@@ -4455,21 +4455,21 @@
           }
         },
         ve = (pe, Ae) => {
-          let Ee;
+          let Te;
           const Ue = pe.getAttribute('aria-labelledby'),
             J = pe.id;
           let fe = null !== Ue && '' !== Ue.trim() ? Ue : Ae + '-lbl',
             Q = null !== Ue && '' !== Ue.trim() ? document.getElementById(Ue) : be(pe);
           return (
             Q
-              ? (null === Ue && (Q.id = fe), (Ee = Q.textContent), Q.setAttribute('aria-hidden', 'true'))
+              ? (null === Ue && (Q.id = fe), (Te = Q.textContent), Q.setAttribute('aria-hidden', 'true'))
               : '' !== J.trim() &&
                 ((Q = document.querySelector(`label[for="${J}"]`)),
-                Q && ('' !== Q.id ? (fe = Q.id) : (Q.id = fe = `${J}-lbl`), (Ee = Q.textContent))),
-            { label: Q, labelId: fe, labelText: Ee }
+                Q && ('' !== Q.id ? (fe = Q.id) : (Q.id = fe = `${J}-lbl`), (Te = Q.textContent))),
+            { label: Q, labelId: fe, labelText: Te }
           );
         },
-        te = (pe, Ae, Ee, Ue, J) => {
+        te = (pe, Ae, Te, Ue, J) => {
           if (pe || ue(Ae)) {
             let fe = Ae.querySelector('input.aux-input');
             fe ||
@@ -4478,15 +4478,15 @@
               fe.classList.add('aux-input'),
               Ae.appendChild(fe)),
               (fe.disabled = J),
-              (fe.name = Ee),
+              (fe.name = Te),
               (fe.value = Ue || '');
           }
         },
-        ne = (pe, Ae, Ee) => Math.max(pe, Math.min(Ae, Ee)),
+        ne = (pe, Ae, Te) => Math.max(pe, Math.min(Ae, Te)),
         se = (pe, Ae) => {
           if (!pe) {
-            const Ee = 'ASSERT: ' + Ae;
-            throw (console.error(Ee), new Error(Ee));
+            const Te = 'ASSERT: ' + Ae;
+            throw (console.error(Te), new Error(Te));
           }
         },
         ge = (pe) => pe.timeStamp || Date.now(),
@@ -4494,8 +4494,8 @@
           if (pe) {
             const Ae = pe.changedTouches;
             if (Ae && Ae.length > 0) {
-              const Ee = Ae[0];
-              return { x: Ee.clientX, y: Ee.clientY };
+              const Te = Ae[0];
+              return { x: Te.clientX, y: Te.clientY };
             }
             if (void 0 !== pe.pageX) return { x: pe.pageX, y: pe.pageY };
           }
@@ -4513,13 +4513,13 @@
           }
         },
         Se = (pe, Ae) => {
-          const Ee = pe._original || pe;
-          return { _original: pe, emit: Re(Ee.emit.bind(Ee), Ae) };
+          const Te = pe._original || pe;
+          return { _original: pe, emit: Re(Te.emit.bind(Te), Ae) };
         },
         Re = (pe, Ae = 0) => {
-          let Ee;
+          let Te;
           return (...Ue) => {
-            clearTimeout(Ee), (Ee = setTimeout(pe, Ae, ...Ue));
+            clearTimeout(Te), (Te = setTimeout(pe, Ae, ...Ue));
           };
         };
     },
@@ -5538,7 +5538,7 @@
             Re = Pe.onWillStart,
             pe = Pe.onStart,
             Ae = Pe.onEnd,
-            Ee = Pe.notCaptured,
+            Te = Pe.notCaptured,
             Ue = Pe.onMove,
             J = Pe.threshold,
             fe = Pe.passive,
@@ -5558,7 +5558,7 @@
               event: void 0,
               data: void 0,
             },
-            R = ((te, ne, se) => {
+            U = ((te, ne, se) => {
               const ge = se * (Math.PI / 180),
                 ye = 'x' === te,
                 Pe = Math.cos(ge),
@@ -5566,10 +5566,10 @@
               let Re = 0,
                 pe = 0,
                 Ae = !1,
-                Ee = 0;
+                Te = 0;
               return {
                 start(Ue, J) {
-                  (Re = Ue), (pe = J), (Ee = 0), (Ae = !0);
+                  (Re = Ue), (pe = J), (Te = 0), (Ae = !0);
                 },
                 detect(Ue, J) {
                   if (!Ae) return !1;
@@ -5577,12 +5577,12 @@
                     Q = J - pe,
                     B = fe * fe + Q * Q;
                   if (B < Se) return !1;
-                  const R = Math.sqrt(B),
-                    G = (ye ? fe : Q) / R;
-                  return (Ee = G > Pe ? 1 : G < -Pe ? -1 : 0), (Ae = !1), !0;
+                  const U = Math.sqrt(B),
+                    G = (ye ? fe : Q) / U;
+                  return (Te = G > Pe ? 1 : G < -Pe ? -1 : 0), (Ae = !1), !0;
                 },
-                isGesture: () => 0 !== Ee,
-                getDirection: () => Ee,
+                isGesture: () => 0 !== Te,
+                getDirection: () => Te,
               };
             })(Pe.direction, Pe.threshold, Pe.maxAngle),
             G = l.G.createGesture({
@@ -5623,7 +5623,7 @@
                 We = ge;
               if ((Ze(), We)) {
                 if ((be(B, Ce), je)) return void (Ae && Ae(B));
-                Ee && Ee(B);
+                Te && Te(B);
               }
             },
             Be = ((te, ne, se, ge, ye) => {
@@ -5632,7 +5632,7 @@
                 Re,
                 pe,
                 Ae,
-                Ee,
+                Te,
                 Ue,
                 J = 0;
               const fe = (qe) => {
@@ -5645,19 +5645,19 @@
                 Q = (qe) => {
                   J > Date.now() ||
                     !ne(qe) ||
-                    (!Ee && se && (Ee = e(Y(te), 'mousemove', se, ye)), Ue || (Ue = e(Y(te), 'mouseup', R, ye)));
+                    (!Te && se && (Te = e(Y(te), 'mousemove', se, ye)), Ue || (Ue = e(Y(te), 'mouseup', U, ye)));
                 },
                 B = (qe) => {
                   G(), ge && ge(qe);
                 },
-                R = (qe) => {
+                U = (qe) => {
                   j(), ge && ge(qe);
                 },
                 G = () => {
                   Se && Se(), Re && Re(), pe && pe(), (Se = Re = pe = void 0);
                 },
                 j = () => {
-                  Ee && Ee(), Ue && Ue(), (Ee = Ue = void 0);
+                  Te && Te(), Ue && Ue(), (Te = Ue = void 0);
                 },
                 F = () => {
                   G(), j();
@@ -5690,19 +5690,19 @@
                     (B.event = Ce),
                     Se && !1 === Se(B)) ||
                     (G.release(), !G.start())
-                  ) && ((se = !0), 0 === J ? nt() : (R.start(B.startX, B.startY), !0))
+                  ) && ((se = !0), 0 === J ? nt() : (U.start(B.startX, B.startY), !0))
                 );
               },
               (Ce) => {
                 ne
                   ? !ye && ge && ((ye = !0), be(B, Ce), requestAnimationFrame(Ve))
-                  : (be(B, Ce), R.detect(B.currentX, B.currentY) && (!R.isGesture() || !nt()) && Je());
+                  : (be(B, Ce), U.detect(B.currentX, B.currentY) && (!U.isGesture() || !nt()) && Je());
               },
               ot,
               { capture: !1, passive: fe }
             ),
             Je = () => {
-              Ze(), Be.stop(), Ee && Ee(B);
+              Ze(), Be.stop(), Te && Te(B);
             };
           return {
             enable(Ce = !0) {
@@ -5723,9 +5723,9 @@
             Se = te.currentY,
             pe = (te.currentTime = ve(ne)) - ye;
           if (pe > 0 && pe < 100) {
-            const Ee = (Se - ge) / pe;
+            const Te = (Se - ge) / pe;
             (te.velocityX = ((Pe - se) / pe) * 0.7 + 0.3 * te.velocityX),
-              (te.velocityY = 0.7 * Ee + 0.3 * te.velocityY);
+              (te.velocityY = 0.7 * Te + 0.3 * te.velocityY);
           }
           (te.deltaX = Pe - te.startX), (te.deltaY = Se - te.startY), (te.event = ne);
         },
@@ -5871,7 +5871,7 @@
                 return Fe.apply(this, arguments);
               };
             })(),
-            Ee = (function () {
+            Te = (function () {
               var Fe = (0, l.Z)(function* () {
                 return yield qe(), F();
               });
@@ -5894,7 +5894,7 @@
               const Ze = Fe.side;
               te.filter((ot) => ot.side === Ze && ot !== Fe).forEach((ot) => (ot.disabled = !0));
             },
-            R = (function () {
+            U = (function () {
               var Fe = (0, l.Z)(function* (Ze, ot, Be) {
                 if (Ve()) return !1;
                 if (ot) {
@@ -5930,7 +5930,7 @@
             {
               registerAnimation: J,
               get: pe,
-              getMenus: Ee,
+              getMenus: Te,
               getOpen: Ae,
               isEnabled: Re,
               swipeGesture: Pe,
@@ -5953,7 +5953,7 @@
                 const Ze = te.indexOf(Fe);
                 Ze > -1 && te.splice(Ze, 1);
               },
-              _setOpen: R,
+              _setOpen: U,
               _setActiveMenu: B,
             }
           );
@@ -6034,7 +6034,7 @@
         d: () => q,
         e: () => J,
         g: () => B,
-        l: () => Ee,
+        l: () => Te,
         s: () => fe,
         t: () => _e,
       });
@@ -6046,47 +6046,47 @@
         le = 'ionViewWillLeave',
         Y = 'ionViewDidLeave',
         q = 'ionViewWillUnload',
-        _e = (R) =>
+        _e = (U) =>
           new Promise((G, j) => {
             (0, e.c)(() => {
-              ve(R),
-                te(R).then(
+              ve(U),
+                te(U).then(
                   (F) => {
-                    F.animation && F.animation.destroy(), ne(R), G(F);
+                    F.animation && F.animation.destroy(), ne(U), G(F);
                   },
                   (F) => {
-                    ne(R), j(F);
+                    ne(U), j(F);
                   }
                 );
             });
           }),
-        ve = (R) => {
-          const G = R.enteringEl,
-            j = R.leavingEl;
-          Q(G, j, R.direction),
-            R.showGoBack ? G.classList.add('can-go-back') : G.classList.remove('can-go-back'),
+        ve = (U) => {
+          const G = U.enteringEl,
+            j = U.leavingEl;
+          Q(G, j, U.direction),
+            U.showGoBack ? G.classList.add('can-go-back') : G.classList.remove('can-go-back'),
             fe(G, !1),
             G.style.setProperty('pointer-events', 'none'),
             j && (fe(j, !1), j.style.setProperty('pointer-events', 'none'));
         },
         te = (function () {
-          var R = (0, l.Z)(function* (G) {
+          var U = (0, l.Z)(function* (G) {
             const j = yield se(G);
             return j && e.B.isBrowser ? ge(j, G) : ye(G);
           });
           return function (j) {
-            return R.apply(this, arguments);
+            return U.apply(this, arguments);
           };
         })(),
-        ne = (R) => {
-          const G = R.enteringEl,
-            j = R.leavingEl;
+        ne = (U) => {
+          const G = U.enteringEl,
+            j = U.leavingEl;
           G.classList.remove('ion-page-invisible'),
             G.style.removeProperty('pointer-events'),
             void 0 !== j && (j.classList.remove('ion-page-invisible'), j.style.removeProperty('pointer-events'));
         },
         se = (function () {
-          var R = (0, l.Z)(function* (G) {
+          var U = (0, l.Z)(function* (G) {
             return G.leavingEl && G.animated && 0 !== G.duration
               ? G.animationBuilder
                 ? G.animationBuilder
@@ -6096,11 +6096,11 @@
               : void 0;
           });
           return function (j) {
-            return R.apply(this, arguments);
+            return U.apply(this, arguments);
           };
         })(),
         ge = (function () {
-          var R = (0, l.Z)(function* (G, j) {
+          var U = (0, l.Z)(function* (G, j) {
             yield Pe(j, !0);
             const F = G(j.baseEl, j);
             pe(j.enteringEl, j.leavingEl);
@@ -6112,60 +6112,60 @@
             );
           });
           return function (j, F) {
-            return R.apply(this, arguments);
+            return U.apply(this, arguments);
           };
         })(),
         ye = (function () {
-          var R = (0, l.Z)(function* (G) {
+          var U = (0, l.Z)(function* (G) {
             const j = G.enteringEl,
               F = G.leavingEl;
             return yield Pe(G, !1), pe(j, F), Ae(j, F), { hasCompleted: !0 };
           });
           return function (j) {
-            return R.apply(this, arguments);
+            return U.apply(this, arguments);
           };
         })(),
         Pe = (function () {
-          var R = (0, l.Z)(function* (G, j) {
+          var U = (0, l.Z)(function* (G, j) {
             const Ve = (void 0 !== G.deepWait ? G.deepWait : j)
               ? [J(G.enteringEl), J(G.leavingEl)]
               : [Ue(G.enteringEl), Ue(G.leavingEl)];
             yield Promise.all(Ve), yield Se(G.viewIsReady, G.enteringEl);
           });
           return function (j, F) {
-            return R.apply(this, arguments);
+            return U.apply(this, arguments);
           };
         })(),
         Se = (function () {
-          var R = (0, l.Z)(function* (G, j) {
+          var U = (0, l.Z)(function* (G, j) {
             G && (yield G(j));
           });
           return function (j, F) {
-            return R.apply(this, arguments);
+            return U.apply(this, arguments);
           };
         })(),
-        Re = (R, G) => {
+        Re = (U, G) => {
           const j = G.progressCallback,
             F = new Promise((Ve) => {
-              R.onFinish((nt) => Ve(1 === nt));
+              U.onFinish((nt) => Ve(1 === nt));
             });
-          return j ? (R.progressStart(!0), j(R)) : R.play(), F;
+          return j ? (U.progressStart(!0), j(U)) : U.play(), F;
         },
-        pe = (R, G) => {
-          Ee(G, le), Ee(R, oe);
+        pe = (U, G) => {
+          Te(G, le), Te(U, oe);
         },
-        Ae = (R, G) => {
-          Ee(R, xe), Ee(G, Y);
+        Ae = (U, G) => {
+          Te(U, xe), Te(G, Y);
         },
-        Ee = (R, G) => {
-          if (R) {
+        Te = (U, G) => {
+          if (U) {
             const j = new CustomEvent(G, { bubbles: !1, cancelable: !1 });
-            R.dispatchEvent(j);
+            U.dispatchEvent(j);
           }
         },
-        Ue = (R) => (R ? new Promise((G) => (0, ie.c)(R, G)) : Promise.resolve()),
+        Ue = (U) => (U ? new Promise((G) => (0, ie.c)(U, G)) : Promise.resolve()),
         J = (function () {
-          var R = (0, l.Z)(function* (G) {
+          var U = (0, l.Z)(function* (G) {
             const j = G;
             if (j) {
               if (null != j.componentOnReady) {
@@ -6175,21 +6175,21 @@
             }
           });
           return function (j) {
-            return R.apply(this, arguments);
+            return U.apply(this, arguments);
           };
         })(),
-        fe = (R, G) => {
+        fe = (U, G) => {
           G
-            ? (R.setAttribute('aria-hidden', 'true'), R.classList.add('ion-page-hidden'))
-            : ((R.hidden = !1), R.removeAttribute('aria-hidden'), R.classList.remove('ion-page-hidden'));
+            ? (U.setAttribute('aria-hidden', 'true'), U.classList.add('ion-page-hidden'))
+            : ((U.hidden = !1), U.removeAttribute('aria-hidden'), U.classList.remove('ion-page-hidden'));
         },
-        Q = (R, G, j) => {
-          void 0 !== R && (R.style.zIndex = 'back' === j ? '99' : '101'), void 0 !== G && (G.style.zIndex = '100');
+        Q = (U, G, j) => {
+          void 0 !== U && (U.style.zIndex = 'back' === j ? '99' : '101'), void 0 !== G && (G.style.zIndex = '100');
         },
-        B = (R) =>
-          R.classList.contains('ion-page')
-            ? R
-            : R.querySelector(':scope > .ion-page, :scope > ion-nav, :scope > ion-tabs') || R;
+        B = (U) =>
+          U.classList.contains('ion-page')
+            ? U
+            : U.querySelector(':scope > .ion-page, :scope > ion-nav, :scope > ion-tabs') || U;
     },
     7639: (Lt, tt, k) => {
       'use strict';
@@ -6241,8 +6241,8 @@
             return 'function' == typeof ot ? ot(qe) : j[Ze](qe);
           });
         },
-        se = (qe) => !!(R(qe, /iPad/i) || (R(qe, /Macintosh/i) && Ae(qe))),
-        Pe = (qe) => R(qe, /android|sink/i),
+        se = (qe) => !!(U(qe, /iPad/i) || (U(qe, /Macintosh/i) && Ae(qe))),
+        Pe = (qe) => U(qe, /android|sink/i),
         Ae = (qe) => G(qe, '(any-pointer:coarse)'),
         Ue = (qe) => J(qe) || fe(qe),
         J = (qe) => !!(qe.cordova || qe.phonegap || qe.PhoneGap),
@@ -6250,12 +6250,12 @@
           const Fe = qe.Capacitor;
           return !(!Fe || !Fe.isNative);
         },
-        R = (qe, Fe) => Fe.test(qe.navigator.userAgent),
+        U = (qe, Fe) => Fe.test(qe.navigator.userAgent),
         G = (qe, Fe) => qe.matchMedia && qe.matchMedia(Fe).matches,
         j = {
           ipad: se,
-          iphone: (qe) => R(qe, /iPhone/i),
-          ios: (qe) => R(qe, /iPhone|iPod/i) || se(qe),
+          iphone: (qe) => U(qe, /iPhone/i),
+          ios: (qe) => U(qe, /iPhone|iPod/i) || se(qe),
           android: Pe,
           phablet: (qe) => {
             const Fe = qe.innerWidth,
@@ -6270,12 +6270,12 @@
               ot = Math.min(Fe, Ze),
               Be = Math.max(Fe, Ze);
             return (
-              se(qe) || ((qe) => Pe(qe) && !R(qe, /mobile/i))(qe) || (ot > 460 && ot < 820 && Be > 780 && Be < 1400)
+              se(qe) || ((qe) => Pe(qe) && !U(qe, /mobile/i))(qe) || (ot > 460 && ot < 820 && Be > 780 && Be < 1400)
             );
           },
           cordova: J,
           capacitor: fe,
-          electron: (qe) => R(qe, /electron/i),
+          electron: (qe) => U(qe, /electron/i),
           pwa: (qe) =>
             !!((qe.matchMedia && qe.matchMedia('(display-mode: standalone)').matches) || qe.navigator.standalone),
           mobile: Ae,
@@ -6400,7 +6400,7 @@
             Re = ne ? '7px' : '-7px',
             pe = ne ? '-4px' : '4px',
             Ae = ne ? '-4px' : '4px',
-            Ee = ne ? 'right' : 'left',
+            Te = ne ? 'right' : 'left',
             Ue = ne ? 'left' : 'right',
             Q = se
               ? [
@@ -6437,14 +6437,14 @@
             F.addElement(qe),
             j.addElement(nt),
             j
-              .beforeStyles({ 'transform-origin': `${Ee} center` })
+              .beforeStyles({ 'transform-origin': `${Te} center` })
               .beforeAddWrite(() => {
-                ge.style.setProperty('display', 'none'), Ve.style.setProperty(Ee, Se);
+                ge.style.setProperty('display', 'none'), Ve.style.setProperty(Te, Se);
               })
               .afterAddWrite(() => {
                 ge.style.setProperty('display', ''),
                   Ve.style.setProperty('display', 'none'),
-                  Ve.style.removeProperty(Ee);
+                  Ve.style.removeProperty(Te);
               })
               .keyframes(Q),
             F.beforeStyles({ 'transform-origin': `${Ue} center` }).keyframes(G),
@@ -6498,16 +6498,16 @@
               Re = 'rtl' === te.ownerDocument.dir,
               pe = Re ? '-99.5%' : '99.5%',
               Ae = Re ? '33%' : '-33%',
-              Ee = ne.enteringEl,
+              Te = ne.enteringEl,
               Ue = ne.leavingEl,
               J = 'back' === ne.direction,
-              fe = Ee.querySelector(':scope > ion-content'),
-              Q = Ee.querySelectorAll(':scope > ion-header > *:not(ion-toolbar), :scope > ion-footer > *'),
-              B = Ee.querySelectorAll(':scope > ion-header > ion-toolbar'),
-              R = (0, l.c)(),
+              fe = Te.querySelector(':scope > ion-content'),
+              Q = Te.querySelectorAll(':scope > ion-header > *:not(ion-toolbar), :scope > ion-footer > *'),
+              B = Te.querySelectorAll(':scope > ion-header > ion-toolbar'),
+              U = (0, l.c)(),
               G = (0, l.c)();
             if (
-              (R.addElement(Ee)
+              (U.addElement(Te)
                 .duration(ne.duration || 540)
                 .easing(ne.easing || se)
                 .fill('both')
@@ -6515,13 +6515,13 @@
               Ue && te)
             ) {
               const nt = (0, l.c)();
-              nt.addElement(te), R.addAnimation(nt);
+              nt.addElement(te), U.addAnimation(nt);
             }
             if (
               (fe || 0 !== B.length || 0 !== Q.length
                 ? (G.addElement(fe), G.addElement(Q))
-                : G.addElement(Ee.querySelector(':scope > .ion-page, :scope > ion-nav, :scope > ion-tabs')),
-              R.addAnimation(G),
+                : G.addElement(Te.querySelector(':scope > .ion-page, :scope > ion-nav, :scope > ion-tabs')),
+              U.addAnimation(G),
               J
                 ? G.beforeClearStyles([ge])
                     .fromTo('transform', `translateX(${Ae})`, `translateX(${Pe})`)
@@ -6545,29 +6545,29 @@
                   G.addAnimation([Ze]);
               }
             }
-            const j = Ee.querySelector('ion-header.header-collapse-condense'),
+            const j = Te.querySelector('ion-header.header-collapse-condense'),
               { forward: F, backward: Ve } = ((te, ne, se, ge, ye) => {
                 const Pe = q(ge, se),
                   Se = Y(ye),
                   Re = Y(ge),
                   pe = q(ye, se),
                   Ae = null !== Pe && null !== Se && !se,
-                  Ee = null !== Re && null !== pe && se;
+                  Te = null !== Re && null !== pe && se;
                 if (Ae) {
                   const Ue = Se.getBoundingClientRect(),
                     J = Pe.getBoundingClientRect();
                   _e(te, ne, se, Se, Ue, J), be(te, ne, se, Pe, Ue, J);
-                } else if (Ee) {
+                } else if (Te) {
                   const Ue = Re.getBoundingClientRect(),
                     J = pe.getBoundingClientRect();
                   _e(te, ne, se, Re, Ue, J), be(te, ne, se, pe, Ue, J);
                 }
-                return { forward: Ae, backward: Ee };
-              })(R, Re, J, Ee, Ue);
+                return { forward: Ae, backward: Te };
+              })(U, Re, J, Te, Ue);
             if (
               (B.forEach((nt) => {
                 const qe = (0, l.c)();
-                qe.addElement(nt), R.addAnimation(qe);
+                qe.addElement(nt), U.addAnimation(qe);
                 const Fe = (0, l.c)();
                 Fe.addElement(nt.querySelector('ion-title'));
                 const Ze = (0, l.c)(),
@@ -6629,7 +6629,7 @@
                 (qe || 0 !== Fe.length || 0 !== Ze.length
                   ? (nt.addElement(qe), nt.addElement(Ze))
                   : nt.addElement(Ue.querySelector(':scope > .ion-page, :scope > ion-nav, :scope > ion-tabs')),
-                R.addAnimation(nt),
+                U.addAnimation(nt),
                 J)
               ) {
                 nt.beforeClearStyles([ge]).fromTo(
@@ -6638,8 +6638,8 @@
                   Re ? 'translateX(-100%)' : 'translateX(100%)'
                 );
                 const ot = (0, e.g)(Ue);
-                R.afterAddWrite(() => {
-                  'normal' === R.getDirection() && ot.style.setProperty('display', 'none');
+                U.afterAddWrite(() => {
+                  'normal' === U.getDirection() && ot.style.setProperty('display', 'none');
                 });
               } else nt.fromTo('transform', `translateX(${Pe})`, `translateX(${Ae})`).fromTo(ge, 1, Se);
               if (qe) {
@@ -6683,7 +6683,7 @@
                 if (
                   (ri && Sn.addElement(ri),
                   Be.addAnimation([Je, Ce, yn, Sn, nn]),
-                  R.addAnimation(Be),
+                  U.addAnimation(Be),
                   Sn.fromTo(ge, 0.99, 0),
                   Ce.fromTo(ge, 0.99, 0),
                   yn.fromTo(ge, 0.99, 0),
@@ -6720,7 +6720,7 @@
                     Ce.afterClearStyles([ge]);
               });
             }
-            return R;
+            return U;
           } catch (se) {
             throw se;
           }
@@ -7088,7 +7088,7 @@
             L.addElement(M).easing('ease-in-out').duration(150).addAnimation([W, de])
           );
         },
-        R = (M) => {
+        U = (M) => {
           const L = (0, q.c)(),
             W = (0, q.c)(),
             de = (0, q.c)();
@@ -7196,7 +7196,7 @@
           return Mr(this, 'alertEnter', fe, B);
         }
         dismiss(M, L) {
-          return Fr(this, M, L, 'alertLeave', Q, R);
+          return Fr(this, M, L, 'alertLeave', Q, U);
         }
         onDidDismiss() {
           return rr(this.el, 'ionAlertDidDismiss');
@@ -9779,7 +9779,7 @@
                 let pe = ue - te.left,
                   Ae = be - te.top;
                 _e.unbounded && ((pe = 0.5 * ne), (Ae = 0.5 * se));
-                const Ee = pe - 0.5 * Se,
+                const Te = pe - 0.5 * Se,
                   Ue = Ae - 0.5 * Se,
                   J = 0.5 * ne - pe,
                   fe = 0.5 * se - Ae;
@@ -9788,7 +9788,7 @@
                   Q.classList.add('ripple-effect');
                   const B = Q.style;
                   (B.top = Ue + 'px'),
-                    (B.left = Ee + 'px'),
+                    (B.left = Te + 'px'),
                     (B.width = B.height = Se + 'px'),
                     B.setProperty('--final-scale', `${Re}`),
                     B.setProperty('--translate-end', `${J}px, ${fe}px`),
@@ -10118,7 +10118,7 @@
                 r.get(e.CZH).donePromise.then(() => {
                   const u = (0, l.q)(),
                     h = c.querySelectorAll(`style[ng-transition="${o}"]`);
-                  for (let O = 0; O < h.length; O++) u.remove(h[O]);
+                  for (let R = 0; R < h.length; R++) u.remove(h[R]);
                 });
               };
             },
@@ -10132,19 +10132,19 @@
         }
         addToWindow(c) {
           (e.dqk.getAngularTestability = (u, h = !0) => {
-            const O = c.findTestabilityInTree(u, h);
-            if (null == O) throw new Error('Could not find testability for element.');
-            return O;
+            const R = c.findTestabilityInTree(u, h);
+            if (null == R) throw new Error('Could not find testability for element.');
+            return R;
           }),
             (e.dqk.getAllAngularTestabilities = () => c.getAllTestabilities()),
             (e.dqk.getAllAngularRootElements = () => c.getAllRootElements()),
             e.dqk.frameworkStabilizers || (e.dqk.frameworkStabilizers = []),
             e.dqk.frameworkStabilizers.push((u) => {
               const h = e.dqk.getAllAngularTestabilities();
-              let O = h.length,
-                Te = !1;
+              let R = h.length,
+                Ee = !1;
               const et = function (Tt) {
-                (Te = Te || Tt), O--, 0 == O && u(Te);
+                (Ee = Ee || Tt), R--, 0 == R && u(Ee);
               };
               h.forEach(function (Tt) {
                 Tt.whenStable(et);
@@ -10199,9 +10199,9 @@
             const u = this._eventNameToPlugin.get(r);
             if (u) return u;
             const h = this._plugins;
-            for (let O = 0; O < h.length; O++) {
-              const Te = h[O];
-              if (Te.supports(r)) return this._eventNameToPlugin.set(r, Te), Te;
+            for (let R = 0; R < h.length; R++) {
+              const Ee = h[R];
+              if (Ee.supports(r)) return this._eventNameToPlugin.set(r, Ee), Ee;
             }
             throw new Error(`No event manager plugin found for event ${r}`);
           }
@@ -10255,9 +10255,9 @@
               super(), (this._doc = r), (this._hostNodes = new Map()), this._hostNodes.set(r.head, []);
             }
             _addStylesToHost(r, u, h) {
-              r.forEach((O) => {
-                const Te = this._doc.createElement('style');
-                (Te.textContent = O), h.push(u.appendChild(Te));
+              r.forEach((R) => {
+                const Ee = this._doc.createElement('style');
+                (Ee.textContent = R), h.push(u.appendChild(Ee));
               });
             }
             addHost(r) {
@@ -10303,7 +10303,7 @@
         }
         return r;
       }
-      function R(o) {
+      function U(o) {
         return (c) => {
           if ('__ngUnwrap__' === c) return o;
           !1 === o(c) && (c.preventDefault(), (c.returnValue = !1));
@@ -10390,8 +10390,8 @@
         setAttribute(c, r, u, h) {
           if (h) {
             r = h + ':' + r;
-            const O = Re[h];
-            O ? c.setAttributeNS(O, r, u) : c.setAttribute(r, u);
+            const R = Re[h];
+            R ? c.setAttributeNS(R, r, u) : c.setAttribute(r, u);
           } else c.setAttribute(r, u);
         }
         removeAttribute(c, r, u) {
@@ -10422,15 +10422,15 @@
         }
         listen(c, r, u) {
           return 'string' == typeof c
-            ? this.eventManager.addGlobalEventListener(c, r, R(u))
-            : this.eventManager.addEventListener(c, r, R(u));
+            ? this.eventManager.addGlobalEventListener(c, r, U(u))
+            : this.eventManager.addEventListener(c, r, U(u));
         }
       }
       class qe extends F {
         constructor(c, r, u, h) {
           super(c), (this.component = u);
-          const O = B(h + '-' + u.id, u.styles, []);
-          r.addStyles(O),
+          const R = B(h + '-' + u.id, u.styles, []);
+          r.addStyles(R),
             (this.contentAttr = (function fe(o) {
               return '_ngcontent-%COMP%'.replace(pe, o);
             })(h + '-' + u.id)),
@@ -10453,10 +10453,10 @@
             (this.hostEl = u),
             (this.shadowRoot = u.attachShadow({ mode: 'open' })),
             this.sharedStylesHost.addHost(this.shadowRoot);
-          const O = B(h.id, h.styles, []);
-          for (let Te = 0; Te < O.length; Te++) {
+          const R = B(h.id, h.styles, []);
+          for (let Ee = 0; Ee < R.length; Ee++) {
             const et = document.createElement('style');
-            (et.textContent = O[Te]), this.shadowRoot.appendChild(et);
+            (et.textContent = R[Ee]), this.shadowRoot.appendChild(et);
           }
         }
         nodeOrShadowRoot(c) {
@@ -10545,27 +10545,27 @@
             return null != o.parseEventName(r);
           }
           addEventListener(r, u, h) {
-            const O = o.parseEventName(u),
-              Te = o.eventCallback(O.fullKey, h, this.manager.getZone());
-            return this.manager.getZone().runOutsideAngular(() => (0, l.q)().onAndCancel(r, O.domEventName, Te));
+            const R = o.parseEventName(u),
+              Ee = o.eventCallback(R.fullKey, h, this.manager.getZone());
+            return this.manager.getZone().runOutsideAngular(() => (0, l.q)().onAndCancel(r, R.domEventName, Ee));
           }
           static parseEventName(r) {
             const u = r.toLowerCase().split('.'),
               h = u.shift();
             if (0 === u.length || ('keydown' !== h && 'keyup' !== h)) return null;
-            const O = o._normalizeKey(u.pop());
-            let Te = '';
+            const R = o._normalizeKey(u.pop());
+            let Ee = '';
             if (
               (ot.forEach((Tt) => {
                 const Wt = u.indexOf(Tt);
-                Wt > -1 && (u.splice(Wt, 1), (Te += Tt + '.'));
+                Wt > -1 && (u.splice(Wt, 1), (Ee += Tt + '.'));
               }),
-              (Te += O),
-              0 != u.length || 0 === O.length)
+              (Ee += R),
+              0 != u.length || 0 === R.length)
             )
               return null;
             const et = {};
-            return (et.domEventName = h), (et.fullKey = Te), et;
+            return (et.domEventName = h), (et.fullKey = Ee), et;
           }
           static getEventFullKey(r) {
             let u = '',
@@ -10582,16 +10582,16 @@
             return (
               (h = h.toLowerCase()),
               ' ' === h ? (h = 'space') : '.' === h && (h = 'dot'),
-              ot.forEach((O) => {
-                O != h && je[O](r) && (u += O + '.');
+              ot.forEach((R) => {
+                R != h && je[R](r) && (u += R + '.');
               }),
               (u += h),
               u
             );
           }
           static eventCallback(r, u, h) {
-            return (O) => {
-              o.getEventFullKey(O) === r && h.runGuarded(() => u(O));
+            return (R) => {
+              o.getEventFullKey(R) === r && h.runGuarded(() => u(R));
             };
           }
           static _normalizeKey(r) {
@@ -10757,7 +10757,7 @@
         var c;
         o = null !== (c = null == o ? void 0 : o.toLowerCase()) && void 0 !== c ? c : '';
         let [r, u, h] = o.split(' ');
-        return bt.find((O) => O === r) || (r = bt[0]), u === xt && ((u = h !== xt ? h : ''), (h = xt)), [r, Yt(u), !!h];
+        return bt.find((R) => R === r) || (r = bt[0]), u === xt && ((u = h !== xt ? h : ''), (h = xt)), [r, Yt(u), !!h];
       }
       function Gt(o) {
         let [c] = Nt(o);
@@ -10819,12 +10819,12 @@
         );
       })();
       class Qi {
-        constructor(c = !1, r = 'all', u = '', h = '', O = 0) {
+        constructor(c = !1, r = 'all', u = '', h = '', R = 0) {
           (this.matches = c),
             (this.mediaQuery = r),
             (this.mqAlias = u),
             (this.suffix = h),
-            (this.priority = O),
+            (this.priority = R),
             (this.property = '');
         }
         clone() {
@@ -10837,20 +10837,20 @@
             this.stylesheet = new Map();
           }
           addStyleToElement(r, u, h) {
-            const O = this.stylesheet.get(r);
-            O ? O.set(u, h) : this.stylesheet.set(r, new Map([[u, h]]));
+            const R = this.stylesheet.get(r);
+            R ? R.set(u, h) : this.stylesheet.set(r, new Map([[u, h]]));
           }
           clearStyles() {
             this.stylesheet.clear();
           }
           getStyleForElement(r, u) {
             const h = this.stylesheet.get(r);
-            let O = '';
+            let R = '';
             if (h) {
-              const Te = h.get(u);
-              ('number' == typeof Te || 'string' == typeof Te) && (O = Te + '');
+              const Ee = h.get(u);
+              ('number' == typeof Ee || 'string' == typeof Ee) && (R = Ee + '');
             }
-            return O;
+            return R;
           }
         }
         return (
@@ -10896,22 +10896,22 @@
       }
       let Rn = (() => {
         class o {
-          constructor(r, u, h, O) {
+          constructor(r, u, h, R) {
             (this._serverStylesheet = r),
               (this._serverModuleLoaded = u),
               (this._platformId = h),
-              (this.layoutConfig = O);
+              (this.layoutConfig = R);
           }
           applyStyleToElement(r, u, h = null) {
-            let O = {};
-            'string' == typeof u && ((O[u] = h), (u = O)),
-              (O = this.layoutConfig.disableVendorPrefixes ? u : ut(u)),
-              this._applyMultiValueStyleToElement(O, r);
+            let R = {};
+            'string' == typeof u && ((R[u] = h), (u = R)),
+              (R = this.layoutConfig.disableVendorPrefixes ? u : ut(u)),
+              this._applyMultiValueStyleToElement(R, r);
           }
           applyStyleToElements(r, u = []) {
             const h = this.layoutConfig.disableVendorPrefixes ? r : ut(r);
-            u.forEach((O) => {
-              this._applyMultiValueStyleToElement(h, O);
+            u.forEach((R) => {
+              this._applyMultiValueStyleToElement(h, R);
             });
           }
           getFlowDirection(r) {
@@ -10938,24 +10938,24 @@
                 })(r, u);
           }
           lookupStyle(r, u, h = !1) {
-            let O = '';
+            let R = '';
             return (
               r &&
-                ((O = this.lookupInlineStyle(r, u)) ||
+                ((R = this.lookupInlineStyle(r, u)) ||
                   ((0, l.NF)(this._platformId)
-                    ? h || (O = getComputedStyle(r).getPropertyValue(u))
-                    : this._serverModuleLoaded && (O = this._serverStylesheet.getStyleForElement(r, u)))),
-              O ? O.trim() : ''
+                    ? h || (R = getComputedStyle(r).getPropertyValue(u))
+                    : this._serverModuleLoaded && (R = this._serverStylesheet.getStyleForElement(r, u)))),
+              R ? R.trim() : ''
             );
           }
           _applyMultiValueStyleToElement(r, u) {
             Object.keys(r)
               .sort()
               .forEach((h) => {
-                const O = r[h],
-                  Te = Array.isArray(O) ? O : [O];
-                Te.sort();
-                for (let et of Te)
+                const R = r[h],
+                  Ee = Array.isArray(R) ? R : [R];
+                Ee.sort();
+                for (let et of Ee)
                   (et = et ? et + '' : ''),
                     (0, l.NF)(this._platformId) || !this._serverModuleLoaded
                       ? (0, l.NF)(this._platformId)
@@ -10989,11 +10989,11 @@
         if (r) {
           const u = r.split(/;+/g);
           for (let h = 0; h < u.length; h++) {
-            const O = u[h].trim();
-            if (O.length > 0) {
-              const Te = O.indexOf(':');
-              if (-1 === Te) throw new Error(`Invalid CSS style: ${O}`);
-              c[O.substr(0, Te).trim()] = O.substr(Te + 1).trim();
+            const R = u[h].trim();
+            if (R.length > 0) {
+              const Ee = R.indexOf(':');
+              if (-1 === Ee) throw new Error(`Invalid CSS style: ${R}`);
+              c[R.substr(0, Ee).trim()] = R.substr(Ee + 1).trim();
             }
           }
         }
@@ -11030,23 +11030,23 @@
             const h = this.registry.get(r);
             return null !== (u = null == h ? void 0 : h.matches) && void 0 !== u
               ? u
-              : this.registerQuery(r).some((O) => O.matches);
+              : this.registerQuery(r).some((R) => R.matches);
           }
           observe(r, u = !1) {
             if (r && r.length) {
-              const h = this._observable$.pipe((0, St.h)((Te) => !u || r.indexOf(Te.mediaQuery) > -1)),
-                O = new Le.y((Te) => {
+              const h = this._observable$.pipe((0, St.h)((Ee) => !u || r.indexOf(Ee.mediaQuery) > -1)),
+                R = new Le.y((Ee) => {
                   const et = this.registerQuery(r);
                   if (et.length) {
                     const Tt = et.pop();
                     et.forEach((Wt) => {
-                      Te.next(Wt);
+                      Ee.next(Wt);
                     }),
                       this.source.next(Tt);
                   }
-                  Te.complete();
+                  Ee.complete();
                 });
-              return (0, st.T)(O, h);
+              return (0, st.T)(R, h);
             }
             return this._observable$;
           }
@@ -11068,23 +11068,23 @@
                           )
                         ),
                       c.head.appendChild(h),
-                      r.forEach((O) => (ze[O] = h));
+                      r.forEach((R) => (ze[R] = h));
                   } catch (h) {
                     console.error(h);
                   }
                 }
               })(u, this._document),
-              u.forEach((O) => {
-                const Te = (Tt) => {
-                  this._zone.run(() => this.source.next(new Qi(Tt.matches, O)));
+              u.forEach((R) => {
+                const Ee = (Tt) => {
+                  this._zone.run(() => this.source.next(new Qi(Tt.matches, R)));
                 };
-                let et = this.registry.get(O);
+                let et = this.registry.get(R);
                 et ||
-                  ((et = this.buildMQL(O)),
-                  et.addListener(Te),
-                  this.pendingRemoveListenerFns.push(() => et.removeListener(Te)),
-                  this.registry.set(O, et)),
-                  et.matches && h.push(new Qi(!0, O));
+                  ((et = this.buildMQL(R)),
+                  et.addListener(Ee),
+                  this.pendingRemoveListenerFns.push(() => et.removeListener(Ee)),
+                  this.registry.set(R, et)),
+                  et.matches && h.push(new Qi(!0, R));
               }),
               h
             );
@@ -11227,10 +11227,10 @@
           }
           findWithPredicate(r, u) {
             var h;
-            let O = this.findByMap.get(r);
+            let R = this.findByMap.get(r);
             return (
-              O || ((O = null !== (h = this.items.find(u)) && void 0 !== h ? h : null), this.findByMap.set(r, O)),
-              null != O ? O : null
+              R || ((R = null !== (h = this.items.find(u)) && void 0 !== h ? h : null), this.findByMap.set(r, R)),
+              null != R ? R : null
             );
           }
         }
@@ -11336,9 +11336,9 @@
               if (!u.matches) {
                 const h = this.breakpoints.findByQuery(u.mediaQuery);
                 if (h) {
-                  const O = this.formerActivations && this.formerActivations.includes(h),
-                    Te = !this.formerActivations && r.activatedBreakpoints.includes(h);
-                  (O || Te) && (this.deactivations.push(h), this.deactivations.sort(we));
+                  const R = this.formerActivations && this.formerActivations.includes(h),
+                    Ee = !this.formerActivations && r.activatedBreakpoints.includes(h);
+                  (R || Ee) && (this.deactivations.push(h), this.deactivations.sort(we));
                 }
               }
             }
@@ -11426,34 +11426,34 @@
                   (this._activatedBreakpoints.splice(h, 1), this._activatedBreakpoints.sort(we), this.updateStyles());
             }
           }
-          init(r, u, h, O, Te = []) {
+          init(r, u, h, R, Ee = []) {
             Pr(this.updateMap, r, u, h),
-              Pr(this.clearMap, r, u, O),
+              Pr(this.clearMap, r, u, R),
               this.buildElementKeyMap(r, u),
-              this.watchExtraTriggers(r, u, Te);
+              this.watchExtraTriggers(r, u, Ee);
           }
           getValue(r, u, h) {
-            const O = this.elementMap.get(r);
-            if (O) {
-              const Te = void 0 !== h ? O.get(h) : this.getActivatedValues(O, u);
-              if (Te) return Te.get(u);
+            const R = this.elementMap.get(r);
+            if (R) {
+              const Ee = void 0 !== h ? R.get(h) : this.getActivatedValues(R, u);
+              if (Ee) return Ee.get(u);
             }
           }
           hasValue(r, u) {
             const h = this.elementMap.get(r);
             if (h) {
-              const O = this.getActivatedValues(h, u);
-              if (O) return void 0 !== O.get(u) || !1;
+              const R = this.getActivatedValues(h, u);
+              if (R) return void 0 !== R.get(u) || !1;
             }
             return !1;
           }
-          setValue(r, u, h, O) {
-            var Te;
+          setValue(r, u, h, R) {
+            var Ee;
             let et = this.elementMap.get(r);
             if (et) {
-              const Wt = (null !== (Te = et.get(O)) && void 0 !== Te ? Te : new Map()).set(u, h);
-              et.set(O, Wt), this.elementMap.set(r, et);
-            } else (et = new Map().set(O, new Map().set(u, h))), this.elementMap.set(r, et);
+              const Wt = (null !== (Ee = et.get(R)) && void 0 !== Ee ? Ee : new Map()).set(u, h);
+              et.set(R, Wt), this.elementMap.set(r, et);
+            } else (et = new Map().set(R, new Map().set(u, h))), this.elementMap.set(r, et);
             const Tt = this.getValue(r, u);
             void 0 !== Tt && this.updateElement(r, u, Tt);
           }
@@ -11463,44 +11463,44 @@
           updateStyles() {
             this.elementMap.forEach((r, u) => {
               const h = new Set(this.elementKeyMap.get(u));
-              let O = this.getActivatedValues(r);
-              O &&
-                O.forEach((Te, et) => {
-                  this.updateElement(u, et, Te), h.delete(et);
+              let R = this.getActivatedValues(r);
+              R &&
+                R.forEach((Ee, et) => {
+                  this.updateElement(u, et, Ee), h.delete(et);
                 }),
-                h.forEach((Te) => {
-                  if (((O = this.getActivatedValues(r, Te)), O)) {
-                    const et = O.get(Te);
-                    this.updateElement(u, Te, et);
-                  } else this.clearElement(u, Te);
+                h.forEach((Ee) => {
+                  if (((R = this.getActivatedValues(r, Ee)), R)) {
+                    const et = R.get(Ee);
+                    this.updateElement(u, Ee, et);
+                  } else this.clearElement(u, Ee);
                 });
             });
           }
           clearElement(r, u) {
             const h = this.clearMap.get(r);
             if (h) {
-              const O = h.get(u);
-              O && (O(), this.subject.next({ element: r, key: u, value: '' }));
+              const R = h.get(u);
+              R && (R(), this.subject.next({ element: r, key: u, value: '' }));
             }
           }
           updateElement(r, u, h) {
-            const O = this.updateMap.get(r);
-            if (O) {
-              const Te = O.get(u);
-              Te && (Te(h), this.subject.next({ element: r, key: u, value: h }));
+            const R = this.updateMap.get(r);
+            if (R) {
+              const Ee = R.get(u);
+              Ee && (Ee(h), this.subject.next({ element: r, key: u, value: h }));
             }
           }
           releaseElement(r) {
             const u = this.watcherMap.get(r);
-            u && (u.forEach((O) => O.unsubscribe()), this.watcherMap.delete(r));
+            u && (u.forEach((R) => R.unsubscribe()), this.watcherMap.delete(r));
             const h = this.elementMap.get(r);
-            h && (h.forEach((O, Te) => h.delete(Te)), this.elementMap.delete(r));
+            h && (h.forEach((R, Ee) => h.delete(Ee)), this.elementMap.delete(r));
           }
           triggerUpdate(r, u) {
             const h = this.elementMap.get(r);
             if (h) {
-              const O = this.getActivatedValues(h, u);
-              O && (u ? this.updateElement(r, u, O.get(u)) : O.forEach((Te, et) => this.updateElement(r, et, Te)));
+              const R = this.getActivatedValues(h, u);
+              R && (u ? this.updateElement(r, u, R.get(u)) : R.forEach((Ee, et) => this.updateElement(r, et, Ee)));
             }
           }
           buildElementKeyMap(r, u) {
@@ -11509,13 +11509,13 @@
           }
           watchExtraTriggers(r, u, h) {
             if (h && h.length) {
-              let O = this.watcherMap.get(r);
-              if ((O || ((O = new Map()), this.watcherMap.set(r, O)), !O.get(u))) {
+              let R = this.watcherMap.get(r);
+              if ((R || ((R = new Map()), this.watcherMap.set(r, R)), !R.get(u))) {
                 const et = (0, st.T)(...h).subscribe(() => {
                   const Tt = this.getValue(r, u);
                   this.updateElement(r, u, Tt);
                 });
-                O.set(u, et);
+                R.set(u, et);
               }
             }
           }
@@ -11523,8 +11523,8 @@
             return this.breakpoints.findByQuery(r);
           }
           getActivatedValues(r, u) {
-            for (let O = 0; O < this.activatedBreakpoints.length; O++) {
-              const et = r.get(this.activatedBreakpoints[O].alias);
+            for (let R = 0; R < this.activatedBreakpoints.length; R++) {
+              const et = r.get(this.activatedBreakpoints[R].alias);
               if (et && (void 0 === u || (et.has(u) && null != et.get(u)))) return et;
             }
             if (!this._useFallbacks) return;
@@ -11551,17 +11551,17 @@
       function Pr(o, c, r, u) {
         var h;
         if (void 0 !== u) {
-          const O = null !== (h = o.get(c)) && void 0 !== h ? h : new Map();
-          O.set(r, u), o.set(c, O);
+          const R = null !== (h = o.get(c)) && void 0 !== h ? h : new Map();
+          R.set(r, u), o.set(c, R);
         }
       }
       let si = (() => {
         class o {
-          constructor(r, u, h, O) {
+          constructor(r, u, h, R) {
             (this.elementRef = r),
               (this.styleBuilder = u),
               (this.styler = h),
-              (this.marshal = O),
+              (this.marshal = R),
               (this.DIRECTIVE_KEY = ''),
               (this.inputs = []),
               (this.mru = {}),
@@ -11602,12 +11602,12 @@
           }
           addStyles(r, u) {
             const h = this.styleBuilder,
-              O = h.shouldCache;
-            let Te = this.styleCache.get(r);
-            (!Te || !O) && ((Te = h.buildStyles(r, u)), O && this.styleCache.set(r, Te)),
-              (this.mru = Object.assign({}, Te)),
-              this.applyStyleToElement(Te),
-              h.sideEffect(r, Te, u);
+              R = h.shouldCache;
+            let Ee = this.styleCache.get(r);
+            (!Ee || !R) && ((Ee = h.buildStyles(r, u)), R && this.styleCache.set(r, Ee)),
+              (this.mru = Object.assign({}, Ee)),
+              this.applyStyleToElement(Ee),
+              h.sideEffect(r, Ee, u);
           }
           clearStyles() {
             Object.keys(this.mru).forEach((r) => {
@@ -11622,10 +11622,10 @@
           }
           getFlexFlowDirection(r, u = !1) {
             if (r) {
-              const [h, O] = this.styler.getFlowDirection(r);
-              if (!O && u) {
-                const Te = kt(h);
-                this.styler.applyStyleToElements(Te, [r]);
+              const [h, R] = this.styler.getFlowDirection(r);
+              if (!R && u) {
+                const Ee = kt(h);
+                this.styler.applyStyleToElements(Ee, [r]);
               }
               return h.trim();
             }
@@ -11657,12 +11657,12 @@
           h = o.indexOf('calc');
         if (h > 0) {
           u[2] = an(o.substring(h).trim());
-          let O = o.substr(0, h).trim().split(' ');
-          2 == O.length && ((u[0] = O[0]), (u[1] = O[1]));
+          let R = o.substr(0, h).trim().split(' ');
+          2 == R.length && ((u[0] = R[0]), (u[1] = R[1]));
         } else if (0 == h) u[2] = an(o.trim());
         else {
-          let O = o.split(' ');
-          u = 3 === O.length ? O : [c, r, o];
+          let R = o.split(' ');
+          u = 3 === R.length ? R : [c, r, o];
         }
         return u;
       }
@@ -11688,11 +11688,11 @@
       }
       let At = (() => {
         class o extends si {
-          constructor(r, u, h, O, Te, et, Tt) {
+          constructor(r, u, h, R, Ee, et, Tt) {
             super(r, null, u, h),
               (this.ngClassInstance = Tt),
               (this.DIRECTIVE_KEY = 'ngClass'),
-              this.ngClassInstance || (this.ngClassInstance = new l.mk(O, Te, r, et)),
+              this.ngClassInstance || (this.ngClassInstance = new l.mk(R, Ee, r, et)),
               this.init(),
               this.setValue('', '');
           }
@@ -11887,15 +11887,15 @@
       ];
       let ja = (() => {
           class o extends si {
-            constructor(r, u, h, O, Te) {
-              super(r, h, u, O), (this._config = Te), (this.DIRECTIVE_KEY = 'layout'), this.init();
+            constructor(r, u, h, R, Ee) {
+              super(r, h, u, R), (this._config = Ee), (this.DIRECTIVE_KEY = 'layout'), this.init();
             }
             updateWithValue(r) {
               var u;
-              const O = this._config.detectLayoutDisplay ? this.styler.lookupStyle(this.nativeElement, 'display') : '';
-              (this.styleCache = null !== (u = ac.get(O)) && void 0 !== u ? u : new Map()),
-                ac.set(O, this.styleCache),
-                this.currentValue !== r && (this.addStyles(r, { display: O }), (this.currentValue = r));
+              const R = this._config.detectLayoutDisplay ? this.styler.lookupStyle(this.nativeElement, 'display') : '';
+              (this.styleCache = null !== (u = ac.get(R)) && void 0 !== u ? u : new Map()),
+                ac.set(R, this.styleCache),
+                this.currentValue !== r && (this.addStyles(r, { display: R }), (this.currentValue = r));
             }
           }
           return (
@@ -11969,33 +11969,33 @@
             return r.endsWith(Go)
               ? (function xa(o, c) {
                   const [r, u] = o.split(' '),
-                    O = (Wt) => `-${Wt}`;
-                  let Te = '0px',
-                    et = O(null != u ? u : r),
+                    R = (Wt) => `-${Wt}`;
+                  let Ee = '0px',
+                    et = R(null != u ? u : r),
                     Tt = '0px';
-                  return 'rtl' === c ? (Tt = O(r)) : (Te = O(r)), { margin: `0px ${Te} ${et} ${Tt}` };
+                  return 'rtl' === c ? (Tt = R(r)) : (Ee = R(r)), { margin: `0px ${Ee} ${et} ${Tt}` };
                 })((r = fn((r = r.slice(0, r.indexOf(Go))), this._config.multiplier)), u.directionality)
               : {};
           }
           sideEffect(r, u, h) {
-            const O = h.items;
+            const R = h.items;
             if (r.endsWith(Go)) {
-              const Te = (function Ao(o, c) {
+              const Ee = (function Ao(o, c) {
                 const [r, u] = o.split(' ');
-                let O = '0px',
+                let R = '0px',
                   et = '0px';
-                return 'rtl' === c ? (et = r) : (O = r), { padding: `0px ${O} ${null != u ? u : r} ${et}` };
+                return 'rtl' === c ? (et = r) : (R = r), { padding: `0px ${R} ${null != u ? u : r} ${et}` };
               })((r = fn((r = r.slice(0, r.indexOf(Go))), this._config.multiplier)), h.directionality);
-              this._styler.applyStyleToElements(Te, h.items);
+              this._styler.applyStyleToElements(Ee, h.items);
             } else {
               (r = fn(r, this._config.multiplier)), (r = this.addFallbackUnit(r));
-              const Te = O.pop(),
+              const Ee = R.pop(),
                 et = (function Dl(o, c) {
                   const r = cc(c.directionality, c.layout),
                     u = Object.assign({}, Ts);
                   return (u[r] = o), u;
                 })(r, h);
-              this._styler.applyStyleToElements(et, O), this._styler.applyStyleToElements(Ts, [Te]);
+              this._styler.applyStyleToElements(et, R), this._styler.applyStyleToElements(Ts, [Ee]);
             }
           }
           addFallbackUnit(r) {
@@ -12028,11 +12028,11 @@
       ];
       let Cl = (() => {
           class o extends si {
-            constructor(r, u, h, O, Te, et) {
-              super(r, Te, O, et),
+            constructor(r, u, h, R, Ee, et) {
+              super(r, Ee, R, et),
                 (this.zone = u),
                 (this.directionality = h),
-                (this.styleUtils = O),
+                (this.styleUtils = R),
                 (this.layout = 'row'),
                 (this.DIRECTIVE_KEY = 'layout-gap'),
                 (this.observerSubject = new rt.x());
@@ -12057,27 +12057,27 @@
             }
             onLayoutChange(r) {
               const h = r.value.split(' ');
-              (this.layout = h[0]), bt.find((O) => O === this.layout) || (this.layout = 'row'), this.triggerUpdate();
+              (this.layout = h[0]), bt.find((R) => R === this.layout) || (this.layout = 'row'), this.triggerUpdate();
             }
             updateWithValue(r) {
               const u = this.childrenNodes
                 .filter((h) => 1 === h.nodeType && this.willDisplay(h))
-                .sort((h, O) => {
-                  const Te = +this.styler.lookupStyle(h, 'order'),
-                    et = +this.styler.lookupStyle(O, 'order');
-                  return isNaN(Te) || isNaN(et) || Te === et ? 0 : Te > et ? 1 : -1;
+                .sort((h, R) => {
+                  const Ee = +this.styler.lookupStyle(h, 'order'),
+                    et = +this.styler.lookupStyle(R, 'order');
+                  return isNaN(Ee) || isNaN(et) || Ee === et ? 0 : Ee > et ? 1 : -1;
                 });
               if (u.length > 0) {
                 const h = this.directionality.value,
-                  O = this.layout;
-                'row' === O && 'rtl' === h
+                  R = this.layout;
+                'row' === R && 'rtl' === h
                   ? (this.styleCache = zs)
-                  : 'row' === O && 'rtl' !== h
+                  : 'row' === R && 'rtl' !== h
                   ? (this.styleCache = Al)
-                  : 'column' === O && 'rtl' === h
+                  : 'column' === R && 'rtl' === h
                   ? (this.styleCache = ba)
-                  : 'column' === O && 'rtl' !== h && (this.styleCache = lc),
-                  this.addStyles(r, { directionality: h, items: u, layout: O });
+                  : 'column' === R && 'rtl' !== h && (this.styleCache = lc),
+                  this.addStyles(r, { directionality: h, items: u, layout: R });
               }
             }
             clearStyles() {
@@ -12185,8 +12185,8 @@
             super(), (this.layoutConfig = r);
           }
           buildStyles(r, u) {
-            let [h, O, ...Te] = r.split(' '),
-              et = Te.join(' ');
+            let [h, R, ...Ee] = r.split(' '),
+              et = Ee.join(' ');
             const Tt = u.direction.indexOf('column') > -1 ? 'column' : 'row',
               Wt = Gt(Tt) ? 'max-width' : 'max-height',
               wn = Gt(Tt) ? 'min-width' : 'min-height',
@@ -12200,8 +12200,8 @@
                 String(et).indexOf('vw') > -1 ||
                 String(et).indexOf('vh') > -1;
             let yo = Cn || sr;
-            (h = '0' == h ? 0 : h), (O = '0' == O ? 0 : O);
-            const Kr = !h && !O;
+            (h = '0' == h ? 0 : h), (R = '0' == R ? 0 : R);
+            const Kr = !h && !R;
             let ki = {};
             const _o = { 'max-width': null, 'max-height': null, 'min-width': null, 'min-height': null };
             switch (et || '') {
@@ -12217,12 +12217,12 @@
                 et = '100%';
                 break;
               case 'noshrink':
-                (O = 0), (et = 'auto');
+                (R = 0), (et = 'auto');
                 break;
               case 'auto':
                 break;
               case 'none':
-                (h = 0), (O = 0), (et = 'auto');
+                (h = 0), (R = 0), (et = 'auto');
                 break;
               default:
                 !yo && !Jn && !isNaN(et) && (et += '%'),
@@ -12231,8 +12231,8 @@
                   (ki = Pn(
                     _o,
                     Cn
-                      ? { 'flex-grow': h, 'flex-shrink': O, 'flex-basis': yo ? et : '100%' }
-                      : { flex: `${h} ${O} ${yo ? et : '100%'}` }
+                      ? { 'flex-grow': h, 'flex-shrink': R, 'flex-basis': yo ? et : '100%' }
+                      : { flex: `${h} ${R} ${yo ? et : '100%'}` }
                   ));
             }
             return (
@@ -12240,25 +12240,25 @@
                 ki['flex-grow'] ||
                 (ki = Pn(
                   _o,
-                  Cn ? { 'flex-grow': h, 'flex-shrink': O, 'flex-basis': et } : { flex: `${h} ${O} ${et}` }
+                  Cn ? { 'flex-grow': h, 'flex-shrink': R, 'flex-basis': et } : { flex: `${h} ${R} ${et}` }
                 )),
               '0%' !== et &&
                 '0px' !== et &&
                 '0.000000001px' !== et &&
                 'auto' !== et &&
-                ((ki[wn] = Kr || (yo && h) ? et : null), (ki[Wt] = Kr || (!nr && O) ? et : null)),
+                ((ki[wn] = Kr || (yo && h) ? et : null), (ki[Wt] = Kr || (!nr && R) ? et : null)),
               ki[wn] || ki[Wt]
                 ? u.hasWrap &&
                   (ki[Cn ? 'flex-basis' : 'flex'] = ki[Wt]
                     ? Cn
                       ? ki[Wt]
-                      : `${h} ${O} ${ki[Wt]}`
+                      : `${h} ${R} ${ki[Wt]}`
                     : Cn
                     ? ki[wn]
-                    : `${h} ${O} ${ki[wn]}`)
+                    : `${h} ${R} ${ki[wn]}`)
                 : (ki = Pn(
                     _o,
-                    Cn ? { 'flex-grow': h, 'flex-shrink': O, 'flex-basis': et } : { flex: `${h} ${O} ${et}` }
+                    Cn ? { 'flex-grow': h, 'flex-shrink': R, 'flex-basis': et } : { flex: `${h} ${R} ${et}` }
                   )),
               Pn(ki, { 'box-sizing': 'border-box' })
             );
@@ -12290,10 +12290,10 @@
       ];
       let Ys = (() => {
           class o extends si {
-            constructor(r, u, h, O, Te) {
-              super(r, O, u, Te),
+            constructor(r, u, h, R, Ee) {
+              super(r, R, u, Ee),
                 (this.layoutConfig = h),
-                (this.marshal = Te),
+                (this.marshal = Ee),
                 (this.DIRECTIVE_KEY = 'flex'),
                 (this.direction = void 0),
                 (this.wrap = void 0),
@@ -12336,17 +12336,17 @@
                 )),
                 void 0 === this.wrap && (this.wrap = this.hasWrap(this.parentElement));
               const h = this.direction,
-                O = h.startsWith('row'),
-                Te = this.wrap;
-              O && Te
+                R = h.startsWith('row'),
+                Ee = this.wrap;
+              R && Ee
                 ? (this.styleCache = cn)
-                : O && !Te
+                : R && !Ee
                 ? (this.styleCache = Dt)
-                : !O && Te
+                : !R && Ee
                 ? (this.styleCache = ii)
-                : !O && !Te && (this.styleCache = mt);
+                : !R && !Ee && (this.styleCache = mt);
               const Tt = $t(String(r).replace(';', ''), this.flexGrow, this.flexShrink);
-              this.addStyles(Tt.join(' '), { direction: h, hasWrap: Te });
+              this.addStyles(Tt.join(' '), { direction: h, hasWrap: Ee });
             }
             triggerReflow() {
               const r = this.activatedValue;
@@ -12428,8 +12428,8 @@
         class o extends Gn {
           buildStyles(r, u) {
             const h = {},
-              [O, Te] = r.split(' ');
-            switch (O) {
+              [R, Ee] = r.split(' ');
+            switch (R) {
               case 'center':
                 h['justify-content'] = 'center';
                 break;
@@ -12449,7 +12449,7 @@
               default:
                 h['justify-content'] = 'flex-start';
             }
-            switch (Te) {
+            switch (Ee) {
               case 'start':
               case 'flex-start':
                 h['align-items'] = h['align-content'] = 'flex-start';
@@ -12477,8 +12477,8 @@
               display: u.inline ? 'inline-flex' : 'flex',
               'flex-direction': u.layout,
               'box-sizing': 'border-box',
-              'max-width': 'stretch' === Te ? (Gt(u.layout) ? null : '100%') : null,
-              'max-height': 'stretch' === Te && Gt(u.layout) ? '100%' : null,
+              'max-width': 'stretch' === Ee ? (Gt(u.layout) ? null : '100%') : null,
+              'max-height': 'stretch' === Ee && Gt(u.layout) ? '100%' : null,
             });
           }
         }
@@ -12511,8 +12511,8 @@
       ];
       let us = (() => {
           class o extends si {
-            constructor(r, u, h, O) {
-              super(r, h, u, O),
+            constructor(r, u, h, R) {
+              super(r, h, u, R),
                 (this.DIRECTIVE_KEY = 'layout-align'),
                 (this.layout = 'row'),
                 (this.inline = !1),
@@ -13849,7 +13849,7 @@
         log(c, r, u) {
           if (r <= Er.level) {
             const h = this.source ? ['[' + this.source + ']'].concat(u) : u;
-            c.apply(console, h), Er.outputs.forEach((O) => O.apply(O, [this.source, r, ...u]));
+            c.apply(console, h), Er.outputs.forEach((R) => R.apply(R, [this.source, r, ...u]));
           }
         }
       }
@@ -13884,7 +13884,7 @@
             u &&
               !h &&
               ((u = u.split('-')[0]),
-              (u = this.supportedLanguages.find((O) => O.startsWith(u)) || ''),
+              (u = this.supportedLanguages.find((R) => R.startsWith(u)) || ''),
               (h = Boolean(u))),
               (!u || !h) && (u = this.defaultLanguage),
               Xh.debug(`Language set to ${(r = u)}`),
@@ -14017,11 +14017,11 @@
         class o {
           intercept(r, u) {
             const h = sessionStorage.getItem(Nl) || localStorage.getItem(Nl);
-            let O = '';
+            let R = '';
             return (
-              h && (O = JSON.parse(h).token),
-              O &&
-                (r.url.includes('s3.amazonaws.com') || (r = r.clone({ setHeaders: { Authorization: `Bearer ${O}` } }))),
+              h && (R = JSON.parse(h).token),
+              R &&
+                (r.url.includes('s3.amazonaws.com') || (r = r.clone({ setHeaders: { Authorization: `Bearer ${R}` } }))),
               u.handle(r)
             );
           }
@@ -14074,7 +14074,7 @@
               return u.handle(r).pipe((0, ia.K)((h) => this.errorHandler(h)));
             }
             errorHandler(r) {
-              var u, h;
+              var u, h, R;
               throw (
                 (lo.N.production || ra.error('Request error', r),
                 this.toastService.showToast(
@@ -14083,14 +14083,18 @@
                     ? null == r
                       ? void 0
                       : r.error
-                    : 0 == r.error.isSuccess
+                    : 'string' == typeof r.error.errorMessage
                     ? null === (u = null == r ? void 0 : r.error) || void 0 === u
                       ? void 0
-                      : u.error
-                    : r.error.responseMessage
+                      : u.errorMessage
+                    : 0 == r.error.isSuccess
                     ? null === (h = null == r ? void 0 : r.error) || void 0 === h
                       ? void 0
-                      : h.responseMessage
+                      : h.error
+                    : r.error.responseMessage
+                    ? null === (R = null == r ? void 0 : r.error) || void 0 === R
+                      ? void 0
+                      : R.responseMessage
                     : null == r
                     ? void 0
                     : r.message
@@ -14120,13 +14124,13 @@
               return null;
             }
             shouldReuseRoute(r, u) {
-              var h, O, Te;
+              var h, R, Ee;
               return (
                 r.routeConfig === u.routeConfig ||
                 Boolean(
                   (null === (h = r.routeConfig) || void 0 === h ? void 0 : h.component) &&
-                    (null === (O = r.routeConfig) || void 0 === O ? void 0 : O.component) ===
-                      (null === (Te = u.routeConfig) || void 0 === Te ? void 0 : Te.component)
+                    (null === (R = r.routeConfig) || void 0 === R ? void 0 : R.component) ===
+                      (null === (Ee = u.routeConfig) || void 0 === Ee ? void 0 : Ee.component)
                 )
               );
             }
@@ -14225,11 +14229,11 @@
         static match(c, r) {
           return (u) => {
             var h;
-            const O = u.get(c),
-              Te = u.get(r);
-            return (null == Te ? void 0 : Te.errors) && !Te.errors.matching
+            const R = u.get(c),
+              Ee = u.get(r);
+            return (null == Ee ? void 0 : Ee.errors) && !Ee.errors.matching
               ? null
-              : (null == O ? void 0 : O.value) !== (null == Te ? void 0 : Te.value)
+              : (null == R ? void 0 : R.value) !== (null == Ee ? void 0 : Ee.value)
               ? (null === (h = u.get(r)) || void 0 === h || h.setErrors({ matching: !0 }), { matching: !0 })
               : null;
           };
@@ -14525,13 +14529,13 @@
       }
       const Hu = new Er('signup');
       let sa = class {
-        constructor(c, r, u, h, O, Te, et) {
+        constructor(c, r, u, h, R, Ee, et) {
           (this.router = c),
             (this.route = r),
             (this.formBuilder = u),
             (this.platform = h),
-            (this.loadingController = O),
-            (this.authenticationService = Te),
+            (this.loadingController = R),
+            (this.authenticationService = Ee),
             (this.toastService = et),
             (this.version = lo.N.version),
             (this.isLoading = !1),
@@ -14553,21 +14557,21 @@
               h = (0, Il.D)(u.present());
             (0, Ks.D)([r, h])
               .pipe(
-                (0, Ji.U)(([O, ...Te]) => O),
+                (0, Ji.U)(([R, ...Ee]) => R),
                 (0, Ea.x)(() => {
                   c.signupForm.markAsPristine(), (c.isLoading = !1), u.dismiss();
                 }),
                 Hr(c)
               )
               .subscribe(
-                (O) => {
-                  Hu.debug(`${O.username} successfully signup`),
+                (R) => {
+                  Hu.debug(`${R.username} successfully signup`),
                     c.toastService.showToast('success', 'Successfully registered'),
                     c.router.navigate(['/login']);
                 },
-                (O) => {
-                  for (var Te in (Hu.debug(`signup error: ${O}`), (c.error = O), O.error))
-                    c.toastService.showToast('error', O.error[Te][0]);
+                (R) => {
+                  for (var Ee in (Hu.debug(`signup error: ${R}`), (c.error = R), R.error))
+                    c.toastService.showToast('error', R.error[Ee][0]);
                 }
               );
           })();
@@ -14984,10 +14988,10 @@
                             const u = r.indexOf(':');
                             if (u > 0) {
                               const h = r.slice(0, u),
-                                O = h.toLowerCase(),
-                                Te = r.slice(u + 1).trim();
-                              this.maybeSetNormalizedName(h, O),
-                                this.headers.has(O) ? this.headers.get(O).push(Te) : this.headers.set(O, [Te]);
+                                R = h.toLowerCase(),
+                                Ee = r.slice(u + 1).trim();
+                              this.maybeSetNormalizedName(h, R),
+                                this.headers.has(R) ? this.headers.get(R).push(Ee) : this.headers.set(R, [Ee]);
                             }
                           });
                       }
@@ -15060,12 +15064,12 @@
               h.push(...u), this.headers.set(r, h);
               break;
             case 'd':
-              const O = c.value;
-              if (O) {
-                let Te = this.headers.get(r);
-                if (!Te) return;
-                (Te = Te.filter((et) => -1 === O.indexOf(et))),
-                  0 === Te.length ? (this.headers.delete(r), this.normalizedNames.delete(r)) : this.headers.set(r, Te);
+              const R = c.value;
+              if (R) {
+                let Ee = this.headers.get(r);
+                if (!Ee) return;
+                (Ee = Ee.filter((et) => -1 === R.indexOf(et))),
+                  0 === Ee.length ? (this.headers.delete(r), this.normalizedNames.delete(r)) : this.headers.set(r, Ee);
               } else this.headers.delete(r), this.normalizedNames.delete(r);
           }
         }
@@ -15111,11 +15115,11 @@
                     .replace(/^\?/, '')
                     .split('&')
                     .forEach((h) => {
-                      const O = h.indexOf('='),
-                        [Te, et] =
-                          -1 == O ? [c.decodeKey(h), ''] : [c.decodeKey(h.slice(0, O)), c.decodeValue(h.slice(O + 1))],
-                        Tt = r.get(Te) || [];
-                      Tt.push(et), r.set(Te, Tt);
+                      const R = h.indexOf('='),
+                        [Ee, et] =
+                          -1 == R ? [c.decodeKey(h), ''] : [c.decodeKey(h.slice(0, R)), c.decodeValue(h.slice(R + 1))],
+                        Tt = r.get(Ee) || [];
+                      Tt.push(et), r.set(Ee, Tt);
                     }),
                 r
               );
@@ -15152,8 +15156,8 @@
             Object.keys(c).forEach((u) => {
               const h = c[u];
               Array.isArray(h)
-                ? h.forEach((O) => {
-                    r.push({ param: u, value: O, op: 'a' });
+                ? h.forEach((R) => {
+                    r.push({ param: u, value: R, op: 'a' });
                   })
                 : r.push({ param: u, value: h, op: 'a' });
             }),
@@ -15243,7 +15247,7 @@
       }
       class jl {
         constructor(c, r, u, h) {
-          let O;
+          let R;
           if (
             ((this.url = r),
             (this.body = null),
@@ -15263,24 +15267,24 @@
                   return !0;
               }
             })(this.method) || h
-              ? ((this.body = void 0 !== u ? u : null), (O = h))
-              : (O = u),
-            O &&
-              ((this.reportProgress = !!O.reportProgress),
-              (this.withCredentials = !!O.withCredentials),
-              O.responseType && (this.responseType = O.responseType),
-              O.headers && (this.headers = O.headers),
-              O.context && (this.context = O.context),
-              O.params && (this.params = O.params)),
+              ? ((this.body = void 0 !== u ? u : null), (R = h))
+              : (R = u),
+            R &&
+              ((this.reportProgress = !!R.reportProgress),
+              (this.withCredentials = !!R.withCredentials),
+              R.responseType && (this.responseType = R.responseType),
+              R.headers && (this.headers = R.headers),
+              R.context && (this.context = R.context),
+              R.params && (this.params = R.params)),
             this.headers || (this.headers = new bs()),
             this.context || (this.context = new $n()),
             this.params)
           ) {
-            const Te = this.params.toString();
-            if (0 === Te.length) this.urlWithParams = r;
+            const Ee = this.params.toString();
+            if (0 === Ee.length) this.urlWithParams = r;
             else {
               const et = r.indexOf('?');
-              this.urlWithParams = r + (-1 === et ? '?' : et < r.length - 1 ? '&' : '') + Te;
+              this.urlWithParams = r + (-1 === et ? '?' : et < r.length - 1 ? '&' : '') + Ee;
             }
           } else (this.params = new Ko()), (this.urlWithParams = r);
         }
@@ -15320,8 +15324,8 @@
           var r;
           const u = c.method || this.method,
             h = c.url || this.url,
-            O = c.responseType || this.responseType,
-            Te = void 0 !== c.body ? c.body : this.body,
+            R = c.responseType || this.responseType,
+            Ee = void 0 !== c.body ? c.body : this.body,
             et = void 0 !== c.withCredentials ? c.withCredentials : this.withCredentials,
             Tt = void 0 !== c.reportProgress ? c.reportProgress : this.reportProgress;
           let Wt = c.headers || this.headers,
@@ -15331,12 +15335,12 @@
             void 0 !== c.setHeaders &&
               (Wt = Object.keys(c.setHeaders).reduce((nr, Jn) => nr.set(Jn, c.setHeaders[Jn]), Wt)),
             c.setParams && (wn = Object.keys(c.setParams).reduce((nr, Jn) => nr.set(Jn, c.setParams[Jn]), wn)),
-            new jl(u, h, Te, {
+            new jl(u, h, Ee, {
               params: wn,
               headers: Wt,
               context: Cn,
               reportProgress: Tt,
-              responseType: O,
+              responseType: R,
               withCredentials: et,
             })
           );
@@ -15417,13 +15421,13 @@
             this.handler = r;
           }
           request(r, u, h = {}) {
-            let O;
-            if (r instanceof jl) O = r;
+            let R;
+            if (r instanceof jl) R = r;
             else {
               let Tt, Wt;
               (Tt = h.headers instanceof bs ? h.headers : new bs(h.headers)),
                 h.params && (Wt = h.params instanceof Ko ? h.params : new Ko({ fromObject: h.params })),
-                (O = new jl(r, u, void 0 !== h.body ? h.body : null, {
+                (R = new jl(r, u, void 0 !== h.body ? h.body : null, {
                   headers: Tt,
                   context: h.context,
                   params: Wt,
@@ -15432,12 +15436,12 @@
                   withCredentials: h.withCredentials,
                 }));
             }
-            const Te = (0, Hl.of)(O).pipe((0, Xd.b)((Tt) => this.handler.handle(Tt)));
-            if (r instanceof jl || 'events' === h.observe) return Te;
-            const et = Te.pipe((0, St.h)((Tt) => Tt instanceof Eo));
+            const Ee = (0, Hl.of)(R).pipe((0, Xd.b)((Tt) => this.handler.handle(Tt)));
+            if (r instanceof jl || 'events' === h.observe) return Ee;
+            const et = Ee.pipe((0, St.h)((Tt) => Tt instanceof Eo));
             switch (h.observe || 'body') {
               case 'body':
-                switch (O.responseType) {
+                switch (R.responseType) {
                   case 'arraybuffer':
                     return et.pipe(
                       (0, Ji.U)((Tt) => {
@@ -15555,10 +15559,10 @@
                 const Jn = r.responseType.toLowerCase();
                 h.responseType = 'json' !== Jn ? Jn : 'text';
               }
-              const O = r.serializeBody();
-              let Te = null;
+              const R = r.serializeBody();
+              let Ee = null;
               const et = () => {
-                  if (null !== Te) return Te;
+                  if (null !== Ee) return Ee;
                   const Jn = 1223 === h.status ? 204 : h.status,
                     sr = h.statusText || 'OK',
                     yo = new bs(h.getAllResponseHeaders()),
@@ -15570,7 +15574,7 @@
                           ? o.getResponseHeader('X-Request-URL')
                           : null;
                       })(h) || r.url;
-                  return (Te = new tf({ headers: yo, status: Jn, statusText: sr, url: Kr })), Te;
+                  return (Ee = new tf({ headers: yo, status: Jn, statusText: sr, url: Kr })), Ee;
                 },
                 Tt = () => {
                   let { headers: Jn, status: sr, statusText: yo, url: Kr } = et(),
@@ -15621,8 +15625,8 @@
                 h.addEventListener('abort', Wt),
                 r.reportProgress &&
                   (h.addEventListener('progress', Cn),
-                  null !== O && h.upload && h.upload.addEventListener('progress', nr)),
-                h.send(O),
+                  null !== R && h.upload && h.upload.addEventListener('progress', nr)),
+                h.send(R),
                 u.next({ type: Fi.Sent }),
                 () => {
                   h.removeEventListener('error', Wt),
@@ -15631,7 +15635,7 @@
                     h.removeEventListener('timeout', Wt),
                     r.reportProgress &&
                       (h.removeEventListener('progress', Cn),
-                      null !== O && h.upload && h.upload.removeEventListener('progress', nr)),
+                      null !== R && h.upload && h.upload.removeEventListener('progress', nr)),
                     h.readyState !== h.DONE && h.abort();
                 }
               );
@@ -15686,11 +15690,11 @@
               const h = r.url.toLowerCase();
               if ('GET' === r.method || 'HEAD' === r.method || h.startsWith('http://') || h.startsWith('https://'))
                 return u.handle(r);
-              const O = this.tokenService.getToken();
+              const R = this.tokenService.getToken();
               return (
-                null !== O &&
+                null !== R &&
                   !r.headers.has(this.headerName) &&
-                  (r = r.clone({ headers: r.headers.set(this.headerName, O) })),
+                  (r = r.clone({ headers: r.headers.set(this.headerName, R) })),
                 u.handle(r)
               );
             }
@@ -15711,7 +15715,7 @@
             handle(r) {
               if (null === this.chain) {
                 const u = this.injector.get(Ls, []);
-                this.chain = u.reduceRight((h, O) => new Gu(h, O), this.backend);
+                this.chain = u.reduceRight((h, R) => new Gu(h, R), this.backend);
               }
               return this.chain.handle(r);
             }
@@ -15824,13 +15828,13 @@
       }
       const Wl = new Er('Login');
       let ws = class {
-        constructor(c, r, u, h, O, Te, et) {
+        constructor(c, r, u, h, R, Ee, et) {
           (this.router = c),
             (this.route = r),
             (this.formBuilder = u),
             (this.platform = h),
-            (this.loadingController = O),
-            (this.authenticationService = Te),
+            (this.loadingController = R),
+            (this.authenticationService = Ee),
             (this.toastService = et),
             (this.version = lo.N.version),
             (this.isLoading = !1),
@@ -15879,12 +15883,12 @@
               .then(
                 (function () {
                   var u = (0, Pt.Z)(function* (h) {
-                    let O = { username: h.email, password: h.id };
+                    let R = { username: h.email, password: h.id };
                     console.log('res:', h);
-                    const Te = c.authenticationService.login(O),
+                    const Ee = c.authenticationService.login(R),
                       et = yield c.loadingController.create({}),
                       Tt = (0, Il.D)(et.present());
-                    (0, Ks.D)([Te, Tt])
+                    (0, Ks.D)([Ee, Tt])
                       .pipe(
                         (0, Ji.U)(([Wt, ...wn]) => Wt),
                         (0, Ea.x)(() => {
@@ -15936,21 +15940,21 @@
               h = (0, Il.D)(u.present());
             (0, Ks.D)([r, h])
               .pipe(
-                (0, Ji.U)(([O, ...Te]) => O),
+                (0, Ji.U)(([R, ...Ee]) => R),
                 (0, Ea.x)(() => {
                   c.loginForm.markAsPristine(), (c.isLoading = !1), u.dismiss();
                 }),
                 Hr(c)
               )
               .subscribe(
-                (O) => {
-                  console.log(O),
-                    Wl.debug(`${O.username} successfully logged in`),
+                (R) => {
+                  console.log(R),
+                    Wl.debug(`${R.username} successfully logged in`),
                     c.toastService.showToast('success', 'Successfully logged in'),
                     c.router.navigate([c.route.snapshot.queryParams.redirect || '/'], { replaceUrl: !0 });
                 },
-                (O) => {
-                  Wl.debug(`Login error: ${O}`), (c.error = O);
+                (R) => {
+                  Wl.debug(`Login error: ${R}`), (c.error = R);
                 }
               );
           })();
@@ -16535,12 +16539,12 @@
       }
       let df = (() => {
         class o {
-          constructor(r, u, h, O, Te, et, Tt, Wt, wn, Cn, nr) {
+          constructor(r, u, h, R, Ee, et, Tt, Wt, wn, Cn, nr) {
             (this.router = r),
               (this.translateService = u),
               (this.platform = h),
-              (this.menu = O),
-              (this.alertController = Te),
+              (this.menu = R),
+              (this.alertController = Ee),
               (this.actionSheetController = et),
               (this.authenticationService = Tt),
               (this.credentialsService = Wt),
@@ -16564,11 +16568,11 @@
                   text: r.translateService.instant('Change language'),
                   icon: r.platform.is('ios') ? void 0 : 'globe',
                   handler:
-                    ((Te = (0, Pt.Z)(function* () {
+                    ((Ee = (0, Pt.Z)(function* () {
                       return yield u.dismiss(), r.changeLanguage(), !1;
                     })),
                     function () {
-                      return Te.apply(this, arguments);
+                      return Ee.apply(this, arguments);
                     }),
                 },
                 {
@@ -16577,10 +16581,10 @@
                   role: 'cancel',
                 },
               ];
-              var Te;
+              var Ee;
               r.platform.is('cordova') && h.splice(1, 1);
-              const O = { header: r.username || void 0, buttons: h };
-              (u = yield r.actionSheetController.create(O)), yield u.present();
+              const R = { header: r.username || void 0, buttons: h };
+              (u = yield r.actionSheetController.create(R)), yield u.present();
             })();
           }
           get username() {
@@ -17230,15 +17234,15 @@
       function yf(o, c = Gp) {
         const { connector: r } = c;
         return (0, dr.e)((u, h) => {
-          const O = r();
+          const R = r();
           (0, Il.D)(
             o(
               (function vf(o) {
                 return new Le.y((c) => o.subscribe(c));
-              })(O)
+              })(R)
             )
           ).subscribe(h),
-            h.add(u.subscribe(O));
+            h.add(u.subscribe(R));
         });
       }
       var Bs = k(5698);
@@ -17326,8 +17330,8 @@
                 u = !1;
               try {
                 this.work(c);
-              } catch (O) {
-                (u = !0), (h = O || new Error('Scheduled action threw falsy error'));
+              } catch (R) {
+                (u = !0), (h = R || new Error('Scheduled action threw falsy error'));
               }
               if (u) return this.unsubscribe(), h;
             }
@@ -17377,8 +17381,8 @@
           if (((this.serviceWorker = c), c)) {
             const u = (0, od.R)(c, 'controllerchange').pipe((0, Ji.U)(() => c.controller)),
               h = (0, rd.P)(() => (0, Hl.of)(c.controller)),
-              O = (0, To.z)(h, u);
-            (this.worker = O.pipe((0, St.h)((wn) => !!wn))),
+              R = (0, To.z)(h, u);
+            (this.worker = R.pipe((0, St.h)((wn) => !!wn))),
               (this.registration = this.worker.pipe((0, vo.w)(() => c.getRegistration())));
             const Wt = (0, od.R)(c, 'message')
               .pipe((0, Ji.U)((wn) => wn.data))
@@ -17422,8 +17426,8 @@
         }
         postMessageWithOperation(c, r, u) {
           const h = this.waitForOperationCompleted(u),
-            O = this.postMessage(c, r);
-          return Promise.all([O, h]).then(([, Te]) => Te);
+            R = this.postMessage(c, r);
+          return Promise.all([R, h]).then(([, Ee]) => Ee);
         }
         generateNonce() {
           return Math.round(1e7 * Math.random());
@@ -17471,17 +17475,17 @@
               if (!this.sw.isEnabled) return Promise.reject(new Error(ul));
               const u = { userVisibleOnly: !0 };
               let h = this.decodeBase64(r.serverPublicKey.replace(/_/g, '/').replace(/-/g, '+')),
-                O = new Uint8Array(new ArrayBuffer(h.length));
-              for (let Te = 0; Te < h.length; Te++) O[Te] = h.charCodeAt(Te);
+                R = new Uint8Array(new ArrayBuffer(h.length));
+              for (let Ee = 0; Ee < h.length; Ee++) R[Ee] = h.charCodeAt(Ee);
               return (
-                (u.applicationServerKey = O),
+                (u.applicationServerKey = R),
                 this.pushManager
                   .pipe(
-                    (0, vo.w)((Te) => Te.subscribe(u)),
+                    (0, vo.w)((Ee) => Ee.subscribe(u)),
                     (0, Bs.q)(1)
                   )
                   .toPromise()
-                  .then((Te) => (this.subscriptionChanges.next(Te), Te))
+                  .then((Ee) => (this.subscriptionChanges.next(Ee), Ee))
               );
             }
             unsubscribe() {
@@ -17565,7 +17569,7 @@
       function ug(o, c, r, u) {
         return () => {
           if (!(0, l.NF)(u) || !('serviceWorker' in navigator) || !1 === r.enabled) return;
-          let O;
+          let R;
           if (
             (navigator.serviceWorker.addEventListener('controllerchange', () => {
               null !== navigator.serviceWorker.controller &&
@@ -17573,25 +17577,25 @@
             }),
             'function' == typeof r.registrationStrategy)
           )
-            O = r.registrationStrategy();
+            R = r.registrationStrategy();
           else {
             const [et, ...Tt] = (r.registrationStrategy || 'registerWhenStable:30000').split(':');
             switch (et) {
               case 'registerImmediately':
-                O = (0, Hl.of)(null);
+                R = (0, Hl.of)(null);
                 break;
               case 'registerWithDelay':
-                O = Cf(+Tt[0] || 0);
+                R = Cf(+Tt[0] || 0);
                 break;
               case 'registerWhenStable':
-                O = Tt[0] ? (0, st.T)(Af(o), Cf(+Tt[0])) : Af(o);
+                R = Tt[0] ? (0, st.T)(Af(o), Cf(+Tt[0])) : Af(o);
                 break;
               default:
                 throw new Error(`Unknown ServiceWorker registration strategy: ${r.registrationStrategy}`);
             }
           }
           o.get(e.R0b).runOutsideAngular(() =>
-            O.pipe((0, Bs.q)(1)).subscribe(() =>
+            R.pipe((0, Bs.q)(1)).subscribe(() =>
               navigator.serviceWorker
                 .register(c, { scope: r.scope })
                 .catch((et) => console.error('Service worker registration failed with:', et))
@@ -17607,16 +17611,16 @@
               return (
                 null != c && ((0, ld.K)(c) ? (r = c) : (u = c)),
                 new Le.y((h) => {
-                  let O = (function wf(o) {
+                  let R = (function wf(o) {
                     return o instanceof Date && !isNaN(o);
                   })(o)
                     ? +o - r.now()
                     : o;
-                  O < 0 && (O = 0);
-                  let Te = 0;
+                  R < 0 && (R = 0);
+                  let Ee = 0;
                   return r.schedule(function () {
-                    h.closed || (h.next(Te++), 0 <= u ? this.schedule(void 0, u) : h.complete());
-                  }, O);
+                    h.closed || (h.next(Ee++), 0 <= u ? this.schedule(void 0, u) : h.complete());
+                  }, R);
                 })
               );
             })(o, c);
@@ -17660,8 +17664,8 @@
           var r = window.document,
             u = window.angular.element(r.querySelector('[ng-app]') || r.body).injector();
           if (u)
-            return u.get('$q')(function (O, Te) {
-              o(O, Te);
+            return u.get('$q')(function (R, Ee) {
+              o(R, Ee);
             });
           console.warn(
             "Angular 1 was detected but $q couldn't be retrieved. This is usually when the app is not bootstrapped on the html or body tag. Falling back to native promises which won't trigger an automatic digest when promises resolve."
@@ -17669,8 +17673,8 @@
         }
         return (function () {
           if (Promise)
-            return new Promise(function (O, Te) {
-              o(O, Te);
+            return new Promise(function (R, Ee) {
+              o(R, Ee);
             });
           console.error(
             'No Promise support or polyfill found. To enable Ionic Native support, please add the es6-promise polyfill before this script, or run with a library like Angular or on a recent browser.'
@@ -17680,8 +17684,8 @@
       function Df(o, c, r, u) {
         void 0 === u && (u = {});
         var h,
-          O,
-          Te = fd(function (et, Tt) {
+          R,
+          Ee = fd(function (et, Tt) {
             (h = u.destruct
               ? Ra(
                   o,
@@ -17698,16 +17702,16 @@
                   }
                 )
               : Ra(o, c, r, u, et, Tt)),
-              (O = Tt);
+              (R = Tt);
           });
-        return h && h.error && (Te.catch(function () {}), 'function' == typeof O && O(h.error)), Te;
+        return h && h.error && (Ee.catch(function () {}), 'function' == typeof R && R(h.error)), Ee;
       }
       function Ef(o, c, r, u) {
         return (
           void 0 === u && (u = {}),
-          fd(function (h, O) {
-            var Te = Ra(o, c, r, u);
-            Te ? (Te.error ? O(Te.error) : Te.then && Te.then(h).catch(O)) : O({ error: 'unexpected_error' });
+          fd(function (h, R) {
+            var Ee = Ra(o, c, r, u);
+            Ee ? (Ee.error ? R(Ee.error) : Ee.then && Ee.then(h).catch(R)) : R({ error: 'unexpected_error' });
           })
         );
       }
@@ -17715,34 +17719,34 @@
         return (
           void 0 === u && (u = {}),
           new Le.y(function (h) {
-            var O;
+            var R;
             return (
-              (O = u.destruct
+              (R = u.destruct
                 ? Ra(
                     o,
                     c,
                     r,
                     u,
                     function () {
-                      for (var Te = [], et = 0; et < arguments.length; et++) Te[et] = arguments[et];
-                      return h.next(Te);
+                      for (var Ee = [], et = 0; et < arguments.length; et++) Ee[et] = arguments[et];
+                      return h.next(Ee);
                     },
                     function () {
-                      for (var Te = [], et = 0; et < arguments.length; et++) Te[et] = arguments[et];
-                      return h.error(Te);
+                      for (var Ee = [], et = 0; et < arguments.length; et++) Ee[et] = arguments[et];
+                      return h.error(Ee);
                     }
                   )
                 : Ra(o, c, r, u, h.next.bind(h), h.error.bind(h))),
-              O && O.error && (h.error(O.error), h.complete()),
+              R && R.error && (h.error(R.error), h.complete()),
               function () {
                 try {
                   if (u.clearFunction)
                     return u.clearWithArgs
                       ? Ra(o, u.clearFunction, r, u, h.next.bind(h), h.error.bind(h))
                       : Ra(o, u.clearFunction, []);
-                } catch (Te) {
+                } catch (Ee) {
                   console.warn('Unable to clear the previous observable watch for', o.constructor.getPluginName(), c),
-                    console.warn(Te);
+                    console.warn(Ee);
                 }
               }
             );
@@ -17762,9 +17766,9 @@
           : ((u = o.constructor.getPluginRef()),
             (r = o.constructor.getPluginName()),
             (h = o.constructor.getPluginInstallName()));
-        var O = gd(u);
+        var R = gd(u);
         return (
-          !(!O || (c && void 0 === O[c])) ||
+          !(!R || (c && void 0 === R[c])) ||
           ('undefined' != typeof window && window.cordova
             ? ((function pg(o, c, r) {
                 console.warn(
@@ -17792,7 +17796,7 @@
               dg))
         );
       }
-      function Ra(o, c, r, u, h, O) {
+      function Ra(o, c, r, u, h, R) {
         void 0 === u && (u = {}),
           (r = (function Xp(o, c, r, u) {
             if ((void 0 === c && (c = {}), c.sync)) return o;
@@ -17805,22 +17809,22 @@
               var h = {};
               (h[c.successName] = r), (h[c.errorName] = u), o.push(h);
             } else if (void 0 !== c.successIndex || void 0 !== c.errorIndex) {
-              var O = function () {
+              var R = function () {
                   c.successIndex > o.length ? (o[c.successIndex] = r) : o.splice(c.successIndex, 0, r);
                 },
-                Te = function () {
+                Ee = function () {
                   c.errorIndex > o.length ? (o[c.errorIndex] = u) : o.splice(c.errorIndex, 0, u);
                 };
-              c.successIndex > c.errorIndex ? (Te(), O()) : (O(), Te());
+              c.successIndex > c.errorIndex ? (Ee(), R()) : (R(), Ee());
             } else o.push(r), o.push(u);
             return o;
-          })(r, u, h, O));
-        var Te = hd(o, c);
-        if (!0 === Te) {
+          })(r, u, h, R));
+        var Ee = hd(o, c);
+        if (!0 === Ee) {
           var et = gd(o.constructor.getPluginRef());
           return et[c].apply(et, r);
         }
-        return Te;
+        return Ee;
       }
       function gd(o) {
         return 'undefined' != typeof window ? eh(window, o) : null;
@@ -18110,13 +18114,13 @@
           );
         })(Xl);
       class Kc {
-        constructor(c, r, u, h, O, Te, et, Tt, Wt, wn) {
+        constructor(c, r, u, h, R, Ee, et, Tt, Wt, wn) {
           (this.id = c),
             (this.title = r),
             (this.bookName = u),
             (this.image = h),
-            (this.recipientUser = O),
-            (this.senderUser = Te),
+            (this.recipientUser = R),
+            (this.senderUser = Ee),
             (this.published_at = et),
             (this.status = Tt),
             (this.type = Wt),
@@ -18138,13 +18142,13 @@
         }
       }
       class ga {
-        constructor(c, r, u, h, O, Te, et, Tt, Wt) {
+        constructor(c, r, u, h, R, Ee, et, Tt, Wt) {
           (this.id = c),
             (this.title = r),
             (this.bookName = u),
             (this.image = h),
-            (this.recipientEmail = O),
-            (this.recipientName = Te),
+            (this.recipientEmail = R),
+            (this.recipientName = Ee),
             (this.senderUser = et),
             (this.status = Tt),
             (this.type = Wt);
@@ -18169,7 +18173,7 @@
               (this.http = r), (this.baseUrl = lo.N.serverUrl);
             }
             get(r, u) {
-              return this.http.get(r).pipe((0, Ji.U)((h) => h.map((O) => u.adapt(O))));
+              return this.http.get(r).pipe((0, Ji.U)((h) => h.map((R) => u.adapt(R))));
             }
             getDetails(r, u) {
               return this.http.get(r).pipe((0, Ji.U)((h) => u.adapt(h)));
@@ -18179,7 +18183,7 @@
             }
             postFormData(r, u) {
               let h = new FormData();
-              for (var O in u) h.append(O, u[O]);
+              for (var R in u) h.append(R, u[R]);
               return this.http.post(r, h);
             }
             put(r, u) {
@@ -18204,9 +18208,10 @@
             }
             ngOnInit() {}
             updateBook(r) {
-              1 == r.status
-                ? this.router.navigate([`tabs/my-library/update-book/${r.id}/${r.title}`])
-                : 3 == r.status && this.router.navigate([`tabs/my-library/book/${r.id}/${r.title}`]);
+              console.log(r),
+                1 == r.status
+                  ? this.router.navigate([`tabs/my-library/update-book/${r.id}/${r.title}`])
+                  : 3 == r.status && this.router.navigate([`tabs/my-library/book/${r.id}/${r.title}`]);
             }
           }
           return (
@@ -18431,11 +18436,11 @@
       }
       let eu = (() => {
         class o {
-          constructor(r, u, h, O) {
+          constructor(r, u, h, R) {
             (this.platform = r),
               (this.modalController = u),
               (this.routerOutlet = h),
-              (this.apiService = O),
+              (this.apiService = R),
               (this.isLoading = !1),
               (this.isAuthor = !1);
           }
@@ -18448,20 +18453,10 @@
           getBooks(r = 0) {
             (this.isLoading = !0),
               this.apiService.get('/api/Books', Kc).subscribe((u) => {
-                u.push({
-                  bookName: 'InProgressBook',
-                  title: 'InProgressBook',
-                  id: Math.random(),
-                  image: 'https://www.linkpicture.com/q/book1.svg',
-                  recipientUser: '',
-                  senderUser: '',
-                  status: 2,
-                  type: 1,
-                }),
+                0 == r
+                  ? (this.books = [...u])
+                  : ((this.books = u.filter((h) => h.status == r)), (this.books = [...this.books])),
                   (this.isLoading = !1),
-                  0 == r
-                    ? (this.books = [...u])
-                    : ((this.books = u.filter((h) => h.status == r)), (this.books = [...this.books])),
                   console.log(this.books),
                   (this.isAuthor = this.books.length > 0);
               });
@@ -18575,8 +18570,8 @@
                 e.qZA(),
                 e._uU(10, '\n      '),
                 e.TgZ(11, 'ion-segment', 4),
-                e.NdJ('ionChange', function (O) {
-                  return u.segmentChanged(O);
+                e.NdJ('ionChange', function (R) {
+                  return u.segmentChanged(R);
                 }),
                 e._uU(12, '\n        '),
                 e.TgZ(13, 'ion-segment-button', 5),
@@ -18682,13 +18677,13 @@
         );
       })();
       class dl {
-        constructor(c, r, u, h, O, Te, et, Tt, Wt, wn, Cn, nr) {
+        constructor(c, r, u, h, R, Ee, et, Tt, Wt, wn, Cn, nr) {
           (this.acl = c),
             (this.is_version = r),
             (this.key = u),
             (this.policy = h),
-            (this.success_action_status = O),
-            (this.upload_url = Te),
+            (this.success_action_status = R),
+            (this.upload_url = Ee),
             (this.x_amz_algorithm = et),
             (this.x_amz_credential = Tt),
             (this.x_amz_date = Wt),
@@ -19049,13 +19044,13 @@
         );
       })();
       class nu {
-        constructor(c, r, u, h, O, Te, et) {
+        constructor(c, r, u, h, R, Ee, et) {
           (this.question = c),
             (this.description = r),
             (this.answer = u),
             (this.answerLastModificationDate = h),
-            (this.answerUploadDate = O),
-            (this.bookId = Te),
+            (this.answerUploadDate = R),
+            (this.bookId = Ee),
             (this.id = et);
         }
         static adapt(c) {
@@ -19079,8 +19074,8 @@
         }
       }
       class Vs {
-        constructor(c, r, u, h, O) {
-          (this.id = c), (this.qaCategoryId = r), (this.title = u), (this.description = h), (this.type = O);
+        constructor(c, r, u, h, R) {
+          (this.id = c), (this.qaCategoryId = r), (this.title = u), (this.description = h), (this.type = R);
         }
         static adapt(c) {
           return new Vs(c.id, c.qaCategoryId, c.title, c.description, c.type);
@@ -19350,12 +19345,12 @@
       }
       let Ff = (() => {
         class o {
-          constructor(r, u, h, O, Te, et) {
+          constructor(r, u, h, R, Ee, et) {
             (this.platform = r),
               (this.modalController = u),
               (this.apiService = h),
-              (this.route = O),
-              (this.toastController = Te),
+              (this.route = R),
+              (this.toastController = Ee),
               (this.routerOutlet = et),
               (this.showSaveButton = !1),
               (this.save = new e.vpe()),
@@ -19387,14 +19382,14 @@
               )
             ).subscribe((r) => {
               let u = [];
-              r.forEach((h, O) => {
-                h.forEach((Te) => {
-                  u.push(Te);
+              r.forEach((h, R) => {
+                h.forEach((Ee) => {
+                  u.push(Ee);
                 });
               }),
                 (this.categoryTemplateQuestions = nh(u)
                   .groupBy((h) => h.caregoryName)
-                  .map((h, O) => ({ caregoryName: O, questions: h }))
+                  .map((h, R) => ({ caregoryName: R, questions: h }))
                   .value()),
                 console.log(this.categoryTemplateQuestions);
             });
@@ -19417,9 +19412,9 @@
                 presentingElement: u.routerOutlet.nativeEl,
               });
               return (
-                h.onDidDismiss().then((O) => {
-                  O.role == Vt.submitted &&
-                    u.apiService.delete(`/api/books/${u.routeParams.bookId}/Stories/${r.id}`).subscribe((Te) => {
+                h.onDidDismiss().then((R) => {
+                  R.role == Vt.submitted &&
+                    u.apiService.delete(`/api/books/${u.routeParams.bookId}/Stories/${r.id}`).subscribe((Ee) => {
                       u.getAddedQuestions(), u.toasterNotification('Question deleted successfully.');
                     });
                 }),
@@ -19847,8 +19842,8 @@
             e.NdJ('click', function () {
               e.CHM(r);
               const h = e.MAs(11),
-                O = e.oxw();
-              return O.isWeb ? h.click() : O.getImages();
+                R = e.oxw();
+              return R.isWeb ? h.click() : R.getImages();
             }),
             e._uU(7, '\n            '),
             e.YNc(8, lh, 1, 0, 'ion-icon', 37),
@@ -19889,12 +19884,12 @@
       }
       let ou = (() => {
         class o {
-          constructor(r, u, h, O, Te, et, Tt, Wt) {
+          constructor(r, u, h, R, Ee, et, Tt, Wt) {
             (this.platform = r),
               (this.formBuilder = u),
               (this.modalController = h),
-              (this.routerOutlet = O),
-              (this.router = Te),
+              (this.routerOutlet = R),
+              (this.router = Ee),
               (this.imagePicker = et),
               (this.apiService = Tt),
               (this.route = Wt),
@@ -19946,8 +19941,8 @@
               for (var h = 0; h < u.length; h++)
                 (this.fileReader[h] = new FileReader()),
                   this.fileReader[h].readAsDataURL(u[h]),
-                  (this.fileReader[h].onload = (O) => {
-                    this.imageUrl = O.target.result;
+                  (this.fileReader[h].onload = (R) => {
+                    this.imageUrl = R.target.result;
                   }),
                   this.getFileCredentials(u[h]);
           }
@@ -20354,7 +20349,7 @@
               const {
                 paymentIntent: u,
                 ephemeralKey: h,
-                customer: O,
+                customer: R,
               } = yield r.http
                 .post(lo.N.api + 'payment-sheet', {})
                 .pipe((0, yr.P)())
@@ -20363,7 +20358,7 @@
                 yield Fn.createPaymentSheet({
                   paymentIntentClientSecret: u,
                   customerEphemeralKeySecret: h,
-                  customerId: O,
+                  customerId: R,
                   merchantDisplayName: 'rdlabo',
                 });
             })();
@@ -20377,7 +20372,7 @@
               const {
                 paymentIntent: u,
                 ephemeralKey: h,
-                customer: O,
+                customer: R,
               } = yield r.http
                 .post(lo.N.api + 'payment-sheet', {})
                 .pipe((0, yr.P)())
@@ -20385,7 +20380,7 @@
               yield Fn.createPaymentFlow({
                 paymentIntentClientSecret: u,
                 customerEphemeralKeySecret: h,
-                customerId: O,
+                customerId: R,
                 merchantDisplayName: 'rdlabo',
               });
             })();
@@ -21216,8 +21211,8 @@
       }
       let ts = (() => {
         class o {
-          constructor(r, u, h, O) {
-            (this.router = r), (this.authenticationService = u), (this.credentialsService = h), (this.platform = O);
+          constructor(r, u, h, R) {
+            (this.router = r), (this.authenticationService = u), (this.credentialsService = h), (this.platform = R);
           }
           ngOnInit() {}
           get isWeb() {
@@ -21598,8 +21593,8 @@
             e._uU(1, '\n      '),
             e.TgZ(2, 'ion-item', 11),
             e.NdJ('click', function () {
-              const O = e.CHM(r).$implicit;
-              return e.oxw().setLanguage(O.value);
+              const R = e.CHM(r).$implicit;
+              return e.oxw().setLanguage(R.value);
             }),
             e._uU(3, '\n        '),
             e._UZ(4, 'img', 12),
@@ -21730,13 +21725,13 @@
         );
       })();
       class rc {
-        constructor(c, r, u, h, O, Te, et) {
+        constructor(c, r, u, h, R, Ee, et) {
           (this.id = c),
             (this.isDeleted = r),
             (this.deteleDate = u),
             (this.firstName = h),
-            (this.lastName = O),
-            (this.email = Te),
+            (this.lastName = R),
+            (this.email = Ee),
             (this.role = et);
         }
         static adapt(c) {
@@ -21880,12 +21875,12 @@
       }
       let pl = (() => {
         class o {
-          constructor(r, u, h, O, Te, et) {
+          constructor(r, u, h, R, Ee, et) {
             (this.formBuilder = r),
               (this.credentials = u),
               (this.toastService = h),
-              (this.apiService = O),
-              (this.platform = Te),
+              (this.apiService = R),
+              (this.platform = Ee),
               (this.routerOutlet = et),
               (this.isLoading = !1),
               (this.isModalOpen = !1),
@@ -22506,13 +22501,13 @@
         }),
         gl = new Er('App');
       let ya = class {
-        constructor(c, r, u, h, O, Te, et, Tt, Wt, wn, Cn) {
+        constructor(c, r, u, h, R, Ee, et, Tt, Wt, wn, Cn) {
           (this.router = c),
             (this.activatedRoute = r),
             (this.titleService = u),
             (this.translateService = h),
-            (this.platform = O),
-            (this.keyboard = Te),
+            (this.platform = R),
+            (this.keyboard = Ee),
             (this.statusBar = et),
             (this.splashScreen = Tt),
             (this.i18nService = Wt),
@@ -23008,13 +23003,14 @@
         })(),
         Id = (() => {
           class o {
-            constructor(r, u, h, O) {
+            constructor(r, u, h, R) {
               (this.formBuilder = r),
                 (this.apiService = u),
                 (this.modalController = h),
-                (this.toastService = O),
+                (this.toastService = R),
                 (this.title = ''),
-                (this.bookId = '');
+                (this.bookId = ''),
+                (this.isLoading = !1);
             }
             ngOnInit() {
               this.shareFrom = this.formBuilder.group({ email: ['', [H.kI.required, H.kI.email]] });
@@ -23024,14 +23020,19 @@
             }
             save() {
               console.log(this.shareFrom.value),
+                (this.isLoading = !0),
                 this.apiService.post(`/api/Books/${this.bookId}/share`, this.shareFrom.value).subscribe({
                   complete: () => {
                     console.log('complate');
                   },
                   next: (r) => {
-                    this.dismiss(!1);
+                    this.toastService.showToast('success', 'Book shared successfully'),
+                      this.dismiss(!1),
+                      (this.isLoading = !1);
                   },
-                  error: (r) => {},
+                  error: (r) => {
+                    this.isLoading = !1;
+                  },
                 });
             }
           }
@@ -23186,7 +23187,7 @@
                     e.xp6(9),
                     e.Q6J('formGroup', u.shareFrom),
                     e.xp6(15),
-                    e.Q6J('disabled', u.shareFrom.invalid));
+                    e.Q6J('disabled', u.shareFrom.invalid || u.isLoading));
               },
               directives: [
                 $.jY,
@@ -23265,12 +23266,12 @@
       }
       let xg = (() => {
           class o {
-            constructor(r, u, h, O, Te) {
+            constructor(r, u, h, R, Ee) {
               (this.platform = r),
                 (this.routerOutlet = u),
                 (this.route = h),
-                (this.apiService = O),
-                (this.modalController = Te);
+                (this.apiService = R),
+                (this.modalController = Ee);
             }
             ngOnInit() {
               this.getListeners();
@@ -23472,12 +23473,12 @@
         })(),
         Pd = (() => {
           class o {
-            constructor(r, u, h, O, Te) {
+            constructor(r, u, h, R, Ee) {
               (this.platform = r),
                 (this.formBuilder = u),
                 (this.modalController = h),
-                (this.router = O),
-                (this.route = Te),
+                (this.router = R),
+                (this.route = Ee),
                 (this.isLoading = !1),
                 (this.step = 1),
                 (this.options = { width: 200, quality: 30, outputType: 1 }),
@@ -23703,12 +23704,12 @@
       }
       let Ud = (() => {
         class o {
-          constructor(r, u, h, O, Te, et, Tt) {
+          constructor(r, u, h, R, Ee, et, Tt) {
             (this.platform = r),
               (this.formBuilder = u),
               (this.modalController = h),
-              (this.router = O),
-              (this.imagePicker = Te),
+              (this.router = R),
+              (this.imagePicker = Ee),
               (this.apiService = et),
               (this.route = Tt),
               (this.bookId = ''),
@@ -23750,14 +23751,14 @@
                   (this.imageUrl = 'data:image/jpeg;base64,' + r[u]),
                     oa.dataUrlToFile('data:image/jpeg;base64,' + r[u], 'image' + 100 * Math.random()).then((h) => {
                       console.log(h);
-                      const O = Object.assign(Object.assign({}, this.uploadCredentials), { file: h });
-                      this.apiService.postFormData(this.uploadCredentials.upload_url, O).subscribe({
+                      const R = Object.assign(Object.assign({}, this.uploadCredentials), { file: h });
+                      this.apiService.postFormData(this.uploadCredentials.upload_url, R).subscribe({
                         complete: () => {},
-                        next: (Te) => {
-                          console.log(Te);
+                        next: (Ee) => {
+                          console.log(Ee);
                         },
-                        error: (Te) => {
-                          console.log(Te);
+                        error: (Ee) => {
+                          console.log(Ee);
                         },
                       });
                     });
@@ -24024,12 +24025,12 @@
       }
       let ns = (() => {
         class o {
-          constructor(r, u, h, O, Te) {
+          constructor(r, u, h, R, Ee) {
             (this.platform = r),
               (this.routerOutlet = u),
               (this.router = h),
-              (this.route = O),
-              (this.modalController = Te);
+              (this.route = R),
+              (this.modalController = Ee);
           }
           ngOnInit() {}
           get isWeb() {
@@ -24760,8 +24761,8 @@
       }
       let Qf = (() => {
         class o {
-          constructor(r, u, h, O) {
-            (this.platform = r), (this.modalController = u), (this.routerOutlet = h), (this.route = O);
+          constructor(r, u, h, R) {
+            (this.platform = r), (this.modalController = u), (this.routerOutlet = h), (this.route = R);
           }
           ngOnInit() {}
           get isWeb() {
@@ -25193,7 +25194,7 @@
     },
     4767: (Lt, tt, k) => {
       'use strict';
-      k.d(tt, { H: () => R, a: () => un, b: () => Ki, c: () => ri, g: () => Sn, h: () => Q, p: () => ne, r: () => Br });
+      k.d(tt, { H: () => U, a: () => un, b: () => Ki, c: () => ri, g: () => Sn, h: () => Q, p: () => ne, r: () => Br });
       var l = k(5861);
       let ie,
         oe,
@@ -25221,7 +25222,7 @@
           return !1;
         })(),
         Se = new WeakMap(),
-        Ee = (Ie, Le) => 'sc-' + Ie.$tagName$,
+        Te = (Ie, Le) => 'sc-' + Ie.$tagName$,
         Ue = {},
         fe = (Ie) => 'object' == (Ie = typeof Ie) || 'function' === Ie,
         Q = (Ie, Le, ...st) => {
@@ -25266,7 +25267,7 @@
           $attrs$: null,
           $name$: null,
         }),
-        R = {},
+        U = {},
         j = (Ie, Le, st, rt, ut, xt) => {
           if (st !== rt) {
             let bt = Ii(Ie, Le),
@@ -25520,7 +25521,7 @@
                   st = Ie.$hostElement$,
                   rt = Le.$flags$,
                   xt = ((Ie, Le, st, rt) => {
-                    let ut = Ee(Le),
+                    let ut = Te(Le),
                       xt = Vi.get(ut);
                     if (((Ie = 11 === Ie.nodeType ? Ie : ve), xt))
                       if ('string' == typeof xt) {
@@ -25558,7 +25559,7 @@
                 const st = Ie.$hostElement$,
                   rt = Ie.$cmpMeta$,
                   ut = Ie.$vnode$ || B(null, null),
-                  xt = ((Ie) => Ie && Ie.$tag$ === R)(Le) ? Le : Q(null, null, Le);
+                  xt = ((Ie) => Ie && Ie.$tag$ === U)(Le) ? Le : Q(null, null, Le);
                 if (
                   ((xe = st.tagName),
                   rt.$attrsToReflect$ &&
@@ -25740,7 +25741,7 @@
               }
               if (xt.style) {
                 let Nt = xt.style;
-                const Gt = Ee(rt);
+                const Gt = Te(rt);
                 if (!Vi.has(Gt)) {
                   const Yt = () => {};
                   ((Ie, Le, st) => {
@@ -26228,7 +26229,7 @@
               return null == Dt ? e : Dt[it];
             };
           }
-          function U(it) {
+          function O(it) {
             return function (Dt) {
               return null == it ? e : it[Dt];
             };
@@ -26280,7 +26281,7 @@
             for (var mt = it.length, cn = 0; mt--; ) it[mt] === Dt && ++cn;
             return cn;
           }
-          var Ho = U({
+          var Ho = O({
               À: 'A',
               Á: 'A',
               Â: 'A',
@@ -26472,7 +26473,7 @@
               ŉ: "'n",
               ſ: 's',
             }),
-            ja = U({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' });
+            ja = O({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' });
           function ss(it) {
             return '\\' + En[it];
           }
@@ -26532,7 +26533,7 @@
             for (var Dt = it.length; Dt-- && Le.test(it.charAt(Dt)); );
             return Dt;
           }
-          var cc = U({ '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#39;': "'" }),
+          var cc = O({ '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#39;': "'" }),
             Ys = (function it(Dt) {
               var s,
                 mt = (Dt = null == Dt ? vn : Ys.defaults(vn.Object(), Dt, Ys.pick(vn, de))).Array,
@@ -29811,12 +29812,12 @@
                   var D = (f = di(f)) ? Go(s) : 0;
                   return f && D < f ? s + Pc(f - D, v) : s;
                 }),
-                (H.padStart = function O(s, f, v) {
+                (H.padStart = function R(s, f, v) {
                   s = Yi(s);
                   var D = (f = di(f)) ? Go(s) : 0;
                   return f && D < f ? Pc(f - D, v) + s : s;
                 }),
-                (H.parseInt = function Te(s, f, v) {
+                (H.parseInt = function Ee(s, f, v) {
                   return v || null == f ? (f = 0) : f && (f = +f), vt(Yi(s).replace(Ie, ''), f || 0);
                 }),
                 (H.random = function Dg(s, f, v) {
@@ -30646,14 +30647,14 @@
           let Ae;
           if ((super(), (0, l.m)(Se))) Ae = Se;
           else if (Se) {
-            let Ee;
+            let Te;
             ({ next: Ae, error: Re, complete: pe } = Se),
               this && ie.v.useDeprecatedNextContext
-                ? ((Ee = Object.create(Se)), (Ee.unsubscribe = () => this.unsubscribe()))
-                : (Ee = Se),
-              (Ae = null == Ae ? void 0 : Ae.bind(Ee)),
-              (Re = null == Re ? void 0 : Re.bind(Ee)),
-              (pe = null == pe ? void 0 : pe.bind(Ee));
+                ? ((Te = Object.create(Se)), (Te.unsubscribe = () => this.unsubscribe()))
+                : (Te = Se),
+              (Ae = null == Ae ? void 0 : Ae.bind(Te)),
+              (Re = null == Re ? void 0 : Re.bind(Te)),
+              (pe = null == pe ? void 0 : pe.bind(Te));
           }
           this.destination = {
             next: Ae ? ne(Ae) : xe.Z,
@@ -30923,9 +30924,9 @@
           Q.subscribe(
             new oe.Q(
               B,
-              (R) => (0, e.f)(B, J, () => B.next(R), fe),
+              (U) => (0, e.f)(B, J, () => B.next(U), fe),
               () => (0, e.f)(B, J, () => B.complete(), fe),
-              (R) => (0, e.f)(B, J, () => B.error(R), fe)
+              (U) => (0, e.f)(B, J, () => B.error(U), fe)
             )
           );
         });
@@ -30947,8 +30948,8 @@
               Q,
               fe,
               () => {
-                B.next().then((R) => {
-                  R.done ? Q.complete() : Q.next(R.value);
+                B.next().then((U) => {
+                  U.done ? Q.complete() : Q.next(U.value);
                 });
               },
               0,
@@ -30966,7 +30967,7 @@
         pe = k(3260);
       function Ue(J, fe) {
         return fe
-          ? (function Ee(J, fe) {
+          ? (function Te(J, fe) {
               if (null != J) {
                 if ((0, se.c)(J))
                   return (function Y(J, fe) {
@@ -30997,13 +30998,13 @@
                               Q,
                               fe,
                               () => {
-                                let R, G;
+                                let U, G;
                                 try {
-                                  ({ value: R, done: G } = B.next());
+                                  ({ value: U, done: G } = B.next());
                                 } catch (j) {
                                   return void Q.error(j);
                                 }
-                                G ? Q.complete() : Q.next(R);
+                                G ? Q.complete() : Q.next(U);
                               },
                               0,
                               !0
@@ -31053,7 +31054,7 @@
         if (!Se && (0, oe.z)(se)) return (0, ie.z)((pe) => be(pe, ge, ye))((0, l.Xf)(se));
         if (!Se) throw new TypeError('Invalid event target');
         return new e.y((pe) => {
-          const Ae = (...Ee) => pe.next(1 < Ee.length ? Ee : Ee[0]);
+          const Ae = (...Te) => pe.next(1 < Te.length ? Te : Te[0]);
           return Se(Ae), () => Re(Ae);
         });
       }
@@ -31082,15 +31083,15 @@
           if ((0, xe.c)(pe))
             return (function ne(pe) {
               return new oe.y((Ae) => {
-                const Ee = pe[ve.L]();
-                if ((0, be.m)(Ee.subscribe)) return Ee.subscribe(Ae);
+                const Te = pe[ve.L]();
+                if ((0, be.m)(Te.subscribe)) return Te.subscribe(Ae);
                 throw new TypeError('Provided object does not correctly implement Symbol.observable');
               });
             })(pe);
           if ((0, e.z)(pe))
             return (function se(pe) {
               return new oe.y((Ae) => {
-                for (let Ee = 0; Ee < pe.length && !Ae.closed; Ee++) Ae.next(pe[Ee]);
+                for (let Te = 0; Te < pe.length && !Ae.closed; Te++) Ae.next(pe[Te]);
                 Ae.complete();
               });
             })(pe);
@@ -31098,10 +31099,10 @@
             return (function ge(pe) {
               return new oe.y((Ae) => {
                 pe.then(
-                  (Ee) => {
-                    Ae.closed || (Ae.next(Ee), Ae.complete());
+                  (Te) => {
+                    Ae.closed || (Ae.next(Te), Ae.complete());
                   },
-                  (Ee) => Ae.error(Ee)
+                  (Te) => Ae.error(Te)
                 ).then(null, _e.h);
               });
             })(pe);
@@ -31109,7 +31110,7 @@
           if ((0, q.T)(pe))
             return (function ye(pe) {
               return new oe.y((Ae) => {
-                for (const Ee of pe) if ((Ae.next(Ee), Ae.closed)) return;
+                for (const Te of pe) if ((Ae.next(Te), Ae.closed)) return;
                 Ae.complete();
               });
             })(pe);
@@ -31123,22 +31124,22 @@
       function Pe(pe) {
         return new oe.y((Ae) => {
           (function Re(pe, Ae) {
-            var Ee, Ue, J, fe;
+            var Te, Ue, J, fe;
             return (0, l.mG)(this, void 0, void 0, function* () {
               try {
-                for (Ee = (0, l.KL)(pe); !(Ue = yield Ee.next()).done; ) if ((Ae.next(Ue.value), Ae.closed)) return;
+                for (Te = (0, l.KL)(pe); !(Ue = yield Te.next()).done; ) if ((Ae.next(Ue.value), Ae.closed)) return;
               } catch (Q) {
                 J = { error: Q };
               } finally {
                 try {
-                  Ue && !Ue.done && (fe = Ee.return) && (yield fe.call(Ee));
+                  Ue && !Ue.done && (fe = Te.return) && (yield fe.call(Te));
                 } finally {
                   if (J) throw J.error;
                 }
               }
               Ae.complete();
             });
-          })(pe, Ae).catch((Ee) => Ae.error(Ee));
+          })(pe, Ae).catch((Te) => Ae.error(Te));
         });
       }
     },
@@ -31357,8 +31358,8 @@
                 const pe = () => {
                     Re && !ye.length && !Pe && be.complete();
                   },
-                  Ae = (Ue) => (Pe < ve ? Ee(Ue) : ye.push(Ue)),
-                  Ee = (Ue) => {
+                  Ae = (Ue) => (Pe < ve ? Te(Ue) : ye.push(Ue)),
+                  Te = (Ue) => {
                     ne && be.next(Ue), Pe++;
                     let J = !1;
                     (0, e.Xf)(_e(Ue, Se++)).subscribe(
@@ -31376,7 +31377,7 @@
                             try {
                               for (Pe--; ye.length && Pe < ve; ) {
                                 const fe = ye.shift();
-                                se ? (0, oe.f)(be, se, () => Ee(fe)) : Ee(fe);
+                                se ? (0, oe.f)(be, se, () => Te(fe)) : Te(fe);
                               }
                               pe();
                             } catch (fe) {
@@ -31448,10 +31449,10 @@
               Re(), (ne = ge = null), (Pe = Se = !1);
             },
             Ae = () => {
-              const Ee = ne;
-              pe(), null == Ee || Ee.unsubscribe();
+              const Te = ne;
+              pe(), null == Te || Te.unsubscribe();
             };
-          return (0, xe.e)((Ee, Ue) => {
+          return (0, xe.e)((Te, Ue) => {
             ye++, !Se && !Pe && Re();
             const J = (ge = null != ge ? ge : ue());
             Ue.add(() => {
@@ -31468,7 +31469,7 @@
                     (Pe = !0), Re(), (se = Y(pe, _e)), J.complete();
                   },
                 })),
-                (0, l.D)(Ee).subscribe(ne));
+                (0, l.D)(Te).subscribe(ne));
           })(te);
         };
       }
@@ -32029,28 +32030,28 @@
                             j,
                             F,
                             Ae = ge.length / 2,
-                            Ee = Math.round(Ae * this.start),
-                            J = Ee,
+                            Te = Math.round(Ae * this.start),
+                            J = Te,
                             fe = Math.round(Ae * this.end) + 1,
                             Q = this.wave.width / (fe - J - 1),
                             B = Pe + Se,
-                            R = ye / Pe;
+                            U = ye / Pe;
                           for (
                             se.beginPath(),
-                              se.moveTo((J - Ee) * Q, B),
-                              se.lineTo((J - Ee) * Q, B - Math.round((ge[2 * J] || 0) / R)),
+                              se.moveTo((J - Te) * Q, B),
+                              se.lineTo((J - Te) * Q, B - Math.round((ge[2 * J] || 0) / U)),
                               G = J;
                             G < fe;
                             G++
                           )
                             (j = ge[2 * G] || 0),
-                              (F = Math.round(j / R)),
-                              se.lineTo((G - Ee) * Q + this.halfPixel, B - F);
+                              (F = Math.round(j / U)),
+                              se.lineTo((G - Te) * Q + this.halfPixel, B - F);
                           for (var Ve = fe - 1; Ve >= J; Ve--)
                             (j = ge[2 * Ve + 1] || 0),
-                              (F = Math.round(j / R)),
-                              se.lineTo((Ve - Ee) * Q + this.halfPixel, B - F);
-                          se.lineTo((J - Ee) * Q, B - Math.round((ge[2 * J + 1] || 0) / R)), se.closePath(), se.fill();
+                              (F = Math.round(j / U)),
+                              se.lineTo((Ve - Te) * Q + this.halfPixel, B - F);
+                          se.lineTo((J - Te) * Q, B - Math.round((ge[2 * J + 1] || 0) / U)), se.closePath(), se.fill();
                         }
                       },
                     },
@@ -32084,21 +32085,21 @@
               function le(pe) {
                 return (le =
                   'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-                    ? function (Ee) {
-                        return typeof Ee;
+                    ? function (Te) {
+                        return typeof Te;
                       }
-                    : function (Ee) {
-                        return Ee && 'function' == typeof Symbol && Ee.constructor === Symbol && Ee !== Symbol.prototype
+                    : function (Te) {
+                        return Te && 'function' == typeof Symbol && Te.constructor === Symbol && Te !== Symbol.prototype
                           ? 'symbol'
-                          : typeof Ee;
+                          : typeof Te;
                       })(pe);
               }
               Object.defineProperty(oe, '__esModule', { value: !0 }), (oe.default = void 0);
               var Y = (function ue(pe, Ae) {
                 if (!Ae && pe && pe.__esModule) return pe;
                 if (null === pe || ('object' !== le(pe) && 'function' != typeof pe)) return { default: pe };
-                var Ee = q(Ae);
-                if (Ee && Ee.has(pe)) return Ee.get(pe);
+                var Te = q(Ae);
+                if (Te && Te.has(pe)) return Te.get(pe);
                 var Ue = {},
                   J = Object.defineProperty && Object.getOwnPropertyDescriptor;
                 for (var fe in pe)
@@ -32106,19 +32107,19 @@
                     var Q = J ? Object.getOwnPropertyDescriptor(pe, fe) : null;
                     Q && (Q.get || Q.set) ? Object.defineProperty(Ue, fe, Q) : (Ue[fe] = pe[fe]);
                   }
-                return (Ue.default = pe), Ee && Ee.set(pe, Ue), Ue;
+                return (Ue.default = pe), Te && Te.set(pe, Ue), Ue;
               })(xe('./src/util/index.js'));
               function q(pe) {
                 if ('function' != typeof WeakMap) return null;
                 var Ae = new WeakMap(),
-                  Ee = new WeakMap();
+                  Te = new WeakMap();
                 return (q = function (J) {
-                  return J ? Ee : Ae;
+                  return J ? Te : Ae;
                 })(pe);
               }
               function _e(pe, Ae) {
-                for (var Ee = 0; Ee < Ae.length; Ee++) {
-                  var Ue = Ae[Ee];
+                for (var Te = 0; Te < Ae.length; Te++) {
+                  var Ue = Ae[Te];
                   (Ue.enumerable = Ue.enumerable || !1),
                     (Ue.configurable = !0),
                     'value' in Ue && (Ue.writable = !0),
@@ -32172,19 +32173,19 @@
               function Se(pe) {
                 return (Se = Object.setPrototypeOf
                   ? Object.getPrototypeOf
-                  : function (Ee) {
-                      return Ee.__proto__ || Object.getPrototypeOf(Ee);
+                  : function (Te) {
+                      return Te.__proto__ || Object.getPrototypeOf(Te);
                     })(pe);
               }
               (oe.default = (function (pe) {
-                te(Ee, pe);
-                var Ae = se(Ee);
-                function Ee(Ue, J) {
+                te(Te, pe);
+                var Ae = se(Te);
+                function Te(Ue, J) {
                   var fe;
                   return (
                     (function be(pe, Ae) {
                       if (!(pe instanceof Ae)) throw new TypeError('Cannot call a class as a function');
-                    })(this, Ee),
+                    })(this, Te),
                     ((fe = Ae.call(this)).container = Y.withOrientation(Ue, J.vertical)),
                     (fe.params = J),
                     (fe.width = 0),
@@ -32195,9 +32196,9 @@
                   );
                 }
                 return (
-                  (function ve(pe, Ae, Ee) {
-                    return Ae && _e(pe.prototype, Ae), Ee && _e(pe, Ee), pe;
-                  })(Ee, [
+                  (function ve(pe, Ae, Te) {
+                    return Ae && _e(pe.prototype, Ae), Te && _e(pe, Te), pe;
+                  })(Te, [
                     {
                       key: 'style',
                       value: function (J, fe) {
@@ -32236,12 +32237,12 @@
                             this.params.vertical
                           ).clientX,
                           B = this.wrapper.getBoundingClientRect(),
-                          R = this.width,
+                          U = this.width,
                           G = this.getWidth(),
                           j = this.getProgressPixels(B, Q);
                         return Y.clamp(
-                          !this.params.fillParent && R < G
-                            ? j * (this.params.pixelRatio / R) || 0
+                          !this.params.fillParent && U < G
+                            ? j * (this.params.pixelRatio / U) || 0
                             : (j + this.wrapper.scrollLeft) / this.wrapper.scrollWidth || 0,
                           0,
                           1
@@ -32262,8 +32263,8 @@
                           var Q = Y.withOrientation(fe, J.params.vertical),
                             B = J.wrapper.offsetHeight - J.wrapper.clientHeight;
                           if (0 !== B) {
-                            var R = J.wrapper.getBoundingClientRect();
-                            if (Q.clientY >= R.bottom - B) return;
+                            var U = J.wrapper.getBoundingClientRect();
+                            if (Q.clientY >= U.bottom - B) return;
                           }
                           J.params.interact && J.fireEvent('click', fe, J.handleEvent(fe));
                         }),
@@ -32299,15 +32300,15 @@
                       value: function (J, fe) {
                         var Q = this.wrapper.scrollLeft,
                           B = ~~(this.wrapper.clientWidth / 2),
-                          R = this.wrapper.scrollWidth - this.wrapper.clientWidth,
+                          U = this.wrapper.scrollWidth - this.wrapper.clientWidth,
                           G = J - B,
                           j = G - Q;
-                        if (0 != R) {
+                        if (0 != U) {
                           if (!fe && -B <= j && j < B) {
                             var F = this.params.autoCenterRate;
-                            (F /= B), (F *= R), (G = Q + (j = Math.max(-F, Math.min(F, j))));
+                            (F /= B), (F *= U), (G = Q + (j = Math.max(-F, Math.min(F, j))));
                           }
-                          (G = Math.max(0, Math.min(R, G))) != Q && (this.wrapper.scrollLeft = G);
+                          (G = Math.max(0, Math.min(U, G))) != Q && (this.wrapper.scrollLeft = G);
                         }
                       },
                     },
@@ -32393,7 +32394,7 @@
                     { key: 'clearWave', value: function () {} },
                     { key: 'updateProgress', value: function (J) {} },
                   ]),
-                  Ee
+                  Te
                 );
               })(Y.Observer)),
                 (ie.exports = oe.default);
@@ -32421,10 +32422,10 @@
                   if (fe && fe.has(Ue)) return fe.get(Ue);
                   var Q = {},
                     B = Object.defineProperty && Object.getOwnPropertyDescriptor;
-                  for (var R in Ue)
-                    if ('default' !== R && Object.prototype.hasOwnProperty.call(Ue, R)) {
-                      var G = B ? Object.getOwnPropertyDescriptor(Ue, R) : null;
-                      G && (G.get || G.set) ? Object.defineProperty(Q, R, G) : (Q[R] = Ue[R]);
+                  for (var U in Ue)
+                    if ('default' !== U && Object.prototype.hasOwnProperty.call(Ue, U)) {
+                      var G = B ? Object.getOwnPropertyDescriptor(Ue, U) : null;
+                      G && (G.get || G.set) ? Object.defineProperty(Q, U, G) : (Q[U] = Ue[U]);
                     }
                   return (Q.default = Ue), fe && fe.set(Ue, Q), Q;
                 })(xe('./src/util/index.js')),
@@ -32478,8 +32479,8 @@
                   var B,
                     Q = Ae(Ue);
                   if (J) {
-                    var R = Ae(this).constructor;
-                    B = Reflect.construct(Q, arguments, R);
+                    var U = Ae(this).constructor;
+                    B = Reflect.construct(Q, arguments, U);
                   } else B = Q.apply(this, arguments);
                   return Se(this, B);
                 };
@@ -32504,23 +32505,23 @@
                 ge(fe, Ue);
                 var J = Pe(fe);
                 function fe(Q, B) {
-                  var R;
+                  var U;
                   return (
                     (function te(Ue, J) {
                       if (!(Ue instanceof J)) throw new TypeError('Cannot call a class as a function');
                     })(this, fe),
-                    ((R = J.call(this, Q, B)).maxCanvasWidth = B.maxCanvasWidth),
-                    (R.maxCanvasElementWidth = Math.round(B.maxCanvasWidth / B.pixelRatio)),
-                    (R.hasProgressCanvas = B.waveColor != B.progressColor),
-                    (R.halfPixel = 0.5 / B.pixelRatio),
-                    (R.canvases = []),
-                    (R.progressWave = null),
-                    (R.EntryClass = ue.default),
-                    (R.canvasContextAttributes = B.drawingContextAttributes),
-                    (R.overlap = 2 * Math.ceil(B.pixelRatio / 2)),
-                    (R.barRadius = B.barRadius || 0),
-                    (R.vertical = B.vertical),
-                    R
+                    ((U = J.call(this, Q, B)).maxCanvasWidth = B.maxCanvasWidth),
+                    (U.maxCanvasElementWidth = Math.round(B.maxCanvasWidth / B.pixelRatio)),
+                    (U.hasProgressCanvas = B.waveColor != B.progressColor),
+                    (U.halfPixel = 0.5 / B.pixelRatio),
+                    (U.canvases = []),
+                    (U.progressWave = null),
+                    (U.EntryClass = ue.default),
+                    (U.canvasContextAttributes = B.drawingContextAttributes),
+                    (U.overlap = 2 * Math.ceil(B.pixelRatio / 2)),
+                    (U.barRadius = B.barRadius || 0),
+                    (U.vertical = B.vertical),
+                    U
                   );
                 }
                 return (
@@ -32571,8 +32572,8 @@
                       value: function () {
                         for (
                           var B = this,
-                            R = Math.round(this.width / this.params.pixelRatio),
-                            G = Math.ceil(R / (this.maxCanvasElementWidth + this.overlap));
+                            U = Math.round(this.width / this.params.pixelRatio),
+                            G = Math.ceil(U / (this.maxCanvasElementWidth + this.overlap));
                           this.canvases.length < G;
 
                         )
@@ -32594,7 +32595,7 @@
                         (B.canvasContextAttributes = this.canvasContextAttributes),
                           (B.hasProgressCanvas = this.hasProgressCanvas),
                           (B.halfPixel = this.halfPixel);
-                        var R = this.maxCanvasElementWidth * this.canvases.length,
+                        var U = this.maxCanvasElementWidth * this.canvases.length,
                           G = q.withOrientation(
                             this.wrapper.appendChild(document.createElement('canvas')),
                             this.params.vertical
@@ -32603,7 +32604,7 @@
                           (this.style(G, {
                             position: 'absolute',
                             zIndex: 2,
-                            left: R + 'px',
+                            left: U + 'px',
                             top: 0,
                             bottom: 0,
                             height: '100%',
@@ -32616,7 +32617,7 @@
                             this.progressWave.appendChild(document.createElement('canvas')),
                             this.params.vertical
                           );
-                          this.style(j, { position: 'absolute', left: R + 'px', top: 0, bottom: 0, height: '100%' }),
+                          this.style(j, { position: 'absolute', left: U + 'px', top: 0, bottom: 0, height: '100%' }),
                             B.initProgress(j);
                         }
                         this.canvases.push(B);
@@ -32634,10 +32635,10 @@
                     },
                     {
                       key: 'updateDimensions',
-                      value: function (B, R, G) {
-                        var j = Math.round(R / this.params.pixelRatio),
+                      value: function (B, U, G) {
+                        var j = Math.round(U / this.params.pixelRatio),
                           F = Math.round(this.width / this.params.pixelRatio);
-                        B.updateDimensions(j, F, R, G), this.style(this.progressWave, { display: 'block' });
+                        B.updateDimensions(j, F, U, G), this.style(this.progressWave, { display: 'block' });
                       },
                     },
                     {
@@ -32645,17 +32646,17 @@
                       value: function () {
                         var B = this;
                         q.frame(function () {
-                          B.canvases.forEach(function (R) {
-                            return R.clearWave();
+                          B.canvases.forEach(function (U) {
+                            return U.clearWave();
                           });
                         })();
                       },
                     },
                     {
                       key: 'drawBars',
-                      value: function (B, R, G, j) {
+                      value: function (B, U, G, j) {
                         var F = this;
-                        return this.prepareDraw(B, R, G, j, function (Ve) {
+                        return this.prepareDraw(B, U, G, j, function (Ve) {
                           var nt = Ve.absmax,
                             Ze = Ve.offsetY,
                             ot = Ve.halfH,
@@ -32687,9 +32688,9 @@
                     },
                     {
                       key: 'drawWave',
-                      value: function (B, R, G, j) {
+                      value: function (B, U, G, j) {
                         var F = this;
-                        return this.prepareDraw(B, R, G, j, function (Ve) {
+                        return this.prepareDraw(B, U, G, j, function (Ve) {
                           var nt = Ve.absmax,
                             Ze = Ve.offsetY,
                             ot = Ve.halfH,
@@ -32707,7 +32708,7 @@
                     },
                     {
                       key: 'drawLine',
-                      value: function (B, R, G, j, F, Ve, nt) {
+                      value: function (B, U, G, j, F, Ve, nt) {
                         var qe = this,
                           Fe = this.params.splitChannelsOptions.channelColors[nt] || {},
                           Ze = Fe.waveColor,
@@ -32715,13 +32716,13 @@
                         this.canvases.forEach(function (Be, Je) {
                           qe.setFillStyles(Be, Ze, ot),
                             qe.applyCanvasTransforms(Be, qe.params.vertical),
-                            Be.drawLines(B, R, G, j, F, Ve);
+                            Be.drawLines(B, U, G, j, F, Ve);
                         });
                       },
                     },
                     {
                       key: 'fillRect',
-                      value: function (B, R, G, j, F, Ve) {
+                      value: function (B, U, G, j, F, Ve) {
                         for (
                           var nt = Math.floor(B / this.maxCanvasWidth),
                             qe = Math.min(Math.ceil((B + G) / this.maxCanvasWidth) + 1, this.canvases.length),
@@ -32733,9 +32734,9 @@
                             ot = Fe * this.maxCanvasWidth,
                             Be = {
                               x1: Math.max(B, Fe * this.maxCanvasWidth),
-                              y1: R,
+                              y1: U,
                               x2: Math.min(B + G, Fe * this.maxCanvasWidth + Ze.wave.width),
-                              y2: R + j,
+                              y2: U + j,
                             };
                           if (Be.x1 < Be.x2) {
                             var Je = this.params.splitChannelsOptions.channelColors[Ve] || {};
@@ -32754,7 +32755,7 @@
                     },
                     {
                       key: 'prepareDraw',
-                      value: function (B, R, G, j, F, Ve, nt) {
+                      value: function (B, U, G, j, F, Ve, nt) {
                         var qe = this;
                         return q.frame(function () {
                           if (B[0] instanceof Array) {
@@ -32781,7 +32782,7 @@
                             }
                             B = Fe[0];
                           }
-                          if (!qe.hideChannel(R)) {
+                          if (!qe.hideChannel(U)) {
                             var Be = 1 / qe.params.barHeight;
                             qe.params.normalize && (Be = void 0 === nt ? q.absMax(B) : nt);
                             var Je = [].some.call(B, function (pt) {
@@ -32798,7 +32799,7 @@
                                 offsetY: We,
                                 halfH: Ce / 2,
                                 peaks: B,
-                                channelIndex: R,
+                                channelIndex: U,
                               })
                             );
                           }
@@ -32822,16 +32823,16 @@
                     },
                     {
                       key: 'getImage',
-                      value: function (B, R, G) {
+                      value: function (B, U, G) {
                         if ('blob' === G)
                           return Promise.all(
                             this.canvases.map(function (F) {
-                              return F.getImage(B, R, G);
+                              return F.getImage(B, U, G);
                             })
                           );
                         if ('dataURL' === G) {
                           var j = this.canvases.map(function (F) {
-                            return F.getImage(B, R, G);
+                            return F.getImage(B, U, G);
                           });
                           return j.length > 1 ? j : j[0];
                         }
@@ -32867,47 +32868,47 @@
               var Y = (function q(Ae) {
                 return Ae && Ae.__esModule ? Ae : { default: Ae };
               })(xe('./src/mediaelement.js'));
-              function be(Ae, Ee) {
-                for (var Ue = 0; Ue < Ee.length; Ue++) {
-                  var J = Ee[Ue];
+              function be(Ae, Te) {
+                for (var Ue = 0; Ue < Te.length; Ue++) {
+                  var J = Te[Ue];
                   (J.enumerable = J.enumerable || !1),
                     (J.configurable = !0),
                     'value' in J && (J.writable = !0),
                     Object.defineProperty(Ae, J.key, J);
                 }
               }
-              function ve(Ae, Ee, Ue) {
+              function ve(Ae, Te, Ue) {
                 return (ve =
                   'undefined' != typeof Reflect && Reflect.get
                     ? Reflect.get
                     : function (fe, Q, B) {
-                        var R = (function te(Ae, Ee) {
-                          for (; !Object.prototype.hasOwnProperty.call(Ae, Ee) && null !== (Ae = Re(Ae)); );
+                        var U = (function te(Ae, Te) {
+                          for (; !Object.prototype.hasOwnProperty.call(Ae, Te) && null !== (Ae = Re(Ae)); );
                           return Ae;
                         })(fe, Q);
-                        if (R) {
-                          var G = Object.getOwnPropertyDescriptor(R, Q);
+                        if (U) {
+                          var G = Object.getOwnPropertyDescriptor(U, Q);
                           return G.get ? G.get.call(B) : G.value;
                         }
-                      })(Ae, Ee, Ue || Ae);
+                      })(Ae, Te, Ue || Ae);
               }
-              function ne(Ae, Ee) {
-                if ('function' != typeof Ee && null !== Ee)
+              function ne(Ae, Te) {
+                if ('function' != typeof Te && null !== Te)
                   throw new TypeError('Super expression must either be null or a function');
-                (Ae.prototype = Object.create(Ee && Ee.prototype, {
+                (Ae.prototype = Object.create(Te && Te.prototype, {
                   constructor: { value: Ae, writable: !0, configurable: !0 },
                 })),
-                  Ee && se(Ae, Ee);
+                  Te && se(Ae, Te);
               }
-              function se(Ae, Ee) {
+              function se(Ae, Te) {
                 return (se =
                   Object.setPrototypeOf ||
                   function (J, fe) {
                     return (J.__proto__ = fe), J;
-                  })(Ae, Ee);
+                  })(Ae, Te);
               }
               function ge(Ae) {
-                var Ee = (function Se() {
+                var Te = (function Se() {
                   if ('undefined' == typeof Reflect || !Reflect.construct || Reflect.construct.sham) return !1;
                   if ('function' == typeof Proxy) return !0;
                   try {
@@ -32919,16 +32920,16 @@
                 return function () {
                   var fe,
                     J = Re(Ae);
-                  if (Ee) {
+                  if (Te) {
                     var Q = Re(this).constructor;
                     fe = Reflect.construct(J, arguments, Q);
                   } else fe = J.apply(this, arguments);
                   return ye(this, fe);
                 };
               }
-              function ye(Ae, Ee) {
-                if (Ee && ('object' === le(Ee) || 'function' == typeof Ee)) return Ee;
-                if (void 0 !== Ee) throw new TypeError('Derived constructors may only return object or undefined');
+              function ye(Ae, Te) {
+                if (Te && ('object' === le(Te) || 'function' == typeof Te)) return Te;
+                if (void 0 !== Te) throw new TypeError('Derived constructors may only return object or undefined');
                 return (function Pe(Ae) {
                   if (void 0 === Ae)
                     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -32944,21 +32945,21 @@
               }
               (oe.default = (function (Ae) {
                 ne(Ue, Ae);
-                var Ee = ge(Ue);
+                var Te = ge(Ue);
                 function Ue(J) {
                   var fe;
                   return (
-                    (function ue(Ae, Ee) {
-                      if (!(Ae instanceof Ee)) throw new TypeError('Cannot call a class as a function');
+                    (function ue(Ae, Te) {
+                      if (!(Ae instanceof Te)) throw new TypeError('Cannot call a class as a function');
                     })(this, Ue),
-                    ((fe = Ee.call(this, J)).params = J),
+                    ((fe = Te.call(this, J)).params = J),
                     (fe.sourceMediaElement = null),
                     fe
                   );
                 }
                 return (
-                  (function _e(Ae, Ee, Ue) {
-                    return Ee && be(Ae.prototype, Ee), Ue && be(Ae, Ue), Ae;
+                  (function _e(Ae, Te, Ue) {
+                    return Te && be(Ae.prototype, Te), Ue && be(Ae, Ue), Ae;
                   })(Ue, [
                     {
                       key: 'init',
@@ -33025,10 +33026,10 @@
                   var Q = ue(fe);
                   if (Q && Q.has(J)) return Q.get(J);
                   var B = {},
-                    R = Object.defineProperty && Object.getOwnPropertyDescriptor;
+                    U = Object.defineProperty && Object.getOwnPropertyDescriptor;
                   for (var G in J)
                     if ('default' !== G && Object.prototype.hasOwnProperty.call(J, G)) {
-                      var j = R ? Object.getOwnPropertyDescriptor(J, G) : null;
+                      var j = U ? Object.getOwnPropertyDescriptor(J, G) : null;
                       j && (j.get || j.set) ? Object.defineProperty(B, G, j) : (B[G] = J[G]);
                     }
                   return (B.default = J), Q && Q.set(J, B), B;
@@ -33037,8 +33038,8 @@
                 if ('function' != typeof WeakMap) return null;
                 var fe = new WeakMap(),
                   Q = new WeakMap();
-                return (ue = function (R) {
-                  return R ? Q : fe;
+                return (ue = function (U) {
+                  return U ? Q : fe;
                 })(J);
               }
               function te(J, fe) {
@@ -33054,11 +33055,11 @@
                 return (se =
                   'undefined' != typeof Reflect && Reflect.get
                     ? Reflect.get
-                    : function (R, G, j) {
+                    : function (U, G, j) {
                         var F = (function ge(J, fe) {
-                          for (; !Object.prototype.hasOwnProperty.call(J, fe) && null !== (J = Ee(J)); );
+                          for (; !Object.prototype.hasOwnProperty.call(J, fe) && null !== (J = Te(J)); );
                           return J;
-                        })(R, G);
+                        })(U, G);
                         if (F) {
                           var Ve = Object.getOwnPropertyDescriptor(F, G);
                           return Ve.get ? Ve.get.call(j) : Ve.value;
@@ -33076,8 +33077,8 @@
               function Pe(J, fe) {
                 return (Pe =
                   Object.setPrototypeOf ||
-                  function (B, R) {
-                    return (B.__proto__ = R), B;
+                  function (B, U) {
+                    return (B.__proto__ = U), B;
                   })(J, fe);
               }
               function Se(J) {
@@ -33091,13 +33092,13 @@
                   }
                 })();
                 return function () {
-                  var R,
-                    B = Ee(J);
+                  var U,
+                    B = Te(J);
                   if (fe) {
-                    var G = Ee(this).constructor;
-                    R = Reflect.construct(B, arguments, G);
-                  } else R = B.apply(this, arguments);
-                  return Re(this, R);
+                    var G = Te(this).constructor;
+                    U = Reflect.construct(B, arguments, G);
+                  } else U = B.apply(this, arguments);
+                  return Re(this, U);
                 };
               }
               function Re(J, fe) {
@@ -33109,8 +33110,8 @@
                   return J;
                 })(J);
               }
-              function Ee(J) {
-                return (Ee = Object.setPrototypeOf
+              function Te(J) {
+                return (Te = Object.setPrototypeOf
                   ? Object.getPrototypeOf
                   : function (Q) {
                       return Q.__proto__ || Object.getPrototypeOf(Q);
@@ -33120,13 +33121,13 @@
                 ye(Q, J);
                 var fe = Se(Q);
                 function Q(B) {
-                  var R;
+                  var U;
                   return (
                     (function ve(J, fe) {
                       if (!(J instanceof fe)) throw new TypeError('Cannot call a class as a function');
                     })(this, Q),
-                    ((R = fe.call(this, B)).params = B),
-                    (R.media = {
+                    ((U = fe.call(this, B)).params = B),
+                    (U.media = {
                       currentTime: 0,
                       duration: 0,
                       paused: !0,
@@ -33135,16 +33136,16 @@
                       pause: function () {},
                       volume: 0,
                     }),
-                    (R.mediaType = B.mediaType.toLowerCase()),
-                    (R.elementPosition = B.elementPosition),
-                    (R.peaks = null),
-                    (R.playbackRate = 1),
-                    (R.volume = 1),
-                    (R.isMuted = !1),
-                    (R.buffer = null),
-                    (R.onPlayEnd = null),
-                    (R.mediaListeners = {}),
-                    R
+                    (U.mediaType = B.mediaType.toLowerCase()),
+                    (U.elementPosition = B.elementPosition),
+                    (U.peaks = null),
+                    (U.playbackRate = 1),
+                    (U.volume = 1),
+                    (U.isMuted = !1),
+                    (U.buffer = null),
+                    (U.onPlayEnd = null),
+                    (U.mediaListeners = {}),
+                    U
                   );
                 }
                 return (
@@ -33160,56 +33161,56 @@
                     {
                       key: '_setupMediaListeners',
                       value: function () {
-                        var R = this;
+                        var U = this;
                         (this.mediaListeners.error = function () {
-                          R.fireEvent('error', 'Error loading media element');
+                          U.fireEvent('error', 'Error loading media element');
                         }),
                           (this.mediaListeners.canplay = function () {
-                            R.fireEvent('canplay');
+                            U.fireEvent('canplay');
                           }),
                           (this.mediaListeners.ended = function () {
-                            R.fireEvent('finish');
+                            U.fireEvent('finish');
                           }),
                           (this.mediaListeners.play = function () {
-                            R.fireEvent('play');
+                            U.fireEvent('play');
                           }),
                           (this.mediaListeners.pause = function () {
-                            R.fireEvent('pause');
+                            U.fireEvent('pause');
                           }),
                           (this.mediaListeners.seeked = function (G) {
-                            R.fireEvent('seek');
+                            U.fireEvent('seek');
                           }),
                           (this.mediaListeners.volumechange = function (G) {
-                            (R.isMuted = R.media.muted),
-                              (R.volume = R.isMuted ? 0 : R.media.volume),
-                              R.fireEvent('volume');
+                            (U.isMuted = U.media.muted),
+                              (U.volume = U.isMuted ? 0 : U.media.volume),
+                              U.fireEvent('volume');
                           }),
                           Object.keys(this.mediaListeners).forEach(function (G) {
-                            R.media.removeEventListener(G, R.mediaListeners[G]),
-                              R.media.addEventListener(G, R.mediaListeners[G]);
+                            U.media.removeEventListener(G, U.mediaListeners[G]),
+                              U.media.addEventListener(G, U.mediaListeners[G]);
                           });
                       },
                     },
                     {
                       key: 'createTimer',
                       value: function () {
-                        var R = this;
+                        var U = this;
                         this.on('play', function j() {
-                          R.isPaused() || (R.fireEvent('audioprocess', R.getCurrentTime()), q.frame(j)());
+                          U.isPaused() || (U.fireEvent('audioprocess', U.getCurrentTime()), q.frame(j)());
                         }),
                           this.on('pause', function () {
-                            R.fireEvent('audioprocess', R.getCurrentTime());
+                            U.fireEvent('audioprocess', U.getCurrentTime());
                           });
                       },
                     },
                     {
                       key: 'load',
-                      value: function (R, G, j, F) {
+                      value: function (U, G, j, F) {
                         var Ve = document.createElement(this.mediaType);
                         (Ve.controls = this.params.mediaControls),
                           (Ve.autoplay = this.params.autoplay || !1),
                           (Ve.preload = null == F ? 'auto' : F),
-                          (Ve.src = R),
+                          (Ve.src = U),
                           (Ve.style.width = '100%');
                         var nt = G.querySelector(this.mediaType);
                         nt && G.removeChild(nt), G.appendChild(Ve), this._load(Ve, j, F);
@@ -33217,24 +33218,24 @@
                     },
                     {
                       key: 'loadElt',
-                      value: function (R, G) {
-                        (R.controls = this.params.mediaControls),
-                          (R.autoplay = this.params.autoplay || !1),
-                          this._load(R, G, R.preload);
+                      value: function (U, G) {
+                        (U.controls = this.params.mediaControls),
+                          (U.autoplay = this.params.autoplay || !1),
+                          this._load(U, G, U.preload);
                       },
                     },
                     {
                       key: '_load',
-                      value: function (R, G, j) {
-                        if (!(R instanceof HTMLMediaElement) || void 0 === R.addEventListener)
+                      value: function (U, G, j) {
+                        if (!(U instanceof HTMLMediaElement) || void 0 === U.addEventListener)
                           throw new Error('media parameter is not a valid media element');
-                        'function' == typeof R.load && !(G && 'none' == j) && R.load(),
-                          (this.media = R),
+                        'function' == typeof U.load && !(G && 'none' == j) && U.load(),
+                          (this.media = U),
                           this._setupMediaListeners(),
                           (this.peaks = G),
                           (this.onPlayEnd = null),
                           (this.buffer = null),
-                          (this.isMuted = R.muted),
+                          (this.isMuted = U.muted),
                           this.setPlaybackRate(this.playbackRate),
                           this.setVolume(this.volume);
                       },
@@ -33249,8 +33250,8 @@
                       key: 'getDuration',
                       value: function () {
                         if (this.explicitDuration) return this.explicitDuration;
-                        var R = (this.buffer || this.media).duration;
-                        return R >= 1 / 0 && (R = this.media.seekable.end(0)), R;
+                        var U = (this.buffer || this.media).duration;
+                        return U >= 1 / 0 && (U = this.media.seekable.end(0)), U;
                       },
                     },
                     {
@@ -33273,20 +33274,20 @@
                     },
                     {
                       key: 'setPlaybackRate',
-                      value: function (R) {
-                        (this.playbackRate = R || 1), (this.media.playbackRate = this.playbackRate);
+                      value: function (U) {
+                        (this.playbackRate = U || 1), (this.media.playbackRate = this.playbackRate);
                       },
                     },
                     {
                       key: 'seekTo',
-                      value: function (R) {
-                        null != R && (this.media.currentTime = R), this.clearPlayEnd();
+                      value: function (U) {
+                        null != U && (this.media.currentTime = U), this.clearPlayEnd();
                       },
                     },
                     {
                       key: 'play',
-                      value: function (R, G) {
-                        this.seekTo(R);
+                      value: function (U, G) {
+                        this.seekTo(U);
                         var j = this.media.play();
                         return G && this.setPlayEnd(G), j;
                       },
@@ -33294,17 +33295,17 @@
                     {
                       key: 'pause',
                       value: function () {
-                        var R;
-                        return this.media && (R = this.media.pause()), this.clearPlayEnd(), R;
+                        var U;
+                        return this.media && (U = this.media.pause()), this.clearPlayEnd(), U;
                       },
                     },
                     {
                       key: 'setPlayEnd',
-                      value: function (R) {
+                      value: function (U) {
                         var G = this;
                         this.clearPlayEnd(),
                           (this._onPlayEnd = function (j) {
-                            j >= R && (G.pause(), G.seekTo(R));
+                            j >= U && (G.pause(), G.seekTo(U));
                           }),
                           this.on('audioprocess', this._onPlayEnd);
                       },
@@ -33317,20 +33318,20 @@
                     },
                     {
                       key: 'getPeaks',
-                      value: function (R, G, j) {
+                      value: function (U, G, j) {
                         return this.buffer
-                          ? se(Ee(Q.prototype), 'getPeaks', this).call(this, R, G, j)
+                          ? se(Te(Q.prototype), 'getPeaks', this).call(this, U, G, j)
                           : this.peaks || [];
                       },
                     },
                     {
                       key: 'setSinkId',
-                      value: function (R) {
-                        return R
+                      value: function (U) {
+                        return U
                           ? this.media.setSinkId
-                            ? this.media.setSinkId(R)
+                            ? this.media.setSinkId(U)
                             : Promise.reject(new Error('setSinkId is not supported in your browser'))
-                          : Promise.reject(new Error('Invalid deviceId: ' + R));
+                          : Promise.reject(new Error('Invalid deviceId: ' + U));
                       },
                     },
                     {
@@ -33341,25 +33342,25 @@
                     },
                     {
                       key: 'setVolume',
-                      value: function (R) {
-                        (this.volume = R), this.media.volume !== this.volume && (this.media.volume = this.volume);
+                      value: function (U) {
+                        (this.volume = U), this.media.volume !== this.volume && (this.media.volume = this.volume);
                       },
                     },
                     {
                       key: 'setMute',
-                      value: function (R) {
-                        this.isMuted = this.media.muted = R;
+                      value: function (U) {
+                        this.isMuted = this.media.muted = U;
                       },
                     },
                     {
                       key: 'destroy',
                       value: function () {
-                        var R = this;
+                        var U = this;
                         this.pause(),
                           this.unAll(),
                           (this.destroyed = !0),
                           Object.keys(this.mediaListeners).forEach(function (G) {
-                            R.media && R.media.removeEventListener(G, R.mediaListeners[G]);
+                            U.media && U.media.removeEventListener(G, U.mediaListeners[G]);
                           }),
                           this.params.removeMediaElementOnDestroy &&
                             this.media &&
@@ -34010,10 +34011,10 @@
                       })(B);
               }
               Object.defineProperty(oe, '__esModule', { value: !0 }), (oe.default = void 0);
-              var Y = (function se(B, R) {
-                  if (!R && B && B.__esModule) return B;
+              var Y = (function se(B, U) {
+                  if (!U && B && B.__esModule) return B;
                   if (null === B || ('object' !== le(B) && 'function' != typeof B)) return { default: B };
-                  var G = ne(R);
+                  var G = ne(U);
                   if (G && G.has(B)) return G.get(B);
                   var j = {},
                     F = Object.defineProperty && Object.getOwnPropertyDescriptor;
@@ -34034,29 +34035,29 @@
               }
               function ne(B) {
                 if ('function' != typeof WeakMap) return null;
-                var R = new WeakMap(),
+                var U = new WeakMap(),
                   G = new WeakMap();
                 return (ne = function (F) {
-                  return F ? G : R;
+                  return F ? G : U;
                 })(B);
               }
-              function ge(B, R) {
-                if ('function' != typeof R && null !== R)
+              function ge(B, U) {
+                if ('function' != typeof U && null !== U)
                   throw new TypeError('Super expression must either be null or a function');
-                (B.prototype = Object.create(R && R.prototype, {
+                (B.prototype = Object.create(U && U.prototype, {
                   constructor: { value: B, writable: !0, configurable: !0 },
                 })),
-                  R && ye(B, R);
+                  U && ye(B, U);
               }
-              function ye(B, R) {
+              function ye(B, U) {
                 return (ye =
                   Object.setPrototypeOf ||
                   function (j, F) {
                     return (j.__proto__ = F), j;
-                  })(B, R);
+                  })(B, U);
               }
               function Pe(B) {
-                var R = (function pe() {
+                var U = (function pe() {
                   if ('undefined' == typeof Reflect || !Reflect.construct || Reflect.construct.sham) return !1;
                   if ('function' == typeof Proxy) return !0;
                   try {
@@ -34068,16 +34069,16 @@
                 return function () {
                   var F,
                     j = Ae(B);
-                  if (R) {
+                  if (U) {
                     var Ve = Ae(this).constructor;
                     F = Reflect.construct(j, arguments, Ve);
                   } else F = j.apply(this, arguments);
                   return Se(this, F);
                 };
               }
-              function Se(B, R) {
-                if (R && ('object' === le(R) || 'function' == typeof R)) return R;
-                if (void 0 !== R) throw new TypeError('Derived constructors may only return object or undefined');
+              function Se(B, U) {
+                if (U && ('object' === le(U) || 'function' == typeof U)) return U;
+                if (void 0 !== U) throw new TypeError('Derived constructors may only return object or undefined');
                 return Re(B);
               }
               function Re(B) {
@@ -34091,9 +34092,9 @@
                       return G.__proto__ || Object.getPrototypeOf(G);
                     })(B);
               }
-              function Ue(B, R) {
-                for (var G = 0; G < R.length; G++) {
-                  var j = R[G];
+              function Ue(B, U) {
+                for (var G = 0; G < U.length; G++) {
+                  var j = U[G];
                   (j.enumerable = j.enumerable || !1),
                     (j.configurable = !0),
                     'value' in j && (j.writable = !0),
@@ -34102,14 +34103,14 @@
               }
               var Q = (function (B) {
                 ge(G, B);
-                var R = Pe(G);
+                var U = Pe(G);
                 function G(j) {
                   var F;
                   if (
-                    ((function Ee(B, R) {
-                      if (!(B instanceof R)) throw new TypeError('Cannot call a class as a function');
+                    ((function Te(B, U) {
+                      if (!(B instanceof U)) throw new TypeError('Cannot call a class as a function');
                     })(this, G),
-                    ((F = R.call(this)).defaultParams = {
+                    ((F = U.call(this)).defaultParams = {
                       audioContext: null,
                       audioScriptProcessor: null,
                       audioRate: 1,
@@ -34228,8 +34229,8 @@
                   );
                 }
                 return (
-                  (function J(B, R, G) {
-                    return R && Ue(B.prototype, R), G && Ue(B, G), B;
+                  (function J(B, U, G) {
+                    return U && Ue(B.prototype, U), G && Ue(B, G), B;
                   })(
                     G,
                     [
@@ -34965,10 +34966,10 @@
                 var Q = q(fe);
                 if (Q && Q.has(J)) return Q.get(J);
                 var B = {},
-                  R = Object.defineProperty && Object.getOwnPropertyDescriptor;
+                  U = Object.defineProperty && Object.getOwnPropertyDescriptor;
                 for (var G in J)
                   if ('default' !== G && Object.prototype.hasOwnProperty.call(J, G)) {
-                    var j = R ? Object.getOwnPropertyDescriptor(J, G) : null;
+                    var j = U ? Object.getOwnPropertyDescriptor(J, G) : null;
                     j && (j.get || j.set) ? Object.defineProperty(B, G, j) : (B[G] = J[G]);
                   }
                 return (B.default = J), Q && Q.set(J, B), B;
@@ -34977,8 +34978,8 @@
                 if ('function' != typeof WeakMap) return null;
                 var fe = new WeakMap(),
                   Q = new WeakMap();
-                return (q = function (R) {
-                  return R ? Q : fe;
+                return (q = function (U) {
+                  return U ? Q : fe;
                 })(J);
               }
               function be(J, fe, Q) {
@@ -35009,8 +35010,8 @@
               function se(J, fe) {
                 return (se =
                   Object.setPrototypeOf ||
-                  function (B, R) {
-                    return (B.__proto__ = R), B;
+                  function (B, U) {
+                    return (B.__proto__ = U), B;
                   })(J, fe);
               }
               function ge(J) {
@@ -35024,13 +35025,13 @@
                   }
                 })();
                 return function () {
-                  var R,
+                  var U,
                     B = Re(J);
                   if (fe) {
                     var G = Re(this).constructor;
-                    R = Reflect.construct(B, arguments, G);
-                  } else R = B.apply(this, arguments);
-                  return ye(this, R);
+                    U = Reflect.construct(B, arguments, G);
+                  } else U = B.apply(this, arguments);
+                  return ye(this, U);
                 };
               }
               function ye(J, fe) {
@@ -35051,12 +35052,12 @@
               }
               var pe = 'playing',
                 Ae = 'paused',
-                Ee = 'finished',
+                Te = 'finished',
                 Ue = (function (J) {
                   ne(Q, J);
                   var fe = ge(Q);
                   function Q(B) {
-                    var R, G, j;
+                    var U, G, j;
                     return (
                       (function _e(J, fe) {
                         if (!(J instanceof fe)) throw new TypeError('Cannot call a class as a function');
@@ -35064,7 +35065,7 @@
                       ((j = fe.call(this)).audioContext = null),
                       (j.offlineAudioContext = null),
                       (j.stateBehaviors =
-                        (be((R = {}), pe, {
+                        (be((U = {}), pe, {
                           init: function () {
                             this.addOnAudioProcess();
                           },
@@ -35076,7 +35077,7 @@
                             return this.startPosition + this.getPlayedTime();
                           },
                         }),
-                        be(R, Ae, {
+                        be(U, Ae, {
                           init: function () {
                             this.removeOnAudioProcess();
                           },
@@ -35088,7 +35089,7 @@
                             return this.startPosition;
                           },
                         }),
-                        be(R, Ee, {
+                        be(U, Te, {
                           init: function () {
                             this.removeOnAudioProcess(), this.fireEvent('finish');
                           },
@@ -35099,7 +35100,7 @@
                             return this.getDuration();
                           },
                         }),
-                        R)),
+                        U)),
                       (j.params = B),
                       (j.ac = B.audioContext || (j.supportsWebAudio() ? j.getAudioContext() : {})),
                       (j.lastPlay = j.ac.currentTime),
@@ -35108,7 +35109,7 @@
                       (j.states =
                         (be((G = {}), pe, Object.create(j.stateBehaviors[pe])),
                         be(G, Ae, Object.create(j.stateBehaviors[Ae])),
-                        be(G, Ee, Object.create(j.stateBehaviors[Ee])),
+                        be(G, Te, Object.create(j.stateBehaviors[Te])),
                         G)),
                       (j.buffer = null),
                       (j.filters = []),
@@ -35150,11 +35151,11 @@
                       },
                       {
                         key: 'getOfflineAudioContext',
-                        value: function (R) {
+                        value: function (U) {
                           return (
                             window.WaveSurferOfflineAudioContext ||
                               (window.WaveSurferOfflineAudioContext = new (window.OfflineAudioContext ||
-                                window.webkitOfflineAudioContext)(1, 2, R)),
+                                window.webkitOfflineAudioContext)(1, 2, U)),
                             window.WaveSurferOfflineAudioContext
                           );
                         },
@@ -35174,8 +35175,8 @@
                         key: 'disconnectFilters',
                         value: function () {
                           this.filters &&
-                            (this.filters.forEach(function (R) {
-                              R && R.disconnect();
+                            (this.filters.forEach(function (U) {
+                              U && U.disconnect();
                             }),
                             (this.filters = null),
                             this.analyser.connect(this.gainNode));
@@ -35183,26 +35184,26 @@
                       },
                       {
                         key: 'setState',
-                        value: function (R) {
-                          this.state !== this.states[R] && ((this.state = this.states[R]), this.state.init.call(this));
+                        value: function (U) {
+                          this.state !== this.states[U] && ((this.state = this.states[U]), this.state.init.call(this));
                         },
                       },
                       {
                         key: 'setFilter',
                         value: function () {
-                          for (var R = arguments.length, G = new Array(R), j = 0; j < R; j++) G[j] = arguments[j];
+                          for (var U = arguments.length, G = new Array(U), j = 0; j < U; j++) G[j] = arguments[j];
                           this.setFilters(G);
                         },
                       },
                       {
                         key: 'setFilters',
-                        value: function (R) {
+                        value: function (U) {
                           this.disconnectFilters(),
-                            R &&
-                              R.length &&
-                              ((this.filters = R),
+                            U &&
+                              U.length &&
+                              ((this.filters = U),
                               this.analyser.disconnect(),
-                              R.reduce(function (G, j) {
+                              U.reduce(function (G, j) {
                                 return G.connect(j), j;
                               }, this.analyser).connect(this.gainNode));
                         },
@@ -35221,14 +35222,14 @@
                       {
                         key: 'addOnAudioProcess',
                         value: function () {
-                          var R = this;
+                          var U = this;
                           this.scriptNode.onaudioprocess = function () {
-                            var G = R.getCurrentTime();
-                            G >= R.getDuration()
-                              ? (R.setState(Ee), R.fireEvent('pause'))
-                              : G >= R.scheduledPause
-                              ? R.pause()
-                              : R.state === R.states[pe] && R.fireEvent('audioprocess', G);
+                            var G = U.getCurrentTime();
+                            G >= U.getDuration()
+                              ? (U.setState(Te), U.fireEvent('pause'))
+                              : G >= U.scheduledPause
+                              ? U.pause()
+                              : U.state === U.states[pe] && U.fireEvent('audioprocess', G);
                           };
                         },
                       },
@@ -35253,8 +35254,8 @@
                       },
                       {
                         key: 'setSinkId',
-                        value: function (R) {
-                          if (R) {
+                        value: function (U) {
+                          if (U) {
                             var G = new window.Audio();
                             if (!G.setSinkId)
                               return Promise.reject(new Error('setSinkId is not supported in your browser'));
@@ -35264,16 +35265,16 @@
                               this.gainNode.disconnect(),
                               this.gainNode.connect(j),
                               (G.srcObject = j.stream),
-                              G.setSinkId(R)
+                              G.setSinkId(U)
                             );
                           }
-                          return Promise.reject(new Error('Invalid deviceId: ' + R));
+                          return Promise.reject(new Error('Invalid deviceId: ' + U));
                         },
                       },
                       {
                         key: 'setVolume',
-                        value: function (R) {
-                          this.gainNode.gain.setValueAtTime(R, this.ac.currentTime);
+                        value: function (U) {
+                          this.gainNode.gain.setValueAtTime(U, this.ac.currentTime);
                         },
                       },
                       {
@@ -35284,21 +35285,21 @@
                       },
                       {
                         key: 'decodeArrayBuffer',
-                        value: function (R, G, j) {
+                        value: function (U, G, j) {
                           this.offlineAc ||
                             (this.offlineAc = this.getOfflineAudioContext(
                               this.ac && this.ac.sampleRate ? this.ac.sampleRate : 44100
                             )),
                             'webkitAudioContext' in window
                               ? this.offlineAc.decodeAudioData(
-                                  R,
+                                  U,
                                   function (F) {
                                     return G(F);
                                   },
                                   j
                                 )
                               : this.offlineAc
-                                  .decodeAudioData(R)
+                                  .decodeAudioData(U)
                                   .then(function (F) {
                                     return G(F);
                                   })
@@ -35309,38 +35310,38 @@
                       },
                       {
                         key: 'setPeaks',
-                        value: function (R, G) {
-                          null != G && (this.explicitDuration = G), (this.peaks = R);
+                        value: function (U, G) {
+                          null != G && (this.explicitDuration = G), (this.peaks = U);
                         },
                       },
                       {
                         key: 'setLength',
-                        value: function (R) {
-                          if (!this.mergedPeaks || R != 2 * this.mergedPeaks.length - 1 + 2) {
+                        value: function (U) {
+                          if (!this.mergedPeaks || U != 2 * this.mergedPeaks.length - 1 + 2) {
                             (this.splitPeaks = []), (this.mergedPeaks = []);
                             var j,
                               G = this.buffer ? this.buffer.numberOfChannels : 1;
                             for (j = 0; j < G; j++)
                               (this.splitPeaks[j] = []),
-                                (this.splitPeaks[j][2 * (R - 1)] = 0),
-                                (this.splitPeaks[j][2 * (R - 1) + 1] = 0);
-                            (this.mergedPeaks[2 * (R - 1)] = 0), (this.mergedPeaks[2 * (R - 1) + 1] = 0);
+                                (this.splitPeaks[j][2 * (U - 1)] = 0),
+                                (this.splitPeaks[j][2 * (U - 1) + 1] = 0);
+                            (this.mergedPeaks[2 * (U - 1)] = 0), (this.mergedPeaks[2 * (U - 1) + 1] = 0);
                           }
                         },
                       },
                       {
                         key: 'getPeaks',
-                        value: function (R, G, j) {
+                        value: function (U, G, j) {
                           if (this.peaks) return this.peaks;
                           if (!this.buffer) return [];
-                          if (((G = G || 0), (j = j || R - 1), this.setLength(R), !this.buffer))
+                          if (((G = G || 0), (j = j || U - 1), this.setLength(U), !this.buffer))
                             return this.params.splitChannels ? this.splitPeaks : this.mergedPeaks;
                           if (!this.buffer.length) {
                             var F = this.createBuffer(1, 4096, this.sampleRate);
                             this.buffer = F.buffer;
                           }
                           var Fe,
-                            Ve = this.buffer.length / R,
+                            Ve = this.buffer.length / U,
                             nt = ~~(Ve / 10) || 1,
                             qe = this.buffer.numberOfChannels;
                           for (Fe = 0; Fe < qe; Fe++) {
@@ -35407,10 +35408,10 @@
                       },
                       {
                         key: 'load',
-                        value: function (R) {
+                        value: function (U) {
                           (this.startPosition = 0),
                             (this.lastPlay = this.ac.currentTime),
-                            (this.buffer = R),
+                            (this.buffer = U),
                             this.createSource();
                         },
                       },
@@ -35446,16 +35447,16 @@
                       },
                       {
                         key: 'seekTo',
-                        value: function (R, G) {
+                        value: function (U, G) {
                           if (this.buffer)
                             return (
                               (this.scheduledPause = null),
-                              null == R && (R = this.getCurrentTime()) >= this.getDuration() && (R = 0),
+                              null == U && (U = this.getCurrentTime()) >= this.getDuration() && (U = 0),
                               null == G && (G = this.getDuration()),
-                              (this.startPosition = R),
+                              (this.startPosition = U),
                               (this.lastPlay = this.ac.currentTime),
-                              this.state === this.states[Ee] && this.setState(Ae),
-                              { start: R, end: G }
+                              this.state === this.states[Te] && this.setState(Ae),
+                              { start: U, end: G }
                             );
                         },
                       },
@@ -35467,13 +35468,13 @@
                       },
                       {
                         key: 'play',
-                        value: function (R, G) {
+                        value: function (U, G) {
                           if (this.buffer) {
                             this.createSource();
-                            var j = this.seekTo(R, G);
-                            (R = j.start),
+                            var j = this.seekTo(U, G);
+                            (U = j.start),
                               (this.scheduledPause = G = j.end),
-                              this.source.start(0, R),
+                              this.source.start(0, U),
                               this.resumeAudioContext(),
                               this.setState(pe),
                               this.fireEvent('play');
@@ -35486,7 +35487,7 @@
                           (this.scheduledPause = null), (this.startPosition += this.getPlayedTime());
                           try {
                             this.source && this.source.stop(0);
-                          } catch (R) {}
+                          } catch (U) {}
                           this.setState(Ae), this.fireEvent('pause');
                         },
                       },
@@ -35504,16 +35505,16 @@
                       },
                       {
                         key: 'setPlaybackRate',
-                        value: function (R) {
-                          (this.playbackRate = R || 1),
+                        value: function (U) {
+                          (this.playbackRate = U || 1),
                             this.source &&
                               this.source.playbackRate.setValueAtTime(this.playbackRate, this.ac.currentTime);
                         },
                       },
                       {
                         key: 'setPlayEnd',
-                        value: function (R) {
-                          this.scheduledPause = R;
+                        value: function (U) {
+                          this.scheduledPause = U;
                         },
                       },
                     ]),
@@ -35646,33 +35647,33 @@
         return (l =
           Object.setPrototypeOf ||
           ({ __proto__: [] } instanceof Array &&
-            function (R, G) {
-              R.__proto__ = G;
+            function (U, G) {
+              U.__proto__ = G;
             }) ||
-          function (R, G) {
-            for (var j in G) Object.prototype.hasOwnProperty.call(G, j) && (R[j] = G[j]);
+          function (U, G) {
+            for (var j in G) Object.prototype.hasOwnProperty.call(G, j) && (U[j] = G[j]);
           })(Q, B);
       };
       function e(Q, B) {
         if ('function' != typeof B && null !== B)
           throw new TypeError('Class extends value ' + String(B) + ' is not a constructor or null');
-        function R() {
+        function U() {
           this.constructor = Q;
         }
-        l(Q, B), (Q.prototype = null === B ? Object.create(B) : ((R.prototype = B.prototype), new R()));
+        l(Q, B), (Q.prototype = null === B ? Object.create(B) : ((U.prototype = B.prototype), new U()));
       }
-      function xe(Q, B, R, G) {
+      function xe(Q, B, U, G) {
         var Ve,
           j = arguments.length,
-          F = j < 3 ? B : null === G ? (G = Object.getOwnPropertyDescriptor(B, R)) : G;
-        if ('object' == typeof Reflect && 'function' == typeof Reflect.decorate) F = Reflect.decorate(Q, B, R, G);
+          F = j < 3 ? B : null === G ? (G = Object.getOwnPropertyDescriptor(B, U)) : G;
+        if ('object' == typeof Reflect && 'function' == typeof Reflect.decorate) F = Reflect.decorate(Q, B, U, G);
         else
           for (var nt = Q.length - 1; nt >= 0; nt--)
-            (Ve = Q[nt]) && (F = (j < 3 ? Ve(F) : j > 3 ? Ve(B, R, F) : Ve(B, R)) || F);
-        return j > 3 && F && Object.defineProperty(B, R, F), F;
+            (Ve = Q[nt]) && (F = (j < 3 ? Ve(F) : j > 3 ? Ve(B, U, F) : Ve(B, U)) || F);
+        return j > 3 && F && Object.defineProperty(B, U, F), F;
       }
-      function q(Q, B, R, G) {
-        return new (R || (R = Promise))(function (F, Ve) {
+      function q(Q, B, U, G) {
+        return new (U || (U = Promise))(function (F, Ve) {
           function nt(Ze) {
             try {
               Fe(G.next(Ze));
@@ -35691,9 +35692,9 @@
             Ze.done
               ? F(Ze.value)
               : (function j(F) {
-                  return F instanceof R
+                  return F instanceof U
                     ? F
-                    : new R(function (Ve) {
+                    : new U(function (Ve) {
                         Ve(F);
                       });
                 })(Ze.value).then(nt, qe);
@@ -35704,10 +35705,10 @@
       function ye(Q) {
         return this instanceof ye ? ((this.v = Q), this) : new ye(Q);
       }
-      function Pe(Q, B, R) {
+      function Pe(Q, B, U) {
         if (!Symbol.asyncIterator) throw new TypeError('Symbol.asyncIterator is not defined.');
         var j,
-          G = R.apply(Q, B || []),
+          G = U.apply(Q, B || []),
           F = [];
         return (
           (j = {}),
@@ -35748,15 +35749,15 @@
       }
       function Re(Q) {
         if (!Symbol.asyncIterator) throw new TypeError('Symbol.asyncIterator is not defined.');
-        var R,
+        var U,
           B = Q[Symbol.asyncIterator];
         return B
           ? B.call(Q)
           : ((Q = (function ve(Q) {
               var B = 'function' == typeof Symbol && Symbol.iterator,
-                R = B && Q[B],
+                U = B && Q[B],
                 G = 0;
-              if (R) return R.call(Q);
+              if (U) return U.call(Q);
               if (Q && 'number' == typeof Q.length)
                 return {
                   next: function () {
@@ -35765,16 +35766,16 @@
                 };
               throw new TypeError(B ? 'Object is not iterable.' : 'Symbol.iterator is not defined.');
             })(Q)),
-            (R = {}),
+            (U = {}),
             G('next'),
             G('throw'),
             G('return'),
-            (R[Symbol.asyncIterator] = function () {
+            (U[Symbol.asyncIterator] = function () {
               return this;
             }),
-            R);
+            U);
         function G(F) {
-          R[F] =
+          U[F] =
             Q[F] &&
             function (Ve) {
               return new Promise(function (nt, qe) {
@@ -36161,7 +36162,7 @@
             (T.ɵprov = l.Yz7({
               token: T,
               factory: function () {
-                return (function Ee() {
+                return (function Te() {
                   return new Ae((0, l.LFG)(ye), (0, l.LFG)(q));
                 })();
               },
@@ -37208,11 +37209,11 @@
         return (w.lFrame.contextLView = t), t[8];
       }
       function m() {
-        let t = U();
+        let t = O();
         for (; null !== t && 64 === t.type; ) t = t.parent;
         return t;
       }
-      function U() {
+      function O() {
         return w.lFrame.currentTNode;
       }
       function gt(t, n) {
@@ -38713,7 +38714,7 @@
         let p = t.data[n];
         if (null === p)
           (p = (function _d(t, n, i, a, d) {
-            const p = U(),
+            const p = O(),
               y = jt(),
               A = (t.data[n] = (function iu(t, n, i, a, d, p) {
                 return {
@@ -39640,7 +39641,7 @@
           : n;
       }
       let h = null;
-      function O() {
+      function R() {
         if (!h) {
           const t = pn.Symbol;
           if (t && t.iterator) h = t.iterator;
@@ -39655,7 +39656,7 @@
         return h;
       }
       function et(t) {
-        return !!wn(t) && (Array.isArray(t) || (!(t instanceof Map) && O() in t));
+        return !!wn(t) && (Array.isArray(t) || (!(t instanceof Map) && R() in t));
       }
       function wn(t) {
         return null !== t && ('function' == typeof t || 'object' == typeof t);
@@ -40946,7 +40947,7 @@
         }
       };
       function Px() {
-        return this._results[O()]();
+        return this._results[R()]();
       }
       class Bm {
         constructor(n = !1) {
@@ -40958,7 +40959,7 @@
             (this.length = 0),
             (this.first = void 0),
             (this.last = void 0);
-          const i = O(),
+          const i = R(),
             a = Bm.prototype;
           a[i] || (a[i] = Px);
         }
@@ -42283,7 +42284,7 @@
               (function Wt(t, n) {
                 if (Array.isArray(t)) for (let i = 0; i < t.length; i++) n(t[i]);
                 else {
-                  const i = t[O()]();
+                  const i = t[R()]();
                   let a;
                   for (; !(a = i.next()).done; ) n(a.value);
                 }
@@ -42929,7 +42930,7 @@
           })(E);
         }
         static required(E) {
-          return Ee(E);
+          return Te(E);
         }
         static requiredTrue(E) {
           return (function Ue(P) {
@@ -42972,11 +42973,11 @@
           return ot(E);
         }
       }
-      function Ee(P) {
+      function Te(P) {
         return se(P.value) ? { required: !0 } : null;
       }
       function B(P) {
-        if (!P) return R;
+        if (!P) return U;
         let E, w;
         return (
           'string' == typeof P
@@ -42993,7 +42994,7 @@
           }
         );
       }
-      function R(P) {
+      function U(P) {
         return null;
       }
       function G(P) {
@@ -44158,7 +44159,7 @@
             (this._required = null != w && !1 !== w && 'false' != `${w}`), this._onChange && this._onChange();
           }
           validate(w) {
-            return this.required ? Ee(w) : null;
+            return this.required ? Te(w) : null;
           }
           registerOnValidatorChange(w) {
             this._onChange = w;
@@ -44189,7 +44190,7 @@
       let I = (() => {
           class P {
             constructor() {
-              this._validator = R;
+              this._validator = U;
             }
             ngOnChanges(w) {
               'pattern' in w && (this._createValidator(), this._onChange && this._onChange());
@@ -44402,7 +44403,7 @@
             });
       }
       var B = k(8068),
-        R = k(6590),
+        U = k(6590),
         j = k(4004),
         F = k(3900),
         Ve = k(5698),
@@ -45474,7 +45475,7 @@
             C.map((b) =>
               b.pipe(
                 (0, Ve.q)(1),
-                (function Ee(...C) {
+                (function Te(...C) {
                   const b = (0, Y.yG)(C);
                   return (0, Ae.e)((_, S) => {
                     (b ? (0, ye.z)(C, _, b) : (0, ye.z)(C, _)).subscribe(S);
@@ -45834,7 +45835,7 @@
                 S.pipe(
                   C ? (0, fe.h)((Z, re) => C(Z, re, S)) : xe.y,
                   Q(1),
-                  _ ? (0, R.d)(b) : (0, B.T)(() => new ge.K())
+                  _ ? (0, U.d)(b) : (0, B.T)(() => new ge.K())
                 );
             })()
           );
@@ -46055,7 +46056,7 @@
         return he(S, b ? b._root : null, _, [S.value]);
       }
       function m(C, b, _) {
-        const S = (function U(C) {
+        const S = (function O(C) {
           if (!C) return null;
           for (let b = C.parent; b; b = b.parent) {
             const _ = b.routeConfig;
@@ -47883,7 +47884,7 @@
         }
         return !1;
       }
-      function Ee(Be) {
+      function Te(Be) {
         return null != Be;
       }
       function Ue(Be) {
@@ -47927,7 +47928,7 @@
             je = '';
             do {
               (je += We.shift()),
-                !Ee(Ce) || !Ee(Ce[je]) || ('object' != typeof Ce[je] && We.length)
+                !Te(Ce) || !Te(Ce[je]) || ('object' != typeof Ce[je] && We.length)
                   ? We.length
                     ? (je += '.')
                     : (Ce = void 0)
@@ -47942,7 +47943,7 @@
             return je
               ? Ce.replace(this.templateMatcher, (We, pt) => {
                   let wt = this.getValue(je, pt);
-                  return Ee(wt) ? wt : We;
+                  return Te(wt) ? wt : We;
                 })
               : Ce;
           }
@@ -47959,7 +47960,7 @@
         );
       })();
       class B {}
-      let R = (() => {
+      let U = (() => {
         class Be extends B {
           compile(Ce, je) {
             return Ce;
@@ -48159,7 +48160,7 @@
               return void 0 !== pt ? pt : je;
             }
             get(Ce, je) {
-              if (!Ee(Ce) || !Ce.length) throw new Error('Parameter "key" required');
+              if (!Te(Ce) || !Ce.length) throw new Error('Parameter "key" required');
               if (this.pending)
                 return this.loadingTranslations.pipe(
                   (0, ge.b)((We) => (oe((We = this.getParsedResult(We, Ce, je))) ? We : (0, xe.of)(We)))
@@ -48170,7 +48171,7 @@
               }
             }
             getStreamOnTranslationChange(Ce, je) {
-              if (!Ee(Ce) || !Ce.length) throw new Error('Parameter "key" required');
+              if (!Te(Ce) || !Ce.length) throw new Error('Parameter "key" required');
               return (0, Y.z)(
                 (0, q.P)(() => this.get(Ce, je)),
                 this.onTranslationChange.pipe(
@@ -48182,7 +48183,7 @@
               );
             }
             stream(Ce, je) {
-              if (!Ee(Ce) || !Ce.length) throw new Error('Parameter "key" required');
+              if (!Te(Ce) || !Ce.length) throw new Error('Parameter "key" required');
               return (0, Y.z)(
                 (0, q.P)(() => this.get(Ce, je)),
                 this.onLangChange.pipe(
@@ -48194,7 +48195,7 @@
               );
             }
             instant(Ce, je) {
-              if (!Ee(Ce) || !Ce.length) throw new Error('Parameter "key" required');
+              if (!Te(Ce) || !Ce.length) throw new Error('Parameter "key" required');
               let We = this.getParsedResult(this.translations[this.currentLang], Ce, je);
               if (oe(We)) {
                 if (Ce instanceof Array) {
@@ -48306,7 +48307,7 @@
                 let wt = We[pt];
                 if (3 === wt.nodeType) {
                   let yn;
-                  if ((Ce && (wt.lastKey = null), Ee(wt.lookupKey))) yn = wt.lookupKey;
+                  if ((Ce && (wt.lastKey = null), Te(wt.lookupKey))) yn = wt.lookupKey;
                   else if (this.key) yn = this.key;
                   else {
                     let Ht = this.getContent(wt),
@@ -48330,21 +48331,21 @@
                 let pt = (wt) => {
                   wt !== Ce && (je.lastKey = Ce),
                     je.originalContent || (je.originalContent = this.getContent(je)),
-                    (je.currentValue = Ee(wt) ? wt : je.originalContent || Ce),
+                    (je.currentValue = Te(wt) ? wt : je.originalContent || Ce),
                     this.setContent(je, this.key ? je.currentValue : je.originalContent.replace(Ce, je.currentValue)),
                     this._ref.markForCheck();
                 };
-                if (Ee(We)) {
+                if (Te(We)) {
                   let wt = this.translateService.getParsedResult(We, Ce, this.currentParams);
                   oe(wt) ? wt.subscribe({ next: pt }) : pt(wt);
                 } else this.translateService.get(Ce, this.currentParams).subscribe(pt);
               }
             }
             getContent(Ce) {
-              return Ee(Ce.textContent) ? Ce.textContent : Ce.data;
+              return Te(Ce.textContent) ? Ce.textContent : Ce.data;
             }
             setContent(Ce, je) {
-              Ee(Ce.textContent) ? (Ce.textContent = je) : (Ce.data = je);
+              Te(Ce.textContent) ? (Ce.textContent = je) : (Ce.data = je);
             }
             ngOnDestroy() {
               this.onLangChangeSub && this.onLangChangeSub.unsubscribe(),
@@ -48374,7 +48375,7 @@
                 ngModule: Be,
                 providers: [
                   Ce.loader || { provide: Pe, useClass: Se },
-                  Ce.compiler || { provide: B, useClass: R },
+                  Ce.compiler || { provide: B, useClass: U },
                   Ce.parser || { provide: fe, useClass: Q },
                   Ce.missingTranslationHandler || { provide: Re, useClass: pe },
                   G,
@@ -48391,7 +48392,7 @@
                 ngModule: Be,
                 providers: [
                   Ce.loader || { provide: Pe, useClass: Se },
-                  Ce.compiler || { provide: B, useClass: R },
+                  Ce.compiler || { provide: B, useClass: U },
                   Ce.parser || { provide: fe, useClass: Q },
                   Ce.missingTranslationHandler || { provide: Re, useClass: pe },
                   { provide: j, useValue: Ce.isolate },

@@ -25,7 +25,7 @@
             <ion-button
               (click)="dismiss(true)"
               type="submit"
-              [disabled]="shareFrom.invalid"
+              [disabled]="shareFrom.invalid || isLoading"
               class="default-button ion-text-capitalize"
               color="primary"
               expand="block"

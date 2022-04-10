@@ -13,6 +13,7 @@ export class ShareBookComponent implements OnInit {
   shareFrom!: FormGroup;
   @Input() title: string = '';
   @Input() bookId: string = '';
+  isLoading = false;
   constructor(
     private formBuilder: FormBuilder,
     private apiService: ApiService,
@@ -32,14 +33,19 @@ export class ShareBookComponent implements OnInit {
 
   save() {
     console.log(this.shareFrom.value);
+    this.isLoading = true;
     this.apiService.post(`/api/Books/${this.bookId}/share`, this.shareFrom.value).subscribe({
       complete: () => {
         console.log('complate');
       },
       next: (res: any) => {
+        this.toastService.showToast('success', 'Book shared successfully');
         this.dismiss(false);
+        this.isLoading = false;
       },
-      error: (error: any) => {},
+      error: (error: any) => {
+        this.isLoading = false;
+      },
     });
   }
 }
