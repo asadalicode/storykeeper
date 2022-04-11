@@ -18,6 +18,7 @@ import { AudioPlayerComponent } from './components/audio-player/audio-player.com
 import { AngularWavesurferServiceModule } from 'angular-wavesurfer-service';
 import { RecordingPlayerComponent } from './components/recording-player/recording-player.component';
 import { NoDataFoundComponent } from './components/no-data-found/no-data-found.component';
+import { FilterPipe } from './pipes/filterPipe';
 
 @NgModule({
   imports: [
@@ -40,6 +41,7 @@ import { NoDataFoundComponent } from './components/no-data-found/no-data-found.c
     MobileHeaderComponent,
     AudioPlayerComponent,
     RecordingPlayerComponent,
+    FilterPipe,
     NoDataFoundComponent,
   ],
   exports: [
@@ -53,6 +55,7 @@ import { NoDataFoundComponent } from './components/no-data-found/no-data-found.c
     MobileHeaderComponent,
     AudioPlayerComponent,
     RecordingPlayerComponent,
+    FilterPipe,
     NoDataFoundComponent,
   ],
 })

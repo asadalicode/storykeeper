@@ -3,8 +3,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Platform, ModalController, IonRouterOutlet } from '@ionic/angular';
 import { EditBookComponent } from '../edit-book/edit-book.component';
-import { ModalDismissRole } from '@app/@shared/constants';
+import { ModalDismissRole, myLibraryTabs } from '@app/@shared/constants';
 import { ShareBookComponent } from '@app/book-shared/share-book/share-book.component';
+import { ApiService } from '@app/@shared/sevices/api.service';
+import { Story } from '@app/@shared/models';
 
 @Component({
   selector: 'app-book-detail-page',
@@ -12,15 +14,21 @@ import { ShareBookComponent } from '@app/book-shared/share-book/share-book.compo
   styleUrls: ['./book-detail-page.component.scss'],
 })
 export class BookDetailPageComponent implements OnInit {
+  bookStories: any = [];
+  myLibraryTabs = myLibraryTabs;
+  isLoading = false;
   constructor(
     private platform: Platform,
     private routerOutlet: IonRouterOutlet,
     private router: Router,
     private route: ActivatedRoute,
+    private apiService: ApiService,
     private modalController: ModalController
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getBookStories();
+  }
   get isWeb(): boolean {
     return !this.platform.is('cordova');
   }
@@ -32,6 +40,20 @@ export class BookDetailPageComponent implements OnInit {
     });
     return params;
   }
+
+  getBookStories() {
+    this.isLoading = true;
+    this.apiService.get(`/api/books/${this.routeParams.bookId}/Stories`, Story).subscribe({
+      next: (res: any) => {
+        this.bookStories = res;
+        this.isLoading = false;
+      },
+      error: (error: any) => {
+        this.isLoading = false;
+      },
+    });
+  }
+
   async EditBook() {
     const modal = await this.modalController.create({
       component: EditBookComponent,
@@ -90,7 +112,7 @@ export class BookDetailPageComponent implements OnInit {
   }
 
   async ViewSharing() {
-    this.router.navigate([`tabs/my-library/sharing/${this.routeParams.bookId}`]);
+    this.router.navigate([`tabs/my-library/sharing/${this.routeParams.bookId}/${this.routeParams.bookTitle}`]);
   }
 
   async recordingScreen(type: string) {
