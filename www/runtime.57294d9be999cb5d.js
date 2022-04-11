@@ -11,14 +11,14 @@
   }
   (f.m = g),
     (e = []),
-    (f.O = (d, a, c, n) => {
+    (f.O = (d, a, c, b) => {
       if (!a) {
         var t = 1 / 0;
         for (r = 0; r < e.length; r++) {
-          for (var [a, c, n] = e[r], i = !0, b = 0; b < a.length; b++)
-            (!1 & n || t >= n) && Object.keys(f.O).every((p) => f.O[p](a[b]))
-              ? a.splice(b--, 1)
-              : ((i = !1), n < t && (t = n));
+          for (var [a, c, b] = e[r], i = !0, n = 0; n < a.length; n++)
+            (!1 & b || t >= b) && Object.keys(f.O).every((p) => f.O[p](a[n]))
+              ? a.splice(n--, 1)
+              : ((i = !1), b < t && (t = b));
           if (i) {
             e.splice(r--, 1);
             var l = c();
@@ -27,9 +27,9 @@
         }
         return d;
       }
-      n = n || 0;
-      for (var r = e.length; r > 0 && e[r - 1][2] > n; r--) e[r] = e[r - 1];
-      e[r] = [a, c, n];
+      b = b || 0;
+      for (var r = e.length; r > 0 && e[r - 1][2] > b; r--) e[r] = e[r - 1];
+      e[r] = [a, c, b];
     }),
     (f.n = (e) => {
       var d = e && e.__esModule ? () => e.default : () => e;
@@ -44,13 +44,13 @@
           8 & c || ('object' == typeof a && a && ((4 & c && a.__esModule) || (16 & c && 'function' == typeof a.then))))
         )
           return a;
-        var n = Object.create(null);
-        f.r(n);
+        var b = Object.create(null);
+        f.r(b);
         var r = {};
         d = d || [null, e({}), e([]), e(e)];
         for (var t = 2 & c && a; 'object' == typeof t && !~d.indexOf(t); t = e(t))
           Object.getOwnPropertyNames(t).forEach((i) => (r[i] = () => a[i]));
-        return (r.default = () => a), f.d(n, r), n;
+        return (r.default = () => a), f.d(b, r), b;
       };
     })(),
     (f.d = (e, d) => {
@@ -134,14 +134,14 @@
     (() => {
       var e = {},
         d = 'ngx-new:';
-      f.l = (a, c, n, r) => {
+      f.l = (a, c, b, r) => {
         if (e[a]) e[a].push(c);
         else {
           var t, i;
-          if (void 0 !== n)
-            for (var b = document.getElementsByTagName('script'), l = 0; l < b.length; l++) {
-              var o = b[l];
-              if (o.getAttribute('src') == a || o.getAttribute('data-webpack') == d + n) {
+          if (void 0 !== b)
+            for (var n = document.getElementsByTagName('script'), l = 0; l < n.length; l++) {
+              var o = n[l];
+              if (o.getAttribute('src') == a || o.getAttribute('data-webpack') == d + b) {
                 t = o;
                 break;
               }
@@ -152,7 +152,7 @@
             (t.charset = 'utf-8'),
             (t.timeout = 120),
             f.nc && t.setAttribute('nonce', f.nc),
-            t.setAttribute('data-webpack', d + n),
+            t.setAttribute('data-webpack', d + b),
             (t.src = f.tu(a))),
             (e[a] = [c]);
           var s = (_, p) => {
@@ -187,26 +187,26 @@
     (f.p = ''),
     (() => {
       var e = { 3666: 0 };
-      (f.f.j = (c, n) => {
+      (f.f.j = (c, b) => {
         var r = f.o(e, c) ? e[c] : void 0;
         if (0 !== r)
-          if (r) n.push(r[2]);
+          if (r) b.push(r[2]);
           else if (3666 != c) {
             var t = new Promise((o, s) => (r = e[c] = [o, s]));
-            n.push((r[2] = t));
+            b.push((r[2] = t));
             var i = f.p + f.u(c),
-              b = new Error();
+              n = new Error();
             f.l(
               i,
               (o) => {
                 if (f.o(e, c) && (0 !== (r = e[c]) && (e[c] = void 0), r)) {
                   var s = o && ('load' === o.type ? 'missing' : o.type),
                     u = o && o.target && o.target.src;
-                  (b.message = 'Loading chunk ' + c + ' failed.\n(' + s + ': ' + u + ')'),
-                    (b.name = 'ChunkLoadError'),
-                    (b.type = s),
-                    (b.request = u),
-                    r[1](b);
+                  (n.message = 'Loading chunk ' + c + ' failed.\n(' + s + ': ' + u + ')'),
+                    (n.name = 'ChunkLoadError'),
+                    (n.type = s),
+                    (n.request = u),
+                    r[1](n);
                 }
               },
               'chunk-' + c,
@@ -215,16 +215,16 @@
           } else e[c] = 0;
       }),
         (f.O.j = (c) => 0 === e[c]);
-      var d = (c, n) => {
-          var b,
+      var d = (c, b) => {
+          var n,
             l,
-            [r, t, i] = n,
+            [r, t, i] = b,
             o = 0;
           if (r.some((u) => 0 !== e[u])) {
-            for (b in t) f.o(t, b) && (f.m[b] = t[b]);
+            for (n in t) f.o(t, n) && (f.m[n] = t[n]);
             if (i) var s = i(f);
           }
-          for (c && c(n); o < r.length; o++) f.o(e, (l = r[o])) && e[l] && e[l][0](), (e[r[o]] = 0);
+          for (c && c(b); o < r.length; o++) f.o(e, (l = r[o])) && e[l] && e[l][0](), (e[r[o]] = 0);
           return f.O(s);
         },
         a = (self.webpackChunkngx_new = self.webpackChunkngx_new || []);

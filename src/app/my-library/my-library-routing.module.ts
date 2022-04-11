@@ -18,7 +18,7 @@ const routes: Routes = [
       data: { title: marker('Book Detail') },
     },
     {
-      path: 'my-library/sharing/:bookId',
+      path: 'my-library/sharing/:bookId/:bookTitle',
       component: ViewSharingComponent,
       data: { title: marker('View Shared') },
     },
