@@ -66,7 +66,7 @@
           </div>
           <app-loader *ngIf="isLoading" [isLoading]="isLoading"></app-loader>
           <ion-list>
-            <ng-container *ngIf="bookStories | filter: myLibraryTabs['pending'] as items">
+            <ng-container *ngIf="bookStories | filter: chapterStatus['published'] as items">
               <ion-item-sliding *ngFor="let item of items">
                 <ion-item-options side="end">
                   <ion-item-option (click)="EditChapter()" style="background: #fff" color="light">
@@ -254,7 +254,7 @@
           </div>
 
           <ion-list slot="content">
-            <ng-container *ngIf="bookStories | filter: myLibraryTabs['pending'] as items">
+            <ng-container *ngIf="bookStories | filter: chapterStatus['pending'] as items">
               <ion-item-sliding *ngFor="let item of items">
                 <ion-item-options side="end">
                   <ion-item-option style="background: #fff" color="light">

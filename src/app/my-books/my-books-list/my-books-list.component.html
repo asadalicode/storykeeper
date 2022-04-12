@@ -29,20 +29,22 @@
           </div>
 
           <ion-list>
-            <ng-container *ngFor="let book of mybooks">
-              <app-list-item [item]="book"></app-list-item>
+            <app-loader *ngIf="isLoading" [isLoading]="isLoading"></app-loader>
+            <ng-container *ngFor="let book of books">
+              <app-list-item *ngIf="book.status == 5 || book.status == 99" [item]="book"></app-list-item>
             </ng-container>
+            <p *ngIf="!books.length" class="small-errortext">No books available!</p>
           </ion-list>
         </section>
 
         <section>
           <div fxLayout="row" fxLayoutAlign="space-between center">
-            <div class="heading">Chapters in progress</div>
+            <div class="heading">For request</div>
           </div>
 
           <ion-list slot="content">
-            <ng-container *ngFor="let book of bookForApproval">
-              <ion-item lines="none" class="ion-no-padding">
+            <ng-container *ngFor="let book of books">
+              <ion-item *ngIf="book.status == 3" lines="none" class="ion-no-padding">
                 <ion-label
                   class="ion-text-wrap"
                   fxLayout.xs="column"
@@ -65,6 +67,7 @@
                 </ion-label>
               </ion-item>
             </ng-container>
+            <p *ngIf="!books.length" class="small-errortext">No books available!</p>
           </ion-list>
         </section>
       </ion-grid>

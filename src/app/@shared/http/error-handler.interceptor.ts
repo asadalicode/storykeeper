@@ -28,6 +28,9 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
       log.error('Request error', response);
     }
     let error: any = response;
+    if (error.error == null) {
+      this.toastService.showToast('error', error?.message);
+    }
     if (typeof error.error == 'string') {
       this.toastService.showToast('error', error?.error);
     } else if (typeof error.error.errorMessage == 'string') {

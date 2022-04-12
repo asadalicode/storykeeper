@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Platform, ModalController, IonRouterOutlet } from '@ionic/angular';
 import { EditBookComponent } from '../edit-book/edit-book.component';
-import { ModalDismissRole, myLibraryTabs } from '@app/@shared/constants';
+import { chapterStatus, ModalDismissRole } from '@app/@shared/constants';
 import { ShareBookComponent } from '@app/book-shared/share-book/share-book.component';
 import { ApiService } from '@app/@shared/sevices/api.service';
 import { Story } from '@app/@shared/models';
@@ -15,7 +15,7 @@ import { Story } from '@app/@shared/models';
 })
 export class BookDetailPageComponent implements OnInit {
   bookStories: any = [];
-  myLibraryTabs = myLibraryTabs;
+  chapterStatus = chapterStatus;
   isLoading = false;
   constructor(
     private platform: Platform,

@@ -4,14 +4,15 @@
   </ion-avatar>
   <ion-label class="ion-text-wrap">
     <ion-text>
-      <h3 *ngIf="item?.status !== 'pending'; else pending" class="link" (click)="gotoDetail(1)">{{ item?.title }}</h3>
+      <h3 *ngIf="item?.status !== 3; else pending" class="link" (click)="gotoDetail(1)">{{ item?.title }}</h3>
       <ng-template #pending>
         <h3>{{ item?.title }}</h3>
       </ng-template>
 
       <ion-label>
-        <span class="{{ 'status-' + item?.status }} text-capitalize"
-          >{{ item?.status }} • {{ item?.year }} • Sender: {{ item?.author }}</span
+        <span class="{{ 'status-' + bookStatus(item?.status) }} text-capitalize"
+          >{{ bookStatus(item?.status) }} • {{ item?.year ? item?.year : '-' }} • Sender:
+          {{ item?.senderUser ? item?.senderUser : '-' }}</span
         >
       </ion-label>
     </ion-text>

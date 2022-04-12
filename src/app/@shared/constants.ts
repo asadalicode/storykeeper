@@ -13,8 +13,14 @@ export enum myLibraryTabs {
   'all' = '0',
   'pending' = '1',
   'inprogress' = '3',
-  'published' = '5',
+  'accepted' = '5',
+  'published' = '99',
   'shared' = '4',
+}
+
+export enum chapterStatus {
+  'inprogress' = '3',
+  'published' = '2',
 }
 
 export enum ConfirmationMessages {
