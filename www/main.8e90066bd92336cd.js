@@ -13903,7 +13903,7 @@
                 e.qZA(),
                 e._uU(30, '\n          '),
                 e.YNc(31, Np, 1, 1, 'app-loader', 8),
-                e._uU(32, '\n       \n          '),
+                e._uU(32, '\n\n          '),
                 e.TgZ(33, 'ion-list'),
                 e._uU(34, '\n            '),
                 e.YNc(35, Xo, 7, 2, 'ng-container', 4),
@@ -14588,22 +14588,28 @@
         );
       })();
       function tl(o, c) {
-        1 & o &&
-          (e.TgZ(0, 'ion-header', 13),
-          e._uU(1, '\n        '),
-          e.TgZ(2, 'ion-toolbar'),
-          e._uU(3, '\n          '),
-          e.TgZ(4, 'ion-buttons', 14),
-          e._uU(5, '\n            '),
-          e._UZ(6, 'ion-back-button', 15),
-          e._uU(7, '\n          '),
-          e.qZA(),
-          e._uU(8, '\n          '),
-          e._UZ(9, 'ion-icon', 16),
-          e._uU(10, '\n        '),
-          e.qZA(),
-          e._uU(11, '\n      '),
-          e.qZA());
+        if (1 & o) {
+          const r = e.EpF();
+          e.TgZ(0, 'ion-header', 13),
+            e._uU(1, '\n        '),
+            e.TgZ(2, 'ion-toolbar'),
+            e._uU(3, '\n          '),
+            e.TgZ(4, 'ion-buttons', 14),
+            e._uU(5, '\n            '),
+            e.TgZ(6, 'ion-back-button', 15),
+            e.NdJ('click', function () {
+              return e.CHM(r), e.oxw().goBack();
+            }),
+            e.qZA(),
+            e._uU(7, '\n          '),
+            e.qZA(),
+            e._uU(8, '\n          '),
+            e._UZ(9, 'ion-icon', 16),
+            e._uU(10, '\n        '),
+            e.qZA(),
+            e._uU(11, '\n      '),
+            e.qZA();
+        }
       }
       function vs(o, c) {
         if ((1 & o && e._UZ(0, 'app-loader', 17), 2 & o)) {
@@ -14733,12 +14739,13 @@
       }
       let Gd = (() => {
         class o {
-          constructor(r, u, h, U, Ae) {
+          constructor(r, u, h, U, Ae, et) {
             (this.platform = r),
               (this.routerOutlet = u),
               (this.modalController = h),
               (this.apiService = U),
-              (this.toastService = Ae),
+              (this._location = Ae),
+              (this.toastService = et),
               (this.books = []),
               (this.isLoading = !1),
               (this.myLibraryTabs = Me);
@@ -14748,6 +14755,9 @@
           }
           get isWeb() {
             return !this.platform.is('cordova');
+          }
+          goBack() {
+            this._location.back();
           }
           getRecipientBooks() {
             (this.isLoading = !0),
@@ -14812,7 +14822,7 @@
         }
         return (
           (o.ɵfac = function (r) {
-            return new (r || o)(e.Y36(A.t4), e.Y36(A.jP), e.Y36(A.IN), e.Y36(M), e.Y36(es));
+            return new (r || o)(e.Y36(A.t4), e.Y36(A.jP), e.Y36(A.IN), e.Y36(M), e.Y36(l.Ye), e.Y36(es));
           }),
           (o.ɵcmp = e.Xpm({
             type: o,
@@ -14835,7 +14845,7 @@
               [4, 'ngIf'],
               [1, 'ion-no-padding', 'ion-no-border'],
               ['slot', 'start'],
-              ['icon', 'chevron-back-outline', 'default-href', '/tabs/home'],
+              ['icon', 'chevron-back-outline', 3, 'click'],
               [
                 'color',
                 'light',
@@ -16718,8 +16728,8 @@
                 .post('/api/Books', {
                   name: 'My new book' + r,
                   image: 'https://www.linkpicture.com/q/book2.svg',
-                  recipientEmail: '',
-                  recipientName: '',
+                  recipientEmail: '-',
+                  recipientName: '-',
                   type: 1,
                 })
                 .subscribe({
@@ -24822,7 +24832,7 @@
                 e.ALo(63, 'filter'),
                 e._uU(64, '\n          '),
                 e.qZA(),
-                e._uU(65, '\n\n          \n        '),
+                e._uU(65, '\n        '),
                 e.qZA(),
                 e._uU(66, '\n\n        '),
                 e.TgZ(67, 'section'),
@@ -24839,7 +24849,7 @@
                 e._uU(76, '\n            '),
                 e.YNc(77, Ra, 6, 2, 'ng-container', 16),
                 e.ALo(78, 'filter'),
-                e._uU(79, '\n            \n          '),
+                e._uU(79, '\n          '),
                 e.qZA(),
                 e._uU(80, '\n        '),
                 e.qZA(),

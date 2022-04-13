@@ -27,8 +27,8 @@ export class BuyNewBookComponent implements OnInit {
     const randomTestBook = {
       name: 'My new book' + randomNumb,
       image: 'https://www.linkpicture.com/q/book2.svg',
-      recipientEmail: '',
-      recipientName: '',
+      recipientEmail: '-',
+      recipientName: '-',
       type: 1,
     };
     this.apiService.post('/api/Books', randomTestBook).subscribe({
