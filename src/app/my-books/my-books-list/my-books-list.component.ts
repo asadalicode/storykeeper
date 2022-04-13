@@ -6,6 +6,7 @@ import { ConfirmationInfoComponent } from '@app/@shared/popup-components/confirm
 import { ApiService } from '@app/@shared/sevices/api.service';
 import { BookDetail } from '@app/@shared/models';
 import { ToastService } from '@app/@shared/sevices/toast.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-my-books-list',
@@ -21,6 +22,7 @@ export class MyBooksListComponent implements OnInit {
     private routerOutlet: IonRouterOutlet,
     private modalController: ModalController,
     private apiService: ApiService,
+    private _location: Location,
     private toastService: ToastService
   ) {}
 
@@ -29,6 +31,10 @@ export class MyBooksListComponent implements OnInit {
   }
   get isWeb(): boolean {
     return !this.platform.is('cordova');
+  }
+
+  goBack() {
+    this._location.back();
   }
 
   getRecipientBooks() {
