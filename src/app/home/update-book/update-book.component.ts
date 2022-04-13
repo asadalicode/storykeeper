@@ -62,9 +62,8 @@ export class UpdateBookComponent implements OnInit {
 
   private createForm() {
     this.step1Form = this.formBuilder.group({
-      name: [''],
+      name: ['', [Validators.required]],
       image: [''],
-      bookTitle: ['', [Validators.required]],
       recipientName: ['', [Validators.required]],
       recipientEmail: ['', [Validators.required]],
     });
@@ -75,8 +74,7 @@ export class UpdateBookComponent implements OnInit {
       console.log(res);
       this.book = res;
       this.step1Form.setValue({
-        name: this.book.bookName,
-        bookTitle: this.book.title,
+        name: this.book.title,
         image: this.book.image,
         recipientName: this.book.recipientName,
         recipientEmail: this.book.recipientEmail,

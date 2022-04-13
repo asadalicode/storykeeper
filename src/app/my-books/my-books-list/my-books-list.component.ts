@@ -1,8 +1,11 @@
-import { ModalDismissRole } from './../../@shared/constants';
+import { ModalDismissRole, myLibraryTabs } from './../../@shared/constants';
 import { RequestPopupComponent } from './../../book-shared/request-popup/request-popup.component';
 import { Platform, ModalController, IonRouterOutlet } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationInfoComponent } from '@app/@shared/popup-components/confirmation-info/confirmation-info.component';
+import { ApiService } from '@app/@shared/sevices/api.service';
+import { BookDetail } from '@app/@shared/models';
+import { ToastService } from '@app/@shared/sevices/toast.service';
 
 @Component({
   selector: 'app-my-books-list',
@@ -10,52 +13,48 @@ import { ConfirmationInfoComponent } from '@app/@shared/popup-components/confirm
   styleUrls: ['./my-books-list.component.scss'],
 })
 export class MyBooksListComponent implements OnInit {
-  mybooks = [
-    {
-      id: 1,
-      title: 'Book about Cat',
-      status: 'finished',
-      year: '2021',
-      author: 'John',
-    },
-    {
-      id: 2,
-      title: 'Book about Dog',
-      status: 'inprogress',
-      year: '2021',
-      author: 'Lena Horushenko',
-    },
-  ];
-
-  bookForApproval = [
-    {
-      id: 1,
-      title: 'Book about Cat',
-      status: 'pending',
-      year: '2021',
-      author: 'John',
-    },
-    {
-      id: 2,
-      title: 'Book about Dog',
-      status: 'pending',
-      year: '2021',
-      author: 'Lena Horushenko',
-    },
-  ];
-
+  books: any = [];
+  isLoading = false;
+  myLibraryTabs = myLibraryTabs;
   constructor(
     private platform: Platform,
     private routerOutlet: IonRouterOutlet,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private apiService: ApiService,
+    private toastService: ToastService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getRecipientBooks();
+  }
   get isWeb(): boolean {
     return !this.platform.is('cordova');
   }
 
-  async openRequestPopup() {
+  getRecipientBooks() {
+    this.isLoading = true;
+    this.apiService.get(`/api/Books/AsRecipient`, BookDetail).subscribe({
+      next: (res: BookDetail[]) => {
+        this.books = res;
+        this.isLoading = false;
+      },
+      error: (error) => {
+        this.isLoading = false;
+      },
+    });
+  }
+
+  acceptRequest(bookId: any) {
+    this.apiService.put(`/api/Books/Accept/${bookId}`, {}).subscribe({
+      next: (res) => {
+        this.toastService.showToast('success', 'Book accepted successfully');
+        this.getRecipientBooks();
+      },
+      error: (error) => {},
+    });
+  }
+
+  async openRequestPopup(book: any) {
     const modal = await this.modalController.create({
       component: RequestPopupComponent,
       cssClass: 'modal-popup md',
@@ -68,9 +67,10 @@ export class MyBooksListComponent implements OnInit {
     });
     modal.onDidDismiss().then((data) => {
       if (data.role == ModalDismissRole.submitted) {
-        // debugger;
+        this.acceptRequest(book.id);
       }
       if (data.role == ModalDismissRole.canceled) {
+        console.log('Cancelled');
         this.cancelRequest();
       }
     });
@@ -89,7 +89,9 @@ export class MyBooksListComponent implements OnInit {
       swipeToClose: true,
       presentingElement: this.routerOutlet.nativeEl,
     });
-    modal.onDidDismiss().then((data) => {});
+    modal.onDidDismiss().then((data) => {
+      console.log(data);
+    });
     return await modal.present();
   }
 }

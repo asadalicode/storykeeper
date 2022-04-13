@@ -31,20 +31,19 @@ export class HomeComponent implements OnInit {
     return !this.platform.is('cordova');
   }
 
+  getSharedBooks() {
+    this.isLoading = true;
+    this.apiService.get('/api/Books/Shared', Book).subscribe((res) => {
+      this.books = [...res];
+      this.isLoading = false;
+      console.log(this.books);
+      this.isAuthor = this.books.length > 0 ? true : false;
+    });
+  }
+
   getBooks(status: number = 0) {
     this.isLoading = true;
     this.apiService.get('/api/Books', Book).subscribe((res) => {
-      // res.push({
-      //   bookName: 'InProgressBook',
-      //   title: 'InProgressBook',
-      //   id: Math.random(),
-      //   image: 'https://www.linkpicture.com/q/book1.svg',
-      //   recipientUser: '',
-      //   senderUser: '',
-      //   status: 1,
-      //   type: 1,
-      // });
-
       if (status == 0) {
         this.books = [...res];
       } else {
@@ -92,6 +91,8 @@ export class HomeComponent implements OnInit {
   }
 
   segmentChanged(event: any) {
-    this.getBooks(myLibraryTabs[event.detail.value]);
+    if (myLibraryTabs[event.detail.value] == '4') {
+      this.getSharedBooks();
+    } else this.getBooks(myLibraryTabs[event.detail.value]);
   }
 }
