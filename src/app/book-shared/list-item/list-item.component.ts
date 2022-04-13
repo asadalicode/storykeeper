@@ -14,7 +14,7 @@ export class ListItemComponent implements OnInit {
   ngOnInit(): void {}
 
   gotoDetail(id: any) {
-    this.router.navigate(['tabs/my-books/book-detail/1']);
+    this.router.navigate(['tabs/my-books/book-detail/', id]);
   }
 
   bookStatus(status: number) {

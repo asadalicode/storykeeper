@@ -19,7 +19,7 @@ export enum myLibraryTabs {
 }
 
 export enum chapterStatus {
-  'inprogress' = '3',
+  'inprogress' = '1',
   'published' = '2',
 }
 

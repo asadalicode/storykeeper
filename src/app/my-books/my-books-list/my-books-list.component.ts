@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { ConfirmationInfoComponent } from '@app/@shared/popup-components/confirmation-info/confirmation-info.component';
 import { ApiService } from '@app/@shared/sevices/api.service';
 import { BookDetail } from '@app/@shared/models';
+import { ToastService } from '@app/@shared/sevices/toast.service';
 
 @Component({
   selector: 'app-my-books-list',
@@ -14,11 +15,13 @@ import { BookDetail } from '@app/@shared/models';
 export class MyBooksListComponent implements OnInit {
   books: any = [];
   isLoading = false;
+  myLibraryTabs = myLibraryTabs;
   constructor(
     private platform: Platform,
     private routerOutlet: IonRouterOutlet,
     private modalController: ModalController,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private toastService: ToastService
   ) {}
 
   ngOnInit(): void {
@@ -41,7 +44,17 @@ export class MyBooksListComponent implements OnInit {
     });
   }
 
-  async openRequestPopup() {
+  acceptRequest(bookId: any) {
+    this.apiService.put(`/api/Books/Accept/${bookId}`, {}).subscribe({
+      next: (res) => {
+        this.toastService.showToast('success', 'Book accepted successfully');
+        this.getRecipientBooks();
+      },
+      error: (error) => {},
+    });
+  }
+
+  async openRequestPopup(book: any) {
     const modal = await this.modalController.create({
       component: RequestPopupComponent,
       cssClass: 'modal-popup md',
@@ -54,9 +67,10 @@ export class MyBooksListComponent implements OnInit {
     });
     modal.onDidDismiss().then((data) => {
       if (data.role == ModalDismissRole.submitted) {
-        // debugger;
+        this.acceptRequest(book.id);
       }
       if (data.role == ModalDismissRole.canceled) {
+        console.log('Cancelled');
         this.cancelRequest();
       }
     });
@@ -75,7 +89,9 @@ export class MyBooksListComponent implements OnInit {
       swipeToClose: true,
       presentingElement: this.routerOutlet.nativeEl,
     });
-    modal.onDidDismiss().then((data) => {});
+    modal.onDidDismiss().then((data) => {
+      console.log(data);
+    });
     return await modal.present();
   }
 }

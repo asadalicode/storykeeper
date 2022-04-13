@@ -4,7 +4,7 @@
   </ion-avatar>
   <ion-label class="ion-text-wrap">
     <ion-text>
-      <h3 *ngIf="item?.status !== 3; else pending" class="link" (click)="gotoDetail(1)">{{ item?.title }}</h3>
+      <h3 *ngIf="item?.status !== 3; else pending" class="link" (click)="gotoDetail(item?.id)">{{ item?.title }}</h3>
       <ng-template #pending>
         <h3>{{ item?.title }}</h3>
       </ng-template>

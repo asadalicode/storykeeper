@@ -30,10 +30,21 @@
 
           <ion-list>
             <app-loader *ngIf="isLoading" [isLoading]="isLoading"></app-loader>
-            <ng-container *ngFor="let book of books">
+            <ng-container *ngFor="let book of books; let last = last">
               <app-list-item *ngIf="book.status == 5 || book.status == 99" [item]="book"></app-list-item>
+              <div *ngIf="book.status != 5 && book.status != 99 && last" class="no-published-book">
+                <p>No books available!</p>
+                <div class="text-center">
+                  <img src="assets/images/no-published-book.svg" alt="image" />
+                </div>
+              </div>
             </ng-container>
-            <p *ngIf="!books.length" class="small-errortext">No books available!</p>
+            <div *ngIf="!books.length" class="no-published-book">
+              <p>No books available!</p>
+              <div class="text-center">
+                <img src="assets/images/no-published-book.svg" alt="image" />
+              </div>
+            </div>
           </ion-list>
         </section>
 
@@ -43,8 +54,8 @@
           </div>
 
           <ion-list slot="content">
-            <ng-container *ngFor="let book of books">
-              <ion-item *ngIf="book.status == 3" lines="none" class="ion-no-padding">
+            <ng-container *ngIf="books | filter: myLibraryTabs['inprogress'] as items">
+              <ion-item *ngFor="let book of items" lines="none" class="ion-no-padding">
                 <ion-label
                   class="ion-text-wrap"
                   fxLayout.xs="column"
@@ -55,7 +66,7 @@
                   <div class="action-button">
                     <ion-button
                       type="button"
-                      (click)="openRequestPopup()"
+                      (click)="openRequestPopup(book)"
                       class="default-button sm ion-text-capitalize"
                       [color]="'primary'"
                       expand="block"
@@ -66,8 +77,13 @@
                   </div>
                 </ion-label>
               </ion-item>
+              <div *ngIf="!items.length" class="no-published-book">
+                <p>You donot have book requests yet!</p>
+                <div class="text-center">
+                  <img src="assets/images/no-published-book.svg" alt="image" />
+                </div>
+              </div>
             </ng-container>
-            <p *ngIf="!books.length" class="small-errortext">No books available!</p>
           </ion-list>
         </section>
       </ion-grid>
