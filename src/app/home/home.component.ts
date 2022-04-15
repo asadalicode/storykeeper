@@ -43,21 +43,25 @@ export class HomeComponent implements OnInit {
 
   getBooks(status: number = 0) {
     this.isLoading = true;
-    this.apiService.get('/api/Books', Book).subscribe((res) => {
-      if (status == 0) {
-        this.books = [...res];
-      } else {
-        this.books = res.filter((e: Book) => {
-          return e.status == status;
-        });
+    this.apiService.get('/api/Books', Book).subscribe(
+      (res) => {
+        if (status == 0) {
+          this.books = [...res];
+        } else {
+          this.books = res.filter((e: Book) => {
+            return e.status == status;
+          });
 
-        this.books = [...this.books];
+          this.books = [...this.books];
+        }
+        this.isLoading = false;
+
+        this.isAuthor = this.books.length > 0 ? true : false;
+      },
+      (error) => {
+        this.isLoading = false;
       }
-      this.isLoading = false;
-      console.log(this.books);
-
-      this.isAuthor = this.books.length > 0 ? true : false;
-    });
+    );
   }
 
   async buyNewBook() {

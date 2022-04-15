@@ -1,5 +1,6 @@
 import { Platform } from '@ionic/angular';
 import { Component, OnInit, Input } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-mobile-header',
@@ -10,10 +11,13 @@ export class MobileHeaderComponent implements OnInit {
   @Input() title!: string;
   @Input() backPageUrl!: string;
 
-  constructor(private platform: Platform) {}
+  constructor(private platform: Platform, private _location: Location) {}
 
   ngOnInit(): void {}
   get isWeb(): boolean {
     return !this.platform.is('cordova');
+  }
+  goBack() {
+    this._location.back();
   }
 }
