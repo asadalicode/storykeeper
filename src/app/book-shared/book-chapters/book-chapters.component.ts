@@ -9,6 +9,7 @@ import { AddNewQuestionComponent } from '../add-new-question/add-new-question.co
 import { Story } from '@app/@shared/models/bookQuestion';
 import { Category, TemplateQuestion } from '@app/@shared/models';
 import * as _ from 'lodash';
+import { ToastService } from '@app/@shared/sevices/toast.service';
 
 @Component({
   selector: 'app-book-chapters',
@@ -30,7 +31,8 @@ export class BookChaptersComponent implements OnInit {
     private apiService: ApiService,
     private route: ActivatedRoute,
     public toastController: ToastController,
-    private routerOutlet: IonRouterOutlet
+    private routerOutlet: IonRouterOutlet,
+    private toastService: ToastService
   ) {}
 
   ngOnInit(): void {
@@ -106,7 +108,7 @@ export class BookChaptersComponent implements OnInit {
       if (data.role == ModalDismissRole.submitted) {
         this.apiService.delete(`/api/books/${this.routeParams.bookId}/Stories/${event.id}`).subscribe((res) => {
           this.getAddedQuestions();
-          this.toasterNotification('Question deleted successfully.');
+          this.toastService.showToast('success', 'Question deleted successfully.');
         });
       }
     });
@@ -127,7 +129,7 @@ export class BookChaptersComponent implements OnInit {
     modal.onDidDismiss().then((data) => {
       if (data.role == ModalDismissRole.submitted) {
         this.getAddedQuestions();
-        this.toasterNotification('Question added successfully.');
+        this.toastService.showToast('success', 'Question added successfully.');
       }
     });
     return await modal.present();
@@ -141,20 +143,10 @@ export class BookChaptersComponent implements OnInit {
 
     this.apiService.post(`/api/books/${this.routeParams.bookId}/Stories`, story).subscribe((res) => {
       this.getAddedQuestions();
-      this.toasterNotification('Question added successfully.');
+      this.toastService.showToast('success', 'Question added successfully.');
     });
   }
   onSave() {
     this.save.emit(3);
-  }
-
-  async toasterNotification(message: string) {
-    const toast = await this.toastController.create({
-      message: message,
-      duration: 2000,
-      color: 'primary',
-      position: 'bottom',
-    });
-    toast.present();
   }
 }

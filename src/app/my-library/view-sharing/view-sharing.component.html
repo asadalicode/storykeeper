@@ -31,7 +31,12 @@
           <ng-template #content>
             <ion-item *ngFor="let people of sharedPeople" lines="none" class="ion-no-padding">
               <ion-label>{{ people?.email }}</ion-label>
-              <ion-label color="danger" class="cursor-pointer" [ngClass]="isWeb ? 'text-center' : 'text-right'">
+              <ion-label
+                (click)="deleteListener(people)"
+                color="danger"
+                class="cursor-pointer"
+                [ngClass]="isWeb ? 'text-center' : 'text-right'"
+              >
                 <span *ngIf="isWeb">Delete</span>
                 <ion-icon slot="end" color="danger" name="close-outline"></ion-icon>
               </ion-label>
