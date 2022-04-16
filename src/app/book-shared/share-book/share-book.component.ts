@@ -28,7 +28,7 @@ export class ShareBookComponent implements OnInit {
   }
 
   dismiss(value = false) {
-    this.modalController.dismiss('button clicked');
+    this.modalController.dismiss('button clicked', value ? 'submitted' : 'closed');
   }
 
   save() {
@@ -40,7 +40,7 @@ export class ShareBookComponent implements OnInit {
       },
       next: (res: any) => {
         this.toastService.showToast('success', 'Book shared successfully');
-        this.dismiss(false);
+        this.dismiss(true);
         this.isLoading = false;
       },
       error: (error: any) => {

@@ -83,7 +83,7 @@ export class ViewSharingComponent implements OnInit {
     });
     modal.onDidDismiss().then((data) => {
       if (data.role == ModalDismissRole.submitted) {
-        debugger;
+        this.getListeners();
       }
     });
     return await modal.present();
