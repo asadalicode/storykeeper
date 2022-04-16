@@ -18,10 +18,10 @@
         <ion-card-title>
           <ion-breadcrumbs *ngIf="isWeb">
             <ion-breadcrumb routerLink="/tabs/my-books"> My Books </ion-breadcrumb>
-            <ion-breadcrumb>Book About Cat </ion-breadcrumb>
+            <ion-breadcrumb>{{ routeParams?.bookTitle }} </ion-breadcrumb>
           </ion-breadcrumbs>
 
-          <h1 *ngIf="!isWeb">Book About Cat</h1>
+          <h1 *ngIf="!isWeb">{{ routeParams?.bookTitle }}</h1>
         </ion-card-title>
       </ion-card-content>
     </ion-card>
@@ -98,7 +98,7 @@
                 </ion-avatar>
                 <ion-label class="ion-text-wrap">
                   <ion-text>
-                    <h3 (click)="gotoRecording()">{{ item?.question }}</h3>
+                    <h3 class="curson-pointer" (click)="gotoRecording()">{{ item?.question }}</h3>
                     <ion-label>
                       <span class="status-inprogress">Inprogress • 01/2021 • Lena Horushenko</span>
                     </ion-label>
