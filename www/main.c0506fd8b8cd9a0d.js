@@ -23293,7 +23293,7 @@
               this.shareFrom = this.formBuilder.group({ email: ['', [Bt.kI.required, Bt.kI.email]] });
             }
             dismiss(r = !1) {
-              this.modalController.dismiss('button clicked');
+              this.modalController.dismiss('button clicked', r ? 'submitted' : 'closed');
             }
             save() {
               console.log(this.shareFrom.value),
@@ -23304,7 +23304,7 @@
                   },
                   next: (r) => {
                     this.toastService.showToast('success', 'Book shared successfully'),
-                      this.dismiss(!1),
+                      this.dismiss(!0),
                       (this.isLoading = !1);
                   },
                   error: (r) => {
@@ -23351,7 +23351,6 @@
                   'ion-text-capitalize',
                   3,
                   'disabled',
-                  'click',
                 ],
                 [
                   'type',
@@ -23384,7 +23383,7 @@
                   e._uU(7, '\n        '),
                   e.TgZ(8, 'ion-button', 3),
                   e.NdJ('click', function () {
-                    return u.dismiss();
+                    return u.dismiss(!1);
                   }),
                   e._uU(9, '\n          '),
                   e._UZ(10, 'ion-icon', 4),
@@ -23433,15 +23432,12 @@
                   e.TgZ(41, 'div', 12),
                   e._uU(42, '\n            '),
                   e.TgZ(43, 'ion-button', 13),
-                  e.NdJ('click', function () {
-                    return u.dismiss(!0);
-                  }),
                   e._uU(44, 'Send Book'),
                   e.qZA(),
                   e._uU(45, '\n            '),
                   e.TgZ(46, 'ion-button', 14),
                   e.NdJ('click', function () {
-                    return u.dismiss(!0);
+                    return u.dismiss(!1);
                   }),
                   e._uU(47, '\n              Cancel\n            '),
                   e.qZA(),
@@ -23678,7 +23674,12 @@
                   swipeToClose: !0,
                   presentingElement: r.routerOutlet.nativeEl,
                 });
-                return u.onDidDismiss().then((h) => {}), yield u.present();
+                return (
+                  u.onDidDismiss().then((h) => {
+                    h.role == Nn.submitted && r.getListeners();
+                  }),
+                  yield u.present()
+                );
               })();
             }
           }

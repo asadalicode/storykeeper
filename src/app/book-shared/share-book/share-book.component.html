@@ -2,7 +2,7 @@
   <ion-grid class="m-0 inner-content">
     <ion-row>
       <ion-col class="ion-no-padding" size="12">
-        <ion-button (click)="dismiss()" size="small" fill="clear" class="ion-float-end">
+        <ion-button (click)="dismiss(false)" size="small" fill="clear" class="ion-float-end">
           <ion-icon name="close-outline" color="primary"></ion-icon>
         </ion-button>
       </ion-col>
@@ -23,7 +23,6 @@
           </ion-list>
           <div class="w-100 ion-padding-horizontal mt-4 mb-2">
             <ion-button
-              (click)="dismiss(true)"
               type="submit"
               [disabled]="shareFrom.invalid || isLoading"
               class="default-button ion-text-capitalize"
@@ -33,7 +32,7 @@
               >Send Book</ion-button
             >
             <ion-button
-              (click)="dismiss(true)"
+              (click)="dismiss(false)"
               type="button"
               class="mt-3 default-button ion-text-capitalize"
               color="secondary"
