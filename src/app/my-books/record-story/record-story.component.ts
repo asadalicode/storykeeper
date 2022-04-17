@@ -2,6 +2,7 @@ import { ConfirmationInfoComponent } from './../../@shared/popup-components/conf
 import { ModalDismissRole } from '@app/@shared/constants';
 import { Platform, ModalController, IonRouterOutlet } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-record-story',
@@ -9,15 +10,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./record-story.component.scss'],
 })
 export class RecordStoryComponent implements OnInit {
+  isRecording: boolean = false;
   constructor(
     private platform: Platform,
     private routerOutlet: IonRouterOutlet,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {}
   get isWeb(): boolean {
     return !this.platform.is('cordova');
+  }
+
+  get routeParams() {
+    let params: any;
+    this.route.params.subscribe((res: any) => {
+      params = res;
+    });
+    return params;
   }
 
   async sendStory() {

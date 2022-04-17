@@ -16,12 +16,12 @@ const routes: Routes = [
       data: { title: marker('My Books') },
     },
     {
-      path: 'my-books/book-detail/:bookId',
+      path: 'my-books/book-detail/:bookId/:bookTitle',
       component: BookDetailsComponent,
       data: { title: marker('My Books') },
     },
     {
-      path: 'my-books/record-story/:bookId',
+      path: 'my-books/record-story/:bookId/:bookTitle',
       component: RecordStoryComponent,
       data: { title: marker('My Books') },
     },
