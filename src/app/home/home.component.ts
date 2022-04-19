@@ -36,7 +36,6 @@ export class HomeComponent implements OnInit {
     this.apiService.get('/api/Books/Shared', Book).subscribe((res) => {
       this.books = [...res];
       this.isLoading = false;
-      console.log(this.books);
       this.isAuthor = this.books.length > 0 ? true : false;
     });
   }
