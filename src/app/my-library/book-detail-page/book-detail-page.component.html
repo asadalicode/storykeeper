@@ -69,7 +69,7 @@
             <ng-container *ngIf="bookStories | filter: chapterStatus['published'] as items">
               <ion-item-sliding *ngFor="let item of items">
                 <ion-item-options side="end">
-                  <ion-item-option (click)="EditChapter()" style="background: #fff" color="light">
+                  <ion-item-option style="background: #fff" color="light">
                     <ion-icon class="btn-icon" slot="icon-only" src="assets/images/edit-ion.svg"></ion-icon>
                   </ion-item-option>
                   <ion-item-option style="background: #fff" color="light">
@@ -84,7 +84,8 @@
                   <ion-label class="ion-text-wrap">
                     <ion-text>
                       <h3>{{ item?.question }}</h3>
-                      <ion-label color="success">Published• 01/2021 • Lena Horushenko</ion-label>
+                      <!-- <ion-label color="success">Published• 01/2021 • Lena Horushenko</ion-label> -->
+                      <ion-label color="success">Published• - • -</ion-label>
                     </ion-text>
                   </ion-label>
                   <ion-icon
@@ -109,7 +110,7 @@
             <ng-container *ngIf="bookStories | filter: chapterStatus['inprogress'] as items">
               <ion-item-sliding *ngFor="let item of items">
                 <ion-item-options side="end">
-                  <ion-item-option style="background: #fff" color="light">
+                  <ion-item-option (click)="EditChapter(item)" style="background: #fff" color="light">
                     <ion-icon class="btn-icon" slot="icon-only" src="assets/images/edit-ion.svg"></ion-icon>
                   </ion-item-option>
                   <ion-item-option style="background: #fff" color="light">
@@ -124,7 +125,7 @@
 
                   <div class="text-truncate">
                     <h3>{{ item?.question }}</h3>
-                    <ion-label color="success">In progress</ion-label>
+                    <ion-label color="success">Pending</ion-label>
                   </div>
                 </ion-item>
               </ion-item-sliding>

@@ -73,20 +73,23 @@ export class BookDetailPageComponent implements OnInit {
     return await modal.present();
   }
 
-  async EditChapter() {
+  async EditChapter(item: any) {
+    console.log(item);
     const modal = await this.modalController.create({
       component: EditChapterComponent,
       cssClass: 'modal-popup md',
       componentProps: {
         title: 'Edit Chapter',
-        bookId: this.routeParams.bookId,
+        bookId: item.bookId,
+        storyId: item.id,
+        storyDetails: item,
       },
       swipeToClose: true,
       presentingElement: this.routerOutlet.nativeEl,
     });
     modal.onDidDismiss().then((data) => {
       if (data.role == ModalDismissRole.submitted) {
-        debugger;
+        this.getBookStories();
       }
     });
     return await modal.present();
