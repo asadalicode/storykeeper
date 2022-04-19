@@ -122,6 +122,6 @@ export class BookDetailPageComponent implements OnInit {
     this.router.navigate(['tabs/my-library/recording/1/1'], { queryParams: { type: type } });
   }
   async editChapter() {
-    this.router.navigate([`tabs/my-library/edit-chapter/${this.routeParams.bookId}`]);
+    this.router.navigate([`tabs/my-library/edit-chapter/${this.routeParams.bookId}/${this.routeParams.bookTitle}`]);
   }
 }

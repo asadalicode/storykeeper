@@ -19,7 +19,9 @@
         <ion-text color="primary" *ngIf="isWeb">
           <ion-breadcrumbs>
             <ion-breadcrumb routerLink="/tabs/my-library"> My Library </ion-breadcrumb>
-            <ion-breadcrumb routerLink="/tabs/my-library/book/5/TestBook3"> My Book #2 </ion-breadcrumb>
+            <ion-breadcrumb [routerLink]="['/tabs/my-library/book', routeParams.bookId, routeParams.bookTitle]">
+              {{ routeParams.bookTitle }}
+            </ion-breadcrumb>
             <ion-breadcrumb>Editing Chapters </ion-breadcrumb>
           </ion-breadcrumbs>
         </ion-text>
