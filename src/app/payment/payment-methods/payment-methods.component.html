@@ -9,7 +9,9 @@
 <ion-content class="ion-padding-horizontal setting-page">
   <ion-list [ngClass]="isWeb ? 'p-5' : 'p-3'">
     <ion-list-header *ngIf="isWeb" class="p-0 mb-2">
-      <ion-label translate> <h1>Payment method</h1></ion-label>
+      <ion-label translate>
+        <h1>Payment method</h1>
+      </ion-label>
     </ion-list-header>
 
     <ion-col size="12">
@@ -24,14 +26,14 @@
             <ion-radio slot="end" value="stripe"></ion-radio>
           </ion-item>
 
-          <ion-item lines="none" class="item">
+          <!-- <ion-item lines="none" class="item">
             <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start center">
               <img src="assets/images/paypal.svg" alt="icon" />
               <ion-label>PayPal </ion-label>
             </div>
 
             <ion-radio slot="end" value="paypal"></ion-radio>
-          </ion-item>
+          </ion-item> -->
 
           <ion-item lines="none" class="item">
             <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start center">
@@ -53,10 +55,22 @@
         </ion-radio-group>
 
         <div class="ion-padding-horizontal mt-5 mb-2">
-          <ion-button type="button" class="default-button ion-text-capitalize" color="primary" translate>
+          <ion-button
+            (click)="payNow()"
+            type="button"
+            class="default-button ion-text-capitalize"
+            color="primary"
+            translate
+          >
             Pay Now
           </ion-button>
         </div>
+
+        <form novalidate (ngSubmit)="createToken()" [formGroup]="stripeTest">
+          <input type="text" formControlName="name" placeholder="Jane Doe" />
+          <ngx-stripe-card [options]="cardOptions" [elementsOptions]="elementsOptions"></ngx-stripe-card>
+          <button type="submit">CREATE TOKEN</button>
+        </form>
       </ion-list>
     </ion-col>
   </ion-list>

@@ -46,7 +46,7 @@ export class BuyNewBookComponent implements OnInit {
   dismiss(isSubmitted: boolean = false) {
     let role = isSubmitted ? ModalDismissRole.submitted : ModalDismissRole.backdroped;
     this.modalController.dismiss('', role);
-    this.router.navigate(['tabs/my-library']);
-    // this.router.navigate(['tabs/payment-methods']);
+    // this.router.navigate(['tabs/my-library']);
+    this.router.navigate(['tabs/payment-methods']);
   }
 }
