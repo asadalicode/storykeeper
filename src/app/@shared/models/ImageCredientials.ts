@@ -4,7 +4,7 @@ export class ImageCredientials {
     public is_version: boolean,
     public key: string,
     public policy: string,
-    public success_action_status: string,
+    public success_action_status: 'success-action-status',
     public upload_url: string,
     public x_amz_algorithm: string,
     public x_amz_credential: string,

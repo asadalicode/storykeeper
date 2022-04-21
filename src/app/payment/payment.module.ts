@@ -10,6 +10,7 @@ import { PaymentMethodsComponent } from './payment-methods/payment-methods.compo
 import { PaymentRoutingModule } from './payment-routing.module';
 import { NgxStripeModule } from 'ngx-stripe';
 import { environment } from '@env/environment';
+import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 
 @NgModule({
   declarations: [PaymentMethodsComponent],
@@ -25,5 +26,6 @@ import { environment } from '@env/environment';
     NgxStripeModule.forRoot(environment.stripe_pb_key),
     FormsModule,
   ],
+  providers: [InAppBrowser],
 })
 export class PaymentModule {}

@@ -131,8 +131,24 @@ export class UpdateBookComponent implements OnInit {
       });
   }
 
+  get fileFileObject() {
+    return {
+      key: this.uploadFileObj.key,
+      acl: this.uploadFileObj.acl,
+      success_action_status: this.uploadFileObj.success_action_status,
+      policy: this.uploadFileObj.policy,
+      'x-amz-algorithm': this.uploadFileObj.x_amz_algorithm,
+      'x-amz-credential': this.uploadFileObj.x_amz_credential,
+      'x-amz-date': this.uploadFileObj.x_amz_date,
+      'x-amz-signature': this.uploadFileObj.x_amz_signature,
+      'x-amz-meta-owner': this.uploadFileObj.x_amz_meta_owner,
+      // is_version: this.uploadFileObj.is_version,
+      file: this.uploadFileObj.file,
+    };
+  }
+
   postFile() {
-    this.apiService.postFormData(this.uploadCredentials.upload_url, this.uploadFileObj).subscribe({
+    this.apiService.postFormData(this.uploadCredentials.upload_url, this.fileFileObject).subscribe({
       complete: () => {},
       next: (res: any) => {
         console.log(res);
