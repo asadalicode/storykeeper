@@ -29,6 +29,7 @@ import { AppComponent } from './app.component';
 import { MyLibraryModule } from './my-library/my-library.module';
 import { AppRoutingModule } from './app-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 
 @NgModule({
   imports: [
@@ -52,6 +53,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   ],
   declarations: [AppComponent],
   providers: [
+    InAppBrowser,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ApiPrefixInterceptor,
