@@ -78,14 +78,14 @@ export class PaymentMethodsComponent implements OnInit {
   }
 
   payNow() {
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-      observe: 'response' as 'response',
-    };
-    this.apiService.post('/api/Payments/create-checkout-session/1', {}, httpOptions).subscribe({
+    // const httpOptions = {
+    //   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    //   observe: 'response' as 'response',
+    // };
+    this.apiService.post('/api/Payments/create-checkout-session/1', {}).subscribe({
       next: (res: HttpResponse<any>) => {
-        console.log(res.headers.get('content-length'));
-        this.openWebView();
+        // console.log(res.headers.get('content-length'));
+        // this.openWebView();
         // window.open(
         //   'https://checkout.stripe.com/pay/cs_test_a1cHr4tFFv2Tnd8qRYtNBmTewODoGkTh6lAbWGbC6R8cvcsJ8yq9aRDxh3#fidkdWxOYHwnPyd1blpxYHZxWjA0TkZXYE9AcVdCSjBdYGRgaVNtdHd2NjNvaU9MMmBcNGZVMWF3NkNyRlZNPU9QMkg8dn9WcGx2ZlUwZExGbzx0dUoyT21CU1RLVzNkUktrRFdAbndTc3dnNTVSXHRDbDF%2FTCcpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl'
         // );

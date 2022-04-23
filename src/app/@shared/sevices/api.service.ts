@@ -21,8 +21,8 @@ export class ApiService {
     return this.http.get<any>(url).pipe(map((data: any[]) => dataModel.adapt(data)));
   }
 
-  post(url: any, dataModel: any, header?: any): Observable<any> {
-    return this.http.post<any>(url, dataModel, header).pipe(
+  post(url: any, dataModel: any): Observable<any> {
+    return this.http.post<any>(url, dataModel).pipe(
       // Adapt each item in the raw data array
       map((data: any) => data)
     );

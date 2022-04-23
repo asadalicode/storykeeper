@@ -55,6 +55,8 @@ export class HomeComponent implements OnInit {
         }
         if (this.books.length) {
           this.getBookImages();
+        } else {
+          this.isLoading = false;
         }
 
         this.isAuthor = this.books.length > 0 ? true : false;

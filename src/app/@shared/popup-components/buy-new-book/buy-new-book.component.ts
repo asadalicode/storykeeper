@@ -45,16 +45,11 @@ export class BuyNewBookComponent implements OnInit {
   }
 
   payNow() {
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-      observe: 'response' as 'response',
-    };
-    this.apiService.post(`/api/Payments/create-checkout-session/${this.selectedItem.id}`, {}, httpOptions).subscribe({
-      next: (res: HttpResponse<any>) => {
-        console.log(res.headers.get('location'));
-        const location: any = res.headers.get('location');
-        if (location != null) {
-          window.open(location);
+    this.apiService.post(`/api/Payments/create-checkout-session/${this.selectedItem.id}`, {}).subscribe({
+      next: (res: any) => {
+        console.log(res);
+        if (res.location) {
+          window.open(res.location);
         }
       },
       error: (error: any) => {
