@@ -20,6 +20,8 @@ import { RecordingPlayerComponent } from './components/recording-player/recordin
 import { NoDataFoundComponent } from './components/no-data-found/no-data-found.component';
 import { FilterPipe } from './pipes/filterPipe';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
+import { LazyLoadImageModule } from 'ng-lazyload-image'; // <-- import it
+import { ImageComponent } from './components/image/image.component';
 
 @NgModule({
   imports: [
@@ -29,6 +31,7 @@ import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
     RouterModule,
     I18nModule,
     FlexLayoutModule,
+    LazyLoadImageModule,
     AngularWavesurferServiceModule,
   ],
   declarations: [
@@ -44,6 +47,7 @@ import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
     RecordingPlayerComponent,
     FilterPipe,
     NoDataFoundComponent,
+    ImageComponent,
   ],
   providers: [InAppBrowser],
   exports: [
@@ -59,6 +63,7 @@ import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
     RecordingPlayerComponent,
     FilterPipe,
     NoDataFoundComponent,
+    ImageComponent,
   ],
 })
 export class SharedModule {}

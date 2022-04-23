@@ -14,7 +14,6 @@ export class BooksCardComponent implements OnInit {
   ngOnInit(): void {}
 
   updateBook(book: Book) {
-    console.log(book);
     if (book.status == 1) {
       // pending
       this.router.navigate([`my-library/update-book/${book.id}/${book.title}`]);
