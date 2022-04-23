@@ -4,7 +4,7 @@
       <ion-header class="ion-no-padding ion-no-border" *ngIf="!isWeb">
         <ion-toolbar>
           <ion-buttons slot="start">
-            <ion-back-button icon="chevron-back-outline" defaultHref="/tabs/home"></ion-back-button>
+            <ion-back-button icon="chevron-back-outline" defaultHref="/home"></ion-back-button>
           </ion-buttons>
           <ion-title class="text-white ion-align-items-end ion-text-center"> Editing Chapters</ion-title>
           <ion-icon
@@ -18,8 +18,8 @@
       <ion-card-content [ngClass]="isWeb ? 'ion-no-padding' : 'ion-padding'" [class.mb-4]="isWeb">
         <ion-text color="primary" *ngIf="isWeb">
           <ion-breadcrumbs>
-            <ion-breadcrumb routerLink="/tabs/my-library"> My Library </ion-breadcrumb>
-            <ion-breadcrumb [routerLink]="['/tabs/my-library/book', routeParams.bookId, routeParams.bookTitle]">
+            <ion-breadcrumb routerLink="/my-library"> My Library </ion-breadcrumb>
+            <ion-breadcrumb [routerLink]="['/my-library/book', routeParams.bookId, routeParams.bookTitle]">
               {{ routeParams.bookTitle }}
             </ion-breadcrumb>
             <ion-breadcrumb>Editing Chapters </ion-breadcrumb>

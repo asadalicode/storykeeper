@@ -51,6 +51,6 @@ export class BookDetailsComponent implements OnInit {
   }
 
   gotoRecording() {
-    this.router.navigate([`tabs/my-books/record-story/${this.routeParams.bookId}/${this.routeParams.bookTitle}`]);
+    this.router.navigate([`my-books/record-story/${this.routeParams.bookId}/${this.routeParams.bookTitle}`]);
   }
 }

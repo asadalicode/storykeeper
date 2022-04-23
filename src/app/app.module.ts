@@ -29,11 +29,14 @@ import { AppComponent } from './app.component';
 import { MyLibraryModule } from './my-library/my-library.module';
 import { AppRoutingModule } from './app-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 
 @NgModule({
   imports: [
     BrowserModule,
-    ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('./ngsw-worker.js', {
+      enabled: environment.production,
+    }),
     FormsModule,
     FlexLayoutModule,
     HttpClientModule,
@@ -52,6 +55,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   ],
   declarations: [AppComponent],
   providers: [
+    InAppBrowser,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ApiPrefixInterceptor,

@@ -101,10 +101,7 @@ export class UpdateBookComponent implements OnInit {
       (results) => {
         for (var i = 0; i < results.length; i++) {
           this.imageUrl = 'data:image/jpeg;base64,' + results[i];
-          Utils.dataUrlToFile(
-            'data:image/jpeg;base64,' + results[i],
-            `image${(Math.random() * 100 + 1).toFixed()}.png`
-          ).then((imageData: any) => {
+          Utils.dataUrlToFile('data:image/jpeg;base64,' + results[i], `image.png`).then((imageData: any) => {
             this.getFileCredentials(imageData);
           });
         }
@@ -114,8 +111,12 @@ export class UpdateBookComponent implements OnInit {
   }
 
   getFileCredentials(file: any) {
+    const uuid = (Math.random() * 100 + 1).toFixed();
     this.apiService
-      .getDetails(`/api/Files/credentials/book/${this.routeParams.bookId}?fileName=${file.name}`, ImageCredientials)
+      .getDetails(
+        `/api/Files/credentials/book/${this.routeParams.bookId}?fileName=${uuid}${file.name}`,
+        ImageCredientials
+      )
       .subscribe({
         complete: () => {},
         next: (res: any) => {
@@ -131,12 +132,28 @@ export class UpdateBookComponent implements OnInit {
       });
   }
 
+  get fileFileObject() {
+    return {
+      key: this.uploadFileObj.key,
+      acl: this.uploadFileObj.acl,
+      success_action_status: this.uploadFileObj.success_action_status,
+      policy: this.uploadFileObj.policy,
+      'x-amz-algorithm': this.uploadFileObj.x_amz_algorithm,
+      'x-amz-credential': this.uploadFileObj.x_amz_credential,
+      'x-amz-date': this.uploadFileObj.x_amz_date,
+      'x-amz-signature': this.uploadFileObj.x_amz_signature,
+      'x-amz-meta-owner': this.uploadFileObj.x_amz_meta_owner,
+      // is_version: this.uploadFileObj.is_version,
+      file: this.uploadFileObj.file,
+    };
+  }
+
   postFile() {
-    this.apiService.postFormData(this.uploadCredentials.upload_url, this.uploadFileObj).subscribe({
+    this.apiService.postFormData(this.uploadCredentials.upload_url, this.fileFileObject).subscribe({
       complete: () => {},
       next: (res: any) => {
         console.log(res);
-        this.router.navigate(['/tabs/my-library']);
+        this.router.navigate(['/my-library']);
         this.newBookAvailable();
       },
       error: (err: any) => {

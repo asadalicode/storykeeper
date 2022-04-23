@@ -19,6 +19,7 @@ import { AngularWavesurferServiceModule } from 'angular-wavesurfer-service';
 import { RecordingPlayerComponent } from './components/recording-player/recording-player.component';
 import { NoDataFoundComponent } from './components/no-data-found/no-data-found.component';
 import { FilterPipe } from './pipes/filterPipe';
+import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 
 @NgModule({
   imports: [
@@ -44,6 +45,7 @@ import { FilterPipe } from './pipes/filterPipe';
     FilterPipe,
     NoDataFoundComponent,
   ],
+  providers: [InAppBrowser],
   exports: [
     LoaderComponent,
     HeaderComponent,

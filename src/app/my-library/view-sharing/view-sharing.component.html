@@ -1,5 +1,5 @@
 <ion-content class="ion-page">
-  <app-mobile-header backPageUrl="/tabs/home" *ngIf="!isWeb">
+  <app-mobile-header backPageUrl="/home" *ngIf="!isWeb">
     <div class="header-content">
       <ion-card-title class="mb-3">
         <h1 class="text-white" translate>Edit my new book</h1>
@@ -13,8 +13,8 @@
   <div [class.web-page]="isWeb">
     <ion-text color="primary" *ngIf="isWeb">
       <ion-breadcrumbs>
-        <ion-breadcrumb routerLink="/tabs/my-library"> My Library </ion-breadcrumb>
-        <ion-breadcrumb [routerLink]="['/tabs/my-library/book', routeParams.bookId, routeParams.bookTitle]">
+        <ion-breadcrumb routerLink="/my-library"> My Library </ion-breadcrumb>
+        <ion-breadcrumb [routerLink]="['/my-library/book', routeParams.bookId, routeParams.bookTitle]">
           {{ routeParams.bookTitle }}
         </ion-breadcrumb>
         <ion-breadcrumb> Sharing </ion-breadcrumb>

@@ -21,8 +21,8 @@ export class ApiService {
     return this.http.get<any>(url).pipe(map((data: any[]) => dataModel.adapt(data)));
   }
 
-  post(url: any, dataModel: any): Observable<any> {
-    return this.http.post<any>(url, dataModel);
+  post(url: any, dataModel: any, header?: any): Observable<any> {
+    return this.http.post<any>(url, dataModel, header);
   }
 
   postFormData(url: any, dataModel: any): Observable<any> {

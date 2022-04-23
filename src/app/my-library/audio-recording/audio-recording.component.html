@@ -2,7 +2,7 @@
   <ion-header class="ion-no-padding ion-no-border" *ngIf="!isWeb">
     <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-back-button icon="chevron-back-outline" defaultHref="/tabs/home"></ion-back-button>
+        <ion-back-button icon="chevron-back-outline" defaultHref="/home"></ion-back-button>
       </ion-buttons>
       <ion-title *ngIf="status === 'published'" class="text-white ion-align-items-end ion-text-center">
         Now Playing</ion-title
@@ -19,8 +19,8 @@
   <div [class.web-page]="isWeb">
     <ion-text color="primary" *ngIf="isWeb">
       <ion-breadcrumbs>
-        <ion-breadcrumb routerLink="/tabs/my-library"> My Library </ion-breadcrumb>
-        <ion-breadcrumb routerLink="/tabs/my-library/book/5/TestBook3"> My Book #2 </ion-breadcrumb>
+        <ion-breadcrumb routerLink="/my-library"> My Library </ion-breadcrumb>
+        <ion-breadcrumb routerLink="/my-library/book/5/TestBook3"> My Book #2 </ion-breadcrumb>
         <ion-breadcrumb> Recording </ion-breadcrumb>
       </ion-breadcrumbs>
     </ion-text>

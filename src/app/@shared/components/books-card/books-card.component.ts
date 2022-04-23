@@ -17,10 +17,10 @@ export class BooksCardComponent implements OnInit {
     console.log(book);
     if (book.status == 1) {
       // pending
-      this.router.navigate([`tabs/my-library/update-book/${book.id}/${book.title}`]);
+      this.router.navigate([`my-library/update-book/${book.id}/${book.title}`]);
     } else if (book.status == 3 || book.status == 5) {
       // inprogress
-      this.router.navigate([`tabs/my-library/book/${book.id}/${book.title}`]);
+      this.router.navigate([`my-library/book/${book.id}/${book.title}`]);
     }
   }
 }

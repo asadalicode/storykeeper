@@ -4,6 +4,8 @@ import { ModalDismissRole } from '@app/@shared/constants';
 import { ModalController } from '@ionic/angular';
 import { ApiService } from '@app/@shared/sevices/api.service';
 import { ToastService } from '@app/@shared/sevices/toast.service';
+import { Product } from '@app/@shared/models';
+import { HttpHeaders, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-buy-new-book',
@@ -12,6 +14,8 @@ import { ToastService } from '@app/@shared/sevices/toast.service';
 })
 export class BuyNewBookComponent implements OnInit {
   isLoading = false;
+  productsData!: Product[];
+  selectedItem: any;
   constructor(
     private modalController: ModalController,
     private router: Router,
@@ -19,34 +23,72 @@ export class BuyNewBookComponent implements OnInit {
     private toastService: ToastService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getProducts();
+  }
 
-  buyBook() {
+  getProducts() {
     this.isLoading = true;
-    let randomNumb = Math.floor(Math.random() * 30) + 1;
-    const randomTestBook = {
-      name: 'My new book' + randomNumb,
-      image: 'https://www.linkpicture.com/q/book2.svg',
-      recipientEmail: '',
-      recipientName: '',
-      type: 1,
-    };
-    this.apiService.post('/api/Books', randomTestBook).subscribe({
-      next: (res) => {
+    this.apiService.get('/api/Products', Product).subscribe({
+      next: (res: any) => {
+        this.productsData = res;
         this.isLoading = false;
-        this.toastService.showToast('success', 'New book is available');
-        this.dismiss(false);
       },
-      error: (error) => {
+      error: (error: any) => {
         this.isLoading = false;
       },
     });
   }
 
+  selectedProduct(e: any) {
+    this.selectedItem = e.detail.value;
+  }
+
+  payNow() {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      observe: 'response' as 'response',
+    };
+    this.apiService.post(`/api/Payments/create-checkout-session/${this.selectedItem.id}`, {}, httpOptions).subscribe({
+      next: (res: HttpResponse<any>) => {
+        console.log(res.headers.get('location'));
+        const location: any = res.headers.get('location');
+        if (location != null) {
+          window.open(location);
+        }
+      },
+      error: (error: any) => {
+        console.log(error);
+      },
+    });
+  }
+
+  buyBook() {
+    // this.isLoading = true;
+    // let randomNumb = Math.floor(Math.random() * 30) + 1;
+    // const randomTestBook = {
+    //   name: 'My new book' + randomNumb,
+    //   image: 'https://www.linkpicture.com/q/book2.svg',
+    //   recipientEmail: '',
+    //   recipientName: '',
+    //   type: this.selectedItem.id==1? 1:2,  // whether book has 24 stories or 52
+    // };
+    // this.apiService.post('/api/Books', randomTestBook).subscribe({
+    //   next: (res) => {
+    //     this.isLoading = false;
+    //     this.toastService.showToast('success', 'New book is available');
+    //     this.dismiss(false);
+    //   },
+    //   error: (error) => {
+    //     this.isLoading = false;
+    //   },
+    // });
+  }
+
   dismiss(isSubmitted: boolean = false) {
     let role = isSubmitted ? ModalDismissRole.submitted : ModalDismissRole.backdroped;
     this.modalController.dismiss('', role);
-    this.router.navigate(['tabs/my-library']);
+    // this.router.navigate(['tabs/my-library']);
     // this.router.navigate(['tabs/payment-methods']);
   }
 }

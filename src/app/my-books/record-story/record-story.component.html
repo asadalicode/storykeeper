@@ -2,7 +2,7 @@
   <ion-header class="ion-no-padding ion-no-border" *ngIf="!isWeb">
     <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-back-button icon="chevron-back-outline" defaultHref="/tabs/my-books"></ion-back-button>
+        <ion-back-button icon="chevron-back-outline" defaultHref="/my-books"></ion-back-button>
       </ion-buttons>
       <ion-title class="text-white ion-align-items-end ion-text-center">Recording</ion-title>
       <ion-icon
@@ -17,8 +17,8 @@
   <div [class.web-page]="isWeb">
     <ion-text color="primary" *ngIf="isWeb">
       <ion-breadcrumbs>
-        <ion-breadcrumb routerLink="/tabs/my-books"> My Books </ion-breadcrumb>
-        <ion-breadcrumb routerLink="/tabs/my-books/book-detail/{{ routeParams?.bookId }}/{{ routeParams?.bookTitle }}">
+        <ion-breadcrumb routerLink="/my-books"> My Books </ion-breadcrumb>
+        <ion-breadcrumb routerLink="/my-books/book-detail/{{ routeParams?.bookId }}/{{ routeParams?.bookTitle }}">
           {{ routeParams?.bookTitle }}
         </ion-breadcrumb>
         <ion-breadcrumb> New Recording </ion-breadcrumb>
