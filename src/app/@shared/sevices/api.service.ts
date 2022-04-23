@@ -22,7 +22,10 @@ export class ApiService {
   }
 
   post(url: any, dataModel: any, header?: any): Observable<any> {
-    return this.http.post<any>(url, dataModel, header);
+    return this.http.post<any>(url, dataModel, header).pipe(
+      // Adapt each item in the raw data array
+      map((data: any) => data)
+    );
   }
 
   postFormData(url: any, dataModel: any): Observable<any> {

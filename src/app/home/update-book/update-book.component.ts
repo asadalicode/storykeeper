@@ -121,6 +121,7 @@ export class UpdateBookComponent implements OnInit {
         complete: () => {},
         next: (res: any) => {
           this.uploadCredentials = res;
+          this.book.image = `${uuid}${file.name}`;
           this.uploadFileObj = {
             ...this.uploadCredentials,
             file: file,
@@ -148,15 +149,30 @@ export class UpdateBookComponent implements OnInit {
     };
   }
 
+  updateBookOnUpload() {
+    console.log(this.book);
+    this.apiService.put(`/api/Books/${this.book.id}`, this.book).subscribe({
+      next: (res) => {
+        console.log(res);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
   postFile() {
     this.apiService.postFormData(this.uploadCredentials.upload_url, this.fileFileObject).subscribe({
       complete: () => {},
       next: (res: any) => {
         console.log(res);
-        this.router.navigate(['/my-library']);
+        // this.router.navigate(['/my-library']);
         this.newBookAvailable();
       },
       error: (err: any) => {
+        if (err.status == 201) {
+          this.updateBookOnUpload();
+        }
         console.log(err);
       },
     });

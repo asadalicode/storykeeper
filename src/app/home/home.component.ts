@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { BuyNewBookComponent } from '@app/@shared/popup-components/buy-new-book/buy-new-book.component';
 import { ModalDismissRole, myLibraryTabs } from '@app/@shared/constants';
 import { ApiService } from '@app/@shared/sevices/api.service';
-import { Book } from '@app/@shared/models';
+import { Book, BookImage } from '@app/@shared/models';
 
 @Component({
   selector: 'app-home',
@@ -53,7 +53,9 @@ export class HomeComponent implements OnInit {
 
           this.books = [...this.books];
         }
-        this.isLoading = false;
+        if (this.books.length) {
+          this.getBookImages();
+        }
 
         this.isAuthor = this.books.length > 0 ? true : false;
       },
@@ -61,6 +63,23 @@ export class HomeComponent implements OnInit {
         this.isLoading = false;
       }
     );
+  }
+
+  getBookImages() {
+    const bookImagesArr = this.books.map((item) => BookImage.adapt(item));
+    this.apiService.post('/api/Files/books/images', bookImagesArr).subscribe({
+      next: (res: any = []) => {
+        this.books.forEach((element) => {
+          res.forEach((elem: any) => {
+            if (element.id == elem.bookId) {
+              element.image = elem.url;
+            }
+          });
+        });
+        this.isLoading = false;
+      },
+      error: (error: any) => {},
+    });
   }
 
   async buyNewBook() {
