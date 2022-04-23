@@ -1,0 +1,26 @@
+<ion-header *ngIf="!isWeb" class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" icon="chevron-back-outline" defaultHref="/my-library"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="mr-5 ion-align-items-end ion-text-center">Payments</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding-horizontal setting-page">
+  <ion-list [ngClass]="isWeb ? 'p-5' : 'p-3'">
+    <ion-list-header *ngIf="isWeb" class="p-0 mb-2">
+      <ion-label translate> <h1>Payments</h1></ion-label>
+    </ion-list-header>
+
+    <div lines="none" class="ion-text-center mb-4 mt-4">
+      <img class="avatar-img" src="assets/images/about-ion.png" />
+    </div>
+
+    <ion-text color="primary" class="ion-padding-horizontal">
+      <h1>Congratulations! Your payment has been successfull.</h1>
+      <ion-button routerLink="/my-libary" color="primary">Go back</ion-button>
+    </ion-text>
+
+    <app-find-on-social *ngIf="!isWeb" ngClass="social-icons"></app-find-on-social>
+  </ion-list>
+</ion-content>

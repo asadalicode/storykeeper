@@ -34,6 +34,6 @@ export class SettingsComponent implements OnInit {
   }
 
   navigateTo(url: string) {
-    this.router.navigate([`/tabs/${url}`]);
+    this.router.navigate([`/${url}`]);
   }
 }

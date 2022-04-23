@@ -101,10 +101,7 @@ export class UpdateBookComponent implements OnInit {
       (results) => {
         for (var i = 0; i < results.length; i++) {
           this.imageUrl = 'data:image/jpeg;base64,' + results[i];
-          Utils.dataUrlToFile(
-            'data:image/jpeg;base64,' + results[i],
-            `image${(Math.random() * 100 + 1).toFixed()}.png`
-          ).then((imageData: any) => {
+          Utils.dataUrlToFile('data:image/jpeg;base64,' + results[i], `image.png`).then((imageData: any) => {
             this.getFileCredentials(imageData);
           });
         }
@@ -114,8 +111,12 @@ export class UpdateBookComponent implements OnInit {
   }
 
   getFileCredentials(file: any) {
+    const uuid = (Math.random() * 100 + 1).toFixed();
     this.apiService
-      .getDetails(`/api/Files/credentials/book/${this.routeParams.bookId}?fileName=${file.name}`, ImageCredientials)
+      .getDetails(
+        `/api/Files/credentials/book/${this.routeParams.bookId}?fileName=${uuid}${file.name}`,
+        ImageCredientials
+      )
       .subscribe({
         complete: () => {},
         next: (res: any) => {
@@ -152,7 +153,7 @@ export class UpdateBookComponent implements OnInit {
       complete: () => {},
       next: (res: any) => {
         console.log(res);
-        this.router.navigate(['/tabs/my-library']);
+        this.router.navigate(['/my-library']);
         this.newBookAvailable();
       },
       error: (err: any) => {

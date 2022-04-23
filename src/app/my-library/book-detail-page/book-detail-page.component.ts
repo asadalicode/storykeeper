@@ -115,13 +115,13 @@ export class BookDetailPageComponent implements OnInit {
   }
 
   async ViewSharing() {
-    this.router.navigate([`tabs/my-library/sharing/${this.routeParams.bookId}/${this.routeParams.bookTitle}`]);
+    this.router.navigate([`my-library/sharing/${this.routeParams.bookId}/${this.routeParams.bookTitle}`]);
   }
 
   async recordingScreen(type: string) {
-    this.router.navigate(['tabs/my-library/recording/1/1'], { queryParams: { type: type } });
+    this.router.navigate(['my-library/recording/1/1'], { queryParams: { type: type } });
   }
   async editChapter() {
-    this.router.navigate([`tabs/my-library/edit-chapter/${this.routeParams.bookId}/${this.routeParams.bookTitle}`]);
+    this.router.navigate([`my-library/edit-chapter/${this.routeParams.bookId}/${this.routeParams.bookTitle}`]);
   }
 }

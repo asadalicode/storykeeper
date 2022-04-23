@@ -15,13 +15,14 @@
 
       <ion-col size="12">
         <ion-list>
-          <ion-radio-group value="biff">
-            <ion-item lines="none">
-              <ion-label>24 story in book/ $20 </ion-label>
-              <ion-radio slot="start" value="biff"></ion-radio>
+          <app-loader *ngIf="isLoading" [isLoading]="isLoading"></app-loader>
+          <ion-radio-group (ionChange)="selectedProduct($event)">
+            <ion-item *ngFor="let item of productsData" lines="none">
+              <ion-label>{{ item?.name }}/ ${{ item?.numberOfTotalStories }} </ion-label>
+              <ion-radio slot="start" [value]="item"></ion-radio>
             </ion-item>
 
-            <ion-item lines="none">
+            <!-- <ion-item lines="none">
               <ion-label>52 story in book/ $30 </ion-label>
               <ion-radio slot="start" value="griff"></ion-radio>
             </ion-item>
@@ -29,13 +30,13 @@
             <ion-item lines="none">
               <ion-label>3 story book with 24 story / $50 </ion-label>
               <ion-radio slot="start" value="buford"></ion-radio>
-            </ion-item>
+            </ion-item> -->
           </ion-radio-group>
 
           <div class="ion-padding-horizontal mt-5 mb-2">
             <ion-button
-              [disabled]="isLoading"
-              (click)="buyBook()"
+              [disabled]="isLoading || !selectedItem"
+              (click)="payNow()"
               type="button"
               class="default-button ion-text-capitalize"
               color="primary"

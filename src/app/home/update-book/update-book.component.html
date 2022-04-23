@@ -1,5 +1,5 @@
 <ion-content class="ion-page">
-  <app-mobile-header backPageUrl="/tabs/home" *ngIf="!isWeb">
+  <app-mobile-header backPageUrl="/home" *ngIf="!isWeb">
     <div class="header-title">
       {{ step === (1 || 3) ? '' : 'Adding Chapters' }}
     </div>
@@ -34,7 +34,7 @@
   <div class="ion-padding" [class.web-page]="isWeb">
     <ion-text color="primary" *ngIf="isWeb">
       <ion-breadcrumbs>
-        <ion-breadcrumb href="javascript:void(0)" (click)="navigateTo('tabs/my-library')"> My Library </ion-breadcrumb>
+        <ion-breadcrumb href="javascript:void(0)" (click)="navigateTo('my-library')"> My Library </ion-breadcrumb>
         <ion-breadcrumb> Edit </ion-breadcrumb>
       </ion-breadcrumbs>
     </ion-text>

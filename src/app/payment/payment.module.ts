@@ -11,9 +11,11 @@ import { PaymentRoutingModule } from './payment-routing.module';
 import { NgxStripeModule } from 'ngx-stripe';
 import { environment } from '@env/environment';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
+import { SuccessComponent } from './success/success.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
-  declarations: [PaymentMethodsComponent],
+  declarations: [PaymentMethodsComponent, SuccessComponent, ErrorComponent],
   imports: [
     CommonModule,
     PaymentRoutingModule,

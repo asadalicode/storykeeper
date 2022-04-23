@@ -50,6 +50,9 @@ MIT
 @awesome-cordova-plugins/image-picker
 MIT
 
+@awesome-cordova-plugins/in-app-browser
+MIT
+
 @awesome-cordova-plugins/keyboard
 MIT
 

@@ -4,7 +4,7 @@
       <ion-header class="ion-no-padding ion-no-border" *ngIf="!isWeb">
         <ion-toolbar>
           <ion-buttons slot="start">
-            <ion-back-button icon="chevron-back-outline" defaultHref="/tabs/home"></ion-back-button>
+            <ion-back-button icon="chevron-back-outline" defaultHref="/home"></ion-back-button>
           </ion-buttons>
           <ion-icon
             color="light"
@@ -17,7 +17,7 @@
       <ion-card-content [ngClass]="isWeb ? 'ion-no-padding' : 'ion-padding'" [class.mb-4]="isWeb">
         <ion-card-title>
           <ion-breadcrumbs *ngIf="isWeb">
-            <ion-breadcrumb routerLink="/tabs/my-books"> My Books </ion-breadcrumb>
+            <ion-breadcrumb routerLink="/my-books"> My Books </ion-breadcrumb>
             <ion-breadcrumb>{{ routeParams?.bookTitle }} </ion-breadcrumb>
           </ion-breadcrumbs>
 
