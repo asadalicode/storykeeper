@@ -6,19 +6,25 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '@app/@shared/sevices/api.service';
 import { ImageCredientials, Story, StoryFile } from '@app/@shared/models';
 import { Utils } from '@app/@shared';
-
+import { Howl } from 'howler';
+import { FormControl } from '@angular/forms';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-record-story',
   templateUrl: './record-story.component.html',
   styleUrls: ['./record-story.component.scss'],
 })
 export class RecordStoryComponent implements OnInit {
+  // seekbar: FormControl = new FormControl("seekbar");
+  seekbar: any;
   isRecording: boolean = false;
   story!: Story;
   uploadCredentials: any;
   uploadFileObj: any;
   isRecorded = false;
   isListenable = false;
+  howler!: Howl;
+  intervalSubsciption: any;
   constructor(
     private platform: Platform,
     private routerOutlet: IonRouterOutlet,
@@ -119,6 +125,17 @@ export class RecordStoryComponent implements OnInit {
       });
   }
 
+  playSound() {
+    this.howler.play();
+  }
+
+  updateWidth() {
+    if (this.howler.playing()) {
+      let width: any = (this.howler.seek() / this.howler.duration()) * 100;
+      this.seekbar = width;
+    }
+  }
+
   getServerFileUrl() {
     this.apiService
       .getDetails(
@@ -127,6 +144,24 @@ export class RecordStoryComponent implements OnInit {
       )
       .subscribe({
         next: (res: any) => {
+          this.howler = new Howl({
+            src: [res.url],
+            html5: true,
+          });
+
+          this.howler.once('load', () => {
+            this.howler.play();
+          });
+
+          this.howler.once('end', () => {
+            this.howler.stop();
+            clearInterval(this.intervalSubsciption);
+          });
+
+          this.intervalSubsciption = setInterval(() => {
+            this.updateWidth();
+          }, 10);
+
           if (res.url) {
             this.story.answer = res.url;
             this.isRecorded = true;
@@ -226,5 +261,12 @@ export class RecordStoryComponent implements OnInit {
       }
     });
     return await modal.present();
+  }
+
+  ngOnDestroy() {
+    if (this.intervalSubsciption) {
+      clearInterval(this.intervalSubsciption);
+    }
+    this.howler.stop();
   }
 }

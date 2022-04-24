@@ -114,7 +114,6 @@ export class RecordingPlayerComponent implements OnInit {
   async recordedFileDuration(blobURL: any) {
     const blobUrl = blobURL;
     Utils.converToBlob(blobUrl.replace(/^[^,]+,/, '')).then((res: any) => {
-      console.log(res);
       this.audioFileAction.emit(res);
     });
     const duration = await getBlobDuration(blobUrl);

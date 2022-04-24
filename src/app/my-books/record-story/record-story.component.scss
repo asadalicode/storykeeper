@@ -48,4 +48,15 @@
     cursor: pointer;
     line-height: 20px;
   }
+
+  .custom-ion-range-slider {
+    // --bar-background:#ccc;
+    // --bar-background-active:blue;
+    --bar-border-radius: 200;
+    --bar-height: 7px;
+    // --height:20px;
+    // --knob-background:red;
+    // --knob-border-radius:30;
+    // --knob-size:20px;
+  }
 }

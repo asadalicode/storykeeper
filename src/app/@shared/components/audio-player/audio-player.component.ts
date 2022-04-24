@@ -32,7 +32,7 @@ export class AudioPlayerComponent implements OnInit {
       waveColor: this.isWeb ? '#ccc' : '#fff',
       progressColor: '#242F40',
       barHeight: 6,
-      backend: 'WebAudio',
+      backend: 'MediaElement',
       barRadius: 4,
       height: 6,
       normalize: true,
