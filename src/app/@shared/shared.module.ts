@@ -22,6 +22,7 @@ import { FilterPipe } from './pipes/filterPipe';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 import { LazyLoadImageModule } from 'ng-lazyload-image'; // <-- import it
 import { ImageComponent } from './components/image/image.component';
+import { ImageDirective } from './directives/image.directive';
 
 @NgModule({
   imports: [
@@ -48,6 +49,7 @@ import { ImageComponent } from './components/image/image.component';
     FilterPipe,
     NoDataFoundComponent,
     ImageComponent,
+    ImageDirective,
   ],
   providers: [InAppBrowser],
   exports: [
@@ -64,6 +66,7 @@ import { ImageComponent } from './components/image/image.component';
     FilterPipe,
     NoDataFoundComponent,
     ImageComponent,
+    ImageDirective,
   ],
 })
 export class SharedModule {}

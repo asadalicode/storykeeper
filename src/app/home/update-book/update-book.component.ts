@@ -1,4 +1,4 @@
-import { Book, BookDetail, ImageCredientials } from '@app/@shared/models';
+import { Book, BookDetail, BookImage, ImageCredientials } from '@app/@shared/models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Platform, ModalController, IonRouterOutlet } from '@ionic/angular';
@@ -73,12 +73,34 @@ export class UpdateBookComponent implements OnInit {
     this.apiService.getDetails(`/api/Books/${this.routeParams.bookId}`, BookDetail).subscribe((res) => {
       console.log(res);
       this.book = res;
+      if (this.book) {
+        this.getBookImages();
+      }
       this.step1Form.setValue({
         name: this.book.title,
         image: this.book.image,
         recipientName: this.book.recipientName,
         recipientEmail: this.book.recipientEmail,
       });
+    });
+  }
+
+  getBookImages() {
+    const bookImagesArr = [this.book].map((item) => BookImage.adapt(item));
+    this.apiService.post('/api/Files/books/images', bookImagesArr).subscribe({
+      next: (res: any = []) => {
+        [this.book].forEach((element) => {
+          res.forEach((elem: any) => {
+            if (element.id == elem.bookId) {
+              element.image = elem.url;
+            }
+          });
+        });
+        this.imageUrl = this.book.image;
+        console.log(this.book);
+        this.isLoading = false;
+      },
+      error: (error: any) => {},
     });
   }
 
@@ -162,18 +184,21 @@ export class UpdateBookComponent implements OnInit {
   }
 
   postFile() {
+    //When book image is not updated on save button
+    if (!this.uploadCredentials) {
+      this.router.navigate(['/my-library']);
+      return;
+    }
     this.apiService.postFormData(this.uploadCredentials.upload_url, this.fileFileObject).subscribe({
       complete: () => {},
       next: (res: any) => {
-        console.log(res);
-        // this.router.navigate(['/my-library']);
         this.newBookAvailable();
+        this.router.navigate(['/my-library']);
       },
       error: (err: any) => {
         if (err.status == 201) {
           this.updateBookOnUpload();
         }
-        console.log(err);
       },
     });
   }

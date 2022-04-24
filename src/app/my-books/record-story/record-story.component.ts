@@ -3,6 +3,9 @@ import { ModalDismissRole } from '@app/@shared/constants';
 import { Platform, ModalController, IonRouterOutlet } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ApiService } from '@app/@shared/sevices/api.service';
+import { ImageCredientials, Story, StoryFile } from '@app/@shared/models';
+import { Utils } from '@app/@shared';
 
 @Component({
   selector: 'app-record-story',
@@ -11,14 +14,22 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class RecordStoryComponent implements OnInit {
   isRecording: boolean = false;
+  story!: Story;
+  uploadCredentials: any;
+  uploadFileObj: any;
+  isRecorded = false;
+  isListenable = false;
   constructor(
     private platform: Platform,
     private routerOutlet: IonRouterOutlet,
     private modalController: ModalController,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private apiService: ApiService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getStory();
+  }
   get isWeb(): boolean {
     return !this.platform.is('cordova');
   }
@@ -31,7 +42,116 @@ export class RecordStoryComponent implements OnInit {
     return params;
   }
 
+  getAudioFile(event: Blob) {
+    this.getFileCredentials(event);
+  }
+
+  get fileFileObject() {
+    return {
+      key: this.uploadFileObj.key,
+      acl: this.uploadFileObj.acl,
+      success_action_status: this.uploadFileObj.success_action_status,
+      policy: this.uploadFileObj.policy,
+      'x-amz-algorithm': this.uploadFileObj.x_amz_algorithm,
+      'x-amz-credential': this.uploadFileObj.x_amz_credential,
+      'x-amz-date': this.uploadFileObj.x_amz_date,
+      'x-amz-signature': this.uploadFileObj.x_amz_signature,
+      'x-amz-meta-owner': this.uploadFileObj.x_amz_meta_owner,
+      // is_version: this.uploadFileObj.is_version,
+      file: this.uploadFileObj.file,
+    };
+  }
+
+  getFileCredentials(file: any) {
+    const uuid = Utils.UUID + '.mp3';
+    this.apiService
+      .getDetails(
+        `/api/Files/credentials/book/${this.routeParams.bookId}/story/${this.routeParams.storyId}?fileName=${uuid}`,
+        ImageCredientials
+      )
+      .subscribe({
+        complete: () => {},
+        next: (res: any) => {
+          this.uploadCredentials = res;
+          this.story.answer = uuid;
+          this.uploadFileObj = {
+            ...this.uploadCredentials,
+            file: file,
+          };
+        },
+        error: (err: any) => {},
+      });
+  }
+
+  stopRecording(event: any) {
+    if (event) {
+      this.isRecorded = true;
+    }
+  }
+
+  startRecording(event: any) {
+    if (event) {
+      this.isRecording = true;
+    }
+  }
+
+  postFile(event?: any) {
+    if (this.uploadCredentials) {
+      this.apiService.postFormData(this.uploadCredentials.upload_url, this.fileFileObject).subscribe({
+        complete: () => {},
+        next: (res: any) => {},
+        error: (err: any) => {
+          if (err.status == 201) {
+            this.updateStoryOnUpload();
+          }
+        },
+      });
+    }
+  }
+  getStory() {
+    this.apiService
+      .getDetails(`/api/books/${this.routeParams.bookId}/Stories/${this.routeParams.storyId}`, Story)
+      .subscribe((res: any) => {
+        this.story = res;
+        if (this.story.answer) {
+          this.getServerFileUrl();
+        }
+      });
+  }
+
+  getServerFileUrl() {
+    this.apiService
+      .getDetails(
+        `/api/Files/book/${this.routeParams.bookId}/story/${this.routeParams.storyId}?fileName=${this.story.answer}`,
+        StoryFile
+      )
+      .subscribe({
+        next: (res: any) => {
+          if (res.url) {
+            this.story.answer = res.url;
+            this.isRecorded = true;
+            this.isRecording = false;
+            this.isListenable = true;
+          }
+        },
+        error: (error: any) => {},
+      });
+  }
+
+  updateStoryOnUpload() {
+    let fileUploadObj = {
+      fileName: this.story.answer,
+    };
+    this.apiService
+      .put(`/api/books/${this.routeParams.bookId}/Stories/${this.routeParams.storyId}/AddAnswer`, fileUploadObj)
+      .subscribe({
+        next: (res) => {},
+        error: (error) => {},
+      });
+  }
+
   async sendStory() {
+    this.postFile();
     const modal = await this.modalController.create({
       component: ConfirmationInfoComponent,
       cssClass: 'modal-popup md ',
@@ -47,7 +167,6 @@ export class RecordStoryComponent implements OnInit {
     });
     modal.onDidDismiss().then((data) => {
       if (data.role == ModalDismissRole.submitted) {
-        // debugger;
       }
       if (data.role == ModalDismissRole.canceled) {
         // this.cancelRequest();
@@ -75,6 +194,8 @@ export class RecordStoryComponent implements OnInit {
     modal.onDidDismiss().then((data) => {
       if (data.role == ModalDismissRole.submitted) {
         this.deleted();
+        this.isRecording = false;
+        this.isRecorded = false;
       }
       if (data.role == ModalDismissRole.canceled) {
         // this.cancelRequest();
@@ -97,6 +218,9 @@ export class RecordStoryComponent implements OnInit {
       presentingElement: this.routerOutlet.nativeEl,
     });
     modal.onDidDismiss().then((data) => {
+      if (data.role == ModalDismissRole.submitted) {
+        console.log('popup submitted');
+      }
       if (data.role == ModalDismissRole.canceled) {
         console.log('popup closed');
       }

@@ -1,5 +1,5 @@
 import { BookDetail } from './../../@shared/models/book';
-import { Book, ImageCredientials } from '@app/@shared/models';
+import { Book, BookImage, ImageCredientials } from '@app/@shared/models';
 import { ApiService } from './../../@shared/sevices/api.service';
 import { ImagePicker } from '@awesome-cordova-plugins/image-picker/ngx';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -72,9 +72,31 @@ export class EditBookComponent implements OnInit {
     }
   }
 
+  getBookImages() {
+    const bookImagesArr = [this.book].map((item) => BookImage.adapt(item));
+    this.apiService.post('/api/Files/books/images', bookImagesArr).subscribe({
+      next: (res: any = []) => {
+        [this.book].forEach((element) => {
+          res.forEach((elem: any) => {
+            if (element.id == elem.bookId) {
+              element.image = elem.url;
+            }
+          });
+        });
+        console.log(this.book);
+        this.imageUrl = this.book.image;
+        this.isLoading = false;
+      },
+      error: (error: any) => {},
+    });
+  }
+
   getBookDetails() {
     this.apiService.getDetails(`/api/Books/${this.bookId}`, BookDetail).subscribe((res) => {
       this.book = res;
+      if (this.book) {
+        this.getBookImages();
+      }
       this.step1Form.setValue({
         name: this.book.title,
         image: this.book.image,
@@ -92,6 +114,7 @@ export class EditBookComponent implements OnInit {
         complete: () => {},
         next: (res: any) => {
           this.uploadCredentials = res;
+          this.book.image = `${uuid}${file.name}`;
           this.uploadFileObj = {
             ...this.uploadCredentials,
             file: file,
@@ -133,16 +156,33 @@ export class EditBookComponent implements OnInit {
     );
   }
 
-  postFile() {
-    this.apiService.postFormData(this.uploadCredentials.upload_url, this.fileFileObject).subscribe({
-      complete: () => {},
-      next: (res: any) => {
+  updateBookOnUpload() {
+    console.log(this.book);
+    this.apiService.put(`/api/Books/${this.book.id}`, this.book).subscribe({
+      next: (res) => {
         console.log(res);
       },
-      error: (err: any) => {
-        console.log(err);
+      error: (error) => {
+        console.log(error);
       },
     });
+  }
+
+  postFile() {
+    if (this.uploadCredentials) {
+      this.apiService.postFormData(this.uploadCredentials.upload_url, this.fileFileObject).subscribe({
+        complete: () => {},
+        next: (res: any) => {
+          console.log(res);
+        },
+        error: (err: any) => {
+          if (err.status == 201) {
+            console.log(err.status);
+            this.updateBookOnUpload();
+          }
+        },
+      });
+    }
   }
 
   get isWeb(): boolean {

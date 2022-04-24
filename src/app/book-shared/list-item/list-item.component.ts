@@ -9,12 +9,17 @@ import { myLibraryTabs } from '@app/@shared/constants';
 })
 export class ListItemComponent implements OnInit {
   @Input() item: any;
+  errorImg = 'assets/images/bro.svg';
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
   gotoDetail(id: any) {
     this.router.navigate(['my-books/book-detail/', id, this.item.title]);
+  }
+
+  onImgError(event: any) {
+    event.target.src = 'assets/images/bro.svg';
   }
 
   bookStatus(status: number) {

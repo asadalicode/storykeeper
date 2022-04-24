@@ -13,7 +13,7 @@ export class Story {
     return new Story(
       item.question,
       item.description,
-      item.answer,
+      item.fileName,
       item.answerLastModificationDate,
       item.answerUploadDate,
       item.bookId,

@@ -32,7 +32,10 @@
             <app-loader *ngIf="isLoading" [isLoading]="isLoading"></app-loader>
             <ng-container *ngFor="let book of books; let last = last">
               <app-list-item *ngIf="book.status === 5 || book.status === 99" [item]="book"></app-list-item>
-              <div *ngIf="book.status !== 5 && book.status !== 99 && last" class="no-published-book">
+              <div
+                *ngIf="book.status !== 5 && book.status !== 99 && book.status !== 3 && last"
+                class="no-published-book"
+              >
                 <p>No books available!</p>
                 <div class="text-center">
                   <img src="assets/images/no-published-book.svg" alt="image" />

@@ -90,7 +90,7 @@
                   </ion-label>
                   <ion-icon
                     slot="end"
-                    (click)="recordingScreen('published')"
+                    (click)="recordingScreen(item, 'published')"
                     class="cursor-pointer btn-icon"
                     src="assets/images/play.svg"
                   ></ion-icon>
@@ -118,7 +118,7 @@
                   </ion-item-option>
                 </ion-item-options>
 
-                <ion-item (click)="recordingScreen('inprogress')" lines="none" class="ion-no-padding">
+                <ion-item (click)="recordingScreen(item, 'inprogress')" lines="none" class="ion-no-padding">
                   <ion-avatar slot="start">
                     <ion-img src="assets/logos/rec-white.png "></ion-img>
                   </ion-avatar>

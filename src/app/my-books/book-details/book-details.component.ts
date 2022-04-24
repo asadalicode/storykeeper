@@ -41,7 +41,6 @@ export class BookDetailsComponent implements OnInit {
     this.apiService.get(`/api/books/${this.routeParams.bookId}/Stories`, Story).subscribe({
       next: (res: any) => {
         this.bookStories = res;
-        console.log(this.bookStories);
         this.isLoading = false;
       },
       error: (error: any) => {
@@ -50,7 +49,9 @@ export class BookDetailsComponent implements OnInit {
     });
   }
 
-  gotoRecording() {
-    this.router.navigate([`my-books/record-story/${this.routeParams.bookId}/${this.routeParams.bookTitle}`]);
+  gotoRecording(story: any) {
+    this.router.navigate([
+      `my-books/record-story/${this.routeParams.bookId}/${this.routeParams.bookTitle}/${story.id}`,
+    ]);
   }
 }

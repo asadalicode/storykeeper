@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import getBlobDuration from 'get-blob-duration';
 import { WaveService } from 'angular-wavesurfer-service';
@@ -10,6 +10,7 @@ import {
   GenericResponse,
   CurrentRecordingStatus,
 } from 'capacitor-voice-recorder';
+import { Utils } from '@app/@shared/appConstants';
 
 @Component({
   selector: 'app-recording-player',
@@ -23,11 +24,19 @@ export class RecordingPlayerComponent implements OnInit {
   hasRecordingPermission = false; //permission granted by user device
   isRecStarted = false; //false when recording has not started yet
   isRecorded = false; // When audio is recoded and ready to be played
+  @Output() audioFileAction: EventEmitter<any> = new EventEmitter<any>();
+  @Output() audioStopped: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(public waveService: WaveService, private cdr: ChangeDetectorRef, private platform: Platform) {}
-
-  ngOnInit(): void {
+  constructor(public waveService: WaveService, private cdr: ChangeDetectorRef, private platform: Platform) {
     this.setRecordingEvents();
+  }
+
+  ngOnInit(): void {}
+
+  @Input() set startRecord(event: any) {
+    if (event) {
+      this.startRecording();
+    }
   }
 
   startRecording() {
@@ -71,6 +80,7 @@ export class RecordingPlayerComponent implements OnInit {
         this.isPlaying = false;
         this.isRecStarted = false;
         this.isRecorded = true;
+        this.audioStopped.emit(true);
       }
       this.recordedFileDuration(result.value.recordDataBase64);
       // if (this.wave) this.wave.destroy()
@@ -96,12 +106,17 @@ export class RecordingPlayerComponent implements OnInit {
         ? new Audio(`${result.value.recordDataBase64}`)
         : new Audio(`data:${result.value.mimeType};base64,${result.value.recordDataBase64}`); //For web and mobile
       this.wave.load(audioRef, [1, 1]);
+
       this.loadEvents();
     });
   }
 
   async recordedFileDuration(blobURL: any) {
     const blobUrl = blobURL;
+    Utils.converToBlob(blobUrl.replace(/^[^,]+,/, '')).then((res: any) => {
+      console.log(res);
+      this.audioFileAction.emit(res);
+    });
     const duration = await getBlobDuration(blobUrl);
     console.log(duration + ' seconds');
   }
