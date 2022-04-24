@@ -33,6 +33,7 @@ export class BookDetail {
     public id: number,
     public title: string,
     public bookName: string,
+    public name: string,
     public image: string,
     public recipientEmail: string,
     public recipientName: string,
@@ -44,6 +45,7 @@ export class BookDetail {
   public static adapt(item: any): BookDetail {
     return new BookDetail(
       item.id,
+      item.bookName,
       item.bookName,
       item.bookName,
       item.image,

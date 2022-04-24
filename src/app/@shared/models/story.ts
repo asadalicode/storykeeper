@@ -15,7 +15,7 @@ export class Story {
       item.id,
       item.question,
       item.description,
-      item.answer,
+      item.fileName,
       item.bookId,
       item.status,
       item?.answerUploadDate,

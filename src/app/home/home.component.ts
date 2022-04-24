@@ -35,7 +35,11 @@ export class HomeComponent implements OnInit {
     this.isLoading = true;
     this.apiService.get('/api/Books/Shared', Book).subscribe((res) => {
       this.books = [...res];
-      this.isLoading = false;
+      if (this.books.length) {
+        this.getBookImages();
+      } else {
+        this.isLoading = false;
+      }
       this.isAuthor = this.books.length > 0 ? true : false;
     });
   }
@@ -50,7 +54,6 @@ export class HomeComponent implements OnInit {
           this.books = res.filter((e: Book) => {
             return e.status == status;
           });
-
           this.books = [...this.books];
         }
         if (this.books.length) {

@@ -10,3 +10,4 @@ export * from './bookShare';
 export * from './story';
 export * from './product';
 export * from './bookImage';
+export * from './StoryFile';

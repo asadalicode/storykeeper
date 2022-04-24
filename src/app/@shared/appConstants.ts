@@ -7,6 +7,16 @@ export class Utils {
     return new File([blob], fileName, { type: 'image/png' });
   }
 
+  public static async converToBlob(base64: any): Promise<Blob> {
+    const byteCharacters = atob(base64);
+    const byteNumbers = await new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+      byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    return new Blob([byteArray], { type: 'audio/mp3' });
+  }
+
   public static elapsedTimer(seconds: any) {
     seconds = Math.floor(seconds);
     let h: any = Math.floor(seconds / 3600);

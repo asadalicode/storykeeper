@@ -21,7 +21,7 @@ const routes: Routes = [
       data: { title: marker('My Books') },
     },
     {
-      path: 'my-books/record-story/:bookId/:bookTitle',
+      path: 'my-books/record-story/:bookId/:bookTitle/:storyId',
       component: RecordStoryComponent,
       data: { title: marker('My Books') },
     },

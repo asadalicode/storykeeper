@@ -4,7 +4,7 @@ import { Platform, ModalController, IonRouterOutlet } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationInfoComponent } from '@app/@shared/popup-components/confirmation-info/confirmation-info.component';
 import { ApiService } from '@app/@shared/sevices/api.service';
-import { BookDetail } from '@app/@shared/models';
+import { BookDetail, BookImage } from '@app/@shared/models';
 import { ToastService } from '@app/@shared/sevices/toast.service';
 import { Location } from '@angular/common';
 
@@ -42,11 +42,31 @@ export class MyBooksListComponent implements OnInit {
     this.apiService.get(`/api/Books/AsRecipient`, BookDetail).subscribe({
       next: (res: BookDetail[]) => {
         this.books = res;
+        if (this.books) {
+          this.getBookImages();
+        }
         this.isLoading = false;
       },
       error: (error) => {
         this.isLoading = false;
       },
+    });
+  }
+
+  getBookImages() {
+    const bookImagesArr = this.books.map((item: any) => BookImage.adapt(item));
+    this.apiService.post('/api/Files/books/images', bookImagesArr).subscribe({
+      next: (res: any = []) => {
+        this.books.forEach((element: any) => {
+          res.forEach((elem: any) => {
+            if (element.id == elem.bookId) {
+              element.image = elem.url;
+            }
+          });
+        });
+        this.isLoading = false;
+      },
+      error: (error: any) => {},
     });
   }
 
@@ -76,7 +96,6 @@ export class MyBooksListComponent implements OnInit {
         this.acceptRequest(book.id);
       }
       if (data.role == ModalDismissRole.canceled) {
-        console.log('Cancelled');
         this.cancelRequest();
       }
     });
@@ -95,9 +114,7 @@ export class MyBooksListComponent implements OnInit {
       swipeToClose: true,
       presentingElement: this.routerOutlet.nativeEl,
     });
-    modal.onDidDismiss().then((data) => {
-      console.log(data);
-    });
+    modal.onDidDismiss().then((data) => {});
     return await modal.present();
   }
 }

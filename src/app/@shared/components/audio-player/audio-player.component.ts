@@ -1,5 +1,5 @@
 import { Platform } from '@ionic/angular';
-import { ChangeDetectorRef, Component, NgZone, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, NgZone, OnInit } from '@angular/core';
 import { WaveService } from 'angular-wavesurfer-service';
 import { Utils } from '@app/@shared/appConstants';
 
@@ -14,9 +14,15 @@ export class AudioPlayerComponent implements OnInit {
   isPlayable = false;
   elapsedTime: any = '00:00';
   remainingTime: any = '00:00';
+  mp3Url: any;
   constructor(public waveService: WaveService, private cdr: ChangeDetectorRef, private platform: Platform) {}
 
   ngOnInit(): void {}
+
+  @Input() set audioUrl(event: any) {
+    this.mp3Url = event;
+    console.log(this.mp3Url);
+  }
 
   ngAfterViewInit(): void {
     this.wave = this.waveService.create({
@@ -35,7 +41,7 @@ export class AudioPlayerComponent implements OnInit {
       responsive: true,
       cursorColor: 'transparent',
     });
-    this.wave.load('//www.kennethcaple.com/api/mp3/richinlovemutedguitarechoing.mp3', [1, 1]);
+    this.wave.load(this.mp3Url, [1, 1]);
     this.wave.stop();
 
     this.loadEvents();

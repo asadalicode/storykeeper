@@ -35,7 +35,7 @@
 
       <ion-text [color]="isWeb ? 'primary' : 'light'">
         <h2 class="story-title mt-3 mb-3" *ngIf="!isWeb">{{ routeParams?.bookTitle }}</h2>
-        <p class="story-sub-title mt-3">Tell me a time you went on an adventure</p>
+        <p class="story-sub-title mt-3">{{ story?.question }}</p>
       </ion-text>
 
       <ion-button
@@ -43,14 +43,15 @@
         class="default-button sm ion-text-capitalize"
         [color]="'primary'"
         expand="block"
-        *ngIf="!isRecording"
-        (click)="recorder.startRecording(); isRecording = true"
+        *ngIf="!isRecording && !isRecorded && !isListenable"
+        (click)="isRecording = true"
         translate
       >
         Start Recording
       </ion-button>
 
-      <!-- <ion-button
+      <ion-button
+        *ngIf="isRecorded && !isListenable"
         type="button"
         (click)="sendStory()"
         class="default-button sm ion-text-capitalize"
@@ -59,17 +60,23 @@
         translate
       >
         Send Story
-      </ion-button> -->
+      </ion-button>
 
       <ion-text>
-        <p class="text-button" *ngIf="!isRecording">Upload Recording</p>
-        <!-- <p class="text-button" (click)="reRecordStory()">Delete and Rerecord</p> -->
+        <p class="text-button" *ngIf="!isRecording && !isListenable">Upload Recording</p>
+        <p class="text-button" *ngIf="isRecorded && !isListenable" (click)="reRecordStory()">Delete and Rerecord</p>
       </ion-text>
 
       <ng-container>
         <div class="w-75 m-auto">
-          <!-- <app-audio-player></app-audio-player> -->
-          <app-recording-player #recorder></app-recording-player>
+          <app-audio-player *ngIf="!isRecording && isListenable" [audioUrl]="story?.answer"></app-audio-player>
+          <app-recording-player
+            *ngIf="isRecording"
+            [startRecord]="isRecording"
+            (audioFileAction)="getAudioFile($event)"
+            (audioStopped)="stopRecording($event)"
+            #recorder
+          ></app-recording-player>
         </div>
       </ng-container>
     </div>

@@ -329,3 +329,7 @@ ion-toolbar {
   color: var(--ion-color-tertiary);
   font-size: small;
 }
+.cover-img {
+  height: 100%;
+  object-fit: cover;
+}

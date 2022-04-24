@@ -51,7 +51,7 @@
                 </ion-label>
                 <ion-icon
                   slot="end"
-                  (click)="gotoRecording()"
+                  (click)="gotoRecording(item)"
                   class="cursor-pointer btn-icon"
                   src="assets/images/play.svg"
                 ></ion-icon>
@@ -99,7 +99,7 @@
                 </ion-avatar>
                 <ion-label class="ion-text-wrap">
                   <ion-text>
-                    <h3 class="curson-pointer" (click)="gotoRecording()">{{ item?.question }}</h3>
+                    <h3 class="curson-pointer" (click)="gotoRecording(item)">{{ item?.question }}</h3>
                     <ion-label>
                       <!-- <span class="status-inprogress">Pending • 01/2021 • Lena Horushenko</span> -->
                       <span class="status-inprogress">Pending • - • -</span>
