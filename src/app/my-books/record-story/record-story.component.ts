@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '@app/@shared/sevices/api.service';
 import { ImageCredientials, Story, StoryFile } from '@app/@shared/models';
+import { Utils } from '@app/@shared';
 
 @Component({
   selector: 'app-record-story',
@@ -62,18 +63,17 @@ export class RecordStoryComponent implements OnInit {
   }
 
   getFileCredentials(file: any) {
-    const uuid = (Math.random() * 100 + 1).toFixed();
-    file.name = uuid + (Math.random() * 100 + 1).toFixed() + '.mp3';
+    const uuid = Utils.UUID + '.mp3';
     this.apiService
       .getDetails(
-        `/api/Files/credentials/book/${this.routeParams.bookId}/story/${this.routeParams.storyId}?fileName=${uuid}${file.name}`,
+        `/api/Files/credentials/book/${this.routeParams.bookId}/story/${this.routeParams.storyId}?fileName=${uuid}`,
         ImageCredientials
       )
       .subscribe({
         complete: () => {},
         next: (res: any) => {
           this.uploadCredentials = res;
-          this.story.answer = file.name;
+          this.story.answer = uuid;
           this.uploadFileObj = {
             ...this.uploadCredentials,
             file: file,
