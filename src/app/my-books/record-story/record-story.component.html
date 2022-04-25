@@ -43,7 +43,7 @@
         class="default-button sm ion-text-capitalize"
         [color]="'primary'"
         expand="block"
-        *ngIf="!isRecording && !isRecorded"
+        *ngIf="!isRecording && !isRecorded && !isAudioAvailable"
         (click)="isRecording = true"
         translate
       >
@@ -51,7 +51,7 @@
       </ion-button>
 
       <ion-button
-        *ngIf="isRecorded"
+        *ngIf="isRecorded && !isAudioAvailable"
         type="button"
         (click)="sendStory()"
         class="default-button sm ion-text-capitalize"
@@ -64,7 +64,7 @@
 
       <ion-text>
         <!-- <p class="text-button" *ngIf="!isRecording">Upload Recording</p> -->
-        <p class="text-button" *ngIf="isRecorded" (click)="reRecordStory()">Delete and Rerecord</p>
+        <p class="text-button" *ngIf="isRecorded && !isAudioAvailable" (click)="reRecordStory()">Delete and Rerecord</p>
       </ion-text>
 
       <ng-container>

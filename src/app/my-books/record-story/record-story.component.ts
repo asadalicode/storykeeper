@@ -18,6 +18,7 @@ export class RecordStoryComponent implements OnInit {
   uploadCredentials: any;
   uploadFileObj: any;
   isRecorded = false;
+  isAudioAvailable = false; //check if audio is already recorded and availble for this story
   constructor(
     private platform: Platform,
     private routerOutlet: IonRouterOutlet,
@@ -133,6 +134,7 @@ export class RecordStoryComponent implements OnInit {
             this.story.answer = res.url;
             this.isRecorded = true;
             this.isRecording = false;
+            this.isAudioAvailable = true;
           }
         },
         error: (error: any) => {},
