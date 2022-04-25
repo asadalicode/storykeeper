@@ -21,7 +21,6 @@ export class AudioPlayerComponent implements OnInit {
 
   @Input() set audioUrl(event: any) {
     this.mp3Url = event;
-    console.log(this.mp3Url);
   }
 
   ngAfterViewInit(): void {

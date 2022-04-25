@@ -18,7 +18,6 @@ export class RecordStoryComponent implements OnInit {
   uploadCredentials: any;
   uploadFileObj: any;
   isRecorded = false;
-  isListenable = false;
   constructor(
     private platform: Platform,
     private routerOutlet: IonRouterOutlet,
@@ -84,8 +83,11 @@ export class RecordStoryComponent implements OnInit {
   }
 
   stopRecording(event: any) {
-    if (event) {
+    if (event.event) {
+      this.story.answer = event.audio;
+      console.log(event);
       this.isRecorded = true;
+      this.isRecording = false;
     }
   }
 
@@ -131,7 +133,6 @@ export class RecordStoryComponent implements OnInit {
             this.story.answer = res.url;
             this.isRecorded = true;
             this.isRecording = false;
-            this.isListenable = true;
           }
         },
         error: (error: any) => {},
@@ -194,7 +195,7 @@ export class RecordStoryComponent implements OnInit {
     modal.onDidDismiss().then((data) => {
       if (data.role == ModalDismissRole.submitted) {
         this.deleted();
-        this.isRecording = false;
+        this.isRecording = true;
         this.isRecorded = false;
       }
       if (data.role == ModalDismissRole.canceled) {

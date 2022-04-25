@@ -1,7 +1,6 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import getBlobDuration from 'get-blob-duration';
-import { WaveService } from 'angular-wavesurfer-service';
 
 import {
   VoiceRecorder,
@@ -18,7 +17,6 @@ import { Utils } from '@app/@shared/appConstants';
   styleUrls: ['./recording-player.component.scss'],
 })
 export class RecordingPlayerComponent implements OnInit {
-  wave!: WaveSurfer;
   isPlaying = false; //onditions for play pause buttons
   isPlayable = false; //when wave is ready and audio is loaded
   hasRecordingPermission = false; //permission granted by user device
@@ -27,7 +25,7 @@ export class RecordingPlayerComponent implements OnInit {
   @Output() audioFileAction: EventEmitter<any> = new EventEmitter<any>();
   @Output() audioStopped: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(public waveService: WaveService, private cdr: ChangeDetectorRef, private platform: Platform) {
+  constructor(private cdr: ChangeDetectorRef, private platform: Platform) {
     this.setRecordingEvents();
   }
 
@@ -75,39 +73,14 @@ export class RecordingPlayerComponent implements OnInit {
 
   stopRecording() {
     VoiceRecorder.stopRecording().then((result: RecordingData) => {
-      console.log('stopped', result.value);
-      if (result.value) {
-        this.isPlaying = false;
-        this.isRecStarted = false;
-        this.isRecorded = true;
-        this.audioStopped.emit(true);
-      }
-      this.recordedFileDuration(result.value.recordDataBase64);
-      // if (this.wave) this.wave.destroy()
-
-      const params = {
-        container: '#waveformR',
-        barWidth: 1000,
-        barGap: 0,
-        waveColor: this.isWeb ? '#ccc' : '#fff',
-        progressColor: '#242F40',
-        barHeight: 6,
-        barRadius: 4,
-        height: 6,
-        normalize: true,
-        partialRender: true,
-        pixelRatio: 1,
-        responsive: true,
-      };
-      this.wave = this.waveService.create(params);
-
-      this.wave.init();
       const audioRef = this.isWeb
         ? new Audio(`${result.value.recordDataBase64}`)
         : new Audio(`data:${result.value.mimeType};base64,${result.value.recordDataBase64}`); //For web and mobile
-      this.wave.load(audioRef, [1, 1]);
-
-      this.loadEvents();
+      if (result.value) {
+        this.audioStopped.emit({ audio: audioRef, event: true });
+      }
+      this.recordedFileDuration(result.value.recordDataBase64);
+      // if (this.wave) this.wave.destroy()
     });
   }
 
@@ -137,10 +110,10 @@ export class RecordingPlayerComponent implements OnInit {
   //   audioRef.load();
   //   audioRef.oncanplaythrough = (e: any) => {
   //   this.recordedFileDuration(e.path[0].currentSrc)
-  //     // Utils.dataUrlToFile(e.path[0].currentSrc, "abc.mp3").then((res:any)=> {
-  //     //   console.log(res)
-  //     // })
-  //     // audioRef.play();
+  //     Utils.dataUrlToFile(e.path[0].currentSrc, "abc.mp3").then((res:any)=> {
+  //       console.log(res)
+  //     })
+  //     audioRef.play();
   //   };
   // }
 
@@ -148,56 +121,5 @@ export class RecordingPlayerComponent implements OnInit {
     return !this.platform.is('cordova');
   }
 
-  loadEvents() {
-    this.onReady();
-    this.onPlay();
-    this.onPause();
-    this.onAudioProcessing();
-    this.onFinish();
-    this.onError();
-  }
-
-  onReady() {
-    this.wave.on('ready', () => {
-      this.isPlayable = true;
-      console.log('ready');
-    });
-  }
-
-  onPause() {
-    this.wave.on('pause', () => {
-      this.isPlaying = false;
-    });
-  }
-
-  onPlay() {
-    this.wave.on('play', () => {
-      console.log('play');
-      this.isPlaying = true;
-    });
-  }
-
-  onAudioProcessing() {
-    this.wave.on('audioprocess', function () {});
-  }
-
-  onFinish() {
-    this.wave.on('finish', () => {
-      this.wave.stop();
-      this.isPlaying = false;
-      this.cdr.detectChanges();
-      this.cdr.checkNoChanges();
-      console.log('finish');
-    });
-  }
-
-  onError() {
-    this.wave.on('error', function () {});
-  }
-
-  ngOnDestroy() {
-    if (this.wave) {
-      this.wave.destroy();
-    }
-  }
+  ngOnDestroy() {}
 }
