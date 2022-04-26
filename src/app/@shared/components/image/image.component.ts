@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'image',
+  selector: 'app-image',
   template: ` <img [class]="imgClass" [defaultImage]="defaultImage" [lazyLoad]="image" /> `,
 })
 export class ImageComponent {

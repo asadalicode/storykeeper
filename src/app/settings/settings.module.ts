@@ -15,6 +15,8 @@ import { SharedModule } from '@app/@shared';
 import { ProfileComponent } from './profile/profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AddNewEmailComponent } from './add-new-email/add-new-email.component';
+import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 
 @NgModule({
   imports: [
@@ -36,6 +38,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     TermOfServiceComponent,
     AboutComponent,
     ProfileComponent,
+    AddNewEmailComponent,
+    ConfirmEmailComponent,
   ],
 })
 export class SettingsModule {}

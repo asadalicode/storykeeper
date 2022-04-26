@@ -1,11 +1,14 @@
+import { ConfirmationInfoComponent } from './../../@shared/popup-components/confirmation-info/confirmation-info.component';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Profile } from '@app/@shared/models';
+import { ModalDismissRole } from '@app/@shared/constants';
+import { Profile, UserEmail } from '@app/@shared/models';
 import { ApiService } from '@app/@shared/sevices/api.service';
 import { ToastService } from '@app/@shared/sevices/toast.service';
 import { CredentialsService } from '@app/auth';
 
-import { IonRouterOutlet, Platform } from '@ionic/angular';
+import { IonRouterOutlet, Platform, ModalController } from '@ionic/angular';
+import { AddNewEmailComponent } from '../add-new-email/add-new-email.component';
 
 @Component({
   selector: 'app-profile',
@@ -19,11 +22,13 @@ export class ProfileComponent implements OnInit {
   isModalOpen = false;
   isVisiblePassword = false;
   isVisibleConfirmPassword = false;
+  UserEmails!: UserEmail[];
   constructor(
     private formBuilder: FormBuilder,
     private credentials: CredentialsService,
     private toastService: ToastService,
     private apiService: ApiService,
+    private modalController: ModalController,
     private platform: Platform,
     public routerOutlet: IonRouterOutlet
   ) {}
@@ -49,6 +54,10 @@ export class ProfileComponent implements OnInit {
       if (res) {
         this.profileForm.patchValue(res);
       }
+    });
+    this.apiService.get(`/api/Users/Emails`, UserEmail).subscribe((res: any) => {
+      this.UserEmails = res;
+      console.log(this.UserEmails);
     });
   }
   private createForm() {
@@ -102,6 +111,49 @@ export class ProfileComponent implements OnInit {
         console.log('error', res);
       },
     });
+  }
+
+  async NewBookEmail() {
+    const modal = await this.modalController.create({
+      component: AddNewEmailComponent,
+      cssClass: 'modal-popup sm',
+      swipeToClose: true,
+      componentProps: {
+        title: 'Add New Email',
+      },
+      presentingElement: this.routerOutlet.nativeEl,
+    });
+    modal.onDidDismiss().then((data) => {
+      if (data.role == ModalDismissRole.submitted) {
+        this.toastService.showToast('success', 'Email successfully addedd');
+        this.getUserInfo();
+      }
+    });
+    return await modal.present();
+  }
+
+  async RemoveEmail(item: UserEmail) {
+    const modal = await this.modalController.create({
+      component: ConfirmationInfoComponent,
+      cssClass: 'modal-popup sm',
+      swipeToClose: true,
+      componentProps: {
+        title: 'Remove Email',
+        subtitle: 'Are you sure you want to remove this email',
+        confirmbuttonText: 'Remove',
+        cancelbuttonText: 'Cancel',
+      },
+      presentingElement: this.routerOutlet.nativeEl,
+    });
+    modal.onDidDismiss().then((data) => {
+      if (data.role == ModalDismissRole.submitted) {
+        this.apiService.delete(`/api/Users/Emails/${item.id}`).subscribe((res: any) => {
+          this.toastService.showToast('success', 'Email successfully removed.');
+          this.getUserInfo();
+        });
+      }
+    });
+    return await modal.present();
   }
 
   openModal() {

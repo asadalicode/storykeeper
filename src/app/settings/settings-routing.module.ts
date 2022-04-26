@@ -10,6 +10,7 @@ import { Shell } from '@app/shell/shell.service';
 import { AboutComponent } from './about/about.component';
 import { LanguageComponent } from './language/language.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 
 const routes: Routes = [
   Shell.childRoutes([
@@ -20,6 +21,7 @@ const routes: Routes = [
     { path: 'privacy-policy', component: PrivacyPolicyComponent, data: { title: marker('Privacy Policy') } },
     { path: 'term-of-services', component: TermOfServiceComponent, data: { title: marker('Term of Services') } },
     { path: 'help', component: HelpComponent, data: { title: marker('Help') } },
+    { path: 'confirmAccount', component: ConfirmEmailComponent, data: { title: marker('Help') } },
   ]),
 ];
 
