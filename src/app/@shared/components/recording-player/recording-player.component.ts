@@ -96,7 +96,13 @@ export class RecordingPlayerComponent implements OnInit {
 
   setRecordingEvents() {
     VoiceRecorder.canDeviceVoiceRecord().then((result: GenericResponse) => console.log(result.value));
-    VoiceRecorder.requestAudioRecordingPermission().then((result: GenericResponse) => console.log(result.value));
+    VoiceRecorder.requestAudioRecordingPermission().then((result: GenericResponse) => {
+      console.log(result.value);
+      if (result.value) {
+        this.hasRecordingPermission = true;
+        this.startRecord(true);
+      }
+    });
     VoiceRecorder.hasAudioRecordingPermission().then((result: GenericResponse) => {
       console.log(result.value);
       this.hasRecordingPermission = true;
