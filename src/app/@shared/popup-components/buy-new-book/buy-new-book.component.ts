@@ -63,9 +63,7 @@ export class BuyNewBookComponent implements OnInit {
   paymentPage() {
     console.log('@@@');
     this.dismiss(false);
-    this.router.navigate(['/', 'payment-methods', this.selectedItem.id, this.selectedItem.priceInDollars], {
-      skipLocationChange: true,
-    });
+    this.router.navigate(['/', 'payment-methods', this.selectedItem.id, this.selectedItem.priceInDollars]);
   }
 
   get isWeb(): boolean {
