@@ -9,9 +9,21 @@ import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
   Shell.childRoutes([
-    { path: 'payment-methods', component: PaymentMethodsComponent, data: { title: marker('Payments') } },
-    { path: 'success', component: SuccessComponent, data: { title: marker('Payments') } },
-    { path: 'cancel', component: ErrorComponent, data: { title: marker('Payments') } },
+    {
+      path: 'payment-methods/:productId/:amount',
+      component: PaymentMethodsComponent,
+      data: { title: marker('Payments') },
+    },
+    {
+      path: 'success',
+      component: SuccessComponent,
+      data: { title: marker('Payments') },
+    },
+    {
+      path: 'cancel',
+      component: ErrorComponent,
+      data: { title: marker('Payments') },
+    },
   ]),
 ];
 @NgModule({

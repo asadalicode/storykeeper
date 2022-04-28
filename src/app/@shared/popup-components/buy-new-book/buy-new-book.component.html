@@ -18,7 +18,7 @@
           <app-loader *ngIf="isLoading" [isLoading]="isLoading"></app-loader>
           <ion-radio-group (ionChange)="selectedProduct($event)">
             <ion-item *ngFor="let item of productsData" lines="none">
-              <ion-label>{{ item?.name }}/ ${{ item?.numberOfTotalStories }} </ion-label>
+              <ion-label>{{ item?.name }}/ ${{ item?.priceInDollars }} </ion-label>
               <ion-radio slot="start" [value]="item"></ion-radio>
             </ion-item>
 
@@ -36,7 +36,7 @@
           <div class="ion-padding-horizontal mt-5 mb-2">
             <ion-button
               [disabled]="isLoading || !selectedItem"
-              (click)="payNow()"
+              (click)="isWeb ? payNow() : paymentPage()"
               type="button"
               class="default-button ion-text-capitalize"
               color="primary"

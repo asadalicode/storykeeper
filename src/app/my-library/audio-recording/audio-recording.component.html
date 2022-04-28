@@ -7,12 +7,8 @@
       <ion-title *ngIf="status === 'published'" class="text-white ion-align-items-end ion-text-center">
         Now Playing</ion-title
       >
-      <ion-icon
-        color="light"
-        class="more-icon ion-padding-end"
-        slot="end"
-        name="ellipsis-horizontal-circle-outline"
-      ></ion-icon>
+      <ion-icon color="light" class="more-icon ion-padding-end" slot="end" name="ellipsis-horizontal-circle-outline">
+      </ion-icon>
     </ion-toolbar>
   </ion-header>
 
@@ -20,7 +16,9 @@
     <ion-text color="primary" *ngIf="isWeb">
       <ion-breadcrumbs>
         <ion-breadcrumb routerLink="/my-library"> My Library </ion-breadcrumb>
-        <ion-breadcrumb routerLink="/my-library/book/5/TestBook3"> My Book #2 </ion-breadcrumb>
+        <ion-breadcrumb routerLink="/my-library/book/{{ routeParams?.bookId }}/{{ routeParams?.storyTitle }}">
+          {{ routeParams?.storyTitle }}</ion-breadcrumb
+        >
         <ion-breadcrumb> Recording </ion-breadcrumb>
       </ion-breadcrumbs>
     </ion-text>
@@ -31,14 +29,15 @@
       </div>
 
       <ion-text>
-        <h2 class="story-title mt-3 mb-0" [class.text-white]="!isWeb">My mom's stroy</h2>
+        <h2 class="story-title mt-3 mb-0" [class.text-white]="!isWeb">{{ story?.question }}</h2>
         <p *ngIf="status === 'inprogress'" class="story-sub-title">In Progress</p>
 
         <ng-container *ngIf="status === 'published'">
-          <p class="story-sub-title">Published * {{ date }}</p>
-          <p class="story-author">Author: Lena Horushchenko</p>
+          <p class="story-sub-title">Published * -</p>
+          <p class="story-author">Author: -</p>
+          <app-loader *ngIf="isLoading" [isLoading]="isLoading"></app-loader>
           <div class="w-75 m-auto">
-            <app-audio-player></app-audio-player>
+            <app-audio-player *ngIf="!isLoading" [audioUrl]="story?.answer"></app-audio-player>
             <!-- <app-recording-player></app-recording-player> -->
           </div>
         </ng-container>

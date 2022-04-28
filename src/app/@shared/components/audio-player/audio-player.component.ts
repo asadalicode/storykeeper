@@ -40,6 +40,7 @@ export class AudioPlayerComponent implements OnInit {
       responsive: true,
       cursorColor: 'transparent',
     });
+    console.log(this.mp3Url);
     this.wave.load(this.mp3Url, [1, 1]);
     this.wave.stop();
 

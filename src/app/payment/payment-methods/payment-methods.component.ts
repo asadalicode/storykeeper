@@ -3,10 +3,16 @@ import { Platform } from '@ionic/angular';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { switchMap } from 'rxjs/operators';
 
-import { StripeService, StripeCardComponent } from 'ngx-stripe';
-import { StripeCardElementOptions, StripeElementsOptions } from '@stripe/stripe-js';
+import { StripeService, StripeCardNumberComponent } from 'ngx-stripe';
+
+import { StripeCardElementOptions, StripeElementsOptions, PaymentIntent } from '@stripe/stripe-js';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { environment } from '@env/environment';
+import { ToastService } from '@app/@shared/sevices/toast.service';
 
 @Component({
   selector: 'app-payment-methods',
@@ -14,11 +20,14 @@ import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
   styleUrls: ['./payment-methods.component.scss'],
 })
 export class PaymentMethodsComponent implements OnInit {
-  @ViewChild(StripeCardComponent) card!: StripeCardComponent;
+  isLoading = false;
+  @ViewChild(StripeCardNumberComponent) card!: StripeCardNumberComponent;
+
   cardOptions: StripeCardElementOptions = {
+    hideIcon: false,
     style: {
       base: {
-        iconColor: '#666EE8',
+        iconColor: '#31325F',
         color: '#31325F',
         fontWeight: '300',
         fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
@@ -31,68 +40,82 @@ export class PaymentMethodsComponent implements OnInit {
   };
 
   elementsOptions: StripeElementsOptions = {
-    locale: 'es',
+    locale: 'en',
   };
-  stripeTest!: FormGroup;
+  stripeForm!: FormGroup;
   constructor(
     private platform: Platform,
     private apiService: ApiService,
     private fb: FormBuilder,
     private stripeService: StripeService,
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private toastService: ToastService,
+    private router: Router,
     private iab: InAppBrowser
   ) {
-    this.stripeTest = this.fb.group({
-      name: ['', [Validators.required]],
+    this.stripeForm = this.fb.group({
+      // name: ['', [Validators.required]],
     });
   }
 
-  ngOnInit(): void {}
-
-  openWebView() {
-    const browser = this.iab.create(
-      'https://checkout.stripe.com/pay/cs_test_a1cHr4tFFv2Tnd8qRYtNBmTewODoGkTh6lAbWGbC6R8cvcsJ8yq9aRDxh3#fidkdWxOYHwnPyd1blpxYHZxWjA0TkZXYE9AcVdCSjBdYGRgaVNtdHd2NjNvaU9MMmBcNGZVMWF3NkNyRlZNPU9QMkg8dn9WcGx2ZlUwZExGbzx0dUoyT21CU1RLVzNkUktrRFdAbndTc3dnNTVSXHRDbDF%2FTCcpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl'
-    );
-
-    setTimeout(() => {
-      console.log(browser);
-      browser.close();
-    }, 7000);
+  ngOnInit(): void {
+    console.log(this.routeParams);
+    this.createPaymentIntent().subscribe({
+      next: (pi: any) => {
+        this.elementsOptions.clientSecret = pi.clientSecret;
+      },
+    });
   }
 
-  createToken(): void {
-    const name = this.stripeTest.get('name')?.value;
-    this.stripeService.redirectToCheckout();
-    this.stripeService.createToken(this.card.element, { name }).subscribe((result) => {
-      if (result.token) {
-        // Use the token
-        console.log(result);
-      } else if (result.error) {
-        // Error creating the token
-        console.log(result.error.message);
-      }
+  get routeParams() {
+    let params: any;
+    this.route.params.subscribe((res: any) => {
+      params = res;
     });
+    return params;
   }
 
   get isWeb(): boolean {
     return !this.platform.is('cordova');
   }
 
+  private createPaymentIntent(): Observable<PaymentIntent> {
+    return this.http.post<PaymentIntent>(`/api/Payments/create-payment-intent/${this.routeParams.productId}`, {});
+  }
+
   payNow() {
-    // const httpOptions = {
-    //   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-    //   observe: 'response' as 'response',
-    // };
-    this.apiService.post('/api/Payments/create-checkout-session/1', {}).subscribe({
-      next: (res: HttpResponse<any>) => {
-        // console.log(res.headers.get('content-length'));
-        // this.openWebView();
-        // window.open(
-        //   'https://checkout.stripe.com/pay/cs_test_a1cHr4tFFv2Tnd8qRYtNBmTewODoGkTh6lAbWGbC6R8cvcsJ8yq9aRDxh3#fidkdWxOYHwnPyd1blpxYHZxWjA0TkZXYE9AcVdCSjBdYGRgaVNtdHd2NjNvaU9MMmBcNGZVMWF3NkNyRlZNPU9QMkg8dn9WcGx2ZlUwZExGbzx0dUoyT21CU1RLVzNkUktrRFdAbndTc3dnNTVSXHRDbDF%2FTCcpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl'
-        // );
-      },
-      error: (error: any) => {
-        console.log(error);
-      },
-    });
+    if (this.stripeForm.valid) {
+      this.isLoading = true;
+      this.createPaymentIntent()
+        .pipe(
+          switchMap((pi: any) =>
+            this.stripeService.confirmCardPayment(pi.clientSecret, {
+              payment_method: {
+                card: this.card.element,
+              },
+            })
+          )
+        )
+        .subscribe((result: any) => {
+          if (result.error) {
+            // Show error to your customer (e.g., insufficient funds)
+            this.toastService.showToast('error', result.error.message);
+            this.isLoading = false;
+            console.log('ERROR');
+          } else {
+            // The payment has been processed!
+            if (result.paymentIntent.status === 'succeeded') {
+              this.isLoading = false;
+              this.router.navigate(['/success']);
+              console.log('Succeeded');
+              // Show a success message to your customer
+            }
+          }
+        });
+    } else {
+      this.isLoading = false;
+      console.log(this.stripeForm);
+    }
   }
 }

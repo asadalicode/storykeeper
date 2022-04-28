@@ -119,9 +119,12 @@ export class BookDetailPageComponent implements OnInit {
   }
 
   async recordingScreen(story: any, type: string) {
-    this.router.navigate([`my-library/recording/${this.routeParams.bookId}/${this.routeParams.bookTitle}`], {
-      queryParams: { type: type },
-    });
+    this.router.navigate(
+      [`my-library/recording/${this.routeParams.bookId}/${story.id}/${this.routeParams.bookTitle}`],
+      {
+        queryParams: { type: type },
+      }
+    );
   }
   async editChapter() {
     this.router.navigate([`my-library/edit-chapter/${this.routeParams.bookId}/${this.routeParams.bookTitle}`]);

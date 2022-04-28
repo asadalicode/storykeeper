@@ -29,7 +29,6 @@ export class ConfirmEmailComponent implements OnInit {
     let params: any;
     this.route.queryParams.subscribe((res: any) => {
       params = res;
-      debugger;
     });
     return params;
   }

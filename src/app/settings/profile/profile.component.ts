@@ -125,7 +125,7 @@ export class ProfileComponent implements OnInit {
     });
     modal.onDidDismiss().then((data) => {
       if (data.role == ModalDismissRole.submitted) {
-        this.toastService.showToast('success', 'Email successfully addedd');
+        this.toastService.showToast('success', 'Email added successfully');
         this.getUserInfo();
       }
     });
