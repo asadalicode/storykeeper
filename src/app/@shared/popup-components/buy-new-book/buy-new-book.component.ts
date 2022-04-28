@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ModalDismissRole } from '@app/@shared/constants';
-import { ModalController } from '@ionic/angular';
+import { ModalController, Platform } from '@ionic/angular';
 import { ApiService } from '@app/@shared/sevices/api.service';
 import { ToastService } from '@app/@shared/sevices/toast.service';
 import { Product } from '@app/@shared/models';
@@ -18,6 +18,7 @@ export class BuyNewBookComponent implements OnInit {
   selectedItem: any;
   constructor(
     private modalController: ModalController,
+    private platform: Platform,
     private router: Router,
     private apiService: ApiService,
     private toastService: ToastService
@@ -32,6 +33,7 @@ export class BuyNewBookComponent implements OnInit {
     this.apiService.get('/api/Products', Product).subscribe({
       next: (res: any) => {
         this.productsData = res;
+        console.log(res);
         this.isLoading = false;
       },
       error: (error: any) => {
@@ -58,26 +60,16 @@ export class BuyNewBookComponent implements OnInit {
     });
   }
 
-  buyBook() {
-    // this.isLoading = true;
-    // let randomNumb = Math.floor(Math.random() * 30) + 1;
-    // const randomTestBook = {
-    //   name: 'My new book' + randomNumb,
-    //   image: 'https://www.linkpicture.com/q/book2.svg',
-    //   recipientEmail: '',
-    //   recipientName: '',
-    //   type: this.selectedItem.id==1? 1:2,  // whether book has 24 stories or 52
-    // };
-    // this.apiService.post('/api/Books', randomTestBook).subscribe({
-    //   next: (res) => {
-    //     this.isLoading = false;
-    //     this.toastService.showToast('success', 'New book is available');
-    //     this.dismiss(false);
-    //   },
-    //   error: (error) => {
-    //     this.isLoading = false;
-    //   },
-    // });
+  paymentPage() {
+    console.log('@@@');
+    this.dismiss(false);
+    this.router.navigate(['/', 'payment-methods', this.selectedItem.id, this.selectedItem.priceInDollars], {
+      skipLocationChange: true,
+    });
+  }
+
+  get isWeb(): boolean {
+    return !this.platform.is('cordova');
   }
 
   dismiss(isSubmitted: boolean = false) {

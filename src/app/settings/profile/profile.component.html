@@ -34,10 +34,28 @@
 
           <ion-item lines="none" color="light">
             <ion-icon class="ion-align-self-center mr-3" name="mail-outline" slot="start"></ion-icon>
-            <ion-label class="form-input-label" position="stacked" translate>Email address</ion-label>
+            <ion-label class="form-input-label" position="stacked" translate>Email address (Primary)</ion-label>
             <ion-input class="form-input" type="email" formControlName="email" autocomplete="new email"></ion-input>
           </ion-item>
-
+          <!--  others emails not a part for form -->
+          <ion-item lines="none" color="light">
+            <ion-label class="form-input-label" position="stacked" translate>Email address (Secondary)</ion-label>
+            <ul class="ion-padding w-100 list-unstyled">
+              <li *ngFor="let item of UserEmails">
+                <span>{{ item.email }}</span>
+                <span
+                  (click)="RemoveEmail(item)"
+                  title="Remove Email"
+                  class="ion-float-end ion-align-self-center mr-3 curson-pointer"
+                >
+                  <ion-icon name="close-outline" slot="end" style="pointer-events: none"></ion-icon>
+                </span>
+              </li>
+            </ul>
+          </ion-item>
+          <div class="ion-padding-bottom">
+            <a (click)="NewBookEmail()" class="new-email-link">Add New Email</a>
+          </div>
           <ion-item lines="none" color="light">
             <ion-icon class="ion-align-self-center mr-3" name="lock-closed-outline" slot="start"></ion-icon>
             <ion-label class="form-input-label" position="stacked" translate>Password</ion-label>

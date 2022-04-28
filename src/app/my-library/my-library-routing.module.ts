@@ -23,7 +23,7 @@ const routes: Routes = [
       data: { title: marker('View Shared') },
     },
     {
-      path: 'my-library/recording/:bookId/:storyId',
+      path: 'my-library/recording/:bookId/:storyId/:storyTitle',
       component: AudioRecordingComponent,
       data: { title: marker('View Shared') },
     },

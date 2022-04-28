@@ -76,7 +76,7 @@ export class UpdateBookComponent implements OnInit {
       if (this.book) {
         this.getBookImages();
       }
-      this.step1Form.setValue({
+      this.step1Form.patchValue({
         name: this.book.title,
         image: this.book.image,
         recipientName: this.book.recipientName,
@@ -173,7 +173,11 @@ export class UpdateBookComponent implements OnInit {
 
   updateBookOnUpload() {
     console.log(this.book);
-    this.apiService.put(`/api/Books/${this.book.id}`, this.book).subscribe({
+    this.step1Form.patchValue({
+      image: this.book.image,
+    });
+    console.log(this.step1Form.value);
+    this.apiService.put(`/api/Books/${this.book.id}`, this.step1Form.value).subscribe({
       next: (res) => {
         console.log(res);
       },
@@ -198,6 +202,7 @@ export class UpdateBookComponent implements OnInit {
       error: (err: any) => {
         if (err.status == 201) {
           this.updateBookOnUpload();
+          this.router.navigate(['/my-library']);
         }
       },
     });

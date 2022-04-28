@@ -5,12 +5,8 @@
         <ion-back-button icon="chevron-back-outline" defaultHref="/my-books"></ion-back-button>
       </ion-buttons>
       <ion-title class="text-white ion-align-items-end ion-text-center">Recording</ion-title>
-      <ion-icon
-        color="light"
-        class="more-icon ion-padding-end"
-        slot="end"
-        name="ellipsis-horizontal-circle-outline"
-      ></ion-icon>
+      <ion-icon color="light" class="more-icon ion-padding-end" slot="end" name="ellipsis-horizontal-circle-outline">
+      </ion-icon>
     </ion-toolbar>
   </ion-header>
 
@@ -37,18 +33,20 @@
         <h2 class="story-title mt-3 mb-3" *ngIf="!isWeb">{{ routeParams?.bookTitle }}</h2>
         <p class="story-sub-title mt-3">{{ story?.question }}</p>
       </ion-text>
-
-      <ion-button
-        type="button"
-        class="default-button sm ion-text-capitalize"
-        [color]="'primary'"
-        expand="block"
-        *ngIf="!isRecording && !isRecorded && !isAudioAvailable"
-        (click)="isRecording = true"
-        translate
-      >
-        Start Recording
-      </ion-button>
+      <app-loader *ngIf="isLoading" [isLoading]="isLoading"></app-loader>
+      <div *ngIf="!isLoading">
+        <ion-button
+          type="button"
+          class="default-button sm ion-text-capitalize"
+          [color]="'primary'"
+          expand="block"
+          *ngIf="!isRecording && !isRecorded && !isAudioAvailable"
+          (click)="isRecording = true"
+          translate
+        >
+          Start Recording
+        </ion-button>
+      </div>
 
       <ion-button
         *ngIf="isRecorded && !isAudioAvailable"

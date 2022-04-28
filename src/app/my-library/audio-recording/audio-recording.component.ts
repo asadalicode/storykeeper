@@ -1,6 +1,8 @@
 import { Platform } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ApiService } from '@app/@shared/sevices/api.service';
+import { Story, StoryFile } from '@app/@shared/models';
 
 @Component({
   selector: 'app-audio-recording',
@@ -10,10 +12,59 @@ import { ActivatedRoute } from '@angular/router';
 export class AudioRecordingComponent implements OnInit {
   date = '1/1/2020';
   status = 'published';
-  constructor(private platform: Platform, private activatedRoute: ActivatedRoute) {}
+  story!: Story;
+  isLoading = true;
+  constructor(private platform: Platform, private apiService: ApiService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.getStory();
     this.recordingStatus();
+  }
+
+  get routeParams() {
+    let params: any;
+    this.activatedRoute.params.subscribe((res: any) => {
+      params = res;
+    });
+    return params;
+  }
+
+  getStory() {
+    this.apiService
+      .getDetails(`/api/books/${this.routeParams.bookId}/Stories/${this.routeParams.storyId}`, Story)
+      .subscribe({
+        next: (res: any) => {
+          this.story = res;
+          if (this.story.answer) {
+            this.getServerFileUrl();
+          } else {
+            this.isLoading = false;
+          }
+        },
+        error: (err: any) => {
+          this.isLoading = false;
+        },
+      });
+  }
+
+  getServerFileUrl() {
+    this.isLoading = true;
+    this.apiService
+      .getDetails(
+        `/api/Files/book/${this.routeParams.bookId}/story/${this.routeParams.storyId}?fileName=${this.story.answer}`,
+        StoryFile
+      )
+      .subscribe({
+        next: (res: any) => {
+          if (res.url) {
+            this.story.answer = res.url;
+          }
+          this.isLoading = false;
+        },
+        error: (error: any) => {
+          this.isLoading = false;
+        },
+      });
   }
 
   recordingStatus(): void {

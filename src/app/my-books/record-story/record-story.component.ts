@@ -13,11 +13,12 @@ import { Utils } from '@app/@shared';
   styleUrls: ['./record-story.component.scss'],
 })
 export class RecordStoryComponent implements OnInit {
-  isRecording: boolean = false;
+  isRecording = false;
   story!: Story;
   uploadCredentials: any;
   uploadFileObj: any;
   isRecorded = false;
+  isLoading = true;
   isAudioAvailable = false; //check if audio is already recorded and availble for this story
   constructor(
     private platform: Platform,
@@ -86,7 +87,6 @@ export class RecordStoryComponent implements OnInit {
   stopRecording(event: any) {
     if (event.event) {
       this.story.answer = event.audio;
-      console.log(event);
       this.isRecorded = true;
       this.isRecording = false;
     }
@@ -112,13 +112,22 @@ export class RecordStoryComponent implements OnInit {
     }
   }
   getStory() {
+    this.isLoading = true;
     this.apiService
       .getDetails(`/api/books/${this.routeParams.bookId}/Stories/${this.routeParams.storyId}`, Story)
-      .subscribe((res: any) => {
-        this.story = res;
-        if (this.story.answer) {
-          this.getServerFileUrl();
-        }
+      .subscribe({
+        next: (res) => {
+          this.story = res;
+
+          if (this.story.answer) {
+            this.getServerFileUrl();
+          } else {
+            this.isLoading = false;
+          }
+        },
+        error: (err: any) => {
+          this.isLoading = false;
+        },
       });
   }
 
@@ -136,8 +145,11 @@ export class RecordStoryComponent implements OnInit {
             this.isRecording = false;
             this.isAudioAvailable = true;
           }
+          this.isLoading = false;
         },
-        error: (error: any) => {},
+        error: (error: any) => {
+          this.isLoading = false;
+        },
       });
   }
 
@@ -222,10 +234,10 @@ export class RecordStoryComponent implements OnInit {
     });
     modal.onDidDismiss().then((data) => {
       if (data.role == ModalDismissRole.submitted) {
-        console.log('popup submitted');
+        // console.log('popup submitted');
       }
       if (data.role == ModalDismissRole.canceled) {
-        console.log('popup closed');
+        // console.log('popup closed');
       }
     });
     return await modal.present();

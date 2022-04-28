@@ -22,17 +22,14 @@
 
             <ion-item lines="none">
               <ion-label class="form-input-label" position="stacked" translate>Recipients Name</ion-label>
-              <ion-input
-                class="form-input"
-                type="text"
-                formControlName="recipientName"
-                autocomplete="new email"
-              ></ion-input>
+              <ion-input class="form-input" type="text" formControlName="recipientName" autocomplete="new email">
+              </ion-input>
             </ion-item>
 
             <ion-item lines="none">
               <ion-label class="form-input-label" position="stacked" translate>Recipients Email</ion-label>
               <ion-input
+                readOnly
                 class="form-input"
                 type="text"
                 formControlName="recipientEmail"
@@ -62,8 +59,8 @@
               color="primary"
               expand="block"
               translate
-              >Save Edit</ion-button
-            >
+              >Save Edit
+            </ion-button>
             <ion-button
               type="button"
               (click)="dismiss()"

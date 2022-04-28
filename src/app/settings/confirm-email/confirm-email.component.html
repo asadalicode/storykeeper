@@ -1,0 +1,29 @@
+<ion-header *ngIf="!isWeb" class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" icon="chevron-back-outline" defaultHref="/settings"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="mr-5 ion-align-items-end ion-text-center" translate>Language</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding-horizontal setting-page">
+  <ion-list [ngClass]="isWeb ? 'p-5' : 'p-3'">
+    <ion-list-header *ngIf="isWeb" class="p-0 mb-2">
+      <ion-label translate> <h1>Confirm Account</h1></ion-label>
+    </ion-list-header>
+    <ion-item lines="none" class="text-center">
+      <ion-label>
+        <h1>Please Verify your Email Address.</h1>
+        <app-image style="display: block" [image]="'assets/images/about-ion.png'" alt=""></app-image>
+        <ion-button
+          type="button"
+          class="default-button ion-text-capitalize mt-5"
+          color="primary"
+          (click)="verifyAccount()"
+          translate
+          >Confirm Verification</ion-button
+        >
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

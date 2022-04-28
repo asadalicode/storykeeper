@@ -1,0 +1,49 @@
+<div class="ion-page">
+  <ion-grid class="m-0 inner-content">
+    <ion-row>
+      <ion-col class="ion-no-padding" size="12">
+        <ion-button (click)="dismiss(false)" size="small" fill="clear" class="ion-float-end">
+          <ion-icon name="close-outline" color="primary"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col class="ion-no-padding" size="12">
+        <ion-text class="ion-text-center">
+          <h1 class="title">{{ title }}</h1>
+        </ion-text>
+      </ion-col>
+
+      <ion-col size="12" class="my-form">
+        <form (ngSubmit)="save()" [formGroup]="emailForm" novalidate autocomplete="off">
+          <ion-list>
+            <ion-item lines="none">
+              <ion-label class="form-input-label" position="stacked" translate>Please write email</ion-label>
+              <ion-input class="form-input" type="email" formControlName="email" autocomplete="email"></ion-input>
+            </ion-item>
+          </ion-list>
+          <div class="w-100 ion-padding-horizontal mt-4 mb-2">
+            <ion-button
+              type="submit"
+              [disabled]="emailForm.invalid || isLoading"
+              class="default-button ion-text-capitalize"
+              color="primary"
+              expand="block"
+              translate
+              >Save</ion-button
+            >
+            <ion-button
+              (click)="dismiss(false)"
+              type="button"
+              class="mt-3 default-button ion-text-capitalize"
+              color="secondary"
+              expand="block"
+              fill="outline"
+              translate
+            >
+              Cancel
+            </ion-button>
+          </div>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
