@@ -80,13 +80,26 @@ export class MyBooksListComponent implements OnInit {
     });
   }
 
+  rejectRequest(bookId: any) {
+    this.apiService.put(`/api/Books/Reject/${bookId}`, {}).subscribe({
+      next: (res) => {
+        this.toastService.showToast('success', 'Book rejected successfully');
+        this.getRecipientBooks();
+      },
+      error: (error) => {},
+    });
+  }
+
   async openRequestPopup(book: any) {
+    console.log(book);
     const modal = await this.modalController.create({
       component: RequestPopupComponent,
       cssClass: 'modal-popup md',
       componentProps: {
         title: 'Request for New Book',
         subtitle: 'New Story for Book',
+        bookName: book.bookName,
+        senderUser: book.senderUser,
       },
       swipeToClose: true,
       presentingElement: this.routerOutlet.nativeEl,
@@ -96,6 +109,7 @@ export class MyBooksListComponent implements OnInit {
         this.acceptRequest(book.id);
       }
       if (data.role == ModalDismissRole.canceled) {
+        this.rejectRequest(book.id);
         this.cancelRequest();
       }
     });

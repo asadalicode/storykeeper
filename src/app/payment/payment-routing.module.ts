@@ -16,6 +16,7 @@ const routes: Routes = [
     },
     {
       path: 'success',
+
       component: SuccessComponent,
       data: { title: marker('Payments') },
     },

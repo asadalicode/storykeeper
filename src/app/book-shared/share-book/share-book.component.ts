@@ -13,6 +13,8 @@ export class ShareBookComponent implements OnInit {
   shareFrom!: FormGroup;
   @Input() title: string = '';
   @Input() bookId: string = '';
+  @Input() bookTitle: string = '';
+
   isLoading = false;
   constructor(
     private formBuilder: FormBuilder,

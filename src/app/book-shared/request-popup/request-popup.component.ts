@@ -10,6 +10,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class RequestPopupComponent implements OnInit {
   @Input() title = '';
   @Input() subtitle = '';
+  @Input() bookName = '';
+  @Input() senderUser = '';
   @Input() confirmbuttonClass = '';
   @Input() confirmbuttonText = '';
   constructor(private modalController: ModalController) {}
