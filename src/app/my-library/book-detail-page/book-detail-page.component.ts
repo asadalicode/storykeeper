@@ -102,6 +102,7 @@ export class BookDetailPageComponent implements OnInit {
       componentProps: {
         title: 'Share Book',
         bookId: this.routeParams.bookId,
+        bookTitle: this.routeParams.bookTitle,
       },
       swipeToClose: true,
       presentingElement: this.routerOutlet.nativeEl,

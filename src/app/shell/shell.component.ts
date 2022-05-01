@@ -16,6 +16,8 @@ import { I18nService } from '@app/i18n/i18n.service';
 import { AuthenticationService, CredentialsService } from '@app/auth';
 import { BuyNewBookComponent } from '@app/@shared/popup-components/buy-new-book/buy-new-book.component';
 import { ModalDismissRole } from '@app/@shared/constants';
+import { SharedService } from '@app/@shared/sevices/shared.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-shell',
@@ -23,6 +25,7 @@ import { ModalDismissRole } from '@app/@shared/constants';
   styleUrls: ['./shell.component.scss'],
 })
 export class ShellComponent implements OnInit {
+  sidePanelSubscription!: Subscription;
   constructor(
     private router: Router,
     private translateService: TranslateService,
@@ -34,10 +37,13 @@ export class ShellComponent implements OnInit {
     private credentialsService: CredentialsService,
     private i18nService: I18nService,
     public modalController: ModalController,
+    private sharedService: SharedService,
     private routerOutlet: IonRouterOutlet
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.openSideMenu();
+  }
 
   async showProfileActions() {
     let createdActionSheet: any;
@@ -123,6 +129,17 @@ export class ShellComponent implements OnInit {
     this.menu.close();
   }
 
+  //open side menu from other components
+  openSideMenu() {
+    this.sidePanelSubscription = this.sharedService.listen().subscribe({
+      next: (res: any) => {
+        if (res) {
+          this.menu.open();
+        }
+      },
+    });
+  }
+
   async buyNewBook() {
     const modal = await this.modalController.create({
       component: BuyNewBookComponent,
@@ -152,5 +169,11 @@ export class ShellComponent implements OnInit {
       presentingElement: this.routerOutlet.nativeEl,
     });
     return await modal.present();
+  }
+
+  ngOnDestroy() {
+    if (this.sidePanelSubscription) {
+      this.sidePanelSubscription.unsubscribe();
+    }
   }
 }

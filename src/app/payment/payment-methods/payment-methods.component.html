@@ -42,6 +42,7 @@
           <ion-button
             type="button"
             (click)="payNow()"
+            [disabled]="isLoading"
             class="submit-button ion-text-capitalize"
             color="primary"
             expand="block"

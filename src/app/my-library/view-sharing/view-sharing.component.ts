@@ -77,6 +77,7 @@ export class ViewSharingComponent implements OnInit {
       componentProps: {
         title: 'Add Listener',
         bookId: this.routeParams.bookId,
+        bookTitle: this.routeParams.bookTitle,
       },
       swipeToClose: true,
       presentingElement: this.routerOutlet.nativeEl,
