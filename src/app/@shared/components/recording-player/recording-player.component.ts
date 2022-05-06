@@ -87,11 +87,9 @@ export class RecordingPlayerComponent implements OnInit {
   async recordedFileDuration(blobURL: any) {
     const blobUrl = blobURL;
     Utils.converToBlob(blobUrl.replace(/^[^,]+,/, '')).then((res: any) => {
-      console.log(res);
       this.audioFileAction.emit(res);
     });
     const duration = await getBlobDuration(blobUrl);
-    console.log(duration + ' seconds');
   }
 
   setRecordingEvents() {
@@ -100,7 +98,7 @@ export class RecordingPlayerComponent implements OnInit {
       console.log(result.value);
       if (result.value) {
         this.hasRecordingPermission = true;
-        this.startRecord(true);
+        this.startRecording();
       }
     });
     VoiceRecorder.hasAudioRecordingPermission().then((result: GenericResponse) => {

@@ -172,7 +172,6 @@ export class UpdateBookComponent implements OnInit {
   }
 
   updateBookOnUpload() {
-    console.log(this.book);
     this.step1Form.patchValue({
       image: this.book.image,
     });
@@ -190,19 +189,19 @@ export class UpdateBookComponent implements OnInit {
   postFile() {
     //When book image is not updated on save button
     if (!this.uploadCredentials) {
-      this.router.navigate(['/my-library']);
+      this.router.navigate(['/my-libary'], { queryParams: { type: 'inprogress' } });
       return;
     }
     this.apiService.postFormData(this.uploadCredentials.upload_url, this.fileFileObject).subscribe({
       complete: () => {},
       next: (res: any) => {
         this.newBookAvailable();
-        this.router.navigate(['/my-library']);
+        this.router.navigate(['/my-libary'], { queryParams: { type: 'inprogress' } });
       },
       error: (err: any) => {
         if (err.status == 201) {
           this.updateBookOnUpload();
-          this.router.navigate(['/my-library']);
+          this.router.navigate(['/my-libary'], { queryParams: { type: 'inprogress' } });
         }
       },
     });

@@ -37,7 +37,7 @@ export class BookDetail {
     public image: string,
     public recipientEmail: string,
     public recipientName: string,
-    public senderUser: Date,
+    public senderUser: string,
     public status: number,
     public type: number
   ) {}

@@ -4,14 +4,16 @@ import { Platform, ModalController, IonRouterOutlet } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationInfoComponent } from '@app/@shared/popup-components/confirmation-info/confirmation-info.component';
 import { ApiService } from '@app/@shared/sevices/api.service';
-import { BookDetail, BookImage } from '@app/@shared/models';
+import { BookDetail, BookImage, listAnimation } from '@app/@shared/models';
 import { ToastService } from '@app/@shared/sevices/toast.service';
 import { Location } from '@angular/common';
+import { SharedService } from '@app/@shared/sevices/shared.service';
 
 @Component({
   selector: 'app-my-books-list',
   templateUrl: './my-books-list.component.html',
   styleUrls: ['./my-books-list.component.scss'],
+  animations: [listAnimation],
 })
 export class MyBooksListComponent implements OnInit {
   books: any = [];
@@ -23,6 +25,7 @@ export class MyBooksListComponent implements OnInit {
     private modalController: ModalController,
     private apiService: ApiService,
     private _location: Location,
+    private sharedService: SharedService,
     private toastService: ToastService
   ) {}
 
@@ -31,6 +34,11 @@ export class MyBooksListComponent implements OnInit {
   }
   get isWeb(): boolean {
     return !this.platform.is('cordova');
+  }
+
+  //open side menu
+  openMenu() {
+    this.sharedService.triggerMsg(true);
   }
 
   goBack() {
@@ -44,8 +52,9 @@ export class MyBooksListComponent implements OnInit {
         this.books = res;
         if (this.books) {
           this.getBookImages();
+        } else {
+          this.isLoading = false;
         }
-        this.isLoading = false;
       },
       error: (error) => {
         this.isLoading = false;

@@ -7147,6 +7147,9 @@ ion-toolbar ion-back-button {
   to {
     opacity: 0;
   }
+}
+img.loading {
+  background: transparent url(giphy.5a6084941384f3a0.gif) no-repeat scroll center center;
 } /*!
  * Bootstrap v4.6.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

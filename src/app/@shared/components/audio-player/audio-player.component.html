@@ -1,19 +1,23 @@
-<div class="waveform" (click)="wave.playPause()" id="waveform"></div>
-<p class="audio-time">
-  <span>{{ elapsedTime }}</span>
-  <span>{{ remainingTime }}</span>
-</p>
+<app-loader *ngIf="isLoading" [isLoading]="isLoading"></app-loader>
+<p *ngIf="isLoading">Please wait while the audio is being loaded!</p>
+<div [style.visibility]="isLoading ? 'hidden' : ''">
+  <div class="waveform" (click)="wave.playPause()" id="waveform"></div>
+  <p class="audio-time">
+    <span>{{ elapsedTime }}</span>
+    <span>{{ remainingTime }}</span>
+  </p>
 
-<div class="d-flex justify-content-center mt-5">
-  <ion-button
-    [disabled]="!isPlayable"
-    (click)="wave.playPause()"
-    type="button"
-    shape="circle"
-    class="control-button ion-border"
-    color="tranparent"
-  >
-    <ion-icon [color]="!isPlaying ? 'tertiary' : 'danger'" [name]="isPlaying ? 'square' : 'play'"></ion-icon>
-    <!-- <ion-img [src]="isPlaying ? 'assets/images/stop.svg' : 'assets/images/play.svg'" alt="icon"></ion-img> -->
-  </ion-button>
+  <div class="d-flex justify-content-center mt-5">
+    <ion-button
+      [disabled]="!isPlayable"
+      (click)="wave.playPause()"
+      type="button"
+      shape="circle"
+      class="control-button ion-border"
+      color="tranparent"
+    >
+      <ion-icon [color]="!isPlaying ? 'tertiary' : 'danger'" [name]="isPlaying ? 'square' : 'play'"></ion-icon>
+      <!-- <ion-img [src]="isPlaying ? 'assets/images/stop.svg' : 'assets/images/play.svg'" alt="icon"></ion-img> -->
+    </ion-button>
+  </div>
 </div>

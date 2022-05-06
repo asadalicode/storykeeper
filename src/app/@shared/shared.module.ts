@@ -23,6 +23,8 @@ import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 import { LazyLoadImageModule } from 'ng-lazyload-image'; // <-- import it
 import { ImageComponent } from './components/image/image.component';
 import { ImageDirective } from './directives/image.directive';
+import { Chooser } from '@awesome-cordova-plugins/chooser/ngx';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
@@ -34,6 +36,7 @@ import { ImageDirective } from './directives/image.directive';
     FlexLayoutModule,
     LazyLoadImageModule,
     AngularWavesurferServiceModule,
+    BrowserAnimationsModule,
   ],
   declarations: [
     LoaderComponent,
@@ -51,7 +54,7 @@ import { ImageDirective } from './directives/image.directive';
     ImageComponent,
     ImageDirective,
   ],
-  providers: [InAppBrowser],
+  providers: [InAppBrowser, Chooser],
   exports: [
     LoaderComponent,
     HeaderComponent,

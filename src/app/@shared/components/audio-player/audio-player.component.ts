@@ -2,6 +2,7 @@ import { Platform } from '@ionic/angular';
 import { ChangeDetectorRef, Component, Input, NgZone, OnInit } from '@angular/core';
 import { WaveService } from 'angular-wavesurfer-service';
 import { Utils } from '@app/@shared/appConstants';
+import { ToastService } from '@app/@shared/sevices/toast.service';
 
 @Component({
   selector: 'app-audio-player',
@@ -9,15 +10,23 @@ import { Utils } from '@app/@shared/appConstants';
   styleUrls: ['./audio-player.component.scss'],
 })
 export class AudioPlayerComponent implements OnInit {
+  isLoading = false;
   wave!: WaveSurfer;
   isPlaying = false;
   isPlayable = false;
   elapsedTime: any = '00:00';
   remainingTime: any = '00:00';
   mp3Url: any;
-  constructor(public waveService: WaveService, private cdr: ChangeDetectorRef, private platform: Platform) {}
+  constructor(
+    public waveService: WaveService,
+    private toastService: ToastService,
+    private cdr: ChangeDetectorRef,
+    private platform: Platform
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.isLoading = true;
+  }
 
   @Input() set audioUrl(event: any) {
     this.mp3Url = event;
@@ -40,7 +49,6 @@ export class AudioPlayerComponent implements OnInit {
       responsive: true,
       cursorColor: 'transparent',
     });
-    console.log(this.mp3Url);
     this.wave.load(this.mp3Url, [1, 1]);
     this.wave.stop();
 
@@ -60,6 +68,7 @@ export class AudioPlayerComponent implements OnInit {
     this.wave.on('ready', () => {
       this.isPlayable = true;
       this.remainingTime = Utils.elapsedTimer(this.wave.getDuration());
+      this.isLoading = false;
       console.log('ready');
     });
   }
@@ -99,7 +108,10 @@ export class AudioPlayerComponent implements OnInit {
   }
 
   onError() {
-    this.wave.on('error', function () {});
+    this.wave.on('error', () => {
+      this.toastService.showToast('error', 'Audio failed to load, Please reload or visit this screen again');
+      this.isLoading = false;
+    });
   }
 
   get isWeb(): boolean {
