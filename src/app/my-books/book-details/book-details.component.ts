@@ -1,16 +1,18 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { Platform } from '@ionic/angular';
+import { Platform, ViewWillEnter } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '@app/@shared/sevices/api.service';
 import { chapterStatus } from '@app/@shared/constants';
-import { Story } from '@app/@shared/models';
+import { listAnimation, Story } from '@app/@shared/models';
+import { SharedService } from '@app/@shared/sevices/shared.service';
 
 @Component({
   selector: 'app-book-details',
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.scss'],
+  animations: [listAnimation],
 })
-export class BookDetailsComponent implements OnInit {
+export class BookDetailsComponent implements OnInit, ViewWillEnter {
   isLoading = false;
   bookStories: any = [];
   chapterStatus = chapterStatus;
@@ -18,14 +20,22 @@ export class BookDetailsComponent implements OnInit {
     private platform: Platform,
     private router: Router,
     private route: ActivatedRoute,
+    private sharedService: SharedService,
     private apiService: ApiService
   ) {}
 
-  ngOnInit(): void {
-    this.getBookStories();
-  }
+  ngOnInit(): void {}
   get isWeb(): boolean {
     return !this.platform.is('cordova');
+  }
+
+  //open side menu
+  openMenu() {
+    this.sharedService.triggerMsg(true);
+  }
+
+  ionViewWillEnter() {
+    this.getBookStories();
   }
 
   get routeParams() {

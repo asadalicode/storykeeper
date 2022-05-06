@@ -7,7 +7,7 @@ import { Platform, IonRouterOutlet, ModalController, ToastController } from '@io
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { AddNewQuestionComponent } from '../add-new-question/add-new-question.component';
 import { Story } from '@app/@shared/models/bookQuestion';
-import { Category, TemplateQuestion } from '@app/@shared/models';
+import { Category, listAnimation, TemplateQuestion } from '@app/@shared/models';
 import * as _ from 'lodash';
 import { ToastService } from '@app/@shared/sevices/toast.service';
 
@@ -15,6 +15,7 @@ import { ToastService } from '@app/@shared/sevices/toast.service';
   selector: 'app-book-chapters',
   templateUrl: './book-chapters.component.html',
   styleUrls: ['./book-chapters.component.scss'],
+  animations: [listAnimation],
 })
 export class BookChaptersComponent implements OnInit {
   @Input() showSaveButton = false;

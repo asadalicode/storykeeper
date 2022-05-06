@@ -7,6 +7,7 @@
             <ion-back-button icon="chevron-back-outline" defaultHref="/home"></ion-back-button>
           </ion-buttons>
           <ion-icon
+            (click)="openMenu()"
             color="light"
             class="more-icon ion-padding-end"
             slot="end"
@@ -56,7 +57,7 @@
 
     <div [ngClass]="isWeb ? 'ion-no-padding' : 'ion-padding'">
       <ion-grid class="p-0 mt-3">
-        <section>
+        <section [@listAnimation]="bookStories?.length">
           <div fxLayout="row" fxLayoutAlign="space-between center">
             <div class="heading">Chapters of My book</div>
 
@@ -101,7 +102,7 @@
           </ion-list>
         </section>
 
-        <section>
+        <section [@listAnimation]="bookStories?.length">
           <div fxLayout="row" fxLayoutAlign="space-between center">
             <div class="heading">Chapters in progress</div>
           </div>

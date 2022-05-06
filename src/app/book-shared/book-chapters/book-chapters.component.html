@@ -12,6 +12,7 @@
     <ion-list slot="content">
       <ng-container *ngFor="let quest of addedQuestionList">
         <app-question-card
+          [@listAnimation]="addedQuestionList.length"
           (delete)="removeQuestion($event)"
           (add)="addTemplateQuestion($event)"
           [type]="'Added Questions'"
@@ -26,6 +27,7 @@
     expand="inset"
     multiple="true"
     *ngFor="let item of categoryTemplateQuestions"
+    [@listAnimation]="categoryTemplateQuestions.length"
     [value]="item.caregoryName"
   >
     <ion-item slot="header" lines="none">

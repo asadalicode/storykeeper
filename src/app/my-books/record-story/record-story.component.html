@@ -32,6 +32,7 @@
       <ion-text [color]="isWeb ? 'primary' : 'light'">
         <h2 class="story-title mt-3 mb-3" *ngIf="!isWeb">{{ routeParams?.bookTitle }}</h2>
         <p class="story-sub-title mt-3">{{ story?.question }}</p>
+        <p class="small">{{ story?.description }}</p>
       </ion-text>
       <app-loader *ngIf="isLoading" [isLoading]="isLoading"></app-loader>
       <div *ngIf="!isLoading">
@@ -57,7 +58,7 @@
         expand="block"
         translate
       >
-        Send Story
+        Complete Story
       </ion-button>
 
       <ion-text>

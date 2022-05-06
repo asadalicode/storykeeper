@@ -14,6 +14,7 @@ import { ImagePicker } from '@awesome-cordova-plugins/image-picker/ngx';
 import { AudioRecordingComponent } from './audio-recording/audio-recording.component';
 import { EditChapterComponent } from './edit-chapter/edit-chapter.component';
 import { ChaptersListComponent } from './chapters-list/chapters-list.component';
+import { Chooser } from '@awesome-cordova-plugins/chooser/ngx';
 @NgModule({
   imports: [
     CommonModule,
@@ -26,7 +27,7 @@ import { ChaptersListComponent } from './chapters-list/chapters-list.component';
     FlexLayoutModule,
     BookSharedModule,
   ],
-  providers: [ImagePicker],
+  providers: [ImagePicker, Chooser],
   declarations: [
     EditBookComponent,
     BookDetailPageComponent,

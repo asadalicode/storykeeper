@@ -10,6 +10,7 @@ import { IonicModule } from '@ionic/angular';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { RecordStoryComponent } from './record-story/record-story.component';
+import { Chooser } from '@awesome-cordova-plugins/chooser/ngx';
 
 @NgModule({
   declarations: [MyBooksListComponent, BookDetailsComponent, RecordStoryComponent],
@@ -24,5 +25,6 @@ import { RecordStoryComponent } from './record-story/record-story.component';
     FlexLayoutModule,
     BookSharedModule,
   ],
+  providers: [Chooser],
 })
 export class MyBooksModule {}

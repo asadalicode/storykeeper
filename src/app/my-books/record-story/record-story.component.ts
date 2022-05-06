@@ -1,11 +1,13 @@
 import { ConfirmationInfoComponent } from './../../@shared/popup-components/confirmation-info/confirmation-info.component';
 import { ModalDismissRole } from '@app/@shared/constants';
-import { Platform, ModalController, IonRouterOutlet } from '@ionic/angular';
+import { Platform, ModalController, IonRouterOutlet, ViewWillEnter } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '@app/@shared/sevices/api.service';
 import { ImageCredientials, Story, StoryFile } from '@app/@shared/models';
 import { Utils } from '@app/@shared';
+import { Chooser } from '@awesome-cordova-plugins/chooser/ngx';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-record-story',
@@ -25,14 +27,27 @@ export class RecordStoryComponent implements OnInit {
     private routerOutlet: IonRouterOutlet,
     private modalController: ModalController,
     private route: ActivatedRoute,
+    private router: Router,
+    private chooser: Chooser,
+    private _location: Location,
     private apiService: ApiService
   ) {}
 
   ngOnInit(): void {
     this.getStory();
+    // let filter="audio/mp3"
+
+    // this.chooser.getFile(filter)
+    // .then(file => console.log(file ? file : 'canceled'))
+    // .catch((error: any) => console.error(error));
   }
+
   get isWeb(): boolean {
     return !this.platform.is('cordova');
+  }
+
+  goBack() {
+    this._location.back();
   }
 
   get routeParams() {
@@ -118,7 +133,7 @@ export class RecordStoryComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.story = res;
-
+          console.log(this.story);
           if (this.story.answer) {
             this.getServerFileUrl();
           } else {
@@ -171,8 +186,8 @@ export class RecordStoryComponent implements OnInit {
       component: ConfirmationInfoComponent,
       cssClass: 'modal-popup md ',
       componentProps: {
-        title: 'Story had sent',
-        subtitle: 'The author will receive your audio story shortly',
+        title: 'Your story has been recorded successfully!',
+        subtitle: 'It is on its way to the recipient to enjoy!',
         confirmbuttonText: 'Back to Request',
         confirmbuttonClass: 'primary',
         imageUrl: 'assets/images/sendstory.svg',
@@ -182,6 +197,7 @@ export class RecordStoryComponent implements OnInit {
     });
     modal.onDidDismiss().then((data) => {
       if (data.role == ModalDismissRole.submitted) {
+        this.goBack();
       }
       if (data.role == ModalDismissRole.canceled) {
         // this.cancelRequest();
@@ -209,8 +225,9 @@ export class RecordStoryComponent implements OnInit {
     modal.onDidDismiss().then((data) => {
       if (data.role == ModalDismissRole.submitted) {
         this.deleted();
-        this.isRecording = true;
+        this.isRecording = false;
         this.isRecorded = false;
+        this.isAudioAvailable = false;
       }
       if (data.role == ModalDismissRole.canceled) {
         // this.cancelRequest();

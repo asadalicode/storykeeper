@@ -11,3 +11,4 @@ export * from './story';
 export * from './product';
 export * from './bookImage';
 export * from './StoryFile';
+export * from '../animations/listAnimation';

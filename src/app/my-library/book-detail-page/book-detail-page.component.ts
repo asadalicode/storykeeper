@@ -6,12 +6,14 @@ import { EditBookComponent } from '../edit-book/edit-book.component';
 import { chapterStatus, ModalDismissRole } from '@app/@shared/constants';
 import { ShareBookComponent } from '@app/book-shared/share-book/share-book.component';
 import { ApiService } from '@app/@shared/sevices/api.service';
-import { Story } from '@app/@shared/models';
+import { listAnimation, Story } from '@app/@shared/models';
+import { SharedService } from '@app/@shared/sevices/shared.service';
 
 @Component({
   selector: 'app-book-detail-page',
   templateUrl: './book-detail-page.component.html',
   styleUrls: ['./book-detail-page.component.scss'],
+  animations: [listAnimation],
 })
 export class BookDetailPageComponent implements OnInit {
   bookStories: any = [];
@@ -23,6 +25,7 @@ export class BookDetailPageComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private apiService: ApiService,
+    private sharedService: SharedService,
     private modalController: ModalController
   ) {}
 
@@ -31,6 +34,11 @@ export class BookDetailPageComponent implements OnInit {
   }
   get isWeb(): boolean {
     return !this.platform.is('cordova');
+  }
+
+  //open side menu
+  openMenu() {
+    this.sharedService.triggerMsg(true);
   }
 
   get routeParams() {

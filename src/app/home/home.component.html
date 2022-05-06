@@ -39,30 +39,16 @@
   <div class="ion-padding" [class.web-page]="isWeb">
     <ion-text color="primary">
       <h1 class="heading" [class.isWeb]="isWeb">My Books in Library</h1>
-      <ion-segment scrollable value="all" (ionChange)="segmentChanged($event)">
-        <ion-segment-button value="all">
-          <ion-label>All</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="published">
-          <ion-label>Published</ion-label>
-        </ion-segment-button>
-
-        <ion-segment-button value="inprogress">
-          <ion-label>In Progress</ion-label>
-        </ion-segment-button>
-
-        <ion-segment-button value="pending">
-          <ion-label>Pending</ion-label>
-        </ion-segment-button>
-
-        <ion-segment-button value="shared">
-          <ion-label>Shared With me</ion-label>
+      <ion-segment scrollable [value]="segmentValue" (ionChange)="segmentChanged($event)">
+        <ion-segment-button *ngFor="let item of segments" [value]="item.value">
+          <ion-label>{{ item.name }}</ion-label>
         </ion-segment-button>
       </ion-segment>
+      <p class="small" *ngIf="segmentValue == 'pending'">Edit a book to start your book request</p>
     </ion-text>
 
     <ion-grid class="p-0 mt-3">
-      <div *ngIf="!isLoading" class="grid-container">
+      <div *ngIf="!isLoading" [@listAnimation]="books?.length" class="grid-container">
         <app-books-card *ngFor="let book of books" [book]="book"></app-books-card>
       </div>
 

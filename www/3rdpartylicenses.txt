@@ -1,3 +1,6 @@
+@angular/animations
+MIT
+
 @angular/cdk
 MIT
 The MIT License
@@ -42,6 +45,9 @@ MIT
 MIT
 
 @angular/service-worker
+MIT
+
+@awesome-cordova-plugins/chooser
 MIT
 
 @awesome-cordova-plugins/core

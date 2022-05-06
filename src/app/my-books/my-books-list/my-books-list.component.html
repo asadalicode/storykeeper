@@ -7,6 +7,7 @@
             <ion-back-button icon="chevron-back-outline" defaultHref="/home"></ion-back-button>
           </ion-buttons>
           <ion-icon
+            (click)="openMenu()"
             color="light"
             class="more-icon ion-padding-end"
             slot="end"
@@ -21,7 +22,7 @@
       </ion-card-content>
     </ion-card>
 
-    <div [ngClass]="isWeb ? 'ion-no-padding' : 'ion-padding'">
+    <div [@listAnimation]="books?.length" [ngClass]="isWeb ? 'ion-no-padding' : 'ion-padding'">
       <ion-grid class="p-0 mt-3">
         <section>
           <div fxLayout="row" fxLayoutAlign="space-between center">
@@ -44,6 +45,7 @@
             </ng-container>
             <div *ngIf="!books.length" class="no-published-book">
               <p>No books available!</p>
+
               <div class="text-center">
                 <img src="assets/images/no-published-book.svg" alt="image" />
               </div>
@@ -53,7 +55,7 @@
 
         <section>
           <div fxLayout="row" fxLayoutAlign="space-between center">
-            <div class="heading">For request</div>
+            <div class="heading">New Requests</div>
           </div>
 
           <ion-list slot="content">
@@ -75,13 +77,13 @@
                       expand="block"
                       translate
                     >
-                      Request Pending
+                      Accept or Reject Book Request
                     </ion-button>
                   </div>
                 </ion-label>
               </ion-item>
               <div *ngIf="!items.length" class="no-published-book">
-                <p>You donot have book requests yet!</p>
+                <p>You do not have any new book requests at this time.</p>
                 <div class="text-center">
                   <img src="assets/images/no-published-book.svg" alt="image" />
                 </div>

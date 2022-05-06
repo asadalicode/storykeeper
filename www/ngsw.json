@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1651389213704,
+  "timestamp": 1651857189816,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -77,13 +77,13 @@
         "/common.bdb20ed26f91228d.js",
         "/favicon.ico",
         "/index.html",
-        "/main.a6d8db1ff4b7a3eb.js",
+        "/main.1fe2d55edf546f02.js",
         "/manifest.webmanifest",
         "/polyfills-core-js.08fb6cb7ffd5bf44.js",
         "/polyfills-dom.de5aa1c0480698a8.js",
         "/polyfills.525362d90f3d19a9.js",
-        "/runtime.c7ce7ed02c61bb60.js",
-        "/styles.ac3a69b9098b578b.css"
+        "/runtime.14a26215a1529dc2.js",
+        "/styles.d8d9378a9581666d.css"
       ],
       "patterns": []
     },
@@ -119,6 +119,7 @@
         "/assets/images/facebookShare.svg",
         "/assets/images/flag/en-US.svg",
         "/assets/images/flag/es-ES.svg",
+        "/assets/images/giphy.gif",
         "/assets/images/google-icon.svg",
         "/assets/images/google.png",
         "/assets/images/google.svg",
@@ -150,7 +151,8 @@
         "/assets/ngx-rocket-logo.png",
         "/assets/ngx-rocket-logo@192.png",
         "/bg1.ed519ff395ee41b8.png",
-        "/default_checkbox.b09829c4cd0ef2ee.svg"
+        "/default_checkbox.b09829c4cd0ef2ee.svg",
+        "/giphy.5a6084941384f3a0.gif"
       ],
       "patterns": []
     }
@@ -244,6 +246,7 @@
     "/assets/images/facebookShare.svg": "d00f4d4b47af2de22d74d5f3d2e8b2282217a096",
     "/assets/images/flag/en-US.svg": "330bb0c9dd1d3234050433e73472f622c8336238",
     "/assets/images/flag/es-ES.svg": "2ab8ae6f08312bcb34c55e55f086346f3b07487b",
+    "/assets/images/giphy.gif": "57536361fe46bbd06d89d5e0b66890d5c87c1d5b",
     "/assets/images/google-icon.svg": "15c35291454bb6756ed616a36e4ba340e1b53d70",
     "/assets/images/google.png": "ddf9bcb0771347a84588f9e375dc9367fa5d3a72",
     "/assets/images/google.svg": "9aadb9aed54a3b9c0852e7291f41cdb6273d4286",
@@ -278,14 +281,15 @@
     "/common.bdb20ed26f91228d.js": "d76143342ef8004ce307ab4255e156158ec6d29a",
     "/default_checkbox.b09829c4cd0ef2ee.svg": "da5ddcad0d47a6e1187376f094060200534b4470",
     "/favicon.ico": "b65083d46bbf63692d5d2cdd69622e6d7ecae317",
-    "/index.html": "02b620cbe37f34875d195298355bc1a22001c55e",
-    "/main.a6d8db1ff4b7a3eb.js": "b80372957e09aca6bec3f55ad7e7d221940ff5ba",
+    "/giphy.5a6084941384f3a0.gif": "57536361fe46bbd06d89d5e0b66890d5c87c1d5b",
+    "/index.html": "b3ee3945d267b84d728b56e7543c80740ee93ba1",
+    "/main.1fe2d55edf546f02.js": "a8470d6365014fbf25b9ab48a02cee1da7b3b222",
     "/manifest.webmanifest": "e4db7587bbdfd9713d0d76ef42a3f162fd3ec59d",
     "/polyfills-core-js.08fb6cb7ffd5bf44.js": "1c0affce64761aa61df671dc621e87882d4fe684",
     "/polyfills-dom.de5aa1c0480698a8.js": "c6cdaed5253f39111504b988ef6c4df86ce19753",
     "/polyfills.525362d90f3d19a9.js": "ef4604fa68046fc5d94f9e26c1b5a01531108829",
-    "/runtime.c7ce7ed02c61bb60.js": "eb27cae3b6be3e804903502c07282cb153026348",
-    "/styles.ac3a69b9098b578b.css": "8422709b52180d803dd68f866cd112ea6661fd15"
+    "/runtime.14a26215a1529dc2.js": "9efabbf4df30a1ce874ebb4433bde4e982fb7091",
+    "/styles.d8d9378a9581666d.css": "166e8e0201ac2ac35c71c9036c8dbf6136710528"
   },
   "navigationUrls": [
     {
