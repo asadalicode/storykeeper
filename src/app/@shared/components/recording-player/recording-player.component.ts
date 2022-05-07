@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import getBlobDuration from 'get-blob-duration';
+import { Location } from '@angular/common';
 
 import {
   VoiceRecorder,
@@ -10,6 +11,7 @@ import {
   CurrentRecordingStatus,
 } from 'capacitor-voice-recorder';
 import { Utils } from '@app/@shared/appConstants';
+import { ToastService } from '@app/@shared/sevices/toast.service';
 
 @Component({
   selector: 'app-recording-player',
@@ -25,11 +27,19 @@ export class RecordingPlayerComponent implements OnInit {
   @Output() audioFileAction: EventEmitter<any> = new EventEmitter<any>();
   @Output() audioStopped: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private cdr: ChangeDetectorRef, private platform: Platform) {
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private _location: Location,
+    private toastService: ToastService,
+    private platform: Platform
+  ) {
     this.setRecordingEvents();
   }
 
   ngOnInit(): void {}
+  goBack() {
+    this._location.back();
+  }
 
   @Input() set startRecord(event: any) {
     if (event) {
@@ -40,19 +50,20 @@ export class RecordingPlayerComponent implements OnInit {
   startRecording() {
     VoiceRecorder.startRecording()
       .then((result: GenericResponse) => {
-        console.log(result.value);
         if (result.value) {
           this.isPlaying = true;
           this.isRecStarted = true;
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        this.toastService.showToast('success', 'Please grant microphone access');
+        console.log(error);
+      });
   }
 
   pauseRecording() {
     VoiceRecorder.pauseRecording()
       .then((result: GenericResponse) => {
-        console.log('pause', result.value);
         if (result.value) {
           this.isPlaying = false;
         }
@@ -63,7 +74,6 @@ export class RecordingPlayerComponent implements OnInit {
   resumeRecording() {
     VoiceRecorder.resumeRecording()
       .then((result: GenericResponse) => {
-        console.log('resume', result.value);
         if (result.value) {
           this.isPlaying = true;
         }
@@ -95,14 +105,15 @@ export class RecordingPlayerComponent implements OnInit {
   setRecordingEvents() {
     VoiceRecorder.canDeviceVoiceRecord().then((result: GenericResponse) => console.log(result.value));
     VoiceRecorder.requestAudioRecordingPermission().then((result: GenericResponse) => {
-      console.log(result.value);
       if (result.value) {
+        this.hasRecordingPermission = true;
+      }
+      if (typeof result.value == 'undefined') {
         this.hasRecordingPermission = true;
         this.startRecording();
       }
     });
     VoiceRecorder.hasAudioRecordingPermission().then((result: GenericResponse) => {
-      console.log(result.value);
       this.hasRecordingPermission = true;
     });
   }
@@ -125,5 +136,9 @@ export class RecordingPlayerComponent implements OnInit {
     return !this.platform.is('cordova');
   }
 
-  ngOnDestroy() {}
+  ngOnDestroy() {
+    if (this.hasRecordingPermission) {
+      VoiceRecorder.stopRecording();
+    }
+  }
 }

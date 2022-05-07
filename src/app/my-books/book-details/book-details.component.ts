@@ -25,6 +25,10 @@ export class BookDetailsComponent implements OnInit, ViewWillEnter {
   ) {}
 
   ngOnInit(): void {}
+
+  get bookImg(): string {
+    return this.sharedService.getImgInStorage();
+  }
   get isWeb(): boolean {
     return !this.platform.is('cordova');
   }

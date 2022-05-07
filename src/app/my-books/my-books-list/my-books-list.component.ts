@@ -100,7 +100,6 @@ export class MyBooksListComponent implements OnInit {
   }
 
   async openRequestPopup(book: any) {
-    console.log(book);
     const modal = await this.modalController.create({
       component: RequestPopupComponent,
       cssClass: 'modal-popup md',

@@ -12,6 +12,8 @@ export interface LoginContext {
 }
 export interface SignUpContext {
   email: string;
+  firstName: string;
+  lastName: string;
   password: string;
 }
 
@@ -44,10 +46,10 @@ export class AuthenticationService {
     const data = {
       email: context.email,
       password: context.password,
-      firstName: '-',
-      lastName: '-',
+      firstName: context.firstName,
+      lastName: context.lastName,
       // birthDate:'',
-      role: 'Administrator',
+      role: '',
     };
     return this.http.post<any>(`/api/Users`, data).pipe(
       map((data) => {

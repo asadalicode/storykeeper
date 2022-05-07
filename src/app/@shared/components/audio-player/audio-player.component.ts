@@ -17,12 +17,15 @@ export class AudioPlayerComponent implements OnInit {
   elapsedTime: any = '00:00';
   remainingTime: any = '00:00';
   mp3Url: any;
+  uuid: string;
   constructor(
     public waveService: WaveService,
     private toastService: ToastService,
     private cdr: ChangeDetectorRef,
     private platform: Platform
-  ) {}
+  ) {
+    this.uuid = Utils.generateUUID();
+  }
 
   ngOnInit(): void {
     this.isLoading = true;
@@ -34,24 +37,25 @@ export class AudioPlayerComponent implements OnInit {
 
   ngAfterViewInit(): void {
     this.wave = this.waveService.create({
-      container: '#waveform',
+      container: `#${this.uuid}`,
       barWidth: 1000,
       barGap: 0,
       waveColor: this.isWeb ? '#ccc' : '#fff',
       progressColor: '#242F40',
+      removeMediaElementOnDestroy: true,
       barHeight: 6,
       backend: 'WebAudio',
       barRadius: 4,
       height: 6,
       normalize: true,
       partialRender: true,
-      pixelRatio: 1,
+      pixelRatio: 5,
       responsive: true,
       cursorColor: 'transparent',
     });
+
     this.wave.load(this.mp3Url, [1, 1]);
     this.wave.stop();
-
     this.loadEvents();
   }
 
@@ -69,6 +73,7 @@ export class AudioPlayerComponent implements OnInit {
       this.isPlayable = true;
       this.remainingTime = Utils.elapsedTimer(this.wave.getDuration());
       this.isLoading = false;
+      this.wave.seekTo(0);
       console.log('ready');
     });
   }

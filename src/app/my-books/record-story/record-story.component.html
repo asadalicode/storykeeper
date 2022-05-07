@@ -26,7 +26,7 @@
         <h2 class="story-title mt-3 mb-3">{{ routeParams?.bookTitle }}</h2>
       </ion-text>
       <div class="placeholder">
-        <img src="assets/images/recording-placeholder.png" alt="image" />
+        <app-image [imgClass]="'poster-img'" [image]="bookImg" alt=""></app-image>
       </div>
 
       <ion-text [color]="isWeb ? 'primary' : 'light'">
