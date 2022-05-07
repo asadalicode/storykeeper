@@ -17,6 +17,8 @@
   "Password": "Enter your password",
   "Password is required": "Password is required",
   "Enter_email": "Enter your email",
+  "First_name": "First name",
+  "Last_name": "Last name",
   "Email is required": "Email is required",
   "Email or password incorrect.": "Email or password incorrect.",
   "Remember me": "Recuérdame",
