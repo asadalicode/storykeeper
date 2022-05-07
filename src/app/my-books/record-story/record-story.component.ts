@@ -8,6 +8,7 @@ import { ImageCredientials, Story, StoryFile } from '@app/@shared/models';
 import { Utils } from '@app/@shared';
 import { Chooser } from '@awesome-cordova-plugins/chooser/ngx';
 import { Location } from '@angular/common';
+import { SharedService } from '@app/@shared/sevices/shared.service';
 
 @Component({
   selector: 'app-record-story',
@@ -30,6 +31,7 @@ export class RecordStoryComponent implements OnInit {
     private router: Router,
     private chooser: Chooser,
     private _location: Location,
+    private sharedService: SharedService,
     private apiService: ApiService
   ) {}
 
@@ -44,6 +46,10 @@ export class RecordStoryComponent implements OnInit {
 
   get isWeb(): boolean {
     return !this.platform.is('cordova');
+  }
+
+  get bookImg(): string {
+    return this.sharedService.getImgInStorage();
   }
 
   goBack() {
@@ -133,7 +139,6 @@ export class RecordStoryComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.story = res;
-          console.log(this.story);
           if (this.story.answer) {
             this.getServerFileUrl();
           } else {
@@ -155,7 +160,8 @@ export class RecordStoryComponent implements OnInit {
       .subscribe({
         next: (res: any) => {
           if (res.url) {
-            this.story.answer = res.url;
+            let audio: any = new Audio(res.url);
+            this.story.answer = audio;
             this.isRecorded = true;
             this.isRecording = false;
             this.isAudioAvailable = true;

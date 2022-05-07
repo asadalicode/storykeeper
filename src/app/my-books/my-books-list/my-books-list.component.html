@@ -28,9 +28,8 @@
           <div fxLayout="row" fxLayoutAlign="space-between center">
             <div class="heading">My books</div>
           </div>
-
+          <app-loader *ngIf="isLoading" [isLoading]="isLoading"></app-loader>
           <ion-list>
-            <app-loader *ngIf="isLoading" [isLoading]="isLoading"></app-loader>
             <ng-container *ngFor="let book of books; let last = last">
               <app-list-item *ngIf="book.status === 5 || book.status === 99" [item]="book"></app-list-item>
               <div

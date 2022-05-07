@@ -80,7 +80,7 @@
 
                 <ion-item lines="none" class="ion-no-padding">
                   <ion-avatar slot="start">
-                    <ion-img src="assets/logos/rec-white.png "></ion-img>
+                    <app-image [imgClass]="'cover-img'" [image]="bookImg" alt=""></app-image>
                   </ion-avatar>
                   <ion-label class="ion-text-wrap">
                     <ion-text>
@@ -121,7 +121,7 @@
 
                 <ion-item (click)="recordingScreen(item, 'inprogress')" lines="none" class="ion-no-padding">
                   <ion-avatar slot="start">
-                    <ion-img src="assets/logos/rec-white.png "></ion-img>
+                    <app-image [imgClass]="'cover-img'" [image]="bookImg" alt=""></app-image>
                   </ion-avatar>
 
                   <div class="text-truncate">

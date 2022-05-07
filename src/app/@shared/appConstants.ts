@@ -7,6 +7,21 @@ export class Utils {
     return new File([blob], fileName, { type: 'image/png' });
   }
 
+  public static async dataUrlToMp3(dataUrl: string, fileName: string): Promise<File> {
+    const res: Response = await fetch(dataUrl);
+    const blob: Blob = await res.blob();
+    return new File([blob], fileName, { type: 'audio/mp3' });
+  }
+
+  public static getBase64(file: any) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+  }
+
   public static async converToBlob(base64: any): Promise<Blob> {
     const byteCharacters = atob(base64);
     const byteNumbers = await new Array(byteCharacters.length);
@@ -34,6 +49,29 @@ export class Utils {
       }
       return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
     });
+  }
+
+  public static generateUUID() {
+    var alphaPart = this.timestampToAlpha();
+
+    var firstPart = (Math.random() * 46656) | 0;
+    var secondPart = (Math.random() * 46656) | 0;
+    var firstPartx = ('000' + firstPart.toString(36)).slice(-3);
+    var secondPartx = ('000' + secondPart.toString(36)).slice(-3);
+    return alphaPart + firstPartx + secondPartx;
+  }
+
+  public static digitToAlpha(digit: any) {
+    return 'QRSTUVWXYZ'.charAt(digit);
+  }
+  public static timestampToAlpha() {
+    let ts = Date.now();
+    let tsstr = ts.toString();
+    let alphaStr = '';
+    for (var i = 0; i < tsstr.length; i++) {
+      alphaStr += this.digitToAlpha(tsstr.charAt(i));
+    }
+    return alphaStr;
   }
 
   public static elapsedTimer(seconds: any) {

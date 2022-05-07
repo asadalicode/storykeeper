@@ -41,6 +41,10 @@ export class BookDetailPageComponent implements OnInit {
     this.sharedService.triggerMsg(true);
   }
 
+  get bookImg(): string {
+    return this.sharedService.getImgInStorage();
+  }
+
   get routeParams() {
     let params: any;
     this.route.params.subscribe((res: any) => {

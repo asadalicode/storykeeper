@@ -85,6 +85,8 @@ export class CreateNewAccountComponent implements OnInit {
       {
         email: ['', Validators.required],
         password: ['', Validators.required],
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
         confirmPassword: ['', Validators.required],
       },
       {

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '@app/@shared/sevices/api.service';
 import { Story, StoryFile } from '@app/@shared/models';
+import { SharedService } from '@app/@shared/sevices/shared.service';
 
 @Component({
   selector: 'app-audio-recording',
@@ -14,11 +15,20 @@ export class AudioRecordingComponent implements OnInit {
   status = 'published';
   story!: Story;
   isLoading = true;
-  constructor(private platform: Platform, private apiService: ApiService, private activatedRoute: ActivatedRoute) {}
+  constructor(
+    private platform: Platform,
+    private sharedService: SharedService,
+    private apiService: ApiService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.getStory();
     this.recordingStatus();
+  }
+
+  get bookImg(): string {
+    return this.sharedService.getImgInStorage();
   }
 
   get routeParams() {
