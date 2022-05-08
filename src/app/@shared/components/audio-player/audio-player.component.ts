@@ -42,7 +42,7 @@ export class AudioPlayerComponent implements OnInit {
       barGap: 0,
       waveColor: this.isWeb ? '#ccc' : '#fff',
       progressColor: '#242F40',
-      removeMediaElementOnDestroy: true,
+      // removeMediaElementOnDestroy: true,
       barHeight: 6,
       backend: 'WebAudio',
       barRadius: 4,

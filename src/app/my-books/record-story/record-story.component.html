@@ -63,7 +63,9 @@
 
       <ion-text>
         <!-- <p class="text-button" *ngIf="!isRecording">Upload Recording</p> -->
-        <p class="text-button" *ngIf="isRecorded && !isAudioAvailable" (click)="reRecordStory()">Delete and Rerecord</p>
+        <p class="text-button status-pending" *ngIf="isRecorded && !isAudioAvailable" (click)="reRecordStory()">
+          Delete and Rerecord
+        </p>
       </ion-text>
 
       <ng-container>

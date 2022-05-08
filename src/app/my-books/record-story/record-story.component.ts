@@ -1,7 +1,7 @@
 import { ConfirmationInfoComponent } from './../../@shared/popup-components/confirmation-info/confirmation-info.component';
 import { ModalDismissRole } from '@app/@shared/constants';
 import { Platform, ModalController, IonRouterOutlet, ViewWillEnter } from '@ionic/angular';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '@app/@shared/sevices/api.service';
 import { ImageCredientials, Story, StoryFile } from '@app/@shared/models';
@@ -15,7 +15,7 @@ import { SharedService } from '@app/@shared/sevices/shared.service';
   templateUrl: './record-story.component.html',
   styleUrls: ['./record-story.component.scss'],
 })
-export class RecordStoryComponent implements OnInit {
+export class RecordStoryComponent implements OnInit, OnDestroy {
   isRecording = false;
   story!: Story;
   uploadCredentials: any;
@@ -23,6 +23,7 @@ export class RecordStoryComponent implements OnInit {
   isRecorded = false;
   isLoading = true;
   isAudioAvailable = false; //check if audio is already recorded and availble for this story
+  // destroyRecorder=false;
   constructor(
     private platform: Platform,
     private routerOutlet: IonRouterOutlet,
@@ -36,6 +37,9 @@ export class RecordStoryComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.story);
+    // this.decide();
+
     this.getStory();
     // let filter="audio/mp3"
 
@@ -43,6 +47,29 @@ export class RecordStoryComponent implements OnInit {
     // .then(file => console.log(file ? file : 'canceled'))
     // .catch((error: any) => console.error(error));
   }
+
+  // decide() {
+  //   this.sharedService.getAudioInStorage().subscribe((res:any)=> {
+  //     if(res) {
+  //       console.log(res);
+  //       this.playAudioStream(res);
+  //     }
+  //     else {
+  //       console.log("@@@")
+  //       this.getStory();
+  //     }
+  //   })
+  // }
+
+  // playAudioStream(audio:any) {
+  //   // console.log(audio)
+  //   console.log(this.story);
+  //   this.story.answer = audio;
+  //           this.isRecorded = true;
+  //           this.isRecording = false;
+  //           this.isAudioAvailable = true;
+  //           this.isLoading=false;
+  // }
 
   get isWeb(): boolean {
     return !this.platform.is('cordova');
@@ -139,6 +166,7 @@ export class RecordStoryComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.story = res;
+          console.log(this.story);
           if (this.story.answer) {
             this.getServerFileUrl();
           } else {
@@ -264,5 +292,10 @@ export class RecordStoryComponent implements OnInit {
       }
     });
     return await modal.present();
+  }
+
+  ngOnDestroy() {
+    console.log('Destroy');
+    // this.isRecording=false
   }
 }

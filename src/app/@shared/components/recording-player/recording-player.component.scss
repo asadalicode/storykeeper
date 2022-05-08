@@ -19,3 +19,11 @@ ion-button {
   border: 2px solid var(--ion-color-tertiary);
   border-radius: 50%;
 }
+
+ion-progress-bar {
+  height: 10px;
+  border-radius: 40px;
+  --background: #dfe2e9;
+  --progress-background: #6d809e;
+  border: 1px solid #dfe2e9;
+}

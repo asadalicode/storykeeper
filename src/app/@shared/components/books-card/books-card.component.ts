@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
 import { Book } from '@app/@shared/models/book';
 import { SharedService } from '@app/@shared/sevices/shared.service';
+import { myLibraryTabs } from '@app/@shared/constants';
 
 @Component({
   selector: 'app-books-card',
@@ -13,6 +14,13 @@ export class BooksCardComponent implements OnInit {
   constructor(private router: Router, private sharedService: SharedService) {}
 
   ngOnInit(): void {}
+
+  get isBookPending(): boolean {
+    return this.book.status == 1; // visit @app/@shared/constants
+  }
+  get isBookShared(): boolean {
+    return this.book.status == 4; // visit @app/@shared/constants
+  }
 
   updateBook(book: Book) {
     this.sharedService.setImgInStorage(book.image);

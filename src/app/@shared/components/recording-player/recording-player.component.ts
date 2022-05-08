@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import getBlobDuration from 'get-blob-duration';
 import { Location } from '@angular/common';
@@ -18,12 +18,14 @@ import { ToastService } from '@app/@shared/sevices/toast.service';
   templateUrl: './recording-player.component.html',
   styleUrls: ['./recording-player.component.scss'],
 })
-export class RecordingPlayerComponent implements OnInit {
+export class RecordingPlayerComponent implements OnInit, OnDestroy {
+  step = 0;
   isPlaying = false; //onditions for play pause buttons
   isPlayable = false; //when wave is ready and audio is loaded
   hasRecordingPermission = false; //permission granted by user device
   isRecStarted = false; //false when recording has not started yet
   isRecorded = false; // When audio is recoded and ready to be played
+  @ViewChild('basicTimer', { static: false }) basictimer: any;
   @Output() audioFileAction: EventEmitter<any> = new EventEmitter<any>();
   @Output() audioStopped: EventEmitter<any> = new EventEmitter<any>();
 
@@ -36,7 +38,12 @@ export class RecordingPlayerComponent implements OnInit {
     this.setRecordingEvents();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.isWeb) {
+      this.draw();
+    }
+  }
+
   goBack() {
     this._location.back();
   }
@@ -47,12 +54,36 @@ export class RecordingPlayerComponent implements OnInit {
     }
   }
 
+  async draw() {
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      const stream: any = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+      const audioContext = new AudioContext();
+      const mediaStreamAudioSourceNode = audioContext.createMediaStreamSource(stream);
+      const analyserNode = audioContext.createAnalyser();
+      mediaStreamAudioSourceNode.connect(analyserNode);
+
+      const pcmData = new Float32Array(analyserNode.fftSize);
+      const onFrame = () => {
+        analyserNode.getFloatTimeDomainData(pcmData);
+        let sumSquares = 0.0;
+        for (const amplitude of pcmData) {
+          sumSquares += amplitude * amplitude;
+        }
+        let volumeMeter = Math.sqrt(sumSquares / pcmData.length);
+        this.step = volumeMeter;
+        window.requestAnimationFrame(onFrame);
+      };
+      window.requestAnimationFrame(onFrame);
+    }
+  }
+
   startRecording() {
     VoiceRecorder.startRecording()
       .then((result: GenericResponse) => {
         if (result.value) {
           this.isPlaying = true;
           this.isRecStarted = true;
+          this.basictimer.start();
         }
       })
       .catch((error) => {
@@ -66,6 +97,7 @@ export class RecordingPlayerComponent implements OnInit {
       .then((result: GenericResponse) => {
         if (result.value) {
           this.isPlaying = false;
+          this.basictimer.stop();
         }
       })
       .catch((error) => console.log(error));
@@ -76,12 +108,14 @@ export class RecordingPlayerComponent implements OnInit {
       .then((result: GenericResponse) => {
         if (result.value) {
           this.isPlaying = true;
+          this.basictimer.resume();
         }
       })
       .catch((error) => console.log(error));
   }
 
   stopRecording() {
+    this.basictimer.stop();
     VoiceRecorder.stopRecording().then((result: RecordingData) => {
       const audioRef = this.isWeb
         ? new Audio(`${result.value.recordDataBase64}`)
@@ -108,10 +142,10 @@ export class RecordingPlayerComponent implements OnInit {
       if (result.value) {
         this.hasRecordingPermission = true;
       }
-      if (typeof result.value == 'undefined') {
-        this.hasRecordingPermission = true;
-        this.startRecording();
-      }
+      // if (typeof result.value == 'undefined') {
+      //   this.hasRecordingPermission = true;
+      //   this.startRecording();
+      // }
     });
     VoiceRecorder.hasAudioRecordingPermission().then((result: GenericResponse) => {
       this.hasRecordingPermission = true;
@@ -137,7 +171,9 @@ export class RecordingPlayerComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    if (this.hasRecordingPermission) {
+    console.log('@@');
+    if (this.hasRecordingPermission && this.isRecStarted) {
+      console.log('@@ destroy');
       VoiceRecorder.stopRecording();
     }
   }
