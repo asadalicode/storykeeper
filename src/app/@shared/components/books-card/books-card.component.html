@@ -1,9 +1,19 @@
-<div class="book-card">
+<div
+  (click)="!isBookPending ? updateBook(book) : ''"
+  class="book-card"
+  [ngClass]="!isBookPending ? 'curson-pointer' : ''"
+>
   <div class="book-thumbnail">
     <app-image [image]="book.image" alt=""></app-image>
   </div>
-
-  <ion-button type="button" shape="circle" (click)="updateBook(book)" class="edit-button" color="light">
+  <ion-button
+    *ngIf="isBookPending"
+    type="button"
+    shape="circle"
+    (click)="updateBook(book)"
+    class="edit-button"
+    color="light"
+  >
     <ion-icon slot="icon-only" src="assets/images/edit-icon-white.svg"></ion-icon>
   </ion-button>
 

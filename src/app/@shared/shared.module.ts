@@ -25,6 +25,7 @@ import { ImageComponent } from './components/image/image.component';
 import { ImageDirective } from './directives/image.directive';
 import { Chooser } from '@awesome-cordova-plugins/chooser/ngx';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CdTimerModule } from 'angular-cd-timer';
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LazyLoadImageModule,
     AngularWavesurferServiceModule,
     BrowserAnimationsModule,
+    CdTimerModule,
   ],
   declarations: [
     LoaderComponent,
