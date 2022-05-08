@@ -15661,7 +15661,7 @@
                 e.qZA(),
                 e._uU(30, '\n          '),
                 e.qZA(),
-                e._uU(31, '\n         \n          '),
+                e._uU(31, '\n\n          '),
                 e.TgZ(32, 'ion-list'),
                 e._uU(33, '\n            '),
                 e.YNc(34, to, 6, 2, 'ng-container', 9),
@@ -22411,7 +22411,7 @@
           }
           onError() {
             this.wave.on('error', () => {
-              this.toastService.showToast('error', 'Audio failed to load, Please reload or visit this screen again'),
+              this.toastService.showToast('error', 'Server side error occurred, Please contact administrator!'),
                 (this.isLoading = !1);
             });
           }
@@ -22545,9 +22545,9 @@
               const d = e.oxw();
               return d.isPlaying ? d.pauseRecording() : d.resumeRecording();
             }),
-            e._uU(1, '\n    '),
+            e._uU(1, '\n        '),
             e._UZ(2, 'ion-icon', 9),
-            e._uU(3, '\n  '),
+            e._uU(3, '\n      '),
             e.qZA();
         }
         if (2 & s) {
@@ -22567,9 +22567,9 @@
             e.NdJ('click', function () {
               return e.CHM(t), e.oxw().stopRecording();
             }),
-            e._uU(1, '\n    '),
+            e._uU(1, '\n        '),
             e._UZ(2, 'ion-icon', 10),
-            e._uU(3, '\n  '),
+            e._uU(3, '\n      '),
             e.qZA();
         }
         if (2 & s) {
@@ -22630,7 +22630,8 @@
                 t.value && ((this.isPlaying = !0), (this.isRecStarted = !0), this.basictimer.start());
               })
               .catch((t) => {
-                this.toastService.showToast('success', 'Please grant microphone access'), console.log(t);
+                this.toastService.showToast('success', 'Please grant microphone access and visit this screen again'),
+                  console.log(t);
               });
           }
           pauseRecording() {
@@ -22673,15 +22674,14 @@
                 t.value && (this.hasRecordingPermission = !0);
               }),
               Dl.hasAudioRecordingPermission().then((t) => {
-                this.hasRecordingPermission = !0;
+                t.value && (this.hasRecordingPermission = !0);
               });
           }
           get isWeb() {
             return !this.platform.is('cordova');
           }
           ngOnDestroy() {
-            console.log('@@'),
-              this.hasRecordingPermission && this.isRecStarted && (console.log('@@ destroy'), Dl.stopRecording());
+            this.hasRecordingPermission && this.isRecStarted && Dl.stopRecording();
           }
         }
         return (
@@ -22744,20 +22744,20 @@
             template: function (t, o) {
               1 & t &&
                 (e.TgZ(0, 'div', 0),
-                e._uU(1, '\n    \n  '),
+                e._uU(1, '\n  '),
                 e.TgZ(2, 'div', 1),
-                e._uU(3, '\n      '),
-                e._uU(4, '\n        '),
+                e._uU(3, '\n    '),
+                e._uU(4, '\n    '),
                 e._UZ(5, 'cd-timer', 2, 3),
-                e._uU(7, '\n      '),
+                e._uU(7, '\n    '),
                 e.YNc(8, Qy, 1, 1, 'ion-progress-bar', 4),
-                e._uU(9, '\n    \n'),
+                e._uU(9, '\n\n    '),
                 e.TgZ(10, 'div', 5),
-                e._uU(11, '\n  '),
+                e._uU(11, '\n      '),
                 e.YNc(12, I_, 4, 4, 'ion-button', 6),
-                e._uU(13, '\n\n  '),
+                e._uU(13, '\n\n      '),
                 e.YNc(14, Jy, 4, 3, 'ion-button', 6),
-                e._uU(15, '\n'),
+                e._uU(15, '\n    '),
                 e.qZA(),
                 e._uU(16, '\n  '),
                 e.qZA(),
@@ -22917,7 +22917,7 @@
             e.NdJ('click', function () {
               return e.CHM(t), e.oxw().reRecordStory();
             }),
-            e._uU(1, 'Delete and Rerecord'),
+            e._uU(1, '\n          Delete and Rerecord\n        '),
             e.qZA();
         }
       }
