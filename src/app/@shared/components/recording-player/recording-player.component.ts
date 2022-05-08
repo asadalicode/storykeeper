@@ -87,7 +87,7 @@ export class RecordingPlayerComponent implements OnInit, OnDestroy {
         }
       })
       .catch((error) => {
-        this.toastService.showToast('success', 'Please grant microphone access');
+        this.toastService.showToast('success', 'Please grant microphone access and visit this screen again');
         console.log(error);
       });
   }
@@ -148,7 +148,9 @@ export class RecordingPlayerComponent implements OnInit, OnDestroy {
       // }
     });
     VoiceRecorder.hasAudioRecordingPermission().then((result: GenericResponse) => {
-      this.hasRecordingPermission = true;
+      if (result.value) {
+        this.hasRecordingPermission = true;
+      }
     });
   }
 
@@ -171,9 +173,7 @@ export class RecordingPlayerComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    console.log('@@');
     if (this.hasRecordingPermission && this.isRecStarted) {
-      console.log('@@ destroy');
       VoiceRecorder.stopRecording();
     }
   }

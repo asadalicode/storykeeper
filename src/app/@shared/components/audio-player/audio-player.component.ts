@@ -114,7 +114,7 @@ export class AudioPlayerComponent implements OnInit {
 
   onError() {
     this.wave.on('error', () => {
-      this.toastService.showToast('error', 'Audio failed to load, Please reload or visit this screen again');
+      this.toastService.showToast('error', 'Server side error occurred, Please contact administrator!');
       this.isLoading = false;
     });
   }
