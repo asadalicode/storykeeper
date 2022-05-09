@@ -38,23 +38,23 @@ export class AudioPlayerComponent implements OnInit {
   ngAfterViewInit(): void {
     this.wave = this.waveService.create({
       container: `#${this.uuid}`,
-      barWidth: 1000,
-      barGap: 0,
+      barWidth: 3,
+      barGap: 1,
       waveColor: this.isWeb ? '#ccc' : '#fff',
       progressColor: '#242F40',
       // removeMediaElementOnDestroy: true,
-      barHeight: 6,
+      barHeight: 20,
       backend: 'WebAudio',
       barRadius: 4,
-      height: 6,
-      normalize: true,
-      partialRender: true,
+      height: 20,
+      normalize: false,
+      partialRender: false,
       pixelRatio: 5,
       responsive: true,
       cursorColor: 'transparent',
     });
 
-    this.wave.load(this.mp3Url, [1, 1]);
+    this.wave.load(this.mp3Url);
     this.wave.stop();
     this.loadEvents();
   }

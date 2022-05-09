@@ -11,9 +11,10 @@
       </ng-template>
 
       <ion-label>
-        <span class="{{ 'status-' + bookStatus(item?.status) }} text-capitalize"
-          >{{ bookStatus(item?.status) }} • {{ item?.year ? item?.year : '-' }} • Sender:
-          {{ item?.senderUser ? item?.senderUser : '-' }}</span
+        <!-- • {{ item?.year ? item?.year : '-' }} -->
+        <span class="{{ 'status-' + bookStatus(item?.status) }} text-capitalize">{{ bookStatus(item?.status) }} </span>
+        <span class="{{ 'status-' + bookStatus(item?.status) }}"
+          >• Sender: {{ item?.recipientEmail ? item?.recipientEmail : '-' }}</span
         >
       </ion-label>
     </ion-text>

@@ -7088,6 +7088,15 @@ ion-toolbar ion-back-button {
   border-radius: 14px;
   object-fit: cover;
 }
+@media (max-width: 599px) {
+  .poster-img {
+    min-height: 300px;
+    min-width: 70%;
+    border-radius: 14px;
+    max-height: 350px;
+    object-fit: contain;
+  }
+}
 .modal-popup {
   --border-radius: 8px;
   --height: auto;
