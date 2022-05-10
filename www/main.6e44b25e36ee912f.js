@@ -15275,12 +15275,12 @@
                   e.xp6(8),
                   e.Gre('', 'status-' + o.bookStatus(null == o.item ? null : o.item.status), ' text-capitalize'),
                   e.xp6(1),
-                  e.hij('', o.bookStatus(null == o.item ? null : o.item.status), '  '),
+                  e.hij('', o.bookStatus(null == o.item ? null : o.item.status), ' '),
                   e.xp6(2),
                   e.Tol('status-' + o.bookStatus(null == o.item ? null : o.item.status)),
                   e.xp6(1),
                   e.hij(
-                    '\u2022 Sender:\n          ',
+                    '\u2022 Sender: ',
                     null != o.item && o.item.recipientEmail ? (null == o.item ? null : o.item.recipientEmail) : '-',
                     ''
                   );
@@ -23202,7 +23202,7 @@
                 'ngIf',
               ],
               ['class', 'text-button status-pending', 3, 'click', 4, 'ngIf'],
-              [1, 'w-75', 'm-auto'],
+              [1, 'w-75', 'm-auto', 'pt-3'],
               [3, 'audioUrl', 4, 'ngIf'],
               [3, 'startRecord', 'audioFileAction', 'audioStopped', 4, 'ngIf'],
               [1, 'ion-no-padding', 'ion-no-border'],
