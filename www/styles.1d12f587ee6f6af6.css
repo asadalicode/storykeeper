@@ -7015,6 +7015,10 @@ ion-breadcrumb::part(native) {
   font-size: 20px;
   margin-right: 5px;
 }
+.btn-icon-player {
+  font-size: 30px;
+  margin-right: 5px;
+}
 ion-toolbar {
   --background: transparent !important;
 }
