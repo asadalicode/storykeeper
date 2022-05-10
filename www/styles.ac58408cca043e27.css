@@ -7096,6 +7096,9 @@ ion-toolbar ion-back-button {
     object-fit: contain;
   }
 }
+.disabled {
+  pointer-events: none;
+}
 .modal-popup {
   --border-radius: 8px;
   --height: auto;
