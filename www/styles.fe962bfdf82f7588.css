@@ -7082,7 +7082,6 @@ ion-toolbar ion-back-button {
   object-fit: cover;
 }
 .poster-img {
-  height: 100%;
   min-width: 30%;
   max-width: 50%;
   border-radius: 14px;
@@ -7090,10 +7089,9 @@ ion-toolbar ion-back-button {
 }
 @media (max-width: 599px) {
   .poster-img {
-    min-height: 300px;
+    min-height: 35vh;
     min-width: 70%;
     border-radius: 14px;
-    max-height: 350px;
     object-fit: contain;
   }
 }
