@@ -22443,7 +22443,7 @@
               [1, 'waveform', 3, 'id', 'click'],
               [1, 'audio-time'],
               [1, 'd-flex', 'justify-content-center', 'mt-5'],
-              ['slot', 'end', 1, 'curson-pointer', 'btn-icon', 3, 'color', 'name', 'click'],
+              ['slot', 'end', 1, 'curson-pointer', 'btn-icon-player', 3, 'color', 'src', 'click'],
               [3, 'isLoading'],
             ],
             template: function (t, o) {
@@ -22498,7 +22498,10 @@
                   e.xp6(3),
                   e.Oqu(o.remainingTime),
                   e.xp6(5),
-                  e.Q6J('color', o.isPlaying ? 'danger' : 'tertiary')('name', o.isPlaying ? 'square' : 'play'));
+                  e.Q6J('color', o.isPlaying ? 'danger' : 'tertiary')(
+                    'src',
+                    o.isPlaying ? 'assets/images/stop.svg' : 'assets/images/play.svg'
+                  ));
             },
             directives: [u.O5, ba, A.gu],
             styles: [
@@ -22533,7 +22536,7 @@
         }
         if (2 & s) {
           const t = e.oxw();
-          e.ekj('disabled', !t.hasRecordingPermission), e.Q6J('color', 'danger')('name', 'square');
+          e.ekj('disabled', !t.hasRecordingPermission), e.Q6J('color', 'danger');
         }
       }
       let Qy = (() => {
@@ -22667,10 +22670,34 @@
               ['basicTimer', ''],
               ['class', 'mt-2', 3, 'value', 4, 'ngIf'],
               [1, 'row', 'justify-content-center', 'mt-5'],
-              ['slot', 'end', 1, 'cursor-pointer', 'btn-icon', 'mr-2', 3, 'ngClass', 'color', 'name', 'click'],
-              ['class', 'cursor-pointer btn-icon', 3, 'disabled', 'color', 'name', 'click', 4, 'ngIf'],
+              ['slot', 'end', 1, 'cursor-pointer', 'btn-icon-player', 'mr-2', 3, 'ngClass', 'color', 'name', 'click'],
+              [
+                'class',
+                'cursor-pointer btn-icon-player',
+                'src',
+                'assets/images/stop.svg',
+                'title',
+                'stop',
+                3,
+                'disabled',
+                'color',
+                'click',
+                4,
+                'ngIf',
+              ],
               [1, 'mt-2', 3, 'value'],
-              [1, 'cursor-pointer', 'btn-icon', 3, 'color', 'name', 'click'],
+              [
+                'src',
+                'assets/images/stop.svg',
+                'title',
+                'stop',
+                1,
+                'cursor-pointer',
+                'btn-icon-player',
+                3,
+                'color',
+                'click',
+              ],
             ],
             template: function (t, o) {
               1 & t &&
@@ -22693,7 +22720,7 @@
                 e.qZA(),
                 e._uU(14, '\n\n      '),
                 e._uU(15, '\n      '),
-                e.YNc(16, M_, 1, 4, 'ion-icon', 7),
+                e.YNc(16, M_, 1, 3, 'ion-icon', 7),
                 e._uU(17, '\n      '),
                 e._uU(18, '\n    '),
                 e.qZA(),

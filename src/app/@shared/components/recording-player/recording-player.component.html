@@ -26,7 +26,7 @@
         [ngClass]="isPlaying ? 'blink' : ''"
         (click)="!isPlaying ? resumeRecording() : pauseRecording()"
         slot="end"
-        class="cursor-pointer btn-icon mr-2"
+        class="cursor-pointer btn-icon-player mr-2"
         [color]="!isPlaying ? 'tertiary' : 'danger'"
         [name]="isPlaying ? 'pause' : 'play'"
       ></ion-icon>
@@ -45,8 +45,9 @@
         [class.disabled]="!hasRecordingPermission"
         (click)="stopRecording()"
         [color]="'danger'"
-        class="cursor-pointer btn-icon"
-        [name]="'square'"
+        class="cursor-pointer btn-icon-player"
+        src="assets/images/stop.svg"
+        title="stop"
       ></ion-icon>
       <!-- </ion-button> -->
     </div>

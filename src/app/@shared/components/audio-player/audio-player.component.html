@@ -11,9 +11,9 @@
     <ion-icon
       (click)="wave.playPause()"
       slot="end"
-      class="curson-pointer btn-icon"
+      class="curson-pointer btn-icon-player"
       [color]="!isPlaying ? 'tertiary' : 'danger'"
-      [name]="isPlaying ? 'square' : 'play'"
+      [src]="isPlaying ? 'assets/images/stop.svg' : 'assets/images/play.svg'"
     ></ion-icon>
 
     <!-- <ion-button
