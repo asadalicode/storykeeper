@@ -351,3 +351,7 @@ ion-toolbar {
     object-fit: contain;
   }
 }
+
+.disabled {
+  pointer-events: none;
+}
