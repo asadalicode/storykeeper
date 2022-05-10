@@ -6802,7 +6802,8 @@ ion-button {
   text-decoration: underline;
   color: var(--ion-color-secondary);
 }
-.curson-pointer {
+.curson-pointer,
+.cursor-pointer {
   cursor: pointer;
 }
 .submit-button,

@@ -8,7 +8,15 @@
   </p>
 
   <div class="d-flex justify-content-center mt-5">
-    <ion-button
+    <ion-icon
+      (click)="wave.playPause()"
+      slot="end"
+      class="curson-pointer btn-icon"
+      [color]="!isPlaying ? 'tertiary' : 'danger'"
+      [name]="isPlaying ? 'square' : 'play'"
+    ></ion-icon>
+
+    <!-- <ion-button
       [disabled]="!isPlayable"
       (click)="wave.playPause()"
       type="button"
@@ -17,7 +25,6 @@
       color="tranparent"
     >
       <ion-icon [color]="!isPlaying ? 'tertiary' : 'danger'" [name]="isPlaying ? 'square' : 'play'"></ion-icon>
-      <!-- <ion-img [src]="isPlaying ? 'assets/images/stop.svg' : 'assets/images/play.svg'" alt="icon"></ion-img> -->
-    </ion-button>
+    </ion-button> -->
   </div>
 </div>

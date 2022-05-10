@@ -1,11 +1,11 @@
 <div class="d-flex justify-content-center mt-5">
   <div class="container">
     <!-- <div style="max-height: 50px;"> -->
-    <cd-timer #basicTimer [autoStart]="false" format="ms"></cd-timer>
-    <ion-progress-bar *ngIf="isWeb" [value]="isPlaying ? step * 5 : 0"></ion-progress-bar>
+    Recording time: <cd-timer #basicTimer [autoStart]="false" format="ms"></cd-timer>
+    <ion-progress-bar *ngIf="isWeb" class="mt-2" [value]="isPlaying ? step * 5 : 0"></ion-progress-bar>
 
-    <div class="row justify-content-center mt-3">
-      <ion-button
+    <div class="row justify-content-center mt-5">
+      <!-- <ion-button
         *ngIf="isRecStarted && !isRecorded"
         [disabled]="!hasRecordingPermission"
         (click)="!isPlaying ? resumeRecording() : pauseRecording()"
@@ -19,9 +19,19 @@
           [color]="!isPlaying ? 'tertiary' : 'danger'"
           [name]="isPlaying ? 'pause' : 'play'"
         ></ion-icon>
-      </ion-button>
+      </ion-button> -->
 
-      <ion-button
+      <ion-icon
+        [class.disabled]="!hasRecordingPermission"
+        [ngClass]="isPlaying ? 'blink' : ''"
+        (click)="!isPlaying ? resumeRecording() : pauseRecording()"
+        slot="end"
+        class="cursor-pointer btn-icon mr-2"
+        [color]="!isPlaying ? 'tertiary' : 'danger'"
+        [name]="isPlaying ? 'pause' : 'play'"
+      ></ion-icon>
+
+      <!-- <ion-button
         *ngIf="isRecStarted && !isRecorded"
         [disabled]="!hasRecordingPermission"
         (click)="stopRecording()"
@@ -29,9 +39,16 @@
         shape="circle"
         class="control-button ion-border"
         color="tranparent"
-      >
-        <ion-icon [color]="'danger'" [name]="'square'"></ion-icon>
-      </ion-button>
+      > -->
+      <ion-icon
+        *ngIf="isRecStarted && !isRecorded"
+        [class.disabled]="!hasRecordingPermission"
+        (click)="stopRecording()"
+        [color]="'danger'"
+        class="cursor-pointer btn-icon"
+        [name]="'square'"
+      ></ion-icon>
+      <!-- </ion-button> -->
     </div>
   </div>
 </div>
