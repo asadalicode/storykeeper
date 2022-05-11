@@ -46,6 +46,10 @@ ion-button {
 .d-flex-row {
   display: flex;
   flex-direction: row;
+
+  @include for-phone-only {
+    flex-direction: column;
+  }
 }
 
 .text-primary {
@@ -217,7 +221,7 @@ ion-segment {
   }
 
   @include for-phone-only {
-    grid-template-columns: repeat(auto-fit, minmax(170px, 0fr));
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     grid-column-gap: 15px;
     .book-thumbnail {
       background: #dfe2e9;
@@ -258,6 +262,11 @@ ion-breadcrumb {
     font-weight: normal;
     font-size: 24px;
     line-height: 24px;
+
+    @include for-phone-only {
+      font-size: 14px;
+      line-height: 24px;
+    }
   }
 }
 
