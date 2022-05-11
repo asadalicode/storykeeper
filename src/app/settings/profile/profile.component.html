@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content class="ion-padding-horizontal setting-page">
-  <ion-list [ngClass]="isWeb ? 'p-5' : 'p-1'">
+  <ion-list class="web-page">
     <ion-list-header *ngIf="isWeb" class="p-0 mb-2">
       <ion-label translate> <h1>My Profile</h1></ion-label>
     </ion-list-header>
@@ -40,13 +40,13 @@
           <!--  others emails not a part for form -->
           <ion-item lines="none" color="light">
             <ion-label class="form-input-label" position="stacked" translate>Email address (Secondary)</ion-label>
-            <ul class="ion-padding w-100 list-unstyled">
+            <ul class="ion-padding font-size-12px w-100 list-unstyled">
               <li *ngFor="let item of UserEmails">
                 <span>{{ item.email }}</span>
                 <span
                   (click)="RemoveEmail(item)"
                   title="Remove Email"
-                  class="ion-float-end ion-align-self-center mr-3 curson-pointer"
+                  class="ion-float-end ion-align-self-center ml-3 curson-pointer"
                 >
                   <ion-icon name="close-outline" slot="end" style="pointer-events: none"></ion-icon>
                 </span>

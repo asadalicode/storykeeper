@@ -1,7 +1,13 @@
+@import "../../../../theme/mixins.scss";
 :host {
   .footer {
     border-top: 1px solid rgba(36, 47, 64, 0.2);
     padding: 20px 4rem;
+
+    @include for-phone-only {
+      text-align: center;
+      padding: 20px 1.5rem;
+    }
   }
 
   .inline-list {
@@ -21,9 +27,15 @@
 
   .col-width {
     width: 270px;
+    @include for-phone-only {
+      margin: auto;
+    }
   }
 
   .text {
     font-size: 14px;
+    @include for-phone-only {
+      margin: auto;
+    }
   }
 }
