@@ -6827,6 +6827,11 @@ ion-button {
   display: flex;
   flex-direction: row;
 }
+@media (max-width: 599px) {
+  .d-flex-row {
+    flex-direction: column;
+  }
+}
 .text-primary {
   color: var(--ion-color-primary) !important;
 }
@@ -6978,7 +6983,7 @@ ion-segment ion-segment-button::part(indicator) {
 }
 @media (max-width: 599px) {
   .grid-container {
-    grid-template-columns: repeat(auto-fit, minmax(170px, 0fr));
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     grid-column-gap: 15px;
   }
   .grid-container .book-thumbnail {
@@ -7010,6 +7015,12 @@ ion-breadcrumb::part(native) {
   font-weight: 400;
   font-size: 24px;
   line-height: 24px;
+}
+@media (max-width: 599px) {
+  ion-breadcrumb::part(native) {
+    font-size: 14px;
+    line-height: 24px;
+  }
 }
 .btn-icon {
   font-size: 20px;
