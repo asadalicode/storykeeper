@@ -61,15 +61,13 @@
         Complete Story
       </ion-button>
 
-      <ion-text>
+      <ion-text *ngIf="isRecorded && !isAudioAvailable">
         <!-- <p class="text-button" *ngIf="!isRecording">Upload Recording</p> -->
-        <p class="text-button status-pending" *ngIf="isRecorded && !isAudioAvailable" (click)="reRecordStory()">
-          Delete and Rerecord
-        </p>
+        <p class="text-button status-pending" (click)="reRecordStory()">Delete and Rerecord</p>
       </ion-text>
 
       <ng-container>
-        <div class="w-75 m-auto pt-3">
+        <div class="w-75 m-auto">
           <app-audio-player *ngIf="isRecorded" [audioUrl]="story?.answer"></app-audio-player>
           <app-recording-player
             *ngIf="isRecording"

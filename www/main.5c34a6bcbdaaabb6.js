@@ -15297,17 +15297,17 @@
       function qc(s, r) {
         if (1 & s) {
           const t = e.EpF();
-          e.TgZ(0, 'ion-header', 13),
+          e.TgZ(0, 'ion-header', 14),
             e._uU(1, '\n        '),
             e.TgZ(2, 'ion-toolbar'),
             e._uU(3, '\n          '),
-            e.TgZ(4, 'ion-buttons', 14),
+            e.TgZ(4, 'ion-buttons', 15),
             e._uU(5, '\n            '),
-            e._UZ(6, 'ion-back-button', 15),
+            e._UZ(6, 'ion-back-button', 16),
             e._uU(7, '\n          '),
             e.qZA(),
             e._uU(8, '\n          '),
-            e.TgZ(9, 'ion-icon', 16),
+            e.TgZ(9, 'ion-icon', 17),
             e.NdJ('click', function () {
               return e.CHM(t), e.oxw().openMenu();
             }),
@@ -15319,28 +15319,28 @@
         }
       }
       function $u(s, r) {
-        if ((1 & s && e._UZ(0, 'app-loader', 17), 2 & s)) {
+        if ((1 & s && e._UZ(0, 'app-loader', 18), 2 & s)) {
           const t = e.oxw();
           e.Q6J('isLoading', t.isLoading);
         }
       }
       function hf(s, r) {
-        if ((1 & s && e._UZ(0, 'app-list-item', 19), 2 & s)) {
+        if ((1 & s && e._UZ(0, 'app-list-item', 20), 2 & s)) {
           const t = e.oxw().$implicit;
           e.Q6J('item', t);
         }
       }
       function Qg(s, r) {
         1 & s &&
-          (e.TgZ(0, 'div', 20),
+          (e.TgZ(0, 'div', 21),
           e._uU(1, '\n                '),
           e.TgZ(2, 'p'),
           e._uU(3, 'No books available!'),
           e.qZA(),
           e._uU(4, '\n                '),
-          e.TgZ(5, 'div', 21),
+          e.TgZ(5, 'div', 22),
           e._uU(6, '\n                  '),
-          e._UZ(7, 'img', 22),
+          e._UZ(7, 'img', 23),
           e._uU(8, '\n                '),
           e.qZA(),
           e._uU(9, '\n              '),
@@ -15351,9 +15351,9 @@
           (1 & s &&
             (e.ynx(0),
             e._uU(1, '\n              '),
-            e.YNc(2, hf, 1, 1, 'app-list-item', 18),
+            e.YNc(2, hf, 1, 1, 'app-list-item', 19),
             e._uU(3, '\n              '),
-            e.YNc(4, Qg, 10, 0, 'div', 10),
+            e.YNc(4, Qg, 10, 0, 'div', 11),
             e._uU(5, '\n            '),
             e.BQk()),
           2 & s)
@@ -15368,15 +15368,15 @@
       }
       function Qh(s, r) {
         1 & s &&
-          (e.TgZ(0, 'div', 20),
+          (e.TgZ(0, 'div', 21),
           e._uU(1, '\n              '),
           e.TgZ(2, 'p'),
           e._uU(3, 'No books available!'),
           e.qZA(),
           e._uU(4, '\n\n              '),
-          e.TgZ(5, 'div', 21),
+          e.TgZ(5, 'div', 22),
           e._uU(6, '\n                '),
-          e._UZ(7, 'img', 22),
+          e._UZ(7, 'img', 23),
           e._uU(8, '\n              '),
           e.qZA(),
           e._uU(9, '\n            '),
@@ -15385,15 +15385,15 @@
       function Jh(s, r) {
         if (1 & s) {
           const t = e.EpF();
-          e.TgZ(0, 'ion-item', 24),
+          e.TgZ(0, 'ion-item', 25),
             e._uU(1, '\n                '),
-            e.TgZ(2, 'ion-label', 25),
+            e.TgZ(2, 'ion-label', 26),
             e._uU(3, '\n                  '),
-            e._UZ(4, 'app-list-item', 19),
+            e._UZ(4, 'app-list-item', 20),
             e._uU(5, '\n                  '),
-            e.TgZ(6, 'div', 26),
+            e.TgZ(6, 'div', 27),
             e._uU(7, '\n                    '),
-            e.TgZ(8, 'ion-button', 27),
+            e.TgZ(8, 'ion-button', 28),
             e.NdJ('click', function () {
               const g = e.CHM(t).$implicit;
               return e.oxw(2).openRequestPopup(g);
@@ -15414,15 +15414,15 @@
       }
       function pf(s, r) {
         1 & s &&
-          (e.TgZ(0, 'div', 20),
+          (e.TgZ(0, 'div', 21),
           e._uU(1, '\n                '),
           e.TgZ(2, 'p'),
           e._uU(3, 'You do not have any new book requests at this time.'),
           e.qZA(),
           e._uU(4, '\n                '),
-          e.TgZ(5, 'div', 21),
+          e.TgZ(5, 'div', 22),
           e._uU(6, '\n                  '),
-          e._UZ(7, 'img', 22),
+          e._UZ(7, 'img', 23),
           e._uU(8, '\n                '),
           e.qZA(),
           e._uU(9, '\n              '),
@@ -15433,9 +15433,9 @@
           (1 & s &&
             (e.ynx(0),
             e._uU(1, '\n              '),
-            e.YNc(2, Jh, 13, 2, 'ion-item', 23),
+            e.YNc(2, Jh, 13, 2, 'ion-item', 24),
             e._uU(3, '\n              '),
-            e.YNc(4, pf, 10, 0, 'div', 10),
+            e.YNc(4, pf, 10, 0, 'div', 11),
             e._uU(5, '\n            '),
             e.BQk()),
           2 & s)
@@ -15572,9 +15572,10 @@
               [1, 'p-0', 'mt-3'],
               ['fxLayout', 'row', 'fxLayoutAlign', 'space-between center'],
               [1, 'heading'],
+              [1, 'ion-padding-vertical'],
               [4, 'ngFor', 'ngForOf'],
               ['class', 'no-published-book', 4, 'ngIf'],
-              ['slot', 'content'],
+              ['slot', 'content', 1, 'ion-padding-vertical'],
               [4, 'ngIf'],
               [1, 'ion-no-padding', 'ion-no-border'],
               ['slot', 'start'],
@@ -15667,11 +15668,11 @@
                 e._uU(30, '\n          '),
                 e.qZA(),
                 e._uU(31, '\n\n          '),
-                e.TgZ(32, 'ion-list'),
+                e.TgZ(32, 'ion-list', 9),
                 e._uU(33, '\n            '),
-                e.YNc(34, to, 6, 2, 'ng-container', 9),
+                e.YNc(34, to, 6, 2, 'ng-container', 10),
                 e._uU(35, '\n            '),
-                e.YNc(36, Qh, 10, 0, 'div', 10),
+                e.YNc(36, Qh, 10, 0, 'div', 11),
                 e._uU(37, '\n          '),
                 e.qZA(),
                 e._uU(38, '\n        '),
@@ -15687,9 +15688,9 @@
                 e._uU(46, '\n          '),
                 e.qZA(),
                 e._uU(47, '\n\n          '),
-                e.TgZ(48, 'ion-list', 11),
+                e.TgZ(48, 'ion-list', 12),
                 e._uU(49, '\n            '),
-                e.YNc(50, gf, 6, 2, 'ng-container', 12),
+                e.YNc(50, gf, 6, 2, 'ng-container', 13),
                 e.ALo(51, 'filter'),
                 e._uU(52, '\n          '),
                 e.qZA(),
@@ -22765,21 +22766,21 @@
       })();
       function Jy(s, r) {
         1 & s &&
-          (e.TgZ(0, 'ion-header', 17),
+          (e.TgZ(0, 'ion-header', 16),
           e._uU(1, '\n    '),
           e.TgZ(2, 'ion-toolbar'),
           e._uU(3, '\n      '),
-          e.TgZ(4, 'ion-buttons', 18),
+          e.TgZ(4, 'ion-buttons', 17),
           e._uU(5, '\n        '),
-          e._UZ(6, 'ion-back-button', 19),
+          e._UZ(6, 'ion-back-button', 18),
           e._uU(7, '\n      '),
           e.qZA(),
           e._uU(8, '\n      '),
-          e.TgZ(9, 'ion-title', 20),
+          e.TgZ(9, 'ion-title', 19),
           e._uU(10, 'Recording'),
           e.qZA(),
           e._uU(11, '\n      '),
-          e.TgZ(12, 'ion-icon', 21),
+          e.TgZ(12, 'ion-icon', 20),
           e._uU(13, '\n      '),
           e.qZA(),
           e._uU(14, '\n    '),
@@ -22790,15 +22791,15 @@
       function iy(s, r) {
         if (
           (1 & s &&
-            (e.TgZ(0, 'ion-text', 22),
+            (e.TgZ(0, 'ion-text', 21),
             e._uU(1, '\n      '),
             e.TgZ(2, 'ion-breadcrumbs'),
             e._uU(3, '\n        '),
-            e.TgZ(4, 'ion-breadcrumb', 23),
+            e.TgZ(4, 'ion-breadcrumb', 22),
             e._uU(5, ' My Books '),
             e.qZA(),
             e._uU(6, '\n        '),
-            e.TgZ(7, 'ion-breadcrumb', 24),
+            e.TgZ(7, 'ion-breadcrumb', 23),
             e._uU(8),
             e.qZA(),
             e._uU(9, '\n        '),
@@ -22830,7 +22831,7 @@
           (1 & s &&
             (e.TgZ(0, 'ion-text'),
             e._uU(1, '\n        '),
-            e.TgZ(2, 'h2', 25),
+            e.TgZ(2, 'h2', 24),
             e._uU(3),
             e.qZA(),
             e._uU(4, '\n      '),
@@ -22842,13 +22843,13 @@
         }
       }
       function O_(s, r) {
-        if ((1 & s && (e.TgZ(0, 'h2', 25), e._uU(1), e.qZA()), 2 & s)) {
+        if ((1 & s && (e.TgZ(0, 'h2', 24), e._uU(1), e.qZA()), 2 & s)) {
           const t = e.oxw();
           e.xp6(1), e.Oqu(null == t.routeParams ? null : t.routeParams.bookTitle);
         }
       }
       function Xy(s, r) {
-        if ((1 & s && e._UZ(0, 'app-loader', 26), 2 & s)) {
+        if ((1 & s && e._UZ(0, 'app-loader', 25), 2 & s)) {
           const t = e.oxw();
           e.Q6J('isLoading', t.isLoading);
         }
@@ -22856,7 +22857,7 @@
       function ev(s, r) {
         if (1 & s) {
           const t = e.EpF();
-          e.TgZ(0, 'ion-button', 27),
+          e.TgZ(0, 'ion-button', 26),
             e.NdJ('click', function () {
               return e.CHM(t), (e.oxw(2).isRecording = !0);
             }),
@@ -22882,7 +22883,7 @@
       function ry(s, r) {
         if (1 & s) {
           const t = e.EpF();
-          e.TgZ(0, 'ion-button', 27),
+          e.TgZ(0, 'ion-button', 26),
             e.NdJ('click', function () {
               return e.CHM(t), e.oxw().sendStory();
             }),
@@ -22894,16 +22895,21 @@
       function oy(s, r) {
         if (1 & s) {
           const t = e.EpF();
-          e.TgZ(0, 'p', 28),
+          e.TgZ(0, 'ion-text'),
+            e._uU(1, '\n        '),
+            e._uU(2, '\n        '),
+            e.TgZ(3, 'p', 27),
             e.NdJ('click', function () {
               return e.CHM(t), e.oxw().reRecordStory();
             }),
-            e._uU(1, '\n          Delete and Rerecord\n        '),
+            e._uU(4, 'Delete and Rerecord'),
+            e.qZA(),
+            e._uU(5, '\n      '),
             e.qZA();
         }
       }
       function nv(s, r) {
-        if ((1 & s && e._UZ(0, 'app-audio-player', 29), 2 & s)) {
+        if ((1 & s && e._UZ(0, 'app-audio-player', 28), 2 & s)) {
           const t = e.oxw();
           e.Q6J('audioUrl', null == t.story ? null : t.story.answer);
         }
@@ -22911,7 +22917,7 @@
       function iv(s, r) {
         if (1 & s) {
           const t = e.EpF();
-          e.TgZ(0, 'app-recording-player', 30, 31),
+          e.TgZ(0, 'app-recording-player', 29, 30),
             e.NdJ('audioFileAction', function (d) {
               return e.CHM(t), e.oxw().getAudioFile(d);
             })('audioStopped', function (d) {
@@ -23147,7 +23153,7 @@
           (s.ɵcmp = e.Xpm({
             type: s,
             selectors: [['app-record-story']],
-            decls: 53,
+            decls: 49,
             vars: 19,
             consts: [
               [1, 'ion-page', 'bg'],
@@ -23177,8 +23183,7 @@
                 4,
                 'ngIf',
               ],
-              ['class', 'text-button status-pending', 3, 'click', 4, 'ngIf'],
-              [1, 'w-75', 'm-auto', 'pt-3'],
+              [1, 'w-75', 'm-auto'],
               [3, 'audioUrl', 4, 'ngIf'],
               [3, 'startRecord', 'audioFileAction', 'audioStopped', 4, 'ngIf'],
               [1, 'ion-no-padding', 'ion-no-border'],
@@ -23261,31 +23266,26 @@
                 e._uU(31, '\n\n      '),
                 e.YNc(32, ry, 2, 1, 'ion-button', 12),
                 e._uU(33, '\n\n      '),
-                e.TgZ(34, 'ion-text'),
-                e._uU(35, '\n        '),
-                e._uU(36, '\n        '),
-                e.YNc(37, oy, 2, 0, 'p', 13),
-                e._uU(38, '\n      '),
+                e.YNc(34, oy, 6, 0, 'ion-text', 4),
+                e._uU(35, '\n\n      '),
+                e.ynx(36),
+                e._uU(37, '\n        '),
+                e.TgZ(38, 'div', 13),
+                e._uU(39, '\n          '),
+                e.YNc(40, nv, 1, 1, 'app-audio-player', 14),
+                e._uU(41, '\n          '),
+                e.YNc(42, iv, 2, 1, 'app-recording-player', 15),
+                e._uU(43, '\n        '),
                 e.qZA(),
-                e._uU(39, '\n\n      '),
-                e.ynx(40),
-                e._uU(41, '\n        '),
-                e.TgZ(42, 'div', 14),
-                e._uU(43, '\n          '),
-                e.YNc(44, nv, 1, 1, 'app-audio-player', 15),
-                e._uU(45, '\n          '),
-                e.YNc(46, iv, 2, 1, 'app-recording-player', 16),
-                e._uU(47, '\n        '),
-                e.qZA(),
-                e._uU(48, '\n      '),
+                e._uU(44, '\n      '),
                 e.BQk(),
-                e._uU(49, '\n    '),
+                e._uU(45, '\n    '),
                 e.qZA(),
-                e._uU(50, '\n  '),
+                e._uU(46, '\n  '),
                 e.qZA(),
-                e._uU(51, '\n'),
+                e._uU(47, '\n'),
                 e.qZA(),
-                e._uU(52, '\n')),
+                e._uU(48, '\n')),
                 2 & t &&
                   (e.ekj('bg', !o.isWeb),
                   e.xp6(2),
@@ -23312,9 +23312,9 @@
                   e.Q6J('ngIf', !o.isLoading),
                   e.xp6(2),
                   e.Q6J('ngIf', o.isRecorded && !o.isAudioAvailable),
-                  e.xp6(5),
+                  e.xp6(2),
                   e.Q6J('ngIf', o.isRecorded && !o.isAudioAvailable),
-                  e.xp6(7),
+                  e.xp6(6),
                   e.Q6J('ngIf', o.isRecorded),
                   e.xp6(2),
                   e.Q6J('ngIf', o.isRecording));
@@ -32561,7 +32561,7 @@
             ],
             pipes: [cf],
             styles: [
-              'ion-card[_ngcontent-%COMP%]{margin:0;box-shadow:none;--background: linear-gradient(164.45deg, var(--ion-color-primary) 33.07%, #3b4960 91.99%);--color: #fff;border-radius:0 0 30px 30px}ion-card[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%]{color:#fff}ion-card.header-web[_ngcontent-%COMP%]{text-align:left!important;position:relative;right:0;top:11px;--background: #fff !important;--color: #242f40;margin-bottom:32px;border-radius:0}ion-card.header-web[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%]{color:#242f40;font-size:24px;font-weight:700;line-height:1.5}ion-card.header-web[_ngcontent-%COMP%]   p[_ngcontent-%COMP%]{font-size:16px;line-height:1.5;font-weight:300}ion-card.header-web[_ngcontent-%COMP%]   .actions[_ngcontent-%COMP%]{position:absolute;right:0;top:15px;margin:0!important}.ion-page[_ngcontent-%COMP%]{padding:4rem}ion-avatar[_ngcontent-%COMP%]{--border-radius: 8px;width:60px;height:60px}h3[_ngcontent-%COMP%]{font-weight:600;font-size:14px;margin:0;line-height:20px}p[_ngcontent-%COMP%]{font-size:12px;line-height:20px}.cursor-pointer[_ngcontent-%COMP%]{cursor:pointer}section[_ngcontent-%COMP%]   .heading[_ngcontent-%COMP%]{color:#242f40;font-size:18px;font-weight:600}ion-item[_ngcontent-%COMP%]::part(native)   .input-wrapper[_ngcontent-%COMP%]{place-content:space-between center}',
+              'ion-card[_ngcontent-%COMP%]{margin:0;box-shadow:none;--background: linear-gradient(164.45deg, var(--ion-color-primary) 33.07%, #3b4960 91.99%);--color: #fff;border-radius:0 0 30px 30px}ion-card[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%]{color:#fff}ion-card.header-web[_ngcontent-%COMP%]{text-align:left!important;position:relative;right:0;top:11px;--background: #fff !important;--color: #242f40;margin-bottom:32px;border-radius:0}ion-card.header-web[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%]{color:#242f40;font-size:24px;font-weight:700;line-height:1.5}ion-card.header-web[_ngcontent-%COMP%]   p[_ngcontent-%COMP%]{font-size:16px;line-height:1.5;font-weight:300}ion-card.header-web[_ngcontent-%COMP%]   .actions[_ngcontent-%COMP%]{position:absolute;right:0;top:15px;margin:0!important}@media (max-width: 599px){ion-card.header-web[_ngcontent-%COMP%]   .actions[_ngcontent-%COMP%]{position:static;text-align:center;margin:20px!important}}.ion-page[_ngcontent-%COMP%]{padding:4rem}ion-avatar[_ngcontent-%COMP%]{--border-radius: 8px;width:60px;height:60px}h3[_ngcontent-%COMP%]{font-weight:600;font-size:14px;margin:0;line-height:20px}p[_ngcontent-%COMP%]{font-size:12px;line-height:20px}.cursor-pointer[_ngcontent-%COMP%]{cursor:pointer}section[_ngcontent-%COMP%]   .heading[_ngcontent-%COMP%]{color:#242f40;font-size:18px;font-weight:600}ion-item[_ngcontent-%COMP%]::part(native)   .input-wrapper[_ngcontent-%COMP%]{place-content:space-between center}',
             ],
             data: { animation: [nt] },
           })),
