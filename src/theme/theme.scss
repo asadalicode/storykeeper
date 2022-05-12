@@ -357,10 +357,9 @@ ion-toolbar {
   border-radius: 14px;
   object-fit: cover;
   @include for-phone-only {
-    min-height: 35vh;
-    min-width: 70%;
+    height: 200px;
+    width: 100%;
     border-radius: 14px;
-    // max-height: 40vh;
     object-fit: contain;
   }
 }
