@@ -21423,7 +21423,7 @@
               'form-input',
             ],
             ['href', '#', 1, 'forgot-password-link'],
-            [1, 'ion-margin-horizontal'],
+            [1, 'ion-margin-horizontal', 2, 'box-shadow', 'none', 'outline', 'none', 'background', 'none'],
             [
               'fill',
               'solid',
