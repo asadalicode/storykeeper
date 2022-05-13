@@ -24137,14 +24137,14 @@
             e._uU(1, '\n    '),
             e.TgZ(2, 'ion-header', 12),
             e._uU(3, '\n      '),
-            e.TgZ(4, 'ion-toolbar', 2),
+            e.TgZ(4, 'ion-toolbar', 13),
             e._uU(5, '\n        '),
             e._uU(6, '\n        '),
-            e.TgZ(7, 'ion-title', 13),
+            e.TgZ(7, 'ion-title', 14),
             e._uU(8, 'My Library'),
             e.qZA(),
             e._uU(9, '\n        '),
-            e.TgZ(10, 'ion-icon', 14),
+            e.TgZ(10, 'ion-icon', 15),
             e.NdJ('click', function () {
               return e.CHM(t), e.oxw().openMenu();
             }),
@@ -24154,9 +24154,9 @@
             e._uU(12, '\n    '),
             e.qZA(),
             e._uU(13, '\n    '),
-            e.TgZ(14, 'div', 15),
+            e.TgZ(14, 'div', 16),
             e._uU(15, '\n      '),
-            e._UZ(16, 'img', 16),
+            e._UZ(16, 'img', 17),
             e._uU(17, '\n    '),
             e.qZA(),
             e._uU(18, '\n    '),
@@ -24164,15 +24164,15 @@
             e._uU(20, '\n      '),
             e.TgZ(21, 'ion-card-title'),
             e._uU(22, '\n        '),
-            e.TgZ(23, 'h1', 17),
+            e.TgZ(23, 'h1', 18),
             e._uU(24),
             e.qZA(),
             e._uU(25, '\n      '),
             e.qZA(),
             e._uU(26, '\n      '),
-            e.TgZ(27, 'div', 18),
+            e.TgZ(27, 'div', 19),
             e._uU(28, '\n        '),
-            e.TgZ(29, 'ion-button', 19),
+            e.TgZ(29, 'ion-button', 20),
             e.NdJ('click', function () {
               return e.CHM(t), e.oxw().buyNewBook();
             }),
@@ -24200,9 +24200,9 @@
       function yg(s, r) {
         if (
           (1 & s &&
-            (e.TgZ(0, 'ion-segment-button', 20),
+            (e.TgZ(0, 'ion-segment-button', 21),
             e._uU(1, '\n          '),
-            e.TgZ(2, 'ion-label'),
+            e.TgZ(2, 'ion-label', 22),
             e._uU(3),
             e.qZA(),
             e._uU(4, '\n        '),
@@ -24214,17 +24214,17 @@
         }
       }
       function fy(s, r) {
-        1 & s && (e.TgZ(0, 'p', 21), e._uU(1, 'Edit a book to start your book request'), e.qZA());
+        1 & s && (e.TgZ(0, 'p', 23), e._uU(1, 'Edit a book to start your book request'), e.qZA());
       }
       function xv(s, r) {
-        1 & s && e._UZ(0, 'app-books-card', 24), 2 & s && e.Q6J('book', r.$implicit);
+        1 & s && e._UZ(0, 'app-books-card', 26), 2 & s && e.Q6J('book', r.$implicit);
       }
       function Cv(s, r) {
         if (
           (1 & s &&
-            (e.TgZ(0, 'div', 22),
+            (e.TgZ(0, 'div', 24),
             e._uU(1, '\n        '),
-            e.YNc(2, xv, 1, 1, 'app-books-card', 23),
+            e.YNc(2, xv, 1, 1, 'app-books-card', 25),
             e._uU(3, '\n      '),
             e.qZA()),
           2 & s)
@@ -24234,7 +24234,7 @@
         }
       }
       function Av(s, r) {
-        if ((1 & s && e._UZ(0, 'app-loader', 25), 2 & s)) {
+        if ((1 & s && e._UZ(0, 'app-loader', 27), 2 & s)) {
           const t = e.oxw();
           e.Q6J('isLoading', t.isLoading);
         }
@@ -24242,19 +24242,19 @@
       function Ev(s, r) {
         if (
           (1 & s &&
-            (e.TgZ(0, 'div', 26),
+            (e.TgZ(0, 'div', 28),
             e._uU(1, '\n      '),
-            e.TgZ(2, 'ion-text', 2),
+            e.TgZ(2, 'ion-text', 13),
             e._uU(3, '\n        '),
-            e.TgZ(4, 'p', 27),
+            e.TgZ(4, 'p', 29),
             e._uU(5, 'We are sorry, you have not become the author of the book yet.'),
             e.qZA(),
             e._uU(6, '\n      '),
             e.qZA(),
             e._uU(7, '\n\n      '),
-            e.TgZ(8, 'div', 28),
+            e.TgZ(8, 'div', 30),
             e._uU(9, '\n        '),
-            e._UZ(10, 'img', 29),
+            e._UZ(10, 'img', 31),
             e._uU(11, '\n      '),
             e.qZA(),
             e._uU(12, '\n    '),
@@ -24414,7 +24414,7 @@
               consts: [
                 ['class', 'ion-text-center', 4, 'ngIf'],
                 [1, 'ion-padding'],
-                ['color', 'primary'],
+                ['mode', 'md', 'color', 'primary'],
                 [1, 'heading'],
                 ['mode', 'md', 'scrollable', '', 3, 'value', 'ionChange'],
                 ['mode', 'md', 3, 'value', 4, 'ngFor', 'ngForOf'],
@@ -24425,6 +24425,7 @@
                 [3, 'p-5', 'fxLayout', 4, 'ngIf'],
                 [1, 'ion-text-center'],
                 ['color', 'primary', 1, 'ion-no-border'],
+                ['color', 'primary'],
                 [1, 'ml-5', 'text-white', 'ion-align-items-end', 'ion-text-center'],
                 [
                   'slot',
@@ -24457,6 +24458,7 @@
                   'click',
                 ],
                 ['mode', 'md', 3, 'value'],
+                ['mode', 'md'],
                 [1, 'small'],
                 [1, 'grid-container'],
                 [3, 'book', 4, 'ngFor', 'ngForOf'],

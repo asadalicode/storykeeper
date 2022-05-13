@@ -37,11 +37,11 @@
   </ion-card>
 
   <div class="ion-padding" [class.web-page]="isWeb">
-    <ion-text color="primary">
+    <ion-text mode="md" color="primary">
       <h1 class="heading" [class.isWeb]="isWeb">My Books in Library</h1>
       <ion-segment mode="md" scrollable [value]="segmentValue" (ionChange)="segmentChanged($event)">
         <ion-segment-button mode="md" *ngFor="let item of segments" [value]="item.value">
-          <ion-label>{{ item.name }}</ion-label>
+          <ion-label mode="md">{{ item.name }}</ion-label>
         </ion-segment-button>
       </ion-segment>
       <p class="small" *ngIf="segmentValue == 'pending'">Edit a book to start your book request</p>
