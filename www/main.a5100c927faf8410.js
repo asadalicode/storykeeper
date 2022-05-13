@@ -14350,7 +14350,7 @@
             e.qZA(),
             e._uU(21, '\n                '),
             e.qZA(),
-            e._uU(22, '\n                '),
+            e._uU(22, '\n                \n                '),
             e.TgZ(23, 'ion-icon', 22),
             e.NdJ('click', function () {
               const g = e.CHM(t).$implicit;

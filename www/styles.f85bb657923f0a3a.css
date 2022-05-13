@@ -6812,6 +6812,9 @@ ion-button {
   height: 56px;
   font-weight: 700;
   font-size: 16px;
+  box-shadow: none;
+  outline: none;
+  background: none;
 }
 .submit-button.sm,
 .primary-button.sm,
