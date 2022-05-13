@@ -86,7 +86,9 @@
                     <ion-text>
                       <h3>{{ item?.question }}</h3>
                       <!-- <ion-label color="success">Published• 01/2021 • Lena Horushenko</ion-label> -->
-                      <ion-label color="success">Published• - • -</ion-label>
+                      <ion-label color="success"
+                        >Published• {{ item?.answerLastModificationDate | date: 'medium' }}</ion-label
+                      >
                     </ion-text>
                   </ion-label>
                   <ion-icon

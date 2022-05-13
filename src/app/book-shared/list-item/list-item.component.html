@@ -14,7 +14,7 @@
         <!-- • {{ item?.year ? item?.year : '-' }} -->
         <span class="{{ 'status-' + bookStatus(item?.status) }} text-capitalize">{{ bookStatus(item?.status) }} </span>
         <span class="{{ 'status-' + bookStatus(item?.status) }}"
-          >• Sender: {{ item?.recipientEmail ? item?.recipientEmail : '-' }}</span
+          >• Sender: {{ item?.senderUser ? item?.senderUser?.firstName + ' ' + item?.senderUser?.lastName : '-' }}</span
         >
       </ion-label>
     </ion-text>
