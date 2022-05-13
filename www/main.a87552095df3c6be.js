@@ -14350,7 +14350,7 @@
             e.qZA(),
             e._uU(21, '\n                '),
             e.qZA(),
-            e._uU(22, '\n                \n                '),
+            e._uU(22, '\n\n                '),
             e.TgZ(23, 'ion-icon', 22),
             e.NdJ('click', function () {
               const g = e.CHM(t).$implicit;
@@ -21423,7 +21423,19 @@
               'form-input',
             ],
             ['href', '#', 1, 'forgot-password-link'],
-            [1, 'ion-margin-horizontal', 2, 'box-shadow', 'none', 'outline', 'none', 'background', 'none'],
+            [
+              1,
+              'ion-margin-horizontal',
+              2,
+              'box-shadow',
+              'none',
+              'outline',
+              'none',
+              'background',
+              'transparent',
+              'background-color',
+              'transparent',
+            ],
             [
               'fill',
               'solid',

@@ -34,7 +34,8 @@ ion-button {
   font-size: 16px;
   box-shadow: none;
   outline: none;
-  background: none;
+  background: transparent;
+  background-color: transparent;
   &.sm {
     height: 44px !important;
     min-width: 136px !important;
