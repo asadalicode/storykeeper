@@ -20841,6 +20841,8 @@
             ['src', 'assets/images/apple.svg', 'alt', ''],
             [1, 'ion-padding-horizontal'],
             [
+              'mode',
+              'android',
               'type',
               'submit',
               'color',
@@ -21425,6 +21427,8 @@
             [
               'type',
               'submit',
+              'mode',
+              'android',
               'color',
               'primary',
               'expand',
@@ -22163,6 +22167,8 @@
               [1, 'avatar-caption'],
               [1, 'ion-padding-horizontal'],
               [
+                'mode',
+                'android',
                 'type',
                 'button',
                 'color',
@@ -24449,6 +24455,8 @@
                 [
                   'type',
                   'button',
+                  'mode',
+                  'android',
                   'color',
                   'secondary',
                   'expand',
