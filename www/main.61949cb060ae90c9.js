@@ -20481,7 +20481,7 @@
               },
               directives: [A.q_, u.O5, A.YI, ot.rH, ii.Pi],
               styles: [
-                '.header-background[_ngcontent-%COMP%]{background-color:var(--ion-color-primary);color:var(--ion-color-primary-contrast);height:65px;display:flex;align-items:center;padding:0 20px;place-content:center space-between;position:sticky;top:0;z-index:1}.app-name[_ngcontent-%COMP%]{font-size:24px;font-weight:300;margin:0;line-height:28px}.action-link[_ngcontent-%COMP%]{color:#fff;text-decoration:none;font-weight:400;font-size:14px;display:flex;align-items:center;cursor:pointer}.action-link[_ngcontent-%COMP%]   img[_ngcontent-%COMP%]{margin-right:4px;height:14px}',
+                '.header-background[_ngcontent-%COMP%]{background-color:var(--ion-color-primary);color:var(--ion-color-primary-contrast);height:65px;display:flex;align-items:center;padding:0 20px;place-content:center space-between;position:sticky;top:0;z-index:1}.app-name[_ngcontent-%COMP%]{font-size:24px;font-weight:300;margin:0;line-height:28px}.action-link[_ngcontent-%COMP%]{color:#fff;outline:none;text-decoration:none;font-weight:400;font-size:14px;display:block;align-items:center;cursor:pointer}.action-link[_ngcontent-%COMP%]   img[_ngcontent-%COMP%]{margin-right:4px;height:14px}',
               ],
             })),
             s
@@ -21197,15 +21197,15 @@
           );
         })();
       function W(s, r) {
-        1 & s && e._UZ(0, 'app-header', 32);
+        1 & s && e._UZ(0, 'app-header', 31);
       }
       function ke(s, r) {
-        1 & s && (e.TgZ(0, 'ion-col', 33), e._uU(1, '\n        '), e._UZ(2, 'img', 34), e._uU(3, '\n      '), e.qZA());
+        1 & s && (e.TgZ(0, 'ion-col', 32), e._uU(1, '\n        '), e._UZ(2, 'img', 33), e._uU(3, '\n      '), e.qZA());
       }
       function je(s, r) {
         if (
           (1 & s &&
-            (e.TgZ(0, 'div', 35), e._uU(1, '\n            '), e._UZ(2, 'img', 36), e._uU(3, '\n          '), e.qZA()),
+            (e.TgZ(0, 'div', 34), e._uU(1, '\n            '), e._UZ(2, 'img', 35), e._uU(3, '\n          '), e.qZA()),
           2 & s)
         ) {
           const t = e.oxw();
@@ -21425,12 +21425,8 @@
             ['href', '#', 1, 'forgot-password-link'],
             [1, 'ion-margin-horizontal'],
             [
-              'fill',
-              'solid',
               'type',
               'submit',
-              'mode',
-              'android',
               'color',
               'primary',
               'expand',
@@ -21445,10 +21441,9 @@
             [1, 'social-login'],
             ['color', 'medium'],
             [1, 'ion-padding-top'],
-            [1, 'icon', 3, 'click'],
+            [1, 'icon'],
             ['src', 'assets/images/facebook.svg', 'alt', ''],
             ['src', 'assets/images/google.svg', 'alt', ''],
-            [1, 'icon'],
             ['src', 'assets/images/apple.svg', 'alt', ''],
             ['color', 'tertiary'],
             [1, 'switch-page'],
@@ -21545,7 +21540,7 @@
               e.qZA(),
               e._uU(57, '\n            '),
               e.TgZ(58, 'div', 18),
-              e._uU(59, '\n              '),
+              e._uU(59, '\n\n              '),
               e.TgZ(60, 'ion-button', 19),
               e._uU(61, '\n                Sign_In\n              '),
               e.qZA(),
@@ -21563,26 +21558,20 @@
               e.TgZ(71, 'ion-row'),
               e._uU(72, '\n                  '),
               e.TgZ(73, 'ion-col', 23),
-              e.NdJ('click', function () {
-                return t.signIn();
-              }),
               e._uU(74, '\n                    '),
               e._UZ(75, 'img', 24),
               e._uU(76, '\n                  '),
               e.qZA(),
               e._uU(77, '\n                  '),
               e.TgZ(78, 'ion-col', 23),
-              e.NdJ('click', function () {
-                return t.googleLogin();
-              }),
               e._uU(79, '\n                    '),
               e._UZ(80, 'img', 25),
               e._uU(81, '\n                  '),
               e.qZA(),
               e._uU(82, '\n                  '),
-              e.TgZ(83, 'ion-col', 26),
+              e.TgZ(83, 'ion-col', 23),
               e._uU(84, '\n                    '),
-              e._UZ(85, 'img', 27),
+              e._UZ(85, 'img', 26),
               e._uU(86, '\n                  '),
               e.qZA(),
               e._uU(87, '\n                '),
@@ -21592,11 +21581,11 @@
               e._uU(89, '\n            '),
               e.qZA(),
               e._uU(90, '\n\n            '),
-              e.TgZ(91, 'ion-text', 28),
+              e.TgZ(91, 'ion-text', 27),
               e._uU(92, '\n              '),
-              e.TgZ(93, 'h5', 29),
+              e.TgZ(93, 'h5', 28),
               e._uU(94, 'Do not have an account? '),
-              e.TgZ(95, 'a', 30),
+              e.TgZ(95, 'a', 29),
               e._uU(96, ' Sign up here'),
               e.qZA(),
               e._uU(97, '.'),
@@ -21614,7 +21603,7 @@
               e._uU(103, '\n  '),
               e.qZA(),
               e._uU(104, '\n  '),
-              e.YNc(105, tt, 1, 0, 'app-footer', 31),
+              e.YNc(105, tt, 1, 0, 'app-footer', 30),
               e._uU(106, '\n'),
               e.qZA(),
               e._uU(107, '\n')),
@@ -22338,7 +22327,7 @@
               A.jP,
             ],
             styles: [
-              '.app-name[_ngcontent-%COMP%]{font-style:normal;font-weight:300;font-size:20px;line-height:24px;margin:auto}.logout-button[_ngcontent-%COMP%]{font-size:12px;font-weight:400;color:#fff;text-transform:none}.split-pane-web[_ngcontent-%COMP%]{height:calc(100vh - 55px);margin-top:55px}ion-tab-button[_ngcontent-%COMP%]{width:100%;height:90px;flex:0 1 auto}.header-toolbar[_ngcontent-%COMP%]{padding:0 16px}@media (max-width: 599px){.header-toolbar[_ngcontent-%COMP%]{padding:0}}ion-toolbar[_ngcontent-%COMP%]{--min-height: 60px}ion-menu[_ngcontent-%COMP%]{--background: linear-gradient(164.45deg, var(--ion-color-secondary) 33.07%, var(--ion-color-secondary-shade) 91.99%)}ion-menu.menu-width[_ngcontent-%COMP%]{width:300px}ion-menu[_ngcontent-%COMP%]::part(backdrop){background-color:transparent}ion-content[_ngcontent-%COMP%]{--background: transparent;--width: 300px}ion-content[_ngcontent-%COMP%]   .sidebar-content[_ngcontent-%COMP%]{padding-top:65px}.avatar[_ngcontent-%COMP%]{text-align:center;align-items:center;display:flex;flex-direction:column}.avatar[_ngcontent-%COMP%]   .avatar-img[_ngcontent-%COMP%]{width:120px;height:120px;border-radius:50%;margin-bottom:var(--ion-content-margin)}.avatar[_ngcontent-%COMP%]   .avatar-caption[_ngcontent-%COMP%]{font-weight:500;font-size:18px;line-height:36px;color:#fff}.menu-links[_ngcontent-%COMP%]{color:#fff;padding-top:30px;padding-left:0;margin:auto;padding-left:5rem;list-style:none}.menu-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]{font-size:18px;line-height:24px;padding:5px;font-weight:400;cursor:pointer;display:flex;align-items:center}.menu-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   ion-icon[_ngcontent-%COMP%]{margin-right:4px}.menu-links[_ngcontent-%COMP%]   li.active[_ngcontent-%COMP%]{color:var(--ion-color-primary)}',
+              '.app-name[_ngcontent-%COMP%]{font-style:normal;font-weight:300;font-size:20px;line-height:24px;margin:auto}.logout-button[_ngcontent-%COMP%]{font-size:12px;font-weight:400;color:#fff;text-transform:none}.split-pane-web[_ngcontent-%COMP%]{height:calc(100vh - 55px);margin-top:55px}ion-tab-button[_ngcontent-%COMP%]{width:100%;height:90px;flex:0 1 auto}.header-toolbar[_ngcontent-%COMP%]{padding:0 16px}@media (max-width: 599px){.header-toolbar[_ngcontent-%COMP%]{padding:0}}ion-toolbar[_ngcontent-%COMP%]{--min-height: 60px}ion-menu[_ngcontent-%COMP%]{--background: linear-gradient(164.45deg, var(--ion-color-secondary) 33.07%, var(--ion-color-secondary-shade) 91.99%)}ion-menu.menu-width[_ngcontent-%COMP%]{width:300px}ion-menu[_ngcontent-%COMP%]::part(backdrop){background-color:transparent}ion-content[_ngcontent-%COMP%]{--background: transparent;--width: 300px}ion-content[_ngcontent-%COMP%]   .sidebar-content[_ngcontent-%COMP%]{padding-top:65px}.avatar[_ngcontent-%COMP%]{text-align:center;align-items:center;display:flex;flex-direction:column}.avatar[_ngcontent-%COMP%]   .avatar-img[_ngcontent-%COMP%]{width:120px;height:120px;border-radius:50%;margin-bottom:var(--ion-content-margin)}.avatar[_ngcontent-%COMP%]   .avatar-caption[_ngcontent-%COMP%]{font-weight:500;font-size:18px;line-height:36px;color:#fff}.menu-links[_ngcontent-%COMP%]{color:#fff;padding-top:30px;padding-left:0;margin:auto;padding-left:5rem;list-style:none}.menu-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]{outline:none;font-size:18px;line-height:24px;padding:5px;font-weight:400;cursor:pointer;display:flex;align-items:center}.menu-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   ion-icon[_ngcontent-%COMP%]{margin-right:4px}.menu-links[_ngcontent-%COMP%]   li.active[_ngcontent-%COMP%]{color:var(--ion-color-primary)}',
             ],
           })),
           s
@@ -22588,7 +22577,7 @@
             this._location.back();
           }
           set startRecord(t) {
-            t && this.startRecording();
+            t && this.hasRecordingPermission && this.startRecording();
           }
           draw() {
             var t = this;
@@ -22658,10 +22647,10 @@
           setRecordingEvents() {
             Dl.canDeviceVoiceRecord().then((t) => console.log(t.value)),
               Dl.requestAudioRecordingPermission().then((t) => {
-                t.value && (this.hasRecordingPermission = !0);
+                console.log(t), t.value && ((this.hasRecordingPermission = !0), this.startRecording());
               }),
               Dl.hasAudioRecordingPermission().then((t) => {
-                t.value && (this.hasRecordingPermission = !0);
+                console.log(t), t.value && (this.hasRecordingPermission = !0);
               });
           }
           get isWeb() {
