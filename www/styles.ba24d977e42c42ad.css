@@ -6796,6 +6796,9 @@ a {
 }
 ion-button {
   --border-radius: 8px;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
 }
 .link {
   cursor: pointer;
@@ -6812,10 +6815,6 @@ ion-button {
   height: 56px;
   font-weight: 700;
   font-size: 16px;
-  box-shadow: none;
-  outline: none;
-  background: transparent;
-  background-color: transparent;
 }
 .submit-button.sm,
 .primary-button.sm,

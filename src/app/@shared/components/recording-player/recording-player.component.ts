@@ -49,7 +49,7 @@ export class RecordingPlayerComponent implements OnInit, OnDestroy {
   }
 
   @Input() set startRecord(event: any) {
-    if (event) {
+    if (event && this.hasRecordingPermission) {
       this.startRecording();
     }
   }
@@ -139,8 +139,10 @@ export class RecordingPlayerComponent implements OnInit, OnDestroy {
   setRecordingEvents() {
     VoiceRecorder.canDeviceVoiceRecord().then((result: GenericResponse) => console.log(result.value));
     VoiceRecorder.requestAudioRecordingPermission().then((result: GenericResponse) => {
+      console.log(result);
       if (result.value) {
         this.hasRecordingPermission = true;
+        this.startRecording();
       }
       // if (typeof result.value == 'undefined') {
       //   this.hasRecordingPermission = true;
@@ -148,6 +150,7 @@ export class RecordingPlayerComponent implements OnInit, OnDestroy {
       // }
     });
     VoiceRecorder.hasAudioRecordingPermission().then((result: GenericResponse) => {
+      console.log(result);
       if (result.value) {
         this.hasRecordingPermission = true;
       }
