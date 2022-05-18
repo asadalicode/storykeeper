@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.storykeeperv1.app',
-  appName: 'storykeeper',
+  appName: 'Storykeeper',
   webDir: 'www',
   bundledWebRuntime: false,
   plugins: {

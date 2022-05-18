@@ -21117,7 +21117,7 @@
             mh,
           ],
           styles: [
-            '.signup-background[_ngcontent-%COMP%]{background-color:var(--ion-color-primary);color:var(--ion-color-primary-contrast)}.signup-background[_ngcontent-%COMP%]{position:fixed;top:0;left:0;right:0;bottom:50%}.signup-header[_ngcontent-%COMP%]{font-weight:600;line-height:44px;font-size:28px;color:var(--ion-color-primary)}.signup-sub-heading[_ngcontent-%COMP%]{font-size:14px;font-weight:400;line-height:20px;color:var(--ion-color-tertiary)}.signup-container[_ngcontent-%COMP%]{background-color:transparent;max-width:400px;padding:16px}@media (max-width: 768px){.signup-container[_ngcontent-%COMP%]{max-width:100%}}.social-signup[_ngcontent-%COMP%]{padding:0 16px;display:flex;place-content:space-between;align-items:center;margin:32px auto 20px;max-width:400px}.social-signup[_ngcontent-%COMP%]   .icon[_ngcontent-%COMP%]{padding:0 7px;text-align:center}.switch-page[_ngcontent-%COMP%]{font-size:14px;text-align:center;font-weight:400}',
+            '@media (max-width: 599px){ion-grid[_ngcontent-%COMP%], ion-row[_ngcontent-%COMP%]{height:100%}}.signup-background[_ngcontent-%COMP%]{background-color:var(--ion-color-primary);color:var(--ion-color-primary-contrast)}.signup-background[_ngcontent-%COMP%]{position:fixed;top:0;left:0;right:0;bottom:50%}.signup-header[_ngcontent-%COMP%]{font-weight:600;line-height:44px;font-size:28px;color:var(--ion-color-primary)}.signup-sub-heading[_ngcontent-%COMP%]{font-size:14px;font-weight:400;line-height:20px;color:var(--ion-color-tertiary)}.signup-container[_ngcontent-%COMP%]{background-color:transparent;max-width:400px;padding:16px}@media (max-width: 768px){.signup-container[_ngcontent-%COMP%]{max-width:100%}}.social-signup[_ngcontent-%COMP%]{padding:0 16px;display:flex;place-content:space-between;align-items:center;margin:32px auto 20px;max-width:400px}.social-signup[_ngcontent-%COMP%]   .icon[_ngcontent-%COMP%]{padding:0 7px;text-align:center}.switch-page[_ngcontent-%COMP%]{font-size:14px;text-align:center;font-weight:400}',
           ],
         })),
         (El = (0, gr.gn)([ug()], El));
@@ -21423,19 +21423,7 @@
               'form-input',
             ],
             ['href', '#', 1, 'forgot-password-link'],
-            [
-              1,
-              'ion-margin-horizontal',
-              2,
-              'box-shadow',
-              'none',
-              'outline',
-              'none',
-              'background',
-              'transparent',
-              'background-color',
-              'transparent',
-            ],
+            [1, 'ion-margin-horizontal'],
             [
               'fill',
               'solid',
@@ -21677,7 +21665,7 @@
             mh,
           ],
           styles: [
-            '.login-background[_ngcontent-%COMP%]{background-color:var(--ion-color-primary);color:var(--ion-color-primary-contrast)}.login-background[_ngcontent-%COMP%]{position:fixed;top:0;left:0;right:0;bottom:50%}.login-header[_ngcontent-%COMP%]{font-weight:600;line-height:44px;font-size:28px;color:var(--ion-color-primary)}.login-sub-heading[_ngcontent-%COMP%]{font-size:14px;font-weight:400;color:var(--ion-color-tertiary)}.login-container[_ngcontent-%COMP%]{background-color:transparent;max-width:380px;padding:10px}@media (max-width: 768px){.login-container[_ngcontent-%COMP%]{max-width:100%}}.form-input-label[_ngcontent-%COMP%]{color:var(--ion-color-primary);font-weight:500!important;font-size:16px}.form-input[_ngcontent-%COMP%]{margin-top:15px;padding:10px 16px!important;background-color:var(--ion-color-light);color:var(--ion-color-tertiary);border-radius:8px}.form-input.ion-invalid[_ngcontent-%COMP%]{background-color:var(--ion-color-danger-opacity);color:var(--ion-color-danger)}.form-input[_ngcontent-%COMP%]:is(.ion-untouched, .ion-pristine)[_ngcontent-%COMP%]{background-color:var(--ion-color-light);color:var(--ion-color-tertiary)}.forgot-password-link[_ngcontent-%COMP%]{color:var(--ion-color-medium);line-height:20px;font-size:14px}.social-login[_ngcontent-%COMP%]{padding:0 16px;display:flex;place-content:space-between;align-items:center;margin:32px auto 20px;max-width:400px}.social-login[_ngcontent-%COMP%]   .icon[_ngcontent-%COMP%]{padding:0 7px;text-align:center}.switch-page[_ngcontent-%COMP%]{font-size:14px;text-align:center;font-weight:400}',
+            '@media (max-width: 599px){ion-grid[_ngcontent-%COMP%], ion-row[_ngcontent-%COMP%]{height:100%}}.login-background[_ngcontent-%COMP%]{background-color:var(--ion-color-primary);color:var(--ion-color-primary-contrast)}.login-background[_ngcontent-%COMP%]{position:fixed;top:0;left:0;right:0;bottom:50%}.login-header[_ngcontent-%COMP%]{font-weight:600;line-height:44px;font-size:28px;color:var(--ion-color-primary)}.login-sub-heading[_ngcontent-%COMP%]{font-size:14px;font-weight:400;color:var(--ion-color-tertiary)}.login-container[_ngcontent-%COMP%]{background-color:transparent;max-width:380px;padding:10px}@media (max-width: 768px){.login-container[_ngcontent-%COMP%]{max-width:100%}}.form-input-label[_ngcontent-%COMP%]{color:var(--ion-color-primary);font-weight:500!important;font-size:16px}.form-input[_ngcontent-%COMP%]{margin-top:15px;padding:10px 16px!important;background-color:var(--ion-color-light);color:var(--ion-color-tertiary);border-radius:8px}.form-input.ion-invalid[_ngcontent-%COMP%]{background-color:var(--ion-color-danger-opacity);color:var(--ion-color-danger)}.form-input[_ngcontent-%COMP%]:is(.ion-untouched, .ion-pristine)[_ngcontent-%COMP%]{background-color:var(--ion-color-light);color:var(--ion-color-tertiary)}.forgot-password-link[_ngcontent-%COMP%]{color:var(--ion-color-medium);line-height:20px;font-size:14px}.social-login[_ngcontent-%COMP%]{padding:0 16px;display:flex;place-content:space-between;align-items:center;margin:32px auto 20px;max-width:400px}.social-login[_ngcontent-%COMP%]   .icon[_ngcontent-%COMP%]{padding:0 7px;text-align:center}.switch-page[_ngcontent-%COMP%]{font-size:14px;text-align:center;font-weight:400}',
           ],
         })),
         (kt = (0, gr.gn)([ug()], kt));
@@ -21905,7 +21893,7 @@
                 e._uU(39, '\n            '),
                 e.TgZ(40, 'ion-button', 12),
                 e.NdJ('click', function () {
-                  return o.isWeb ? o.payNow() : o.paymentPage();
+                  return o.paymentPage();
                 }),
                 e._uU(41, '\n              Buy New Book\n            '),
                 e.qZA(),
