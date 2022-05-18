@@ -1,6 +1,6 @@
 {
   "appId": "com.storykeeperv1.app",
-  "appName": "storykeeper",
+  "appName": "Storykeeper",
   "webDir": "www",
   "bundledWebRuntime": false,
   "plugins": {

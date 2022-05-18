@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">storykeeper</string>
-    <string name="title_activity_main">storykeeper</string>
+    <string name="app_name">Storykeeper</string>
+    <string name="title_activity_main">Storykeeper</string>
     <string name="package_name">com.storykeeperv1.app</string>
     <string name="custom_url_scheme">com.storykeeperv1.app</string>
     <string name="server_client_id">380937119202-59cm8u3kvv6tjub7qp918tmcoohk8327.apps.googleusercontent.com</string>

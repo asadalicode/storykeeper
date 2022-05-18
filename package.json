@@ -24,6 +24,7 @@
     "cordova:build": "ngx-scripts cordova build --device --release --copy dist",
     "cordova:clean": "ngx-scripts clean",
     "cordova": "cordova",
+    "resources": "capacitor-resources -p android,ios",
     "generate": "ng generate"
   },
   "dependencies": {

@@ -1,6 +1,6 @@
 {
   "appId": "com.storykeeperv1.app",
-  "appName": "storykeeper",
+  "appName": "Storykeeper",
   "webDir": "www",
   "bundledWebRuntime": false,
   "plugins": {
@@ -26,6 +26,6 @@
     }
   },
   "server": {
-    "url": "http://192.168.10.6:8100"
+    "url": "http://192.168.10.2:8100"
   }
 }
