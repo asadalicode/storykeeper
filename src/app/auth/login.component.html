@@ -85,10 +85,10 @@
               </ion-item>
             </ion-list>
             <div class="ion-margin-horizontal">
+
               <ion-button
-                fill="solid"
+                
                 type="submit"
-                mode="android"
                 class="submit-button"
                 [disabled]="loginForm.invalid || isLoading"
                 color="primary"
@@ -103,10 +103,10 @@
               <ion-text color="medium"> Or continue with </ion-text>
               <ion-grid class="ion-padding-top">
                 <ion-row>
-                  <ion-col (click)="signIn()" class="icon">
+                  <ion-col class="icon">
                     <img src="assets/images/facebook.svg" alt="" />
                   </ion-col>
-                  <ion-col (click)="googleLogin()" class="icon">
+                  <ion-col class="icon">
                     <img src="assets/images/google.svg" alt="" />
                   </ion-col>
                   <ion-col class="icon">
