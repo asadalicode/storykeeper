@@ -27,7 +27,7 @@ export class BooksCardComponent implements OnInit {
     if (book.status == 1) {
       // pending
       this.router.navigate([`my-library/update-book/${book.id}/${book.title}`]);
-    } else if (book.status == 3 || book.status == 5) {
+    } else if (book.status == 3 || book.status == 5 || book.status == 99) {
       // inprogress
       this.router.navigate([`my-library/book/${book.id}/${book.title}`]);
     }

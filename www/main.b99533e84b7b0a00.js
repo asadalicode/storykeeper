@@ -24081,7 +24081,8 @@
             this.sharedService.setImgInStorage(t.image),
               1 == t.status
                 ? this.router.navigate([`my-library/update-book/${t.id}/${t.title}`])
-                : (3 == t.status || 5 == t.status) && this.router.navigate([`my-library/book/${t.id}/${t.title}`]);
+                : (3 == t.status || 5 == t.status || 99 == t.status) &&
+                  this.router.navigate([`my-library/book/${t.id}/${t.title}`]);
           }
         }
         return (
