@@ -154,6 +154,7 @@ export class RecordStoryComponent implements OnInit, OnDestroy {
         error: (err: any) => {
           if (err.status == 201) {
             this.updateStoryOnUpload();
+            this.confirmBox();
           }
         },
       });
@@ -214,8 +215,7 @@ export class RecordStoryComponent implements OnInit, OnDestroy {
       });
   }
 
-  async sendStory() {
-    this.postFile();
+  async confirmBox() {
     const modal = await this.modalController.create({
       component: ConfirmationInfoComponent,
       cssClass: 'modal-popup md ',
@@ -238,6 +238,10 @@ export class RecordStoryComponent implements OnInit, OnDestroy {
       }
     });
     return await modal.present();
+  }
+
+  async sendStory() {
+    this.postFile();
   }
 
   async reRecordStory() {
