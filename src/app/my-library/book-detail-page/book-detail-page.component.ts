@@ -29,11 +29,13 @@ export class BookDetailPageComponent implements OnInit {
     private modalController: ModalController
   ) {}
 
-  ngOnInit(): void {
-    this.getBookStories();
-  }
+  ngOnInit(): void {}
   get isWeb(): boolean {
     return !this.platform.is('cordova');
+  }
+
+  ionViewWillEnter() {
+    this.getBookStories();
   }
 
   //open side menu

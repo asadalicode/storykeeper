@@ -49,9 +49,9 @@ export class RecordingPlayerComponent implements OnInit, OnDestroy {
   }
 
   @Input() set startRecord(event: any) {
-    if (event && this.hasRecordingPermission) {
-      this.startRecording();
-    }
+    // if (event && this.hasRecordingPermission) {
+    //   this.startRecording();
+    // }
   }
 
   async draw() {

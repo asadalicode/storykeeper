@@ -49,6 +49,9 @@
             translate
           >
             Pay ${{ routeParams?.amount }}
+            <div class="pos-right">
+              <ion-icon class="stripe-icon" [src]="'assets/logos/stripe_white.svg'"></ion-icon>
+            </div>
             <app-loader *ngIf="isLoading" [isLoading]="isLoading"></app-loader>
           </ion-button>
         </div>

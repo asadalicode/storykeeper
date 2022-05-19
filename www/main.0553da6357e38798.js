@@ -20842,7 +20842,7 @@
             [1, 'ion-padding-horizontal'],
             [
               'mode',
-              'android',
+              'md',
               'type',
               'submit',
               'color',
@@ -22159,7 +22159,7 @@
               [1, 'ion-padding-horizontal'],
               [
                 'mode',
-                'android',
+                'md',
                 'type',
                 'button',
                 'color',
@@ -22576,9 +22576,7 @@
           goBack() {
             this._location.back();
           }
-          set startRecord(t) {
-            t && this.hasRecordingPermission && this.startRecording();
-          }
+          set startRecord(t) {}
           draw() {
             var t = this;
             return (0, Kn.Z)(function* () {
@@ -24447,7 +24445,7 @@
                   'type',
                   'button',
                   'mode',
-                  'android',
+                  'md',
                   'color',
                   'secondary',
                   'expand',
@@ -29652,17 +29650,17 @@
         })();
       function U0(s, r) {
         1 & s &&
-          (e.TgZ(0, 'ion-header', 18),
+          (e.TgZ(0, 'ion-header', 20),
           e._uU(1, '\n  '),
           e.TgZ(2, 'ion-toolbar'),
           e._uU(3, '\n    '),
-          e.TgZ(4, 'ion-buttons', 19),
+          e.TgZ(4, 'ion-buttons', 21),
           e._uU(5, '\n      '),
-          e._UZ(6, 'ion-back-button', 20),
+          e._UZ(6, 'ion-back-button', 22),
           e._uU(7, '\n    '),
           e.qZA(),
           e._uU(8, '\n    '),
-          e.TgZ(9, 'ion-title', 21),
+          e.TgZ(9, 'ion-title', 23),
           e._uU(10, 'Payments'),
           e.qZA(),
           e._uU(11, '\n  '),
@@ -29672,9 +29670,9 @@
       }
       function L0(s, r) {
         1 & s &&
-          (e.TgZ(0, 'ion-list-header', 22),
+          (e.TgZ(0, 'ion-list-header', 24),
           e._uU(1, '\n      '),
-          e.TgZ(2, 'ion-label', 23),
+          e.TgZ(2, 'ion-label', 25),
           e._uU(3, '\n        '),
           e.TgZ(4, 'h1'),
           e._uU(5, 'Payments'),
@@ -29685,7 +29683,7 @@
           e.qZA());
       }
       function N0(s, r) {
-        if ((1 & s && e._UZ(0, 'app-loader', 24), 2 & s)) {
+        if ((1 & s && e._UZ(0, 'app-loader', 26), 2 & s)) {
           const t = e.oxw();
           e.Q6J('isLoading', t.isLoading);
         }
@@ -29720,12 +29718,7 @@
               (this.stripeForm = this.fb.group({}));
           }
           ngOnInit() {
-            console.log(this.routeParams),
-              this.createPaymentIntent().subscribe({
-                next: (t) => {
-                  this.elementsOptions.clientSecret = t.clientSecret;
-                },
-              });
+            console.log(this.routeParams);
           }
           get routeParams() {
             let t;
@@ -29754,12 +29747,13 @@
                     )
                   )
                   .subscribe((t) => {
-                    t.error
-                      ? (this.toastService.showToast('error', t.error.message),
-                        (this.isLoading = !1),
-                        console.log('ERROR'))
-                      : 'succeeded' === t.paymentIntent.status &&
-                        ((this.isLoading = !1), this.router.navigate(['/success']), console.log('Succeeded'));
+                    console.log(t),
+                      t.error
+                        ? (this.toastService.showToast('error', t.error.message),
+                          (this.isLoading = !1),
+                          console.log('ERROR'))
+                        : 'succeeded' === t.paymentIntent.status &&
+                          ((this.isLoading = !1), this.router.navigate(['/success']), console.log('Succeeded'));
                   }))
               : ((this.isLoading = !1), console.log(this.stripeForm));
           }
@@ -29787,8 +29781,8 @@
                 e.iGM((d = e.CRH())) && (o.card = d.first);
               }
             },
-            decls: 62,
-            vars: 11,
+            decls: 65,
+            vars: 12,
             consts: [
               ['class', 'ion-no-border', 4, 'ngIf'],
               [1, 'ion-padding-horizontal', 'setting-page'],
@@ -29822,6 +29816,8 @@
                 'disabled',
                 'click',
               ],
+              [1, 'pos-right'],
+              [1, 'stripe-icon', 3, 'src'],
               [3, 'isLoading', 4, 'ngIf'],
               [1, 'ion-no-border'],
               ['slot', 'start'],
@@ -29900,20 +29896,24 @@
                   return o.payNow();
                 }),
                 e._uU(53),
-                e.YNc(54, N0, 1, 1, 'app-loader', 17),
-                e._uU(55, '\n          '),
+                e.TgZ(54, 'div', 17),
+                e._UZ(55, 'ion-icon', 18),
                 e.qZA(),
-                e._uU(56, '\n        '),
+                e._uU(56, '\n            '),
+                e.YNc(57, N0, 1, 1, 'app-loader', 19),
+                e._uU(58, '\n          '),
                 e.qZA(),
-                e._uU(57, '\n      '),
+                e._uU(59, '\n        '),
                 e.qZA(),
-                e._uU(58, '\n    '),
+                e._uU(60, '\n      '),
                 e.qZA(),
-                e._uU(59, '\n  '),
+                e._uU(61, '\n    '),
                 e.qZA(),
-                e._uU(60, '\n'),
+                e._uU(62, '\n  '),
                 e.qZA(),
-                e._uU(61, '\n')),
+                e._uU(63, '\n'),
+                e.qZA(),
+                e._uU(64, '\n')),
                 2 & t &&
                   (e.Q6J('ngIf', !o.isWeb),
                   e.xp6(4),
@@ -29932,7 +29932,9 @@
                   e.Q6J('disabled', o.isLoading),
                   e.xp6(1),
                   e.hij('\n            Pay $', null == o.routeParams ? null : o.routeParams.amount, '\n            '),
-                  e.xp6(1),
+                  e.xp6(2),
+                  e.Q6J('src', 'assets/logos/stripe_white.svg'),
+                  e.xp6(2),
                   e.Q6J('ngIf', o.isLoading));
             },
             directives: [
@@ -29957,10 +29959,11 @@
               my,
               e_,
               A.YG,
+              A.gu,
               ba,
             ],
             styles: [
-              '[_nghost-%COMP%]   .item[_ngcontent-%COMP%]{background:#ffffff;border:.3px solid rgba(108,126,147,.25);box-sizing:border-box;border-radius:12px;margin-bottom:20px;padding:10px}[_nghost-%COMP%]   .item[_ngcontent-%COMP%]:hover{box-shadow:6px 29px 40px #3959a324}[_nghost-%COMP%]   .input-field[_ngcontent-%COMP%]{height:3em;padding-top:.9em;border-radius:7px;cursor:text}[_nghost-%COMP%]   ion-item[_ngcontent-%COMP%]{margin-bottom:24px;--border-radius: 8px}[_nghost-%COMP%]   ion-item.profile-form[_ngcontent-%COMP%]{--padding-start: 28px}[_nghost-%COMP%]   ion-modal[_ngcontent-%COMP%]{--width: 340px;--height: 600px;--border-radius: 8px}@media (min-width: 768px){[_nghost-%COMP%]   .setting-page[_ngcontent-%COMP%]   .form-container[_ngcontent-%COMP%]{max-width:460px;margin:auto}}@media (max-width: 480px){[_nghost-%COMP%]   .setting-page[_ngcontent-%COMP%]   .form-container[_ngcontent-%COMP%]{max-width:100%;margin:auto}}[_nghost-%COMP%]   .setting-page[_ngcontent-%COMP%]   .new-email-link[_ngcontent-%COMP%]{font-size:14px;cursor:pointer}',
+              '[_nghost-%COMP%]   .item[_ngcontent-%COMP%]{background:#ffffff;border:.3px solid rgba(108,126,147,.25);box-sizing:border-box;border-radius:12px;margin-bottom:20px;padding:10px}[_nghost-%COMP%]   .item[_ngcontent-%COMP%]:hover{box-shadow:6px 29px 40px #3959a324}[_nghost-%COMP%]   .input-field[_ngcontent-%COMP%]{height:3em;padding-top:.9em;border-radius:7px;cursor:text}[_nghost-%COMP%]   ion-item[_ngcontent-%COMP%]{margin-bottom:24px;--border-radius: 8px}[_nghost-%COMP%]   ion-item.profile-form[_ngcontent-%COMP%]{--padding-start: 28px}[_nghost-%COMP%]   ion-modal[_ngcontent-%COMP%]{--width: 340px;--height: 600px;--border-radius: 8px}@media (min-width: 768px){[_nghost-%COMP%]   .setting-page[_ngcontent-%COMP%]   .form-container[_ngcontent-%COMP%]{max-width:460px;margin:auto}}@media (max-width: 480px){[_nghost-%COMP%]   .setting-page[_ngcontent-%COMP%]   .form-container[_ngcontent-%COMP%]{max-width:100%;margin:auto}}[_nghost-%COMP%]   .setting-page[_ngcontent-%COMP%]   .new-email-link[_ngcontent-%COMP%]{font-size:14px;cursor:pointer}[_nghost-%COMP%]   .pos-right[_ngcontent-%COMP%]{position:absolute;right:0;bottom:2px}',
             ],
           })),
           s
@@ -32173,11 +32176,12 @@
               (this.chapterStatus = Ge),
               (this.isLoading = !1);
           }
-          ngOnInit() {
-            this.getBookStories();
-          }
+          ngOnInit() {}
           get isWeb() {
             return !this.platform.is('cordova');
+          }
+          ionViewWillEnter() {
+            this.getBookStories();
           }
           openMenu() {
             this.sharedService.triggerMsg(!0);
