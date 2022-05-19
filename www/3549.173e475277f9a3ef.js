@@ -2,7 +2,7 @@
 (self.webpackChunkngx_new = self.webpackChunkngx_new || []).push([
   [3549],
   {
-    3549: (W, h, l) => {
+    6974: (W, h, l) => {
       l.r(h), l.d(h, { StripeWeb: () => k });
       var d = l(5861),
         v = l(7423),

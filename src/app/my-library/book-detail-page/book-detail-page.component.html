@@ -121,7 +121,11 @@
                   </ion-item-option>
                 </ion-item-options>
 
-                <ion-item (click)="recordingScreen(item, 'inprogress')" lines="none" class="ion-no-padding">
+                <ion-item
+                  (click)="recordingScreen(item, 'inprogress')"
+                  lines="none"
+                  class="ion-no-padding cursor-pointer"
+                >
                   <ion-avatar slot="start">
                     <app-image [imgClass]="'cover-img'" [image]="bookImg" alt=""></app-image>
                   </ion-avatar>
