@@ -20,8 +20,8 @@
 
     <ion-text color="primary" class="ion-padding-horizontal">
       <h1>{{ dataModel?.title }}</h1>
-      <p>
-        {{ dataModel?.description }}
+      <p [innerHtml]="dataModel?.description">
+        <!-- {{ dataModel?.description }} -->
       </p>
     </ion-text>
 

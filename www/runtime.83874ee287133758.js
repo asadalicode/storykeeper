@@ -3,22 +3,22 @@
   var e,
     g = {},
     v = {};
-  function t(e) {
+  function f(e) {
     var c = v[e];
     if (void 0 !== c) return c.exports;
     var a = (v[e] = { id: e, loaded: !1, exports: {} });
-    return g[e].call(a.exports, a, a.exports, t), (a.loaded = !0), a.exports;
+    return g[e].call(a.exports, a, a.exports, f), (a.loaded = !0), a.exports;
   }
-  (t.m = g),
+  (f.m = g),
     (e = []),
-    (t.O = (c, a, d, b) => {
+    (f.O = (c, a, d, b) => {
       if (!a) {
-        var f = 1 / 0;
+        var t = 1 / 0;
         for (r = 0; r < e.length; r++) {
           for (var [a, d, b] = e[r], i = !0, n = 0; n < a.length; n++)
-            (!1 & b || f >= b) && Object.keys(t.O).every((p) => t.O[p](a[n]))
+            (!1 & b || t >= b) && Object.keys(f.O).every((p) => f.O[p](a[n]))
               ? a.splice(n--, 1)
-              : ((i = !1), b < f && (f = b));
+              : ((i = !1), b < t && (t = b));
           if (i) {
             e.splice(r--, 1);
             var l = d();
@@ -31,34 +31,34 @@
       for (var r = e.length; r > 0 && e[r - 1][2] > b; r--) e[r] = e[r - 1];
       e[r] = [a, d, b];
     }),
-    (t.n = (e) => {
+    (f.n = (e) => {
       var c = e && e.__esModule ? () => e.default : () => e;
-      return t.d(c, { a: c }), c;
+      return f.d(c, { a: c }), c;
     }),
     (() => {
       var c,
         e = Object.getPrototypeOf ? (a) => Object.getPrototypeOf(a) : (a) => a.__proto__;
-      t.t = function (a, d) {
+      f.t = function (a, d) {
         if (
           (1 & d && (a = this(a)),
           8 & d || ('object' == typeof a && a && ((4 & d && a.__esModule) || (16 & d && 'function' == typeof a.then))))
         )
           return a;
         var b = Object.create(null);
-        t.r(b);
+        f.r(b);
         var r = {};
         c = c || [null, e({}), e([]), e(e)];
-        for (var f = 2 & d && a; 'object' == typeof f && !~c.indexOf(f); f = e(f))
-          Object.getOwnPropertyNames(f).forEach((i) => (r[i] = () => a[i]));
-        return (r.default = () => a), t.d(b, r), b;
+        for (var t = 2 & d && a; 'object' == typeof t && !~c.indexOf(t); t = e(t))
+          Object.getOwnPropertyNames(t).forEach((i) => (r[i] = () => a[i]));
+        return (r.default = () => a), f.d(b, r), b;
       };
     })(),
-    (t.d = (e, c) => {
-      for (var a in c) t.o(c, a) && !t.o(e, a) && Object.defineProperty(e, a, { enumerable: !0, get: c[a] });
+    (f.d = (e, c) => {
+      for (var a in c) f.o(c, a) && !f.o(e, a) && Object.defineProperty(e, a, { enumerable: !0, get: c[a] });
     }),
-    (t.f = {}),
-    (t.e = (e) => Promise.all(Object.keys(t.f).reduce((c, a) => (t.f[a](e, c), c), []))),
-    (t.u = (e) =>
+    (f.f = {}),
+    (f.e = (e) => Promise.all(Object.keys(f.f).reduce((c, a) => (f.f[a](e, c), c), []))),
+    (f.u = (e) =>
       (({ 2214: 'polyfills-core-js', 6748: 'polyfills-dom', 8592: 'common' }[e] || e) +
       '.' +
       {
@@ -130,53 +130,53 @@
         9958: '714fe79ae6e05421',
       }[e] +
       '.js')),
-    (t.miniCssF = (e) => {}),
-    (t.o = (e, c) => Object.prototype.hasOwnProperty.call(e, c)),
+    (f.miniCssF = (e) => {}),
+    (f.o = (e, c) => Object.prototype.hasOwnProperty.call(e, c)),
     (() => {
       var e = {},
         c = 'ngx-new:';
-      t.l = (a, d, b, r) => {
+      f.l = (a, d, b, r) => {
         if (e[a]) e[a].push(d);
         else {
-          var f, i;
+          var t, i;
           if (void 0 !== b)
             for (var n = document.getElementsByTagName('script'), l = 0; l < n.length; l++) {
               var o = n[l];
               if (o.getAttribute('src') == a || o.getAttribute('data-webpack') == c + b) {
-                f = o;
+                t = o;
                 break;
               }
             }
-          f ||
+          t ||
             ((i = !0),
-            ((f = document.createElement('script')).type = 'module'),
-            (f.charset = 'utf-8'),
-            (f.timeout = 120),
-            t.nc && f.setAttribute('nonce', t.nc),
-            f.setAttribute('data-webpack', c + b),
-            (f.src = t.tu(a))),
+            ((t = document.createElement('script')).type = 'module'),
+            (t.charset = 'utf-8'),
+            (t.timeout = 120),
+            f.nc && t.setAttribute('nonce', f.nc),
+            t.setAttribute('data-webpack', c + b),
+            (t.src = f.tu(a))),
             (e[a] = [d]);
           var s = (_, p) => {
-              (f.onerror = f.onload = null), clearTimeout(u);
+              (t.onerror = t.onload = null), clearTimeout(u);
               var y = e[a];
-              if ((delete e[a], f.parentNode && f.parentNode.removeChild(f), y && y.forEach((h) => h(p)), _))
+              if ((delete e[a], t.parentNode && t.parentNode.removeChild(t), y && y.forEach((h) => h(p)), _))
                 return _(p);
             },
-            u = setTimeout(s.bind(null, void 0, { type: 'timeout', target: f }), 12e4);
-          (f.onerror = s.bind(null, f.onerror)), (f.onload = s.bind(null, f.onload)), i && document.head.appendChild(f);
+            u = setTimeout(s.bind(null, void 0, { type: 'timeout', target: t }), 12e4);
+          (t.onerror = s.bind(null, t.onerror)), (t.onload = s.bind(null, t.onload)), i && document.head.appendChild(t);
         }
       };
     })(),
-    (t.r = (e) => {
+    (f.r = (e) => {
       'undefined' != typeof Symbol &&
         Symbol.toStringTag &&
         Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
         Object.defineProperty(e, '__esModule', { value: !0 });
     }),
-    (t.nmd = (e) => ((e.paths = []), e.children || (e.children = []), e)),
+    (f.nmd = (e) => ((e.paths = []), e.children || (e.children = []), e)),
     (() => {
       var e;
-      t.tu = (c) => (
+      f.tu = (c) => (
         void 0 === e &&
           ((e = { createScriptURL: (a) => a }),
           'undefined' != typeof trustedTypes &&
@@ -185,22 +185,22 @@
         e.createScriptURL(c)
       );
     })(),
-    (t.p = ''),
+    (f.p = ''),
     (() => {
       var e = { 3666: 0 };
-      (t.f.j = (d, b) => {
-        var r = t.o(e, d) ? e[d] : void 0;
+      (f.f.j = (d, b) => {
+        var r = f.o(e, d) ? e[d] : void 0;
         if (0 !== r)
           if (r) b.push(r[2]);
           else if (3666 != d) {
-            var f = new Promise((o, s) => (r = e[d] = [o, s]));
-            b.push((r[2] = f));
-            var i = t.p + t.u(d),
+            var t = new Promise((o, s) => (r = e[d] = [o, s]));
+            b.push((r[2] = t));
+            var i = f.p + f.u(d),
               n = new Error();
-            t.l(
+            f.l(
               i,
               (o) => {
-                if (t.o(e, d) && (0 !== (r = e[d]) && (e[d] = void 0), r)) {
+                if (f.o(e, d) && (0 !== (r = e[d]) && (e[d] = void 0), r)) {
                   var s = o && ('load' === o.type ? 'missing' : o.type),
                     u = o && o.target && o.target.src;
                   (n.message = 'Loading chunk ' + d + ' failed.\n(' + s + ': ' + u + ')'),
@@ -215,18 +215,18 @@
             );
           } else e[d] = 0;
       }),
-        (t.O.j = (d) => 0 === e[d]);
+        (f.O.j = (d) => 0 === e[d]);
       var c = (d, b) => {
           var n,
             l,
-            [r, f, i] = b,
+            [r, t, i] = b,
             o = 0;
           if (r.some((u) => 0 !== e[u])) {
-            for (n in f) t.o(f, n) && (t.m[n] = f[n]);
-            if (i) var s = i(t);
+            for (n in t) f.o(t, n) && (f.m[n] = t[n]);
+            if (i) var s = i(f);
           }
-          for (d && d(b); o < r.length; o++) t.o(e, (l = r[o])) && e[l] && e[l][0](), (e[r[o]] = 0);
-          return t.O(s);
+          for (d && d(b); o < r.length; o++) f.o(e, (l = r[o])) && e[l] && e[l][0](), (e[r[o]] = 0);
+          return f.O(s);
         },
         a = (self.webpackChunkngx_new = self.webpackChunkngx_new || []);
       a.forEach(c.bind(null, 0)), (a.push = c.bind(null, a.push.bind(a)));
