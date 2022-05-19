@@ -1,3 +1,5 @@
+import * as moment from 'moment';
+
 export class Story {
   constructor(
     public id: number,
@@ -7,7 +9,7 @@ export class Story {
     public bookId: number,
     public status: number,
     public answerUploadDate: Date,
-    public answerLastModificationDate: Date
+    public answerLastModificationDate: any
   ) {}
 
   public static adapt(item: any): Story {
@@ -19,7 +21,7 @@ export class Story {
       item.bookId,
       item.status,
       item?.answerUploadDate,
-      item?.answerLastModificationDate
+      moment.utc(item?.answerLastModificationDate)
     );
   }
 }

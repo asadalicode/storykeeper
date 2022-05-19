@@ -46,7 +46,9 @@
                     <h3>{{ item?.question }}</h3>
                     <ion-label>
                       <!-- <span class="status-published">Published • 01/2021 • Lena Horushenko</span> -->
-                      <span class="status-published">Published • - • -</span>
+                      <span class="status-published"
+                        >Published • {{ item?.answerLastModificationDate | date: 'medium' }}</span
+                      >
                     </ion-label>
                   </ion-text>
                 </ion-label>
@@ -85,7 +87,7 @@
                     <h3 class="curson-pointer" (click)="gotoRecording(item)">{{ item?.question }}</h3>
                     <ion-label>
                       <!-- <span class="status-inprogress">Pending • 01/2021 • Lena Horushenko</span> -->
-                      <span class="status-inprogress">Pending • - • -</span>
+                      <span class="status-inprogress">Pending </span>
                     </ion-label>
                   </ion-text>
                 </ion-label>

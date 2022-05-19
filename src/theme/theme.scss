@@ -14,9 +14,7 @@ ion-button {
   -webkit-appearance: none !important;
   -moz-appearance: none !important;
   appearance: none !important;
-  
 }
-
 
 .link {
   cursor: pointer;
@@ -294,6 +292,16 @@ ion-toolbar {
   width: 30px;
   font-size: 30px;
   height: 30px;
+}
+
+.stripe-icon {
+  width: 100px;
+  font-size: 30px;
+  // height: 50px;
+  @include for-phone-only {
+    width: 50px;
+    font-size: 20px;
+  }
 }
 
 .ion-card-as-header {

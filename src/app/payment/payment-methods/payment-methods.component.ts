@@ -61,11 +61,12 @@ export class PaymentMethodsComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.routeParams);
-    this.createPaymentIntent().subscribe({
-      next: (pi: any) => {
-        this.elementsOptions.clientSecret = pi.clientSecret;
-      },
-    });
+    // this.createPaymentIntent().subscribe({
+    //   next: (pi: any) => {
+    //     this.elementsOptions.clientSecret = pi.clientSecret;
+    //     console.log(this.elementsOptions)
+    //   },
+    // });
   }
 
   get routeParams() {
@@ -98,6 +99,7 @@ export class PaymentMethodsComponent implements OnInit {
           )
         )
         .subscribe((result: any) => {
+          console.log(result);
           if (result.error) {
             // Show error to your customer (e.g., insufficient funds)
             this.toastService.showToast('error', result.error.message);
