@@ -14776,7 +14776,7 @@
               (this.title = ''),
               (this.subtitle = ''),
               (this.bookName = ''),
-              (this.senderUser = ''),
+              (this.senderUser = {}),
               (this.confirmbuttonClass = ''),
               (this.confirmbuttonText = '');
           }
@@ -14942,7 +14942,13 @@
                   e.xp6(3),
                   e.Oqu(o.bookName),
                   e.xp6(6),
-                  e.Oqu(o.senderUser ? o.senderUser : '-'),
+                  e.Oqu(
+                    o.senderUser
+                      ? (null == o.senderUser ? null : o.senderUser.firstName) +
+                          ' ' +
+                          (null == o.senderUser ? null : o.senderUser.lastName)
+                      : '-'
+                  ),
                   e.xp6(10),
                   e.Q6J('color', o.confirmbuttonClass));
             },

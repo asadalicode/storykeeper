@@ -15,7 +15,7 @@
           <p class="subtitle mt-4">{{ subtitle }}</p>
           <h1 class="title">{{ bookName }}</h1>
           <p class="subtitle mt-4">Author</p>
-          <h5 class="mt-2">{{ senderUser ? senderUser : '-' }}</h5>
+          <h5 class="mt-2">{{ senderUser ? senderUser?.firstName + ' ' + senderUser?.lastName : '-' }}</h5>
         </ion-text>
       </ion-col>
 

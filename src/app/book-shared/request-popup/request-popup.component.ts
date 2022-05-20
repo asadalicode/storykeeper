@@ -11,7 +11,7 @@ export class RequestPopupComponent implements OnInit {
   @Input() title = '';
   @Input() subtitle = '';
   @Input() bookName = '';
-  @Input() senderUser = '';
+  @Input() senderUser: any = {};
   @Input() confirmbuttonClass = '';
   @Input() confirmbuttonText = '';
   constructor(private modalController: ModalController) {}
