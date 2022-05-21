@@ -85,9 +85,7 @@
               </ion-item>
             </ion-list>
             <div class="ion-margin-horizontal">
-
               <ion-button
-                
                 type="submit"
                 class="submit-button"
                 [disabled]="loginForm.invalid || isLoading"
@@ -99,7 +97,7 @@
               </ion-button>
             </div>
 
-            <div class="social-login" [class.d-flex-column]="!isWeb">
+            <!-- <div class="social-login" [class.d-flex-column]="!isWeb">
               <ion-text color="medium"> Or continue with </ion-text>
               <ion-grid class="ion-padding-top">
                 <ion-row>
@@ -114,7 +112,7 @@
                   </ion-col>
                 </ion-row>
               </ion-grid>
-            </div>
+            </div> -->
 
             <ion-text color="tertiary">
               <h5 class="switch-page">Do not have an account? <a routerLink="/create-acount"> Sign up here</a>.</h5>

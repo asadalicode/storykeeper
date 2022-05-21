@@ -1,7 +1,15 @@
 <div class="d-flex justify-content-center mt-5">
   <div class="container">
     <!-- <div style="max-height: 50px;"> -->
-    Recording time: <cd-timer #basicTimer [autoStart]="false" format="ms"></cd-timer>
+    Recording time:
+    <cd-timer
+      (onComplete)="onTimerComplete($event)"
+      [countdown]="true"
+      [startTime]="600"
+      #basicTimer
+      [autoStart]="false"
+      format="ms"
+    ></cd-timer>
     <ion-progress-bar *ngIf="isWeb" class="mt-2" [value]="isPlaying ? step * 5 : 0"></ion-progress-bar>
 
     <div class="row justify-content-center mt-5">

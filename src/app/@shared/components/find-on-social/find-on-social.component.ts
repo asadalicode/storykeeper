@@ -10,4 +10,16 @@ export class FindOnSocialComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  findBy(type: string) {
+    switch (type) {
+      case 'facebook':
+        window.open('https://www.facebook.com/StoryKeeperApp', '_blank');
+        break;
+
+      case 'instagram':
+        window.open('http://instagram.com/storykeeper/', '_blank');
+        break;
+    }
+  }
 }
