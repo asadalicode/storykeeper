@@ -21538,7 +21538,7 @@
               e.qZA(),
               e._uU(57, '\n            '),
               e.TgZ(58, 'div', 18),
-              e._uU(59, '\n\n              '),
+              e._uU(59, '\n              '),
               e.TgZ(60, 'ion-button', 19),
               e._uU(61, '\n                Sign_In\n              '),
               e.qZA(),
@@ -22685,7 +22685,7 @@
                 e._uU(1, '\n  '),
                 e.TgZ(2, 'div', 1),
                 e._uU(3, '\n    '),
-                e._uU(4, '\n    Recording time: '),
+                e._uU(4, '\n    Recording time:\n    '),
                 e.TgZ(5, 'cd-timer', 2, 3),
                 e.NdJ('onComplete', function (y) {
                   return o.onTimerComplete(y);
@@ -30417,13 +30417,13 @@
         1 & s && (e.TgZ(0, 'p', 19), e._uU(1, 'In Progress'), e.qZA());
       }
       function G0(s, r) {
-        if ((1 & s && e._UZ(0, 'app-loader', 24), 2 & s)) {
+        if ((1 & s && e._UZ(0, 'app-loader', 23), 2 & s)) {
           const t = e.oxw(2);
           e.Q6J('isLoading', t.isLoading);
         }
       }
       function cv(s, r) {
-        if ((1 & s && e._UZ(0, 'app-audio-player', 25), 2 & s)) {
+        if ((1 & s && e._UZ(0, 'app-audio-player', 24), 2 & s)) {
           const t = e.oxw(2);
           e.Q6J('audioUrl', null == t.story ? null : t.story.answer);
         }
@@ -30434,38 +30434,45 @@
             (e.ynx(0),
             e._uU(1, '\n          '),
             e.TgZ(2, 'p', 19),
-            e._uU(3, 'Published * -'),
+            e._uU(3),
+            e.ALo(4, 'date'),
             e.qZA(),
-            e._uU(4, '\n          '),
-            e.TgZ(5, 'p', 20),
-            e._uU(6, 'Author: -'),
+            e._uU(5, '\n          '),
+            e._uU(6, '\n          '),
+            e.YNc(7, G0, 1, 1, 'app-loader', 20),
+            e._uU(8, '\n          '),
+            e.TgZ(9, 'div', 21),
+            e._uU(10, '\n            '),
+            e.YNc(11, cv, 1, 1, 'app-audio-player', 22),
+            e._uU(12, '\n            '),
+            e._uU(13, '\n          '),
             e.qZA(),
-            e._uU(7, '\n          '),
-            e.YNc(8, G0, 1, 1, 'app-loader', 21),
-            e._uU(9, '\n          '),
-            e.TgZ(10, 'div', 22),
-            e._uU(11, '\n            '),
-            e.YNc(12, cv, 1, 1, 'app-audio-player', 23),
-            e._uU(13, '\n            '),
-            e._uU(14, '\n          '),
-            e.qZA(),
-            e._uU(15, '\n        '),
+            e._uU(14, '\n        '),
             e.BQk()),
           2 & s)
         ) {
           const t = e.oxw();
-          e.xp6(8), e.Q6J('ngIf', t.isLoading), e.xp6(4), e.Q6J('ngIf', !t.isLoading);
+          e.xp6(3),
+            e.hij(
+              'Published \u2022 ',
+              e.xi3(4, 3, null == t.story ? null : t.story.answerLastModificationDate, 'medium'),
+              ''
+            ),
+            e.xp6(4),
+            e.Q6J('ngIf', t.isLoading),
+            e.xp6(4),
+            e.Q6J('ngIf', !t.isLoading);
         }
       }
       function dv(s, r) {
         1 & s &&
           (e.TgZ(0, 'ion-text', 16),
           e._uU(1, '\n        '),
-          e.TgZ(2, 'h1', 26),
+          e.TgZ(2, 'h1', 25),
           e._uU(3, 'Recording in progress'),
           e.qZA(),
           e._uU(4, '\n        '),
-          e.TgZ(5, 'h1', 27),
+          e.TgZ(5, 'h1', 26),
           e._uU(6, 'Please Wait'),
           e.qZA(),
           e._uU(7, '\n      '),
@@ -30608,7 +30615,6 @@
                 ['routerLink', '/my-library'],
                 [3, 'routerLink'],
                 [1, 'story-sub-title'],
-                [1, 'story-author'],
                 [3, 'isLoading', 4, 'ngIf'],
                 [1, 'w-75', 'm-auto'],
                 [3, 'audioUrl', 4, 'ngIf'],
@@ -30647,7 +30653,7 @@
                   e._uU(22, '\n        '),
                   e.YNc(23, D_, 2, 0, 'p', 8),
                   e._uU(24, '\n\n        '),
-                  e.YNc(25, J0, 16, 2, 'ng-container', 9),
+                  e.YNc(25, J0, 15, 6, 'ng-container', 9),
                   e._uU(26, '\n      '),
                   e.qZA(),
                   e._uU(27, '\n\n      '),
@@ -30701,8 +30707,9 @@
                 pa,
                 vf,
               ],
+              pipes: [l.uU],
               styles: [
-                '[_nghost-%COMP%]   .bg[_ngcontent-%COMP%]{--background: linear-gradient( 164.45deg, var(--ion-color-secondary) 33.07%, var(--ion-color-secondary-shade) 91.99% )}[_nghost-%COMP%]   .story-title[_ngcontent-%COMP%]{font-weight:700;font-size:22px;line-height:36px}[_nghost-%COMP%]   .story-sub-title[_ngcontent-%COMP%]{font-weight:400;font-size:14px;line-height:20px}[_nghost-%COMP%]   .story-author[_ngcontent-%COMP%]{font-weight:400;font-size:14px;line-height:34px;color:#fff}[_nghost-%COMP%]   .message-margin-top[_ngcontent-%COMP%]{margin-top:70px}[_nghost-%COMP%]   .message[_ngcontent-%COMP%]{font-weight:400;font-size:24px;line-height:34px}',
+                '[_nghost-%COMP%]   .bg[_ngcontent-%COMP%]{--background: linear-gradient( 164.45deg, var(--ion-color-secondary) 33.07%, var(--ion-color-secondary-shade) 91.99% )}[_nghost-%COMP%]   .story-title[_ngcontent-%COMP%]{font-weight:700;font-size:22px;line-height:36px}[_nghost-%COMP%]   .story-sub-title[_ngcontent-%COMP%]{font-weight:400;font-size:14px;line-height:20px}[_nghost-%COMP%]   .story-author[_ngcontent-%COMP%]{font-weight:400;font-size:14px;line-height:34px}[_nghost-%COMP%]   .message-margin-top[_ngcontent-%COMP%]{margin-top:70px}[_nghost-%COMP%]   .message[_ngcontent-%COMP%]{font-weight:400;font-size:24px;line-height:34px}',
               ],
             })),
             s

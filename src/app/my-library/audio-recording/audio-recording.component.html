@@ -34,8 +34,8 @@
         <p *ngIf="status === 'inprogress'" class="story-sub-title">In Progress</p>
 
         <ng-container *ngIf="status === 'published'">
-          <p class="story-sub-title">Published * -</p>
-          <p class="story-author">Author: -</p>
+          <p class="story-sub-title">Published • {{ story?.answerLastModificationDate | date: 'medium' }}</p>
+          <!-- <p class="story-author">Author: -</p> -->
           <app-loader *ngIf="isLoading" [isLoading]="isLoading"></app-loader>
           <div class="w-75 m-auto">
             <app-audio-player *ngIf="!isLoading" [audioUrl]="story?.answer"></app-audio-player>
