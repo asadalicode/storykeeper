@@ -49,9 +49,9 @@ export class RecordingPlayerComponent implements OnInit, OnDestroy {
   }
 
   @Input() set startRecord(event: any) {
-    // if (event && this.hasRecordingPermission) {
-    //   this.startRecording();
-    // }
+    if (event && this.hasRecordingPermission) {
+      this.startRecording();
+    }
   }
 
   async draw() {
@@ -173,6 +173,12 @@ export class RecordingPlayerComponent implements OnInit, OnDestroy {
 
   get isWeb(): boolean {
     return !this.platform.is('cordova');
+  }
+
+  onTimerComplete(event: any) {
+    if (event) {
+      this.stopRecording();
+    }
   }
 
   ngOnDestroy() {

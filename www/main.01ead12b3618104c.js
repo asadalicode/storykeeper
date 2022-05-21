@@ -20524,6 +20524,15 @@
               this.ngClass = 'd-flex-row';
             }
             ngOnInit() {}
+            findBy(t) {
+              switch (t) {
+                case 'facebook':
+                  window.open('https://www.facebook.com/StoryKeeperApp', '_blank');
+                  break;
+                case 'instagram':
+                  window.open('http://instagram.com/storykeeper/', '_blank');
+              }
+            }
           }
           return (
             (s.ɵfac = function (t) {
@@ -20539,9 +20548,10 @@
                 ['size', '12', 'size-sm', ''],
                 ['color', 'primary', 1, 'find-us-text'],
                 [1, 'icons-margin'],
-                [1, 'icon'],
+                [1, 'icon', 'cursor-pointer', 3, 'click'],
                 ['src', 'assets/images/facebookShare.svg', 'alt', ''],
                 ['src', 'assets/images/instagram.svg', 'alt', ''],
+                [1, 'icon', 'cursor-pointer'],
                 ['src', 'assets/images/whatsapp.svg', 'alt', ''],
                 ['src', 'assets/images/twitter.svg', 'alt', ''],
                 ['src', 'assets/images/Copy.svg', 'alt', ''],
@@ -20566,32 +20576,38 @@
                   e.TgZ(13, 'ion-row', 2),
                   e._uU(14, '\n        '),
                   e.TgZ(15, 'ion-col', 3),
+                  e.NdJ('click', function () {
+                    return o.findBy('facebook');
+                  }),
                   e._uU(16, '\n          '),
                   e._UZ(17, 'img', 4),
                   e._uU(18, '\n        '),
                   e.qZA(),
                   e._uU(19, '\n        '),
                   e.TgZ(20, 'ion-col', 3),
+                  e.NdJ('click', function () {
+                    return o.findBy('instagram');
+                  }),
                   e._uU(21, '\n          '),
                   e._UZ(22, 'img', 5),
                   e._uU(23, '\n        '),
                   e.qZA(),
                   e._uU(24, '\n        '),
-                  e.TgZ(25, 'ion-col', 3),
+                  e.TgZ(25, 'ion-col', 6),
                   e._uU(26, '\n          '),
-                  e._UZ(27, 'img', 6),
+                  e._UZ(27, 'img', 7),
                   e._uU(28, '\n        '),
                   e.qZA(),
                   e._uU(29, '\n        '),
-                  e.TgZ(30, 'ion-col', 3),
+                  e.TgZ(30, 'ion-col', 6),
                   e._uU(31, '\n          '),
-                  e._UZ(32, 'img', 7),
+                  e._UZ(32, 'img', 8),
                   e._uU(33, '\n        '),
                   e.qZA(),
                   e._uU(34, '\n        '),
-                  e.TgZ(35, 'ion-col', 3),
+                  e.TgZ(35, 'ion-col', 6),
                   e._uU(36, '\n          '),
-                  e._UZ(37, 'img', 8),
+                  e._UZ(37, 'img', 9),
                   e._uU(38, '\n        '),
                   e.qZA(),
                   e._uU(39, '\n      '),
@@ -20701,15 +20717,15 @@
           );
         })();
       function Mm(s, r) {
-        1 & s && e._UZ(0, 'app-header', 36);
+        1 & s && e._UZ(0, 'app-header', 29);
       }
       function yf(s, r) {
-        1 & s && (e.TgZ(0, 'ion-col', 37), e._uU(1, '\n        '), e._UZ(2, 'img', 38), e._uU(3, '\n      '), e.qZA());
+        1 & s && (e.TgZ(0, 'ion-col', 30), e._uU(1, '\n        '), e._UZ(2, 'img', 31), e._uU(3, '\n      '), e.qZA());
       }
       function a_(s, r) {
         if (
           (1 & s &&
-            (e.TgZ(0, 'div', 39), e._uU(1, '\n            '), e._UZ(2, 'img', 40), e._uU(3, '\n          '), e.qZA()),
+            (e.TgZ(0, 'div', 32), e._uU(1, '\n            '), e._UZ(2, 'img', 33), e._uU(3, '\n          '), e.qZA()),
           2 & s)
         ) {
           const t = e.oxw();
@@ -20717,7 +20733,7 @@
         }
       }
       function xm(s, r) {
-        1 & s && (e.TgZ(0, 'span', 41), e._uU(1, 'Passwords do not match'), e.qZA());
+        1 & s && (e.TgZ(0, 'span', 34), e._uU(1, 'Passwords do not match'), e.qZA());
       }
       function l_(s, r) {
         1 & s && e._UZ(0, 'app-footer');
@@ -20793,8 +20809,8 @@
         (Tu.ɵcmp = e.Xpm({
           type: Tu,
           selectors: [['app-create-new-account']],
-          decls: 132,
-          vars: 14,
+          decls: 106,
+          vars: 12,
           consts: [
             ['no-bounce', ''],
             ['showAction', 'signin', 4, 'ngIf'],
@@ -20863,13 +20879,6 @@
             ],
             ['color', 'danger'],
             ['class', 'ion-padding small-errortext', 'translate', '', 4, 'ngIf'],
-            [1, 'social-signup'],
-            ['color', 'medium'],
-            [1, 'ion-padding-top'],
-            ['size', '4', 1, 'icon'],
-            ['src', 'assets/images/facebook.svg', 'alt', ''],
-            ['src', 'assets/images/google.svg', 'alt', ''],
-            ['src', 'assets/images/apple.svg', 'alt', ''],
             [1, 'ion-padding-horizontal'],
             [
               'mode',
@@ -21021,74 +21030,41 @@
               e._uU(80, '\n            '),
               e.qZA(),
               e._uU(81, '\n\n            '),
-              e.TgZ(82, 'div', 23),
-              e._uU(83, '\n              '),
-              e.TgZ(84, 'ion-text', 24),
-              e._uU(85, ' Or continue with '),
+              e._uU(82, '\n            '),
+              e.TgZ(83, 'div', 23),
+              e._uU(84, '\n              '),
+              e.TgZ(85, 'ion-button', 24),
+              e._uU(86, '\n                Create_account\n              '),
               e.qZA(),
-              e._uU(86, '\n              '),
-              e.TgZ(87, 'ion-grid', 25),
-              e._uU(88, '\n                '),
-              e.TgZ(89, 'ion-row'),
-              e._uU(90, '\n                  '),
-              e.TgZ(91, 'ion-col', 26),
-              e._uU(92, '\n                    '),
-              e._UZ(93, 'img', 27),
-              e._uU(94, '\n                  '),
+              e._uU(87, '\n            '),
               e.qZA(),
-              e._uU(95, '\n                  '),
-              e.TgZ(96, 'ion-col', 26),
-              e._uU(97, '\n                    '),
-              e._UZ(98, 'img', 28),
-              e._uU(99, '\n                  '),
+              e._uU(88, '\n\n            '),
+              e.TgZ(89, 'ion-text', 25),
+              e._uU(90, '\n              '),
+              e.TgZ(91, 'h5', 26),
+              e._uU(92, 'Already have an account? '),
+              e.TgZ(93, 'a', 27),
+              e._uU(94, ' Sign in here'),
               e.qZA(),
-              e._uU(100, '\n                  '),
-              e.TgZ(101, 'ion-col', 26),
-              e._uU(102, '\n                    '),
-              e._UZ(103, 'img', 29),
-              e._uU(104, '\n                  '),
+              e._uU(95, '.'),
               e.qZA(),
-              e._uU(105, '\n                '),
+              e._uU(96, '\n            '),
               e.qZA(),
-              e._uU(106, '\n              '),
+              e._uU(97, '\n          '),
               e.qZA(),
-              e._uU(107, '\n            '),
+              e._uU(98, '\n        '),
               e.qZA(),
-              e._uU(108, '\n            '),
-              e.TgZ(109, 'div', 30),
-              e._uU(110, '\n              '),
-              e.TgZ(111, 'ion-button', 31),
-              e._uU(112, '\n                Create_account\n              '),
+              e._uU(99, '\n      '),
               e.qZA(),
-              e._uU(113, '\n            '),
+              e._uU(100, '\n    '),
               e.qZA(),
-              e._uU(114, '\n\n            '),
-              e.TgZ(115, 'ion-text', 32),
-              e._uU(116, '\n              '),
-              e.TgZ(117, 'h5', 33),
-              e._uU(118, 'Already have an account? '),
-              e.TgZ(119, 'a', 34),
-              e._uU(120, ' Sign in here'),
+              e._uU(101, '\n  '),
               e.qZA(),
-              e._uU(121, '.'),
+              e._uU(102, '\n\n  '),
+              e.YNc(103, l_, 1, 0, 'app-footer', 28),
+              e._uU(104, '\n'),
               e.qZA(),
-              e._uU(122, '\n            '),
-              e.qZA(),
-              e._uU(123, '\n          '),
-              e.qZA(),
-              e._uU(124, '\n        '),
-              e.qZA(),
-              e._uU(125, '\n      '),
-              e.qZA(),
-              e._uU(126, '\n    '),
-              e.qZA(),
-              e._uU(127, '\n  '),
-              e.qZA(),
-              e._uU(128, '\n\n  '),
-              e.YNc(129, l_, 1, 0, 'app-footer', 35),
-              e._uU(130, '\n'),
-              e.qZA(),
-              e._uU(131, '\n')),
+              e._uU(105, '\n')),
               2 & r &&
                 (e.xp6(2),
                 e.Q6J('ngIf', t.isWeb),
@@ -21115,9 +21091,7 @@
                     ? null
                     : t.f.confirmPassword.errors.matching
                 ),
-                e.xp6(4),
-                e.ekj('d-flex-column', !t.isWeb),
-                e.xp6(29),
+                e.xp6(7),
                 e.Q6J('disabled', t.signupForm.invalid || t.isLoading),
                 e.xp6(18),
                 e.Q6J('ngIf', t.isWeb));
@@ -21228,15 +21202,15 @@
           );
         })();
       function Fe(s, r) {
-        1 & s && e._UZ(0, 'app-header', 31);
+        1 & s && e._UZ(0, 'app-header', 24);
       }
       function Xe(s, r) {
-        1 & s && (e.TgZ(0, 'ion-col', 32), e._uU(1, '\n        '), e._UZ(2, 'img', 33), e._uU(3, '\n      '), e.qZA());
+        1 & s && (e.TgZ(0, 'ion-col', 25), e._uU(1, '\n        '), e._UZ(2, 'img', 26), e._uU(3, '\n      '), e.qZA());
       }
       function lt(s, r) {
         if (
           (1 & s &&
-            (e.TgZ(0, 'div', 34), e._uU(1, '\n            '), e._UZ(2, 'img', 35), e._uU(3, '\n          '), e.qZA()),
+            (e.TgZ(0, 'div', 27), e._uU(1, '\n            '), e._UZ(2, 'img', 28), e._uU(3, '\n          '), e.qZA()),
           2 & s)
         ) {
           const t = e.oxw();
@@ -21396,8 +21370,8 @@
         (Rt.ɵcmp = e.Xpm({
           type: Rt,
           selectors: [['app-login']],
-          decls: 108,
-          vars: 13,
+          decls: 82,
+          vars: 11,
           consts: [
             ['no-bounce', ''],
             ['showAction', 'signup', 4, 'ngIf'],
@@ -21469,13 +21443,6 @@
               3,
               'disabled',
             ],
-            [1, 'social-login'],
-            ['color', 'medium'],
-            [1, 'ion-padding-top'],
-            [1, 'icon'],
-            ['src', 'assets/images/facebook.svg', 'alt', ''],
-            ['src', 'assets/images/google.svg', 'alt', ''],
-            ['src', 'assets/images/apple.svg', 'alt', ''],
             ['color', 'tertiary'],
             [1, 'switch-page'],
             ['routerLink', '/create-acount'],
@@ -21578,66 +21545,33 @@
               e._uU(62, '\n            '),
               e.qZA(),
               e._uU(63, '\n\n            '),
-              e.TgZ(64, 'div', 20),
-              e._uU(65, '\n              '),
-              e.TgZ(66, 'ion-text', 21),
-              e._uU(67, ' Or continue with '),
+              e._uU(64, '\n\n            '),
+              e.TgZ(65, 'ion-text', 20),
+              e._uU(66, '\n              '),
+              e.TgZ(67, 'h5', 21),
+              e._uU(68, 'Do not have an account? '),
+              e.TgZ(69, 'a', 22),
+              e._uU(70, ' Sign up here'),
               e.qZA(),
-              e._uU(68, '\n              '),
-              e.TgZ(69, 'ion-grid', 22),
-              e._uU(70, '\n                '),
-              e.TgZ(71, 'ion-row'),
-              e._uU(72, '\n                  '),
-              e.TgZ(73, 'ion-col', 23),
-              e._uU(74, '\n                    '),
-              e._UZ(75, 'img', 24),
-              e._uU(76, '\n                  '),
+              e._uU(71, '.'),
               e.qZA(),
-              e._uU(77, '\n                  '),
-              e.TgZ(78, 'ion-col', 23),
-              e._uU(79, '\n                    '),
-              e._UZ(80, 'img', 25),
-              e._uU(81, '\n                  '),
+              e._uU(72, '\n            '),
               e.qZA(),
-              e._uU(82, '\n                  '),
-              e.TgZ(83, 'ion-col', 23),
-              e._uU(84, '\n                    '),
-              e._UZ(85, 'img', 26),
-              e._uU(86, '\n                  '),
+              e._uU(73, '\n          '),
               e.qZA(),
-              e._uU(87, '\n                '),
+              e._uU(74, '\n        '),
               e.qZA(),
-              e._uU(88, '\n              '),
+              e._uU(75, '\n      '),
               e.qZA(),
-              e._uU(89, '\n            '),
+              e._uU(76, '\n    '),
               e.qZA(),
-              e._uU(90, '\n\n            '),
-              e.TgZ(91, 'ion-text', 27),
-              e._uU(92, '\n              '),
-              e.TgZ(93, 'h5', 28),
-              e._uU(94, 'Do not have an account? '),
-              e.TgZ(95, 'a', 29),
-              e._uU(96, ' Sign up here'),
+              e._uU(77, '\n  '),
               e.qZA(),
-              e._uU(97, '.'),
+              e._uU(78, '\n  '),
+              e.YNc(79, gt, 1, 0, 'app-footer', 23),
+              e._uU(80, '\n'),
               e.qZA(),
-              e._uU(98, '\n            '),
-              e.qZA(),
-              e._uU(99, '\n          '),
-              e.qZA(),
-              e._uU(100, '\n        '),
-              e.qZA(),
-              e._uU(101, '\n      '),
-              e.qZA(),
-              e._uU(102, '\n    '),
-              e.qZA(),
-              e._uU(103, '\n  '),
-              e.qZA(),
-              e._uU(104, '\n  '),
-              e.YNc(105, gt, 1, 0, 'app-footer', 30),
-              e._uU(106, '\n'),
-              e.qZA(),
-              e._uU(107, '\n')),
+              e._uU(81, '\n')),
               2 & r &&
                 (e.xp6(2),
                 e.Q6J('ngIf', t.isWeb),
@@ -21653,9 +21587,7 @@
                 e.Q6J('hidden', !t.error || t.loginForm.dirty || t.isLoading),
                 e.xp6(36),
                 e.Q6J('disabled', t.loginForm.invalid || t.isLoading),
-                e.xp6(4),
-                e.ekj('d-flex-column', !t.isWeb),
-                e.xp6(41),
+                e.xp6(19),
                 e.Q6J('ngIf', t.isWeb));
           },
           directives: [
@@ -22607,7 +22539,9 @@
           goBack() {
             this._location.back();
           }
-          set startRecord(t) {}
+          set startRecord(t) {
+            t && this.hasRecordingPermission && this.startRecording();
+          }
           draw() {
             var t = this;
             return (0, yi.Z)(function* () {
@@ -22685,6 +22619,9 @@
           get isWeb() {
             return !this.platform.is('cordova');
           }
+          onTimerComplete(t) {
+            t && this.stopRecording();
+          }
           ngOnDestroy() {
             this.hasRecordingPermission && this.isRecStarted && Wl.stopRecording();
           }
@@ -22705,11 +22642,11 @@
             inputs: { startRecord: 'startRecord' },
             outputs: { audioFileAction: 'audioFileAction', audioStopped: 'audioStopped' },
             decls: 22,
-            vars: 8,
+            vars: 10,
             consts: [
               [1, 'd-flex', 'justify-content-center', 'mt-5'],
               [1, 'container'],
-              ['format', 'ms', 3, 'autoStart'],
+              ['format', 'ms', 3, 'countdown', 'startTime', 'autoStart', 'onComplete'],
               ['basicTimer', ''],
               ['class', 'mt-2', 3, 'value', 4, 'ngIf'],
               [1, 'row', 'justify-content-center', 'mt-5'],
@@ -22749,7 +22686,11 @@
                 e.TgZ(2, 'div', 1),
                 e._uU(3, '\n    '),
                 e._uU(4, '\n    Recording time: '),
-                e._UZ(5, 'cd-timer', 2, 3),
+                e.TgZ(5, 'cd-timer', 2, 3),
+                e.NdJ('onComplete', function (y) {
+                  return o.onTimerComplete(y);
+                }),
+                e.qZA(),
                 e._uU(7, '\n    '),
                 e.YNc(8, Lv, 1, 1, 'ion-progress-bar', 4),
                 e._uU(9, '\n\n    '),
@@ -22774,7 +22715,7 @@
                 e._uU(21, '\n')),
                 2 & t &&
                   (e.xp6(5),
-                  e.Q6J('autoStart', !1),
+                  e.Q6J('countdown', !0)('startTime', 600)('autoStart', !1),
                   e.xp6(3),
                   e.Q6J('ngIf', o.isWeb),
                   e.xp6(5),
