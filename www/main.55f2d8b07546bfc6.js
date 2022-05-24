@@ -15597,7 +15597,7 @@
               [3, 'ngClass'],
               ['translate', ''],
               [3, 'isLoading', 4, 'ngIf'],
-              [1, 'p-0', 'mt-3'],
+              [1, 'p-0', 'my-3'],
               ['fxLayout', 'row', 'fxLayoutAlign', 'space-between center'],
               [1, 'heading'],
               [1, 'ion-padding-vertical'],
@@ -22872,13 +22872,13 @@
             e.NdJ('click', function () {
               return e.CHM(t), e.oxw().sendStory();
             }),
-            e._uU(1, '\n      '),
+            e._uU(1, '\n        '),
             e.TgZ(2, 'span'),
             e._uU(3, 'Complete Story'),
             e.qZA(),
-            e._uU(4, ' \n      '),
+            e._uU(4, '\n        '),
             e.YNc(5, d_, 1, 1, 'app-loader', 11),
-            e._uU(6, '\n        \n      '),
+            e._uU(6, '\n      '),
             e.qZA();
         }
         if (2 & o) {
