@@ -38,11 +38,7 @@ export class RecordingPlayerComponent implements OnInit, OnDestroy {
     this.setRecordingEvents();
   }
 
-  ngOnInit(): void {
-    if (this.isWeb) {
-      this.draw();
-    }
-  }
+  ngOnInit(): void {}
 
   goBack() {
     this._location.back();
@@ -78,6 +74,9 @@ export class RecordingPlayerComponent implements OnInit, OnDestroy {
   }
 
   startRecording() {
+    if (this.isWeb) {
+      this.draw();
+    }
     VoiceRecorder.startRecording()
       .then((result: GenericResponse) => {
         if (result.value) {
@@ -86,9 +85,13 @@ export class RecordingPlayerComponent implements OnInit, OnDestroy {
           this.basictimer.start();
         }
       })
-      .catch((error) => {
-        this.toastService.showToast('success', 'Please grant microphone access and visit this screen again');
-        console.log(error);
+      .catch((error: any) => {
+        let errorObj = error.toString();
+        this.toastService.showToast('success', errorObj);
+        if (errorObj.includes('ALREADY_RECORDING')) {
+          VoiceRecorder.stopRecording();
+          this.startRecording();
+        }
       });
   }
 
@@ -124,7 +127,6 @@ export class RecordingPlayerComponent implements OnInit, OnDestroy {
         this.audioStopped.emit({ audio: audioRef, event: true });
       }
       this.recordedFileDuration(result.value.recordDataBase64);
-      // if (this.wave) this.wave.destroy()
     });
   }
 
@@ -133,7 +135,6 @@ export class RecordingPlayerComponent implements OnInit, OnDestroy {
     Utils.converToBlob(blobUrl.replace(/^[^,]+,/, '')).then((res: any) => {
       this.audioFileAction.emit(res);
     });
-    const duration = await getBlobDuration(blobUrl);
   }
 
   setRecordingEvents() {
@@ -144,10 +145,6 @@ export class RecordingPlayerComponent implements OnInit, OnDestroy {
         this.hasRecordingPermission = true;
         this.startRecording();
       }
-      // if (typeof result.value == 'undefined') {
-      //   this.hasRecordingPermission = true;
-      //   this.startRecording();
-      // }
     });
     VoiceRecorder.hasAudioRecordingPermission().then((result: GenericResponse) => {
       console.log(result);
@@ -157,22 +154,8 @@ export class RecordingPlayerComponent implements OnInit, OnDestroy {
     });
   }
 
-  // playRecordedSound(result: any) {
-  //   const base64Sound = result.value.recordDataBase64; // from plugin
-  //   const mimeType = result.value.mimeType; // from plugin
-  //   const audioRef = this.isWeb ? new Audio(`${base64Sound}`):new Audio(`data:${mimeType};base64,${base64Sound}`); //For web and mobile
-  //   audioRef.load();
-  //   audioRef.oncanplaythrough = (e: any) => {
-  //   this.recordedFileDuration(e.path[0].currentSrc)
-  //     Utils.dataUrlToFile(e.path[0].currentSrc, "abc.mp3").then((res:any)=> {
-  //       console.log(res)
-  //     })
-  //     audioRef.play();
-  //   };
-  // }
-
   get isWeb(): boolean {
-    return !this.platform.is('cordova');
+    return !this.platform.is('hybrid');
   }
 
   onTimerComplete(event: any) {
@@ -183,6 +166,7 @@ export class RecordingPlayerComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     if (this.hasRecordingPermission && this.isRecStarted) {
+      console.log('destroy');
       VoiceRecorder.stopRecording();
     }
   }

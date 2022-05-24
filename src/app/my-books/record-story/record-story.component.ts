@@ -23,6 +23,7 @@ export class RecordStoryComponent implements OnInit, OnDestroy {
   isRecorded = false;
   isLoading = true;
   isAudioAvailable = false; //check if audio is already recorded and availble for this story
+  isProcessing = false;
   // destroyRecorder=false;
   constructor(
     private platform: Platform,
@@ -155,6 +156,8 @@ export class RecordStoryComponent implements OnInit, OnDestroy {
           if (err.status == 201) {
             this.updateStoryOnUpload();
             this.confirmBox();
+          } else {
+            this.isProcessing = false;
           }
         },
       });
@@ -210,8 +213,12 @@ export class RecordStoryComponent implements OnInit, OnDestroy {
     this.apiService
       .put(`/api/books/${this.routeParams.bookId}/Stories/${this.routeParams.storyId}/AddAnswer`, fileUploadObj)
       .subscribe({
-        next: (res) => {},
-        error: (error) => {},
+        next: (res) => {
+          this.isProcessing = false;
+        },
+        error: (error) => {
+          this.isProcessing = false;
+        },
       });
   }
 
@@ -230,7 +237,7 @@ export class RecordStoryComponent implements OnInit, OnDestroy {
       presentingElement: this.routerOutlet.nativeEl,
     });
     modal.onDidDismiss().then((data) => {
-      if (data.role == ModalDismissRole.submitted) {
+      if (data.role == ModalDismissRole.submitted && !this.isProcessing) {
         this.goBack();
       }
       if (data.role == ModalDismissRole.canceled) {
@@ -241,6 +248,7 @@ export class RecordStoryComponent implements OnInit, OnDestroy {
   }
 
   async sendStory() {
+    this.isProcessing = true;
     this.postFile();
   }
 

@@ -23,8 +23,8 @@
       <div ion-fixed class="sidebar-content">
         <ion-list lines="full" class="ion-no-padding bg-transparent">
           <div lines="none" class="avatar mb-4">
-            <img class="avatar-img" src="assets/logos/logo-cir-white.png" />
-            <ion-label class="avatar-caption"> {{ username }}</ion-label>
+            <img [routerLink]="'/my-library'" class="avatar-img cursor-pointer" src="assets/logos/logo-cir-white.png" />
+            <ion-label class="avatar-caption">{{ userinfo?.firstName }} {{ userinfo?.lastName }}</ion-label>
           </div>
 
           <div class="ion-padding-horizontal">

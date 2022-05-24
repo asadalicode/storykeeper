@@ -18,6 +18,8 @@ import { BuyNewBookComponent } from '@app/@shared/popup-components/buy-new-book/
 import { ModalDismissRole } from '@app/@shared/constants';
 import { SharedService } from '@app/@shared/sevices/shared.service';
 import { Subscription } from 'rxjs';
+import { ApiService } from '@app/@shared/sevices/api.service';
+import { Profile } from '@app/@shared/models';
 
 @Component({
   selector: 'app-shell',
@@ -26,6 +28,7 @@ import { Subscription } from 'rxjs';
 })
 export class ShellComponent implements OnInit {
   sidePanelSubscription!: Subscription;
+  userinfo: any;
   constructor(
     private router: Router,
     private translateService: TranslateService,
@@ -36,6 +39,7 @@ export class ShellComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private credentialsService: CredentialsService,
     private i18nService: I18nService,
+    private apiService: ApiService,
     public modalController: ModalController,
     private sharedService: SharedService,
     private routerOutlet: IonRouterOutlet
@@ -43,6 +47,7 @@ export class ShellComponent implements OnInit {
 
   ngOnInit() {
     this.openSideMenu();
+    this.getUserInfo();
   }
 
   async showProfileActions() {
@@ -123,6 +128,17 @@ export class ShellComponent implements OnInit {
       ],
     });
     await alertController.present();
+  }
+
+  get userId() {
+    const user: any = this.credentialsService.credentials;
+    return user.userId;
+  }
+
+  getUserInfo() {
+    this.apiService.getDetails(`/api/Users/${this.userId}`, Profile).subscribe((res: any) => {
+      this.userinfo = res;
+    });
   }
 
   closeMenu() {
