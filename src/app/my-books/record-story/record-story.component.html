@@ -58,7 +58,8 @@
         expand="block"
         translate
       >
-        Complete Story
+        <span [class.disabled]="isProcessing">Complete Story</span>
+        <app-loader *ngIf="isProcessing" [isLoading]="isLoading"></app-loader>
       </ion-button>
 
       <ion-text *ngIf="isRecorded && !isAudioAvailable">
