@@ -10,9 +10,12 @@
       [autoStart]="false"
       format="ms"
     ></cd-timer>
-    <ion-progress-bar *ngIf="isWeb" class="mt-2" [value]="isPlaying ? step * 5 : 0"></ion-progress-bar>
 
-    <div class="row justify-content-center mt-5">
+    <ion-img *ngIf="!isPlaying" class="m-auto img-gif" [src]="'assets/images/sound-waves.png'" alt=""></ion-img>
+    <ion-img *ngIf="isPlaying" class="m-auto img-gif" [src]="'assets/images/sound-gif.gif'" alt=""></ion-img>
+    <!-- <ion-progress-bar *ngIf="isWeb" class="mt-2" [value]="isPlaying ? step * 5 : 0"></ion-progress-bar> -->
+
+    <div class="row justify-content-center mt-3">
       <!-- <ion-button
         *ngIf="isRecStarted && !isRecorded"
         [disabled]="!hasRecordingPermission"

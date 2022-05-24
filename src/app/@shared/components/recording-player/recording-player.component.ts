@@ -74,9 +74,9 @@ export class RecordingPlayerComponent implements OnInit, OnDestroy {
   }
 
   startRecording() {
-    if (this.isWeb) {
-      this.draw();
-    }
+    // if (this.isWeb) {
+    //   this.draw();
+    // }
     VoiceRecorder.startRecording()
       .then((result: GenericResponse) => {
         if (result.value) {
