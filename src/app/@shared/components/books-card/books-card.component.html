@@ -16,7 +16,28 @@
   >
     <ion-icon slot="icon-only" src="assets/images/edit-icon-white.svg"></ion-icon>
   </ion-button>
+  <!-- <ion-accordion-group class="accordion-button">
+    <ion-accordion id="more-details"  expand="inset" multiple="true">
+      <ion-item class="item-bg" slot="header" lines="none">
+      </ion-item>
 
+    </ion-accordion>
+  </ion-accordion-group> -->
+  <!-- <ion-popover [dismissOnSelect]="true" trigger="more-details" triggerAction="click">
+    <ng-template>
+      <ion-content>
+        <ion-list>
+          <ion-item [button]="true" [detail]="false" class="item-bg" slot="header" lines="none">
+            <ion-label>Archive book</ion-label>
+          </ion-item>
+          <ion-item  *ngIf="isBookPending" (click)="updateBook(book)" [button]="true" [detail]="false" class="item-bg" slot="header" lines="none">
+            <ion-label>Edit book</ion-label>
+          </ion-item>
+
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-popover> -->
   <div class="book-details">
     <ion-label class="book-title">{{ book.bookName }}</ion-label>
     <div class="small-text">{{ book.published_at }}</div>

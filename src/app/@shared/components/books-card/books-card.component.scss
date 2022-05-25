@@ -5,6 +5,21 @@
   width: 40px;
   height: 40px;
 }
+.item-bg {
+  --background: transparent !important;
+}
+.accordion-button {
+  position: absolute;
+  right: 25px;
+  top: 15px;
+  background: transparent;
+  ion-accordion {
+    background: transparent;
+  }
+
+  // width: 40px;
+  // height: 40px;
+}
 
 ion-img {
   height: 100%;
