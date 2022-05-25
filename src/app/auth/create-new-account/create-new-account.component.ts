@@ -46,7 +46,11 @@ export class CreateNewAccountComponent implements OnInit {
   async signup() {
     this.isLoading = true;
     const signup$ = this.authenticationService.signup(this.signupForm.value);
-    const loadingOverlay = await this.loadingController.create({});
+    const loadingOverlay = await this.loadingController.create({
+      spinner: 'bubbles',
+      showBackdrop: true,
+      cssClass: 'main-loader',
+    });
     const loading$ = from(loadingOverlay.present());
     forkJoin([signup$, loading$])
       .pipe(

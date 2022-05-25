@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Book } from '@app/@shared/models/book';
 import { SharedService } from '@app/@shared/sevices/shared.service';
 import { myLibraryTabs } from '@app/@shared/constants';
+import { PopoverController } from '@ionic/angular';
 
 @Component({
   selector: 'app-books-card',
@@ -11,7 +12,11 @@ import { myLibraryTabs } from '@app/@shared/constants';
 })
 export class BooksCardComponent implements OnInit {
   @Input() book!: Book;
-  constructor(private router: Router, private sharedService: SharedService) {}
+  constructor(
+    private router: Router,
+    private sharedService: SharedService,
+    public popoverController: PopoverController
+  ) {}
 
   ngOnInit(): void {}
 
@@ -32,4 +37,17 @@ export class BooksCardComponent implements OnInit {
       this.router.navigate([`my-library/book/${book.id}/${book.title}`]);
     }
   }
+
+  // async presentPopover(ev: any) {
+  //   const popover = await this.popoverController.create({
+  //     component: PopoverComponent,
+  //     cssClass: 'my-custom-class',
+  //     event: ev,
+  //     translucent: true
+  //   });
+  //   await popover.present();
+
+  //   const { role } = await popover.onDidDismiss();
+  //   console.log('onDidDismiss resolved with role', role);
+  // }
 }

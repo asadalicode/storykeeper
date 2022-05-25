@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { LoadingController, Platform } from '@ionic/angular';
+import { IonRouterOutlet, LoadingController, ModalController, Platform } from '@ionic/angular';
 import { map } from 'rxjs/operators';
 import { forkJoin, from } from 'rxjs';
 import { finalize } from 'rxjs/operators';
@@ -13,6 +13,9 @@ import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 import { FacebookLogin } from '@capacitor-community/facebook-login';
 import { ToastController } from '@ionic/angular';
 import { ToastService } from '@app/@shared/sevices/toast.service';
+import { ForgotPasswordComponent } from './popup-component/forgot-password/forgot-password.component';
+import { ModalDismissRole } from '@app/@shared/constants';
+import { ResetPasswordEmailComponent } from './popup-component/reset-password-email/reset-password-email.component';
 
 const log = new Logger('Login');
 
@@ -32,9 +35,11 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
+    private modalController: ModalController,
     private platform: Platform,
     private loadingController: LoadingController,
     private authenticationService: AuthenticationService,
+    public routerOutlet: IonRouterOutlet,
     private toastService: ToastService
   ) {
     this.createForm();
@@ -74,6 +79,24 @@ export class LoginComponent implements OnInit {
         console.log(res);
       });
     }
+  }
+
+  async forgotPassword() {
+    const modal = await this.modalController.create({
+      component: ResetPasswordEmailComponent,
+      cssClass: 'modal-popup sm',
+      swipeToClose: true,
+      componentProps: {
+        title: 'Reset Password',
+      },
+      presentingElement: this.routerOutlet.nativeEl,
+    });
+    modal.onDidDismiss().then((data) => {
+      if (data.role == ModalDismissRole.submitted) {
+        this.toastService.showToast('success', 'Email added successfully');
+      }
+    });
+    return await modal.present();
   }
 
   async signOut(): Promise<void> {
