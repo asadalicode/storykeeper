@@ -343,7 +343,7 @@
         dr: () => jt,
         BJ: () => Dn,
         oU: () => Ar,
-        cs: () => Kn,
+        cs: () => Qn,
         fn: () => Kr,
         gZ: () => rr,
         YG: () => Yi,
@@ -366,7 +366,7 @@
         q_: () => Vn,
         yh: () => Ht,
         z0: () => Ln,
-        fG: () => Qn,
+        fG: () => Jn,
         ki: () => Xe,
         X7: () => xi,
         B7: () => Gr,
@@ -1797,7 +1797,7 @@
             y
           );
         })(),
-        Qn = (() => {
+        Jn = (() => {
           let y = class {
             constructor(b, j, ke) {
               (this.z = ke), b.detach(), (this.el = j.nativeElement);
@@ -3026,7 +3026,7 @@
           return Q === A.gz ? this.route : Q === A.y6 ? this.childContexts : this.parent.get(Q, b);
         }
       }
-      let Kn = (() => {
+      let Qn = (() => {
           class y {
             constructor(b, j, ke) {
               (this.routerOutlet = b), (this.navCtrl = j), (this.config = ke);
@@ -3708,7 +3708,7 @@
               }),
                 void 0 !== Te && Ht(Te);
             },
-            Qn = (Te = !0, Ze) => {
+            Jn = (Te = !0, Ze) => {
               (0, l.r)(() => {
                 bn.forEach((tt) => {
                   T(tt, 'animation-name', Mt || null),
@@ -3731,7 +3731,7 @@
                 Yn.forEach((lt) => {
                   lt.update(Te, Ze, tt);
                 }),
-              un ? Ln(tt) : Qn(Ze, tt),
+              un ? Ln(tt) : Jn(Ze, tt),
               ut
             ),
             xi = () => {
@@ -3754,7 +3754,7 @@
               new Promise((Ze) => {
                 Te && Te.sync && ((ct = !0), ji(() => (ct = !1), { oneTimeCallback: !0 })),
                   De || Vn(),
-                  Fe && (un ? (Ht(0), Ln()) : Qn(), (Fe = !1)),
+                  Fe && (un ? (Ht(0), Ln()) : Jn(), (Fe = !1)),
                   mt && ((z = Yn.length + 1), (mt = !1)),
                   ji(() => Ze(), { oneTimeCallback: !0 }),
                   Yn.forEach((tt) => {
@@ -5344,7 +5344,7 @@
                 pr = class extends HTMLElement {
                   constructor(To) {
                     super(To),
-                      Qn((To = this), Ii),
+                      Jn((To = this), Ii),
                       1 & Ii.$flags$ && To.attachShadow({ mode: 'open', delegatesFocus: !!(16 & Ii.$flags$) });
                   }
                   connectedCallback() {
@@ -5445,7 +5445,7 @@
         Vn = new WeakMap(),
         Ht = (me) => Vn.get(me),
         Ln = (me, Oe) => Vn.set((Oe.$lazyInstance$ = me), Oe),
-        Qn = (me, Oe) => {
+        Jn = (me, Oe) => {
           const Te = { $flags$: 0, $hostElement$: me, $cmpMeta$: Oe, $instanceValues$: new Map() };
           return (
             (Te.$onInstancePromise$ = new Promise((Ze) => (Te.$onInstanceResolve$ = Ze))),
@@ -8705,8 +8705,8 @@
             Sn = qn.top + xn.top,
             oi = qn.left + xn.left,
             { arrowTop: vn, arrowLeft: br } = ze(vt, we, et, Sn, oi, J, le, $),
-            { originX: Rr, originY: Kn } = ar(vt, Yt, $);
-          return { top: Sn, left: oi, referenceCoordinates: Bn, arrowTop: vn, arrowLeft: br, originX: Rr, originY: Kn };
+            { originX: Rr, originY: Qn } = ar(vt, Yt, $);
+          return { top: Sn, left: oi, referenceCoordinates: Bn, arrowTop: vn, arrowLeft: br, originX: Rr, originY: Qn };
         },
         ar = ($, J, le) => {
           switch ($) {
@@ -8819,7 +8819,7 @@
             Sn = Bn,
             vn = le,
             br = J,
-            Kn = wn,
+            Qn = wn,
             Qr = On,
             Mi = !1,
             gi = !1;
@@ -8828,8 +8828,8 @@
           let Z = !1;
           return (
             vn < we + zt
-              ? ((vn = we), (Mi = !0), (Kn = 'left'))
-              : vt + we + vn + zt > et && ((gi = !0), (vn = et - vt - we), (Kn = 'right')),
+              ? ((vn = we), (Mi = !0), (Qn = 'left'))
+              : vt + we + vn + zt > et && ((gi = !0), (vn = et - vt - we), (Qn = 'right')),
             B + pe + Yt > Ge &&
               ('top' === $ || 'bottom' === $) &&
               (B - Yt > 0 ? ((br = B - Yt - pe - (xn - 1)), (Sn = br + Yt), (Qr = 'bottom'), (Z = !0)) : (Rr = we)),
@@ -8837,7 +8837,7 @@
               top: br,
               left: vn,
               bottom: Rr,
-              originX: Kn,
+              originX: Qn,
               originY: Qr,
               checkSafeAreaLeft: Mi,
               checkSafeAreaRight: gi,
@@ -8862,7 +8862,7 @@
               (null === (le = null == we ? void 0 : we.detail) || void 0 === le ? void 0 : le.ionShadowTarget) ||
               (null == we ? void 0 : we.target),
             { contentWidth: vn, contentHeight: br } = Ki(et, xn, oi),
-            { arrowWidth: Rr, arrowHeight: Kn } = (($) => {
+            { arrowWidth: Rr, arrowHeight: Qn } = (($) => {
               if (!$) return { arrowWidth: 0, arrowHeight: 0 };
               const { width: J, height: le } = $.getBoundingClientRect();
               return { arrowWidth: J, arrowHeight: le };
@@ -8872,7 +8872,7 @@
               vn,
               br,
               Rr,
-              Kn,
+              Qn,
               vt,
               Yt,
               zt,
@@ -8908,7 +8908,7 @@
               Mi.referenceCoordinates,
               Mi.arrowTop,
               Mi.arrowLeft,
-              Kn
+              Qn
             ),
             kn = (0, L.c)(),
             q = (0, L.c)(),
@@ -9002,14 +9002,14 @@
               Ge,
               we
             ),
-            Kn = 'cover' === et ? 0 : 12,
+            Qn = 'cover' === et ? 0 : 12,
             {
               originX: Qr,
               originY: Mi,
               top: gi,
               left: B,
               bottom: pe,
-            } = Pt(Yt, Rr.top, Rr.left, Kn, Tn, Bn, oi, vn, 0, Rr.originX, Rr.originY, Rr.referenceCoordinates),
+            } = Pt(Yt, Rr.top, Rr.left, Qn, Tn, Bn, oi, vn, 0, Rr.originX, Rr.originY, Rr.referenceCoordinates),
             Z = (0, L.c)(),
             _e = (0, L.c)(),
             Xe = (0, L.c)(),
@@ -10931,12 +10931,12 @@
           return new Ln(r.id, r.name, r.priceInCents, r.numberOfTotalStories, r.priceInCents / 100);
         }
       }
-      class Qn {
+      class Jn {
         constructor(r, t) {
           (this.bookId = r), (this.fileName = t);
         }
         static adapt(r) {
-          return new Qn(r.id, r.image);
+          return new Jn(r.id, r.image);
         }
       }
       class li {
@@ -11793,23 +11793,23 @@
                 },
                 Ye = () => {
                   let { headers: Mn, status: rn, statusText: Xn, url: Ni } = K(),
-                    Jn = null;
-                  204 !== rn && (Jn = void 0 === d.response ? d.responseText : d.response),
-                    0 === rn && (rn = Jn ? 200 : 0);
+                    Gn = null;
+                  204 !== rn && (Gn = void 0 === d.response ? d.responseText : d.response),
+                    0 === rn && (rn = Gn ? 200 : 0);
                   let Nr = rn >= 200 && rn < 300;
-                  if ('json' === t.responseType && 'string' == typeof Jn) {
-                    const Go = Jn;
-                    Jn = Jn.replace(pe, '');
+                  if ('json' === t.responseType && 'string' == typeof Gn) {
+                    const Go = Gn;
+                    Gn = Gn.replace(pe, '');
                     try {
-                      Jn = '' !== Jn ? JSON.parse(Jn) : null;
+                      Gn = '' !== Gn ? JSON.parse(Gn) : null;
                     } catch (Jo) {
-                      (Jn = Go), Nr && ((Nr = !1), (Jn = { error: Jo, text: Jn }));
+                      (Gn = Go), Nr && ((Nr = !1), (Gn = { error: Jo, text: Gn }));
                     }
                   }
                   Nr
-                    ? (o.next(new Tn({ body: Jn, headers: Mn, status: rn, statusText: Xn, url: Ni || void 0 })),
+                    ? (o.next(new Tn({ body: Gn, headers: Mn, status: rn, statusText: Xn, url: Ni || void 0 })),
                       o.complete())
-                    : o.error(new Bn({ error: Jn, headers: Mn, status: rn, statusText: Xn, url: Ni || void 0 }));
+                    : o.error(new Bn({ error: Gn, headers: Mn, status: rn, statusText: Xn, url: Ni || void 0 }));
                 },
                 rt = (Mn) => {
                   const { url: rn } = K(),
@@ -13521,7 +13521,7 @@
             let Xn = Ut || rn;
             (d = '0' == d ? 0 : d), (_ = '0' == _ ? 0 : _);
             const Ni = !d && !_;
-            let Jn = {};
+            let Gn = {};
             const Nr = { 'max-width': null, 'max-height': null, 'min-width': null, 'min-height': null };
             switch (K || '') {
               case '':
@@ -13547,7 +13547,7 @@
                 !Xn && !Mn && !isNaN(K) && (K += '%'),
                   '0%' === K && (Xn = !0),
                   '0px' === K && (K = '0%'),
-                  (Jn = j(
+                  (Gn = j(
                     Nr,
                     Ut
                       ? { 'flex-grow': d, 'flex-shrink': _, 'flex-basis': Xn ? K : '100%' }
@@ -13555,25 +13555,25 @@
                   ));
             }
             return (
-              Jn.flex ||
-                Jn['flex-grow'] ||
-                (Jn = j(Nr, Ut ? { 'flex-grow': d, 'flex-shrink': _, 'flex-basis': K } : { flex: `${d} ${_} ${K}` })),
+              Gn.flex ||
+                Gn['flex-grow'] ||
+                (Gn = j(Nr, Ut ? { 'flex-grow': d, 'flex-shrink': _, 'flex-basis': K } : { flex: `${d} ${_} ${K}` })),
               '0%' !== K &&
                 '0px' !== K &&
                 '0.000000001px' !== K &&
                 'auto' !== K &&
-                ((Jn[kt] = Ni || (Xn && d) ? K : null), (Jn[rt] = Ni || (!In && _) ? K : null)),
-              Jn[kt] || Jn[rt]
+                ((Gn[kt] = Ni || (Xn && d) ? K : null), (Gn[rt] = Ni || (!In && _) ? K : null)),
+              Gn[kt] || Gn[rt]
                 ? o.hasWrap &&
-                  (Jn[Ut ? 'flex-basis' : 'flex'] = Jn[rt]
+                  (Gn[Ut ? 'flex-basis' : 'flex'] = Gn[rt]
                     ? Ut
-                      ? Jn[rt]
-                      : `${d} ${_} ${Jn[rt]}`
+                      ? Gn[rt]
+                      : `${d} ${_} ${Gn[rt]}`
                     : Ut
-                    ? Jn[kt]
-                    : `${d} ${_} ${Jn[kt]}`)
-                : (Jn = j(Nr, Ut ? { 'flex-grow': d, 'flex-shrink': _, 'flex-basis': K } : { flex: `${d} ${_} ${K}` })),
-              j(Jn, { 'box-sizing': 'border-box' })
+                    ? Gn[kt]
+                    : `${d} ${_} ${Gn[kt]}`)
+                : (Gn = j(Nr, Ut ? { 'flex-grow': d, 'flex-shrink': _, 'flex-basis': K } : { flex: `${d} ${_} ${K}` })),
+              j(Gn, { 'box-sizing': 'border-box' })
             );
           }
         }
@@ -15545,7 +15545,7 @@
               });
           }
           getBookImages() {
-            const t = this.books.map((o) => Qn.adapt(o));
+            const t = this.books.map((o) => Jn.adapt(o));
             this.apiService.post('/api/Files/books/images', t).subscribe({
               next: (o = []) => {
                 this.books.forEach((d) => {
@@ -15927,7 +15927,7 @@
         );
       })();
       var qr = k(655),
-        Gn = k(2076),
+        Kn = k(2076),
         Ku = k(8746);
       let ch = (() => {
           class s {}
@@ -17105,8 +17105,8 @@
           let K = !1,
             Ye = !1,
             rt = 0;
-          const kt = r.steps.map((Jn) => {
-            const Nr = this._makeStyleAst(Jn, t);
+          const kt = r.steps.map((Gn) => {
+            const Nr = this._makeStyleAst(Gn, t);
             let Go =
                 null != Nr.offset
                   ? Nr.offset
@@ -17148,14 +17148,14 @@
             Xn = t.currentAnimateTimings,
             Ni = Xn.duration;
           return (
-            kt.forEach((Jn, Nr) => {
+            kt.forEach((Gn, Nr) => {
               const Go = In > 0 ? (Nr == Mn ? 1 : In * Nr) : R[Nr],
                 Jo = Go * Ni;
               (t.currentTime = rn + Xn.delay + Jo),
                 (Xn.duration = Jo),
-                this._validateStyleAst(Jn, t),
-                (Jn.offset = Go),
-                o.styles.push(Jn);
+                this._validateStyleAst(Gn, t),
+                (Gn.offset = Go),
+                o.styles.push(Gn);
             }),
             o
           );
@@ -17840,7 +17840,7 @@
             rn = this.buildStyles(o, (K && K.params) || fl, Ut),
             Xn = (Ye && Ye.params) || fl,
             Ni = this.buildStyles(d, Xn, Ut),
-            Jn = new Set(),
+            Gn = new Set(),
             Nr = new Map(),
             Go = new Map(),
             Jo = 'void' === d,
@@ -17859,9 +17859,9 @@
               Ym = Qs(Nr, Jl, {});
             Gl.preStyleProps.forEach((fd) => (Ym[fd] = !0));
             const Ef = Qs(Go, Jl, {});
-            Gl.postStyleProps.forEach((fd) => (Ef[fd] = !0)), Jl !== t && Jn.add(Jl);
+            Gl.postStyleProps.forEach((fd) => (Ef[fd] = !0)), Jl !== t && Gn.add(Jl);
           });
-          const Iu = wu(Jn.values());
+          const Iu = wu(Gn.values());
           return hs(t, this._triggerName, o, d, Jo, rn, Ni, xa, Iu, Nr, Go, Bs);
         }
       }
@@ -18145,11 +18145,11 @@
             ) {
               const Xn = [],
                 Ni = _.matchStyles(Ye.value, Ye.params, Xn),
-                Jn = _.matchStyles(rt.value, rt.params, Xn);
+                Gn = _.matchStyles(rt.value, rt.params, Xn);
               Xn.length
                 ? this._engine.reportError(Xn)
                 : this._engine.afterFlush(() => {
-                    vu(r, Ni), Is(r, Jn);
+                    vu(r, Ni), Is(r, Gn);
                   });
             }
             return;
@@ -18185,8 +18185,8 @@
               Xn >= 0 && this.players.splice(Xn, 1);
               const Ni = this._engine.playersByElement.get(r);
               if (Ni) {
-                let Jn = Ni.indexOf(R);
-                Jn >= 0 && Ni.splice(Jn, 1);
+                let Gn = Ni.indexOf(R);
+                Gn >= 0 && Ni.splice(Gn, 1);
               }
             }),
             this.players.push(R),
@@ -18595,7 +18595,7 @@
             rn.set(ui, wi), Nn.forEach((xr) => Fs(xr, wi));
           });
           const Ni = [],
-            Jn = new Set(),
+            Gn = new Set(),
             Nr = new Set();
           for (let Nn = 0; Nn < this.collectedLeaveElements.length; Nn++) {
             const ui = this.collectedLeaveElements[Nn],
@@ -18603,13 +18603,13 @@
             wi &&
               wi.setForRemoval &&
               (Ni.push(ui),
-              Jn.add(ui),
+              Gn.add(ui),
               wi.hasAnimation
-                ? this.driver.query(ui, '.ng-star-inserted', !0).forEach((xr) => Jn.add(xr))
+                ? this.driver.query(ui, '.ng-star-inserted', !0).forEach((xr) => Gn.add(xr))
                 : Nr.add(ui));
           }
           const Go = new Map(),
-            Jo = nd(In, Array.from(Jn));
+            Jo = nd(In, Array.from(Gn));
           Jo.forEach((Nn, ui) => {
             const wi = zd + Xn++;
             Go.set(ui, wi), Nn.forEach((xr) => Fs(xr, wi));
@@ -18848,7 +18848,7 @@
               kt.add(Xn);
               const Ni = Xn[ta];
               if (Ni && Ni.removedBeforeQueried) return new Ze(rn.duration, rn.delay);
-              const Jn = Xn !== Ye,
+              const Gn = Xn !== Ye,
                 Nr = (function No(s) {
                   const r = [];
                   return ms(s, r), r;
@@ -18857,7 +18857,7 @@
                 Jo = R.get(Xn),
                 Pu = fg(0, this._normalizer, 0, rn.keyframes, Go, Jo),
                 xa = this._buildPlayer(rn, Pu, Nr);
-              if ((rn.subTimeline && d && Ut.add(Xn), Jn)) {
+              if ((rn.subTimeline && d && Ut.add(Xn), Gn)) {
                 const Bs = new Hl(r, K, Xn);
                 Bs.setRealPlayer(xa), rt.push(Bs);
               }
@@ -19456,8 +19456,8 @@
             rt = {};
           qp(o, d) &&
             Ye.forEach((Ni) => {
-              let Jn = Ni.currentSnapshot;
-              Object.keys(Jn).forEach((Nr) => (rt[Nr] = Jn[Nr]));
+              let Gn = Ni.currentSnapshot;
+              Object.keys(Gn).forEach((Nr) => (rt[Nr] = Gn[Nr]));
             });
           const kt = (function Hg(s) {
             let r = {};
@@ -20793,7 +20793,7 @@
             r.isLoading = !0;
             const t = r.authenticationService.signup(r.signupForm.value),
               o = yield r.loadingController.create({ spinner: 'bubbles', showBackdrop: !0, cssClass: 'main-loader' }),
-              d = (0, Gn.D)(o.present());
+              d = (0, Kn.D)(o.present());
             (0, Ct.D)([t, d])
               .pipe(
                 (0, bt.U)(([_, ...R]) => _),
@@ -21529,7 +21529,7 @@
                     console.log('res:', d);
                     const R = r.authenticationService.login(_),
                       K = yield r.loadingController.create({}),
-                      Ye = (0, Gn.D)(K.present());
+                      Ye = (0, Kn.D)(K.present());
                     (0, Ct.D)([R, Ye])
                       .pipe(
                         (0, bt.U)(([rt, ...kt]) => rt),
@@ -21579,7 +21579,7 @@
             r.isLoading = !0;
             const t = r.authenticationService.login(r.loginForm.value),
               o = yield r.loadingController.create({ spinner: 'bubbles', showBackdrop: !0, cssClass: 'main-loader' }),
-              d = (0, Gn.D)(o.present());
+              d = (0, Kn.D)(o.present());
             (0, Ct.D)([t, d])
               .pipe(
                 (0, bt.U)(([_, ...R]) => _),
@@ -21949,33 +21949,29 @@
           resetPassowrd() {
             var t = this;
             return (0, ri.Z)(function* () {
-              console.log('called'), (t.isLoading = !0);
+              t.isLoading = !0;
               let o = {
                 userId: Number(t.routeParams.userId),
                 token: t.routeParams.Token,
                 newPassword: t.Form.value.newPassword,
               };
+              o.token = o.token.split(' ').join('+');
               const d = yield t.loadingController.create({
                 spinner: 'bubbles',
                 showBackdrop: !0,
                 cssClass: 'main-loader',
               });
-              (0, Gn.D)(d.present()),
-                console.log(o),
-                t.apiService.post('/api/Users/ResetPassword', o).subscribe({
-                  complete: () => {
-                    console.log('complete');
-                  },
-                  next: (R) => {
-                    t.toastService.showToast('success', 'Password reset successfully.'),
-                      t.router.navigate(['/login']),
-                      d.dismiss(),
-                      (t.isLoading = !1);
-                  },
-                  error: (R) => {
-                    (t.isLoading = !1), d.dismiss();
-                  },
-                });
+              t.apiService.post('/api/Users/ResetPassword', o).subscribe({
+                next: (_) => {
+                  t.toastService.showToast('success', 'Password reset successfully.'),
+                    t.router.navigate(['/login']),
+                    d.dismiss(),
+                    (t.isLoading = !1);
+                },
+                error: (_) => {
+                  (t.isLoading = !1), d.dismiss();
+                },
+              });
             })();
           }
         }
@@ -24047,7 +24043,7 @@
         const { connector: t } = r;
         return (0, La.e)((o, d) => {
           const _ = t();
-          (0, Gn.D)(
+          (0, Kn.D)(
             s(
               (function Hv(s) {
                 return new pr.y((r) => s.subscribe(r));
@@ -24990,7 +24986,7 @@
                 );
             }
             getBookImages() {
-              const t = this.books.map((o) => Qn.adapt(o));
+              const t = this.books.map((o) => Jn.adapt(o));
               this.apiService.post('/api/Files/books/images', t).subscribe({
                 next: (o = []) => {
                   this.books.forEach((d) => {
@@ -26412,7 +26408,7 @@
             });
           }
           getBookImages() {
-            const t = [this.book].map((o) => Qn.adapt(o));
+            const t = [this.book].map((o) => Jn.adapt(o));
             this.apiService.post('/api/Files/books/images', t).subscribe({
               next: (o = []) => {
                 [this.book].forEach((d) => {
@@ -29528,7 +29524,7 @@
               );
           }
           getBookImages() {
-            const t = this.books.map((o) => Qn.adapt(o));
+            const t = this.books.map((o) => Jn.adapt(o));
             this.apiService.post('/api/Files/books/images', t).subscribe({
               next: (o = []) => {
                 this.books.forEach((d) => {
@@ -29829,247 +29825,247 @@
         }
         redirectToCheckout(r) {
           return this.stripe.pipe(
-            (0, Y.w)((t) => (0, Gn.D)(t.redirectToCheckout(r))),
+            (0, Y.w)((t) => (0, Kn.D)(t.redirectToCheckout(r))),
             (0, yn.P)()
           );
         }
         confirmPayment(r) {
           return this.stripe.pipe(
-            (0, Y.w)((t) => (0, Gn.D)(t.confirmPayment(r))),
+            (0, Y.w)((t) => (0, Kn.D)(t.confirmPayment(r))),
             (0, yn.P)()
           );
         }
         confirmAcssDebitPayment(r, t, o) {
           return this.stripe.pipe(
-            (0, Y.w)((d) => (0, Gn.D)(d.confirmAcssDebitPayment(r, t, o))),
+            (0, Y.w)((d) => (0, Kn.D)(d.confirmAcssDebitPayment(r, t, o))),
             (0, yn.P)()
           );
         }
         confirmAlipayPayment(r, t, o) {
           return this.stripe.pipe(
-            (0, Y.w)((d) => (0, Gn.D)(d.confirmAlipayPayment(r, t, o))),
+            (0, Y.w)((d) => (0, Kn.D)(d.confirmAlipayPayment(r, t, o))),
             (0, yn.P)()
           );
         }
         confirmAuBecsDebitPayment(r, t) {
           return this.stripe.pipe(
-            (0, Y.w)((o) => (0, Gn.D)(o.confirmAuBecsDebitPayment(r, t))),
+            (0, Y.w)((o) => (0, Kn.D)(o.confirmAuBecsDebitPayment(r, t))),
             (0, yn.P)()
           );
         }
         confirmBancontactPayment(r, t, o) {
           return this.stripe.pipe(
-            (0, Y.w)((d) => (0, Gn.D)(d.confirmBancontactPayment(r, t, o))),
+            (0, Y.w)((d) => (0, Kn.D)(d.confirmBancontactPayment(r, t, o))),
             (0, yn.P)()
           );
         }
         confirmBoletoPayment(r, t, o) {
           return this.stripe.pipe(
-            (0, Y.w)((d) => (0, Gn.D)(d.confirmBoletoPayment(r, t, o))),
+            (0, Y.w)((d) => (0, Kn.D)(d.confirmBoletoPayment(r, t, o))),
             (0, yn.P)()
           );
         }
         confirmCardPayment(r, t, o) {
           return this.stripe.pipe(
-            (0, Y.w)((d) => (0, Gn.D)(d.confirmCardPayment(r, t, o))),
+            (0, Y.w)((d) => (0, Kn.D)(d.confirmCardPayment(r, t, o))),
             (0, yn.P)()
           );
         }
         confirmCustomerBalancePayment(r, t, o) {
           return this.stripe.pipe(
-            (0, Y.w)((d) => (0, Gn.D)(d.confirmCustomerBalancePayment(r, t, o))),
+            (0, Y.w)((d) => (0, Kn.D)(d.confirmCustomerBalancePayment(r, t, o))),
             (0, yn.P)()
           );
         }
         confirmEpsPayment(r, t, o) {
           return this.stripe.pipe(
-            (0, Y.w)((d) => (0, Gn.D)(d.confirmEpsPayment(r, t, o))),
+            (0, Y.w)((d) => (0, Kn.D)(d.confirmEpsPayment(r, t, o))),
             (0, yn.P)()
           );
         }
         confirmFpxPayment(r, t, o) {
           return this.stripe.pipe(
-            (0, Y.w)((d) => (0, Gn.D)(d.confirmFpxPayment(r, t, o))),
+            (0, Y.w)((d) => (0, Kn.D)(d.confirmFpxPayment(r, t, o))),
             (0, yn.P)()
           );
         }
         confirmGiropayPayment(r, t, o) {
           return this.stripe.pipe(
-            (0, Y.w)((d) => (0, Gn.D)(d.confirmGiropayPayment(r, t, o))),
+            (0, Y.w)((d) => (0, Kn.D)(d.confirmGiropayPayment(r, t, o))),
             (0, yn.P)()
           );
         }
         confirmGrabPayPayment(r, t, o) {
           return this.stripe.pipe(
-            (0, Y.w)((d) => (0, Gn.D)(d.confirmGrabPayPayment(r, t, o))),
+            (0, Y.w)((d) => (0, Kn.D)(d.confirmGrabPayPayment(r, t, o))),
             (0, yn.P)()
           );
         }
         confirmIdealPayment(r, t, o) {
           return this.stripe.pipe(
-            (0, Y.w)((d) => (0, Gn.D)(d.confirmIdealPayment(r, t, o))),
+            (0, Y.w)((d) => (0, Kn.D)(d.confirmIdealPayment(r, t, o))),
             (0, yn.P)()
           );
         }
         confirmKlarnaPayment(r, t, o) {
           return this.stripe.pipe(
-            (0, Y.w)((d) => (0, Gn.D)(d.confirmKlarnaPayment(r, t, o))),
+            (0, Y.w)((d) => (0, Kn.D)(d.confirmKlarnaPayment(r, t, o))),
             (0, yn.P)()
           );
         }
         confirmOxxoPayment(r, t, o) {
           return this.stripe.pipe(
-            (0, Y.w)((d) => (0, Gn.D)(d.confirmOxxoPayment(r, t, o))),
+            (0, Y.w)((d) => (0, Kn.D)(d.confirmOxxoPayment(r, t, o))),
             (0, yn.P)()
           );
         }
         confirmP24Payment(r, t, o) {
           return this.stripe.pipe(
-            (0, Y.w)((d) => (0, Gn.D)(d.confirmP24Payment(r, t, o))),
+            (0, Y.w)((d) => (0, Kn.D)(d.confirmP24Payment(r, t, o))),
             (0, yn.P)()
           );
         }
         confirmPayNowPayment(r, t, o) {
           return this.stripe.pipe(
-            (0, Y.w)((d) => (0, Gn.D)(d.confirmPayNowPayment(r, t, o))),
+            (0, Y.w)((d) => (0, Kn.D)(d.confirmPayNowPayment(r, t, o))),
             (0, yn.P)()
           );
         }
         confirmPayPalPayment(r, t) {
           return this.stripe.pipe(
-            (0, Y.w)((o) => (0, Gn.D)(o.confirmPayPalPayment(r, t))),
+            (0, Y.w)((o) => (0, Kn.D)(o.confirmPayPalPayment(r, t))),
             (0, yn.P)()
           );
         }
         confirmPromptPayPayment(r, t, o) {
           return this.stripe.pipe(
-            (0, Y.w)((d) => (0, Gn.D)(d.confirmPromptPayPayment(r, t, o))),
+            (0, Y.w)((d) => (0, Kn.D)(d.confirmPromptPayPayment(r, t, o))),
             (0, yn.P)()
           );
         }
         confirmSepaDebitPayment(r, t) {
           return this.stripe.pipe(
-            (0, Y.w)((o) => (0, Gn.D)(o.confirmSepaDebitPayment(r, t))),
+            (0, Y.w)((o) => (0, Kn.D)(o.confirmSepaDebitPayment(r, t))),
             (0, yn.P)()
           );
         }
         confirmSofortPayment(r, t) {
           return this.stripe.pipe(
-            (0, Y.w)((o) => (0, Gn.D)(o.confirmSofortPayment(r, t))),
+            (0, Y.w)((o) => (0, Kn.D)(o.confirmSofortPayment(r, t))),
             (0, yn.P)()
           );
         }
         confirmWechatPayPayment(r, t, o) {
           return this.stripe.pipe(
-            (0, Y.w)((d) => (0, Gn.D)(d.confirmWechatPayPayment(r, t, o))),
+            (0, Y.w)((d) => (0, Kn.D)(d.confirmWechatPayPayment(r, t, o))),
             (0, yn.P)()
           );
         }
         handleCardAction(r) {
           return this.stripe.pipe(
-            (0, Y.w)((t) => (0, Gn.D)(t.handleCardAction(r))),
+            (0, Y.w)((t) => (0, Kn.D)(t.handleCardAction(r))),
             (0, yn.P)()
           );
         }
         verifyMicrodepositsForPayment(r, t) {
           return this.stripe.pipe(
-            (0, Y.w)((o) => (0, Gn.D)(o.verifyMicrodepositsForPayment(r, t))),
+            (0, Y.w)((o) => (0, Kn.D)(o.verifyMicrodepositsForPayment(r, t))),
             (0, yn.P)()
           );
         }
         createPaymentMethod(r) {
           return this.stripe.pipe(
-            (0, Y.w)((t) => (0, Gn.D)(t.createPaymentMethod(r))),
+            (0, Y.w)((t) => (0, Kn.D)(t.createPaymentMethod(r))),
             (0, yn.P)()
           );
         }
         retrievePaymentIntent(r) {
           return this.stripe.pipe(
-            (0, Y.w)((t) => (0, Gn.D)(t.retrievePaymentIntent(r))),
+            (0, Y.w)((t) => (0, Kn.D)(t.retrievePaymentIntent(r))),
             (0, yn.P)()
           );
         }
         confirmSetup(r) {
           return this.stripe.pipe(
-            (0, Y.w)((t) => (0, Gn.D)(t.confirmSetup(r))),
+            (0, Y.w)((t) => (0, Kn.D)(t.confirmSetup(r))),
             (0, yn.P)()
           );
         }
         confirmAcssDebitSetup(r, t, o) {
           return this.stripe.pipe(
-            (0, Y.w)((d) => (0, Gn.D)(d.confirmAcssDebitSetup(r, t, o))),
+            (0, Y.w)((d) => (0, Kn.D)(d.confirmAcssDebitSetup(r, t, o))),
             (0, yn.P)()
           );
         }
         confirmAuBecsDebitSetup(r, t) {
           return this.stripe.pipe(
-            (0, Y.w)((o) => (0, Gn.D)(o.confirmAuBecsDebitSetup(r, t))),
+            (0, Y.w)((o) => (0, Kn.D)(o.confirmAuBecsDebitSetup(r, t))),
             (0, yn.P)()
           );
         }
         confirmBacsDebitSetup(r, t) {
           return this.stripe.pipe(
-            (0, Y.w)((o) => (0, Gn.D)(o.confirmBacsDebitSetup(r, t))),
+            (0, Y.w)((o) => (0, Kn.D)(o.confirmBacsDebitSetup(r, t))),
             (0, yn.P)()
           );
         }
         confirmBancontactSetup(r, t) {
           return this.stripe.pipe(
-            (0, Y.w)((o) => (0, Gn.D)(o.confirmBancontactSetup(r, t))),
+            (0, Y.w)((o) => (0, Kn.D)(o.confirmBancontactSetup(r, t))),
             (0, yn.P)()
           );
         }
         confirmCardSetup(r, t, o) {
           return this.stripe.pipe(
-            (0, Y.w)((d) => (0, Gn.D)(d.confirmCardSetup(r, t, o))),
+            (0, Y.w)((d) => (0, Kn.D)(d.confirmCardSetup(r, t, o))),
             (0, yn.P)()
           );
         }
         confirmIdealSetup(r, t) {
           return this.stripe.pipe(
-            (0, Y.w)((o) => (0, Gn.D)(o.confirmIdealSetup(r, t))),
+            (0, Y.w)((o) => (0, Kn.D)(o.confirmIdealSetup(r, t))),
             (0, yn.P)()
           );
         }
         confirmPayPalSetup(r, t) {
           return this.stripe.pipe(
-            (0, Y.w)((o) => (0, Gn.D)(o.confirmPayPalSetup(r, t))),
+            (0, Y.w)((o) => (0, Kn.D)(o.confirmPayPalSetup(r, t))),
             (0, yn.P)()
           );
         }
         confirmSepaDebitSetup(r, t) {
           return this.stripe.pipe(
-            (0, Y.w)((o) => (0, Gn.D)(o.confirmSepaDebitSetup(r, t))),
+            (0, Y.w)((o) => (0, Kn.D)(o.confirmSepaDebitSetup(r, t))),
             (0, yn.P)()
           );
         }
         confirmSofortSetup(r, t) {
           return this.stripe.pipe(
-            (0, Y.w)((o) => (0, Gn.D)(o.confirmSofortSetup(r, t))),
+            (0, Y.w)((o) => (0, Kn.D)(o.confirmSofortSetup(r, t))),
             (0, yn.P)()
           );
         }
         confirmAffirmPayment(r, t, o) {
           return this.stripe.pipe(
-            (0, Y.w)((d) => (0, Gn.D)(d.confirmAffirmPayment(r, t, o))),
+            (0, Y.w)((d) => (0, Kn.D)(d.confirmAffirmPayment(r, t, o))),
             (0, yn.P)()
           );
         }
         confirmAfterpayClearpayPayment(r, t, o) {
           return this.stripe.pipe(
-            (0, Y.w)((d) => (0, Gn.D)(d.confirmAfterpayClearpayPayment(r, t, o))),
+            (0, Y.w)((d) => (0, Kn.D)(d.confirmAfterpayClearpayPayment(r, t, o))),
             (0, yn.P)()
           );
         }
         verifyMicrodepositsForSetup(r, t) {
           return this.stripe.pipe(
-            (0, Y.w)((o) => (0, Gn.D)(o.verifyMicrodepositsForSetup(r, t))),
+            (0, Y.w)((o) => (0, Kn.D)(o.verifyMicrodepositsForSetup(r, t))),
             (0, yn.P)()
           );
         }
         retrieveSetupIntent(r) {
           return this.stripe.pipe(
-            (0, Y.w)((t) => (0, Gn.D)(t.retrieveSetupIntent(r))),
+            (0, Y.w)((t) => (0, Kn.D)(t.retrieveSetupIntent(r))),
             (0, yn.P)()
           );
         }
@@ -30079,55 +30075,55 @@
         }
         createToken(r, t) {
           return this.stripe.pipe(
-            (0, Y.w)((o) => (0, Gn.D)(o.createToken(r, t))),
+            (0, Y.w)((o) => (0, Kn.D)(o.createToken(r, t))),
             (0, yn.P)()
           );
         }
         createSource(r, t) {
           return this.stripe.pipe(
-            (0, Y.w)((o) => (0, Gn.D)(o.createSource(r, t))),
+            (0, Y.w)((o) => (0, Kn.D)(o.createSource(r, t))),
             (0, yn.P)()
           );
         }
         retrieveSource(r) {
           return this.stripe.pipe(
-            (0, Y.w)((t) => (0, Gn.D)(t.retrieveSource(r))),
+            (0, Y.w)((t) => (0, Kn.D)(t.retrieveSource(r))),
             (0, yn.P)()
           );
         }
         verifyIdentity(r) {
           return this.stripe.pipe(
-            (0, Y.w)((t) => (0, Gn.D)(t.verifyIdentity(r))),
+            (0, Y.w)((t) => (0, Kn.D)(t.verifyIdentity(r))),
             (0, yn.P)()
           );
         }
         handleCardPayment(r, t, o) {
           return this.stripe.pipe(
-            (0, Y.w)((d) => (0, Gn.D)(d.handleCardPayment(r, t, o))),
+            (0, Y.w)((d) => (0, Kn.D)(d.handleCardPayment(r, t, o))),
             (0, yn.P)()
           );
         }
         confirmPaymentIntent(r, t, o) {
           return this.stripe.pipe(
-            (0, Y.w)((d) => (0, Gn.D)(d.confirmPaymentIntent(r, t, o))),
+            (0, Y.w)((d) => (0, Kn.D)(d.confirmPaymentIntent(r, t, o))),
             (0, yn.P)()
           );
         }
         handleCardSetup(r, t, o) {
           return this.stripe.pipe(
-            (0, Y.w)((d) => (0, Gn.D)(d.handleCardSetup(r, t, o))),
+            (0, Y.w)((d) => (0, Kn.D)(d.handleCardSetup(r, t, o))),
             (0, yn.P)()
           );
         }
         confirmSetupIntent(r, t, o) {
           return this.stripe.pipe(
-            (0, Y.w)((d) => (0, Gn.D)(d.confirmSetupIntent(r, t, o))),
+            (0, Y.w)((d) => (0, Kn.D)(d.confirmSetupIntent(r, t, o))),
             (0, yn.P)()
           );
         }
         handleFpxPayment(r, t, o) {
           return this.stripe.pipe(
-            (0, Y.w)((d) => (0, Gn.D)(d.handleFpxPayment(r, t, o))),
+            (0, Y.w)((d) => (0, Kn.D)(d.handleFpxPayment(r, t, o))),
             (0, yn.P)()
           );
         }
@@ -32795,7 +32791,7 @@
                   this.getFileCredentials(o[d]);
           }
           getBookImages() {
-            const t = [this.book].map((o) => Qn.adapt(o));
+            const t = [this.book].map((o) => Jn.adapt(o));
             this.apiService.post('/api/Files/books/images', t).subscribe({
               next: (o = []) => {
                 [this.book].forEach((d) => {
@@ -34944,7 +34940,7 @@
               Vn[1].map((Ht) => {
                 const Ln = { $flags$: Ht[0], $tagName$: Ht[1], $members$: Ht[2], $listeners$: Ht[3] };
                 (Ln.$members$ = Ht[2]), (Ln.$attrsToReflect$ = []), (Ln.$watchers$ = {});
-                const Qn = Ln.$tagName$,
+                const Jn = Ln.$tagName$,
                   li = class extends HTMLElement {
                     constructor(zn) {
                       super(zn), zr((zn = this), Ln), 1 & Ln.$flags$ && zn.attachShadow({ mode: 'open' });
@@ -35004,7 +35000,7 @@
                     }
                   };
                 (Ln.$lazyBundleId$ = Vn[0]),
-                  !ft.includes(Qn) && !Et.get(Qn) && (pt.push(Qn), Et.define(Qn, Dn(li, Ln, 1)));
+                  !ft.includes(Jn) && !Et.get(Jn) && (pt.push(Jn), Et.define(Jn, Dn(li, Ln, 1)));
               })
             ),
             (qt.innerHTML = pt + '{visibility:hidden}.hydrated{visibility:inherit}'),
@@ -35139,7 +35135,7 @@
             Vn = /^\[object .+?Constructor\]$/,
             Ht = /^0o[0-7]+$/i,
             Ln = /^(?:0|[1-9]\d*)$/,
-            Qn = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g,
+            Jn = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g,
             li = /($^)/,
             zn = /['\n\r\u2028\u2029\\]/g,
             Bi = '\\ud800-\\udfff',
@@ -35275,17 +35271,17 @@
             vn = oi && Ve && !Ve.nodeType && Ve,
             br = vn && vn.exports === oi,
             Rr = br && qn.process,
-            Kn = (function () {
+            Qn = (function () {
               try {
                 return (vn && vn.require && vn.require('util').types) || (Rr && Rr.binding && Rr.binding('util'));
               } catch (Ft) {}
             })(),
-            Qr = Kn && Kn.isArrayBuffer,
-            Mi = Kn && Kn.isDate,
-            gi = Kn && Kn.isMap,
-            B = Kn && Kn.isRegExp,
-            pe = Kn && Kn.isSet,
-            Z = Kn && Kn.isTypedArray;
+            Qr = Qn && Qn.isArrayBuffer,
+            Mi = Qn && Qn.isDate,
+            gi = Qn && Qn.isMap,
+            B = Qn && Qn.isRegExp,
+            pe = Qn && Qn.isSet,
+            Z = Qn && Qn.isTypedArray;
           function _e(ht, Ft, At) {
             switch (At.length) {
               case 0:
@@ -37038,7 +37034,7 @@
                   })(w, u, h(U), {});
                 };
               }
-              function Gn(u, h) {
+              function Kn(u, h) {
                 return function (w, U) {
                   var ae;
                   if (w === e && U === e) return h;
@@ -38163,7 +38159,7 @@
                 return jl(Or(u).toLowerCase());
               }
               function am(u) {
-                return (u = Or(u)) && u.replace(Qn, ir).replace(ao, '');
+                return (u = Or(u)) && u.replace(Jn, ir).replace(ao, '');
               }
               var Bg = rl(function (u, h, w) {
                   return u + (w ? '-' : '') + h.toLowerCase();
@@ -38283,19 +38279,19 @@
               function ld() {
                 return !1;
               }
-              var Kg = Gn(function (u, h) {
+              var Kg = Kn(function (u, h) {
                   return u + h;
                 }, 0),
                 pl = Qf('ceil'),
-                Xg = Gn(function (u, h) {
+                Xg = Kn(function (u, h) {
                   return u / h;
                 }, 1),
                 hc = Qf('floor'),
-                Mm = Gn(function (u, h) {
+                Mm = Kn(function (u, h) {
                   return u * h;
                 }, 1),
                 t_ = Qf('round'),
-                Dm = Gn(function (u, h) {
+                Dm = Kn(function (u, h) {
                   return u - h;
                 }, 0);
               return (
@@ -51930,7 +51926,7 @@
           },
           vn = {},
           br = {};
-        function Kn(p, D) {
+        function Qn(p, D) {
           var Y,
             ee = Math.min(p.length, D.length);
           for (Y = 0; Y < ee; Y += 1) if (p[Y] !== D[Y]) return Y;
@@ -52005,7 +52001,7 @@
             for (var Y, ee, Ce, ot, D = 0; D < p.length; ) {
               for (Y = (ot = Qr(p[D]).split('-')).length, ee = (ee = Qr(p[D + 1])) ? ee.split('-') : null; Y > 0; ) {
                 if ((Ce = gi(ot.slice(0, Y).join('-')))) return Ce;
-                if (ee && ee.length >= Y && Kn(ot, ee) >= Y - 1) break;
+                if (ee && ee.length >= Y && Qn(ot, ee) >= Y - 1) break;
                 Y--;
               }
               D++;
@@ -61378,7 +61374,7 @@
         supportScrollRestoration() {
           try {
             if (!this.supportsScrolling()) return !1;
-            const pe = Kn(this.window.history) || Kn(Object.getPrototypeOf(this.window.history));
+            const pe = Qn(this.window.history) || Qn(Object.getPrototypeOf(this.window.history));
             return !(!pe || (!pe.writable && !pe.set));
           } catch (pe) {
             return !1;
@@ -61392,7 +61388,7 @@
           }
         }
       }
-      function Kn(B) {
+      function Qn(B) {
         return Object.getOwnPropertyDescriptor(B, 'scrollRestoration');
       }
       class gi {}
@@ -61433,7 +61429,7 @@
         JOm: () => ga,
         q3G: () => wo,
         tp0: () => el,
-        Rgc: () => Jn,
+        Rgc: () => Gn,
         dDg: () => Hw,
         GfV: () => mv,
         s_b: () => xa,
@@ -61851,7 +61847,7 @@
       function br() {
         return void 0 !== oi ? oi : 'undefined' != typeof document ? document : void 0;
       }
-      function Kn(n) {
+      function Qn(n) {
         return !!n.listen;
       }
       const Qr = { createRenderer: (n, i) => br() };
@@ -62106,7 +62102,7 @@
         }
       }
       function wl(n, i, a) {
-        const c = Kn(n);
+        const c = Qn(n);
         let f = 0;
         for (; f < a.length; ) {
           const m = a[f];
@@ -62991,7 +62987,7 @@
                 const c = Rd(n, i);
                 c &&
                   (function Mp(n, i, a, c) {
-                    Kn(n) ? n.removeChild(i, a, c) : i.removeChild(a);
+                    Qn(n) ? n.removeChild(i, a, c) : i.removeChild(a);
                   })(n, c, i, a);
               })(i, E, M)
             : 3 === n && i.destroyNode(E),
@@ -63007,7 +63003,7 @@
         }
       }
       function sh(n, i, a) {
-        return Kn(n) ? n.createElement(i, a) : null === a ? n.createElement(i) : n.createElementNS(a, i);
+        return Qn(n) ? n.createElement(i, a) : null === a ? n.createElement(i) : n.createElementNS(a, i);
       }
       function Od(n, i) {
         const a = n[9],
@@ -63034,7 +63030,7 @@
       function ec(n, i) {
         if (!(256 & i[2])) {
           const a = i[11];
-          Kn(a) && a.destroyNode && tc(n, i, a, 3, null, null),
+          Qn(a) && a.destroyNode && tc(n, i, a, 3, null, null),
             (function Km(n) {
               let i = n[13];
               if (!i) return Uc(n[1], n);
@@ -63108,7 +63104,7 @@
                 i[7] = null;
               }
             })(n, i),
-            1 === i[1].type && Kn(i[11]) && i[11].destroy();
+            1 === i[1].type && Qn(i[11]) && i[11].destroy();
           const a = i[17];
           if (null !== a && lt(i[3])) {
             a !== i[3] && Od(a, i);
@@ -63130,16 +63126,16 @@
         })(n, i.parent, a);
       }
       function rs(n, i, a, c, f) {
-        Kn(n) ? n.insertBefore(i, a, c, f) : i.insertBefore(a, c, f);
+        Qn(n) ? n.insertBefore(i, a, c, f) : i.insertBefore(a, c, f);
       }
       function Ol(n, i, a) {
-        Kn(n) ? n.appendChild(i, a) : i.appendChild(a);
+        Qn(n) ? n.appendChild(i, a) : i.appendChild(a);
       }
       function xp(n, i, a, c, f) {
         null !== c ? rs(n, i, a, c, f) : Ol(n, i, a);
       }
       function Rd(n, i) {
-        return Kn(n) ? n.parentNode(i) : i.parentNode;
+        return Qn(n) ? n.parentNode(i) : i.parentNode;
       }
       function Dp(n, i, a) {
         return Cp(n, i, a);
@@ -63213,10 +63209,10 @@
         else Bd(n, i, F, M[3], f, m, !0);
       }
       function Ep(n, i, a) {
-        Kn(n) ? n.setAttribute(i, 'style', a) : (i.style.cssText = a);
+        Qn(n) ? n.setAttribute(i, 'style', a) : (i.style.cssText = a);
       }
       function Hd(n, i, a) {
-        Kn(n) ? ('' === a ? n.removeAttribute(i, 'class') : n.setAttribute(i, 'class', a)) : (i.className = a);
+        Qn(n) ? ('' === a ? n.removeAttribute(i, 'class') : n.setAttribute(i, 'class', a)) : (i.className = a);
       }
       function Lp(n, i, a) {
         let c = n.length;
@@ -63788,7 +63784,7 @@
                 : n;
             })(c)),
             (f = null != M ? M(f, i.value || '', c) : f),
-            Kn(m) ? m.setProperty(F, c, f) : js(c) || (F.setProperty ? F.setProperty(c, f) : (F[c] = f)));
+            Qn(m) ? m.setProperty(F, c, f) : js(c) || (F.setProperty ? F.setProperty(c, f) : (F[c] = f)));
       }
       function Mh(n, i, a, c) {
         let f = !1;
@@ -63912,10 +63908,10 @@
       function Ys(n, i, a, c, f, m) {
         const M = _e(n, i);
         !(function Dh(n, i, a, c, f, m, M) {
-          if (null == m) Kn(n) ? n.removeAttribute(i, f, a) : i.removeAttribute(f);
+          if (null == m) Qn(n) ? n.removeAttribute(i, f, a) : i.removeAttribute(f);
           else {
             const E = null == M ? Ae(m) : M(m, c || '', f);
-            Kn(n) ? n.setAttribute(i, f, E, a) : a ? i.setAttributeNS(a, f, E) : i.setAttribute(f, E);
+            Qn(n) ? n.setAttribute(i, f, E, a) : a ? i.setAttributeNS(a, f, E) : i.setAttribute(f, E);
           }
         })(i[11], M, m, n.value, a, c, f);
       }
@@ -64039,7 +64035,7 @@
       function hl(n, i, a) {
         const c = Z(i, n);
         !(function oh(n, i, a) {
-          Kn(n) ? n.setValue(i, a) : (i.textContent = a);
+          Qn(n) ? n.setValue(i, a) : (i.textContent = a);
         })(n[11], c, a);
       }
       function ef(n, i, a) {
@@ -64610,7 +64606,7 @@
                 Zn = E ? E(pn) : pn,
                 Jt = st.length,
                 hi = E ? (Mr) => E(gi(Mr[c.index])) : c.index;
-              if (Kn(a)) {
+              if (Qn(a)) {
                 let Mr = null;
                 if (
                   (!E &&
@@ -64972,7 +64968,7 @@
             })(te) &&
               (m = Tm(F, null, a, f, E, M))),
           (function Sp(n, i, a, c, f) {
-            const m = Kn(n);
+            const m = Qn(n);
             if (i) f ? (m ? n.addClass(a, c) : a.classList.add(c)) : m ? n.removeClass(a, c) : a.classList.remove(c);
             else {
               let M = -1 === c.indexOf('-') ? void 0 : ga.DashCase;
@@ -65018,7 +65014,7 @@
           f = n + 20,
           m = c.firstCreatePass ? _u(c, f, 1, i, null) : c.data[f],
           M = (a[f] = (function pu(n, i) {
-            return Kn(n) ? n.createText(i) : n.createTextNode(i);
+            return Qn(n) ? n.createText(i) : n.createTextNode(i);
           })(a[11], i));
         Ud(c, a, M, m), Tt(m, !1);
       }
@@ -65469,7 +65465,7 @@
             te = this.componentDef.selectors[0][0] || 'div',
             ge = c
               ? (function bu(n, i, a) {
-                  if (Kn(n)) return n.selectRootElement(i, a === Fn.ShadowDom);
+                  if (Qn(n)) return n.selectRootElement(i, a === Fn.ShadowDom);
                   let c = 'string' == typeof i ? n.querySelector(i) : i;
                   return (c.textContent = ''), c;
                 })(F, c, this.componentDef.encapsulation)
@@ -65804,11 +65800,11 @@
         }
       }
       Symbol;
-      let Jn = (() => {
+      let Gn = (() => {
         class n {}
         return (n.__NG_ELEMENT_ID__ = Jo), n;
       })();
-      const Nr = Jn,
+      const Nr = Gn,
         Go = class extends Nr {
           constructor(i, a, c) {
             super(), (this._declarationLView = i), (this._declarationTContainer = a), (this.elementRef = c);
@@ -65979,7 +65975,7 @@
               Rd(m, M),
               f,
               (function j_(n, i) {
-                return Kn(n) ? n.nextSibling(i) : i.nextSibling;
+                return Qn(n) ? n.nextSibling(i) : i.nextSibling;
               })(m, M),
               !1
             );
@@ -66103,7 +66099,7 @@
               this.matchTNodeWithReadOption(i, a, Ql(a, m)), this.matchTNodeWithReadOption(i, a, cn(a, i, m, !1, !1));
             }
           else
-            c === Jn
+            c === Gn
               ? 4 & a.type && this.matchTNodeWithReadOption(i, a, -1)
               : this.matchTNodeWithReadOption(i, a, cn(a, i, c, !1, !1));
         }
@@ -66111,7 +66107,7 @@
           if (null !== c) {
             const f = this.metadata.read;
             if (null !== f)
-              if (f === ep || f === xa || (f === Jn && 4 & a.type)) this.addMatch(a.index, -2);
+              if (f === ep || f === xa || (f === Gn && 4 & a.type)) this.addMatch(a.index, -2);
               else {
                 const m = cn(a, i, f, !1, !1);
                 null !== m && this.addMatch(a.index, m);
@@ -66135,7 +66131,7 @@
             })(i, n)
           : -2 === a
           ? (function xo(n, i, a) {
-              return a === ep ? Va(i, n) : a === Jn ? Pu(i, n) : a === xa ? Ef(i, n) : void 0;
+              return a === ep ? Va(i, n) : a === Gn ? Pu(i, n) : a === xa ? Ef(i, n) : void 0;
             })(n, i, c)
           : ki(n, n[1], a, i);
       }
@@ -68145,19 +68141,19 @@
         return null != q && !Array.isArray(q) && 'object' == typeof q;
       }
       const Ln = (q) => q instanceof Gr,
-        Qn = (q) => q instanceof Zr,
+        Jn = (q) => q instanceof Zr,
         li = (q) => q instanceof Un;
       function zn(q) {
         return Ln(q) ? q.value : q.getRawValue();
       }
       function Bi(q, N) {
-        const I = Qn(q),
+        const I = Jn(q),
           be = q.controls;
         if (!(I ? Object.keys(be) : be).length) throw new l.vHH(1e3, '');
         if (!be[N]) throw new l.vHH(1001, '');
       }
       function hr(q, N) {
-        Qn(q),
+        Jn(q),
           q._forEachChild((be, _t) => {
             if (void 0 === N[_t]) throw new l.vHH(1002, '');
           });
@@ -68351,7 +68347,7 @@
             let be = q;
             return (
               N.forEach((_t) => {
-                be = Qn(be) ? (be.controls.hasOwnProperty(_t) ? be.controls[_t] : null) : (li(be) && be.at(_t)) || null;
+                be = Jn(be) ? (be.controls.hasOwnProperty(_t) ? be.controls[_t] : null) : (li(be) && be.at(_t)) || null;
               }),
               be
             );
@@ -69085,7 +69081,7 @@
               );
             }
             _createControl(I) {
-              return Ln(I) || Qn(I) || li(I)
+              return Ln(I) || Jn(I) || li(I)
                 ? I
                 : Array.isArray(I)
                 ? this.control(I[0], I.length > 1 ? I[1] : null, I.length > 2 ? I[2] : null)
@@ -69509,7 +69505,7 @@
         }
         serialize(S) {
           const C = `/${Pt(S.root, !0)}`,
-            H = (function Qn(O) {
+            H = (function Jn(O) {
               const S = Object.keys(O)
                 .map((C) => {
                   const H = O[C];
@@ -70441,13 +70437,13 @@
       function br(O, S = '') {
         for (let C = 0; C < O.length; C++) {
           const H = O[C];
-          Rr(H, Kn(S, H));
+          Rr(H, Qn(S, H));
         }
       }
       function Rr(O, S) {
         O.children && br(O.children, S);
       }
-      function Kn(O, S) {
+      function Qn(O, S) {
         return S ? (O || S.path ? (O && !S.path ? `${O}/` : !O && S.path ? S.path : `${O}/${S.path}`) : '') : O;
       }
       function Qr(O) {

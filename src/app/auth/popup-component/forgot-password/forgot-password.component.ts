@@ -65,7 +65,6 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   async resetPassowrd() {
-    console.log('called');
     this.isLoading = true;
 
     let data = {
@@ -73,17 +72,13 @@ export class ForgotPasswordComponent implements OnInit {
       token: this.routeParams.Token,
       newPassword: this.Form.value.newPassword,
     };
+    data.token = data.token.split(' ').join('+');
     const loadingOverlay = await this.loadingController.create({
       spinner: 'bubbles',
       showBackdrop: true,
       cssClass: 'main-loader',
     });
-    const loading$ = from(loadingOverlay.present());
-    console.log(data);
     this.apiService.post(`/api/Users/ResetPassword`, data).subscribe({
-      complete: () => {
-        console.log('complete');
-      },
       next: (res: any) => {
         this.toastService.showToast('success', 'Password reset successfully.');
         this.router.navigate(['/login']);
