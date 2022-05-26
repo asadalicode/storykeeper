@@ -79,9 +79,9 @@ export class ForgotPasswordComponent implements OnInit {
     });
     const loading$ = from(loadingOverlay.present());
     console.log(this.routeParams);
-    this.apiService.post(`/api/Users/ResetPassord`, data).subscribe({
+    this.apiService.post(`/api/Users/ResetPassword`, data).subscribe({
       complete: () => {
-        console.log('complate');
+        console.log('complete');
       },
       next: (res: any) => {
         this.toastService.showToast('success', 'Password reset successfully.');

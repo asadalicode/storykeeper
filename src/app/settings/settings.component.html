@@ -17,6 +17,14 @@
       </div>
       <ion-label translate>My Profile</ion-label>
     </ion-item>
+
+    <ion-item button lines="none" (click)="navigateTo('archived-books')">
+      <div class="ion-avatar">
+        <img class="avatar-img" src="assets/logos/logo-cir-white.png" />
+      </div>
+      <ion-label translate>Archived books</ion-label>
+    </ion-item>
+
     <ion-item button (click)="navigateTo('help')" lines="none">
       <div class="ion-avatar">
         <ion-icon name="help-circle-outline"></ion-icon>

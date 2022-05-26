@@ -8,6 +8,8 @@ import { ShareBookComponent } from '@app/book-shared/share-book/share-book.compo
 import { ApiService } from '@app/@shared/sevices/api.service';
 import { listAnimation, Story } from '@app/@shared/models';
 import { SharedService } from '@app/@shared/sevices/shared.service';
+import { ConfirmationInfoComponent } from '@app/@shared/popup-components/confirmation-info/confirmation-info.component';
+import { ToastService } from '@app/@shared/sevices/toast.service';
 
 @Component({
   selector: 'app-book-detail-page',
@@ -26,6 +28,7 @@ export class BookDetailPageComponent implements OnInit {
     private route: ActivatedRoute,
     private apiService: ApiService,
     private sharedService: SharedService,
+    private toastService: ToastService,
     private modalController: ModalController
   ) {}
 
@@ -127,6 +130,41 @@ export class BookDetailPageComponent implements OnInit {
       }
     });
     return await modal.present();
+  }
+
+  async confirmArchiveBook() {
+    const modal = await this.modalController.create({
+      component: ConfirmationInfoComponent,
+      cssClass: 'modal-popup md',
+      componentProps: {
+        title: 'Are you sure',
+        subtitle: 'You want to archive this book?',
+        confirmbuttonText: 'Yes',
+        confirmbuttonClass: 'primary',
+        cancelbuttonText: 'Cancel',
+        imageUrl: 'assets/images/sorry.svg',
+      },
+      swipeToClose: true,
+      presentingElement: this.routerOutlet.nativeEl,
+    });
+    modal.onDidDismiss().then((data) => {
+      if (data.role == ModalDismissRole.submitted) {
+        this.archiveBook();
+      }
+    });
+    return await modal.present();
+  }
+
+  archiveBook() {
+    this.apiService.post(`/api/Books/ToggleArchieve/${this.routeParams.bookId}`, {}).subscribe({
+      next: (res) => {
+        this.toastService.showToast('success', 'Book archived successfully');
+        this.router.navigate(['/my-library']);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
   }
 
   async ViewSharing() {

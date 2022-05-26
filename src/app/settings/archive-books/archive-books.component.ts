@@ -1,4 +1,3 @@
-import { ConfirmationInfoComponent } from './../@shared/popup-components/confirmation-info/confirmation-info.component';
 import { Platform, IonRouterOutlet, ModalController } from '@ionic/angular';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { BuyNewBookComponent } from '@app/@shared/popup-components/buy-new-book/buy-new-book.component';
@@ -10,14 +9,16 @@ import { ShellComponent } from '@app/shell/shell.component';
 import { SharedService } from '@app/@shared/sevices/shared.service';
 import { ActivatedRoute } from '@angular/router';
 import { ViewWillEnter } from '@ionic/angular';
+import { ConfirmationInfoComponent } from '@app/@shared/popup-components/confirmation-info/confirmation-info.component';
+import { ToastService } from '@app/@shared/sevices/toast.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-archive-books',
+  templateUrl: './archive-books.component.html',
+  styleUrls: ['./archive-books.component.scss'],
   animations: [listAnimation],
 })
-export class HomeComponent implements OnInit, ViewWillEnter {
+export class ArchiveBooksComponent implements OnInit {
   segments = [
     { name: 'All', value: 'all' },
     { name: 'Published', value: 'published' },
@@ -38,6 +39,7 @@ export class HomeComponent implements OnInit, ViewWillEnter {
     private credentials: CredentialsService,
     private apiService: ApiService,
     private route: ActivatedRoute,
+    private toastService: ToastService,
     private sharedService: SharedService
   ) {}
 
@@ -45,13 +47,7 @@ export class HomeComponent implements OnInit, ViewWillEnter {
 
   ionViewWillEnter() {
     this.isLoading = true;
-    if (this.routeParams.type) {
-      this.getBooks(myLibraryTabs[this.routeParams.type]);
-      this.segmentValue = this.routeParams.type;
-    } else {
-      this.segmentValue = 'all';
-      this.getBooks();
-    }
+    this.getArchivedBooks();
     this.getUserInfo();
   }
   get isWeb(): boolean {
@@ -70,6 +66,29 @@ export class HomeComponent implements OnInit, ViewWillEnter {
     return params;
   }
 
+  async confirmArchiveBook(book: Book) {
+    const modal = await this.modalController.create({
+      component: ConfirmationInfoComponent,
+      cssClass: 'modal-popup md',
+      componentProps: {
+        title: 'Are you sure',
+        subtitle: 'You want to unarchive this book?',
+        confirmbuttonText: 'Yes',
+        confirmbuttonClass: 'primary',
+        cancelbuttonText: 'Cancel',
+        imageUrl: 'assets/images/sorry.svg',
+      },
+      swipeToClose: true,
+      presentingElement: this.routerOutlet.nativeEl,
+    });
+    modal.onDidDismiss().then((data) => {
+      if (data.role == ModalDismissRole.submitted) {
+        this.toggleArchiveBook(book);
+      }
+    });
+    return await modal.present();
+  }
+
   //open side menu
   openMenu() {
     this.sharedService.triggerMsg(true);
@@ -81,41 +100,26 @@ export class HomeComponent implements OnInit, ViewWillEnter {
     });
   }
 
-  getSharedBooks() {
-    this.isLoading = true;
-    this.apiService.get('/api/Books/Shared', Book).subscribe((res) => {
-      this.books = [...res];
-      if (this.books.length) {
-        this.getBookImages();
-      } else {
-        this.isLoading = false;
-      }
-      this.isAuthor = this.books.length > 0 ? true : false;
+  toggleArchiveBook(book: Book) {
+    this.apiService.post(`/api/Books/ToggleArchieve/${book.id}`, {}).subscribe({
+      next: (res) => {
+        this.toastService.showToast('success', 'Book unarchived successfully');
+        this.getArchivedBooks();
+      },
+      error: (error) => {},
     });
   }
 
-  getBooks(status: number = 0) {
+  getArchivedBooks() {
     this.isLoading = true;
-    this.apiService.get('/api/Books', Book).subscribe(
+    this.apiService.get(`/api/Books?isArchieved=true`, Book).subscribe(
       (res) => {
-        if (status == 0) {
-          this.books = [...res];
-        } else if (status == 5 || status == 3) {
-          //merge inprogress and pending books
-          this.books = [...res];
-        } else {
-          this.books = res.filter((e: Book) => {
-            return e.status == status;
-          });
-          this.books = [...this.books];
-        }
-
+        this.books = [...res];
         if (this.books.length) {
           this.getBookImages();
         } else {
           this.isLoading = false;
         }
-
         this.isAuthor = this.books.length > 0 ? true : false;
       },
       (error) => {
@@ -169,12 +173,5 @@ export class HomeComponent implements OnInit, ViewWillEnter {
       presentingElement: this.routerOutlet.nativeEl,
     });
     return await modal.present();
-  }
-
-  segmentChanged(event: any) {
-    this.segmentValue = event.detail.value;
-    if (myLibraryTabs[event.detail.value] == '4') {
-      this.getSharedBooks();
-    } else this.getBooks(myLibraryTabs[event.detail.value]);
   }
 }
