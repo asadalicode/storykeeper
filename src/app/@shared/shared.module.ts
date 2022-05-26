@@ -26,6 +26,7 @@ import { ImageDirective } from './directives/image.directive';
 import { Chooser } from '@awesome-cordova-plugins/chooser/ngx';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdTimerModule } from 'angular-cd-timer';
+import { ArchiveBookCardComponent } from './components/archive-book-card/archive-book-card.component';
 
 @NgModule({
   imports: [
@@ -55,6 +56,7 @@ import { CdTimerModule } from 'angular-cd-timer';
     NoDataFoundComponent,
     ImageComponent,
     ImageDirective,
+    ArchiveBookCardComponent,
   ],
   providers: [InAppBrowser, Chooser],
   exports: [
@@ -65,6 +67,7 @@ import { CdTimerModule } from 'angular-cd-timer';
     BuyNewBookComponent,
     ConfirmationInfoComponent,
     BooksCardComponent,
+    ArchiveBookCardComponent,
     MobileHeaderComponent,
     AudioPlayerComponent,
     RecordingPlayerComponent,

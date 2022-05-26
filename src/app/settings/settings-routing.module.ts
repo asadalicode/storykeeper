@@ -11,11 +11,14 @@ import { AboutComponent } from './about/about.component';
 import { LanguageComponent } from './language/language.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
+import { ArchiveBooksComponent } from './archive-books/archive-books.component';
 
 const routes: Routes = [
   Shell.childRoutes([
     { path: 'settings', component: SettingsComponent, data: { title: marker('Settings') } },
     { path: 'profile', component: ProfileComponent, data: { title: marker('Profile') } },
+    { path: 'archived-books', component: ArchiveBooksComponent, data: { title: marker('Archived Books') } },
+
     { path: 'about', component: AboutComponent, data: { title: marker('About') } },
     { path: 'language', component: LanguageComponent, data: { title: marker('Languages') } },
     { path: 'privacy-policy', component: PrivacyPolicyComponent, data: { title: marker('Privacy Policy') } },

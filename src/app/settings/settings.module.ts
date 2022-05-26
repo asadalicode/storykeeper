@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AddNewEmailComponent } from './add-new-email/add-new-email.component';
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
+import { ArchiveBooksComponent } from './archive-books/archive-books.component';
 
 @NgModule({
   imports: [
@@ -40,6 +41,7 @@ import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
     ProfileComponent,
     AddNewEmailComponent,
     ConfirmEmailComponent,
+    ArchiveBooksComponent,
   ],
 })
 export class SettingsModule {}

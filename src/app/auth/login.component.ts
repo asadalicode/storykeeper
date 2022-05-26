@@ -93,7 +93,6 @@ export class LoginComponent implements OnInit {
     });
     modal.onDidDismiss().then((data) => {
       if (data.role == ModalDismissRole.submitted) {
-        this.toastService.showToast('success', 'Email added successfully');
       }
     });
     return await modal.present();

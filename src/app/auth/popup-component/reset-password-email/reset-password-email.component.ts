@@ -34,20 +34,16 @@ export class ResetPasswordEmailComponent implements OnInit {
   sendEmail() {
     console.log(this.emailForm.value);
     this.isLoading = true;
-    this.apiService
-      .get(`/api/Users/SendResetPasswordEmail?email=${this.emailForm.value.email}`, this.emailForm.value)
-      .subscribe({
-        complete: () => {
-          console.log('complate');
-        },
-        next: (res: any) => {
-          this.toastService.showToast('success', 'Email successfully sent.');
-          this.dismiss(true);
-          this.isLoading = false;
-        },
-        error: (error: any) => {
-          this.isLoading = false;
-        },
-      });
+    this.apiService.sendEmail(`/api/Users/SendResetPasswordEmail?email=${this.emailForm.value.email}`).subscribe({
+      next: (res: any) => {
+        console.log('!@@');
+        this.toastService.showToast('success', 'Email successfully sent.');
+        this.dismiss(true);
+        this.isLoading = false;
+      },
+      error: (error: any) => {
+        this.isLoading = false;
+      },
+    });
   }
 }
