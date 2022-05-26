@@ -21949,7 +21949,7 @@
           resetPassowrd() {
             var t = this;
             return (0, ri.Z)(function* () {
-              t.isLoading = !0;
+              console.log('called'), (t.isLoading = !0);
               let o = {
                 userId: Number(t.routeParams.userId),
                 token: t.routeParams.Token,
@@ -21961,7 +21961,7 @@
                 cssClass: 'main-loader',
               });
               (0, Gn.D)(d.present()),
-                console.log(t.routeParams),
+                console.log(o),
                 t.apiService.post('/api/Users/ResetPassword', o).subscribe({
                   complete: () => {
                     console.log('complete');
@@ -29309,55 +29309,55 @@
         if (1 & s) {
           const t = e.EpF();
           e.TgZ(0, 'ion-card', 8),
-            e._uU(1, '\n      '),
+            e._uU(1, '\n    '),
             e.TgZ(2, 'ion-header', 9),
-            e._uU(3, '\n        '),
+            e._uU(3, '\n      '),
             e.TgZ(4, 'ion-toolbar', 10),
-            e._uU(5, '\n          '),
-            e._uU(6, '\n          '),
+            e._uU(5, '\n        '),
+            e._uU(6, '\n        '),
             e.TgZ(7, 'ion-title', 11),
             e._uU(8, 'Archived Books'),
             e.qZA(),
-            e._uU(9, '\n          '),
+            e._uU(9, '\n        '),
             e.TgZ(10, 'ion-icon', 12),
             e.NdJ('click', function () {
               return e.CHM(t), e.oxw().openMenu();
             }),
             e.qZA(),
-            e._uU(11, '\n        '),
+            e._uU(11, '\n      '),
             e.qZA(),
-            e._uU(12, '\n      '),
+            e._uU(12, '\n    '),
             e.qZA(),
-            e._uU(13, '\n      '),
+            e._uU(13, '\n    '),
             e.TgZ(14, 'div', 13),
-            e._uU(15, '\n        '),
+            e._uU(15, '\n      '),
             e._UZ(16, 'img', 14),
-            e._uU(17, '\n      '),
+            e._uU(17, '\n    '),
             e.qZA(),
-            e._uU(18, '\n      '),
+            e._uU(18, '\n    '),
             e.TgZ(19, 'ion-card-content'),
-            e._uU(20, '\n        '),
+            e._uU(20, '\n      '),
             e.TgZ(21, 'ion-card-title'),
-            e._uU(22, '\n          '),
+            e._uU(22, '\n        '),
             e.TgZ(23, 'h1', 15),
             e._uU(24),
             e.qZA(),
-            e._uU(25, '\n        '),
+            e._uU(25, '\n      '),
             e.qZA(),
-            e._uU(26, '\n        '),
+            e._uU(26, '\n      '),
             e.TgZ(27, 'div', 16),
-            e._uU(28, '\n          '),
+            e._uU(28, '\n        '),
             e.TgZ(29, 'ion-button', 17),
             e.NdJ('click', function () {
               return e.CHM(t), e.oxw().buyNewBook();
             }),
-            e._uU(30, '\n            Buy New Book\n          '),
+            e._uU(30, '\n          Buy New Book\n        '),
             e.qZA(),
-            e._uU(31, '\n        '),
+            e._uU(31, '\n      '),
             e.qZA(),
-            e._uU(32, '\n      '),
+            e._uU(32, '\n    '),
             e.qZA(),
-            e._uU(33, '\n    '),
+            e._uU(33, '\n  '),
             e.qZA();
         }
         if (2 & s) {
@@ -29387,9 +29387,9 @@
         if (
           (1 & s &&
             (e.TgZ(0, 'div', 18),
-            e._uU(1, '\n          '),
+            e._uU(1, '\n        '),
             e.YNc(2, P0, 1, 1, 'app-archive-book-card', 19),
-            e._uU(3, '\n        '),
+            e._uU(3, '\n      '),
             e.qZA()),
           2 & s)
         ) {
@@ -29407,21 +29407,21 @@
         if (
           (1 & s &&
             (e.TgZ(0, 'div', 22),
-            e._uU(1, '\n        '),
+            e._uU(1, '\n      '),
             e.TgZ(2, 'ion-text', 10),
-            e._uU(3, '\n          '),
+            e._uU(3, '\n        '),
             e.TgZ(4, 'p', 23),
             e._uU(5, 'We are sorry, you do not have any archived book yet.'),
             e.qZA(),
-            e._uU(6, '\n        '),
+            e._uU(6, '\n      '),
             e.qZA(),
-            e._uU(7, '\n  \n        '),
+            e._uU(7, '\n\n      '),
             e.TgZ(8, 'div', 24),
-            e._uU(9, '\n          '),
+            e._uU(9, '\n        '),
             e._UZ(10, 'img', 25),
-            e._uU(11, '\n        '),
+            e._uU(11, '\n      '),
             e.qZA(),
-            e._uU(12, '\n      '),
+            e._uU(12, '\n    '),
             e.qZA()),
           2 & s)
         ) {
@@ -29657,33 +29657,33 @@
             template: function (t, o) {
               1 & t &&
                 (e.TgZ(0, 'ion-content'),
-                e._uU(1, '\n    '),
+                e._uU(1, '\n  '),
                 e.YNc(2, Vh, 34, 2, 'ion-card', 0),
-                e._uU(3, '\n  \n    '),
+                e._uU(3, '\n\n  '),
                 e.TgZ(4, 'div', 1),
-                e._uU(5, '\n      '),
+                e._uU(5, '\n    '),
                 e.TgZ(6, 'ion-text', 2),
-                e._uU(7, '\n        '),
+                e._uU(7, '\n      '),
                 e.TgZ(8, 'h1', 3),
                 e._uU(9, 'My Archived books'),
                 e.qZA(),
-                e._uU(10, '\n      '),
+                e._uU(10, '\n    '),
                 e.qZA(),
-                e._uU(11, '\n  \n      '),
+                e._uU(11, '\n\n    '),
                 e.TgZ(12, 'ion-grid', 4),
-                e._uU(13, '\n        '),
+                e._uU(13, '\n      '),
                 e.YNc(14, I0, 4, 2, 'div', 5),
-                e._uU(15, '\n  \n        '),
+                e._uU(15, '\n\n      '),
                 e.YNc(16, O0, 1, 1, 'app-loader', 6),
-                e._uU(17, '\n      '),
+                e._uU(17, '\n    '),
                 e.qZA(),
-                e._uU(18, '\n  \n      '),
+                e._uU(18, '\n\n    '),
                 e.YNc(19, Y0, 13, 4, 'div', 7),
-                e._uU(20, '\n    '),
+                e._uU(20, '\n  '),
                 e.qZA(),
-                e._uU(21, '\n  '),
+                e._uU(21, '\n'),
                 e.qZA(),
-                e._uU(22, '\n  ')),
+                e._uU(22, '\n')),
                 2 & t &&
                   (e.xp6(2),
                   e.Q6J('ngIf', !o.isWeb),
@@ -33683,7 +33683,7 @@
                 e.qZA(),
                 e._uU(38, '\n          '),
                 e.qZA(),
-                e._uU(39, ' \n        '),
+                e._uU(39, '\n          '),
                 e.TgZ(40, 'ion-text', 11),
                 e.NdJ('click', function () {
                   return o.ViewSharing();
@@ -33694,7 +33694,7 @@
                 e.qZA(),
                 e._uU(44, ' '),
                 e.qZA(),
-                e._uU(45, '\n        \n        '),
+                e._uU(45, '\n        '),
                 e.qZA(),
                 e._uU(46, '\n      '),
                 e.qZA(),
@@ -33712,7 +33712,7 @@
                 e.TgZ(57, 'div', 14),
                 e._uU(58, 'Chapters of My book'),
                 e.qZA(),
-                e._uU(59, '\n\n         \n            '),
+                e._uU(59, '\n\n            '),
                 e.TgZ(60, 'ion-text', 10),
                 e.NdJ('click', function () {
                   return o.editChapter();
