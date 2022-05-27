@@ -23277,7 +23277,7 @@
             decls: 25,
             vars: 11,
             consts: [
-              [1, 'd-flex', 'justify-content-center', 'mt-5'],
+              [1, 'd-flex', 'justify-content-center', 'my-5'],
               [1, 'container'],
               ['format', 'ms', 3, 'countdown', 'startTime', 'autoStart', 'onComplete'],
               ['basicTimer', ''],
@@ -25061,7 +25061,7 @@
                 ['mode', 'android', 'scrollable', '', 3, 'value', 'ionChange'],
                 ['mode', 'android', 3, 'value', 4, 'ngFor', 'ngForOf'],
                 ['class', 'small', 4, 'ngIf'],
-                [1, 'p-0', 'mt-3'],
+                [1, 'p-0', 'my-3'],
                 ['class', 'grid-container', 4, 'ngIf'],
                 [3, 'isLoading', 4, 'ngIf'],
                 [3, 'p-5', 'fxLayout', 4, 'ngIf'],
