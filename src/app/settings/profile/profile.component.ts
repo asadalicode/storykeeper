@@ -2,13 +2,15 @@ import { ConfirmationInfoComponent } from './../../@shared/popup-components/conf
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalDismissRole } from '@app/@shared/constants';
-import { Profile, UserEmail } from '@app/@shared/models';
+import { ImageCredientials, Profile, UserEmail } from '@app/@shared/models';
 import { ApiService } from '@app/@shared/sevices/api.service';
 import { ToastService } from '@app/@shared/sevices/toast.service';
 import { CredentialsService } from '@app/auth';
 
 import { IonRouterOutlet, Platform, ModalController } from '@ionic/angular';
 import { AddNewEmailComponent } from '../add-new-email/add-new-email.component';
+import { Camera, CameraResultType } from '@capacitor/camera';
+import { Utils } from '@app/@shared';
 
 @Component({
   selector: 'app-profile',
@@ -16,6 +18,8 @@ import { AddNewEmailComponent } from '../add-new-email/add-new-email.component';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
+  uploadFileObj: any;
+  uploadCredentials: any;
   profileForm!: FormGroup;
   passwordForm!: FormGroup;
   isLoading = false;
@@ -23,6 +27,8 @@ export class ProfileComponent implements OnInit {
   isVisiblePassword = false;
   isVisibleConfirmPassword = false;
   UserEmails!: UserEmail[];
+  postImgName: any;
+  imgUrl: any;
   constructor(
     private formBuilder: FormBuilder,
     private credentials: CredentialsService,
@@ -51,6 +57,9 @@ export class ProfileComponent implements OnInit {
     console.log(this.userId);
     this.apiService.getDetails(`/api/Users/${this.userId}`, Profile).subscribe((res: any) => {
       console.log(res);
+      if (res.image) {
+        this.imgUrl = res.image;
+      }
       if (res) {
         this.profileForm.patchValue(res);
       }
@@ -161,5 +170,86 @@ export class ProfileComponent implements OnInit {
   }
   closeModal() {
     this.isModalOpen = false;
+  }
+
+  async takePhoto() {
+    const image = await Camera.getPhoto({
+      quality: 100,
+      allowEditing: false,
+      resultType: CameraResultType.Base64,
+    });
+
+    // image.webPath will contain a path that can be set as an image src.
+    // You can access the original file using image.path, which can be
+    // passed to the Filesystem API to read the raw data of the image,
+    // if desired (or pass resultType: CameraResultType.Base64 to getPhoto)
+    var imageUrl: any = image.base64String;
+    this.imgUrl = 'data:image/png;base64,' + imageUrl; //to show picked image in the UI temporarily
+    Utils.dataUrlToFile('data:image/png;base64,' + imageUrl, Utils.UUID + '.png').then((res) => {
+      this.getFileCredentials(res);
+    });
+  }
+  getFileCredentials(file: any) {
+    this.apiService
+      .getDetails(`/api/Files/credentials/userImages/${this.userId}?fileName=${file.name}`, ImageCredientials)
+      .subscribe({
+        complete: () => {},
+        next: (res: any) => {
+          this.uploadCredentials = res;
+          this.postImgName = `${file.name}`;
+          this.uploadFileObj = {
+            ...this.uploadCredentials,
+            file: file,
+          };
+          this.postUserImg();
+        },
+        error: (err: any) => {
+          console.log(err);
+        },
+      });
+  }
+
+  get fileFileObject() {
+    return {
+      key: this.uploadFileObj.key,
+      acl: this.uploadFileObj.acl,
+      success_action_status: this.uploadFileObj.success_action_status,
+      policy: this.uploadFileObj.policy,
+      'x-amz-algorithm': this.uploadFileObj.x_amz_algorithm,
+      'x-amz-credential': this.uploadFileObj.x_amz_credential,
+      'x-amz-date': this.uploadFileObj.x_amz_date,
+      'x-amz-signature': this.uploadFileObj.x_amz_signature,
+      'x-amz-meta-owner': this.uploadFileObj.x_amz_meta_owner,
+      // is_version: this.uploadFileObj.is_version,
+      file: this.uploadFileObj.file,
+    };
+  }
+
+  postUserImg() {
+    if (this.uploadCredentials) {
+      this.apiService.postFormData(this.uploadCredentials.upload_url, this.fileFileObject).subscribe({
+        complete: () => {},
+        next: (res: any) => {},
+        error: (err: any) => {
+          if (err.status == 201) {
+            this.updateUserImg();
+          }
+        },
+      });
+    }
+  }
+
+  updateUserImg() {
+    let imgObj = {
+      image: this.postImgName,
+    };
+    this.apiService.put(`/api/Users/UpdateImage/${this.userId}`, imgObj).subscribe({
+      complete: () => {},
+      next: (res: any) => {},
+      error: (err: any) => {
+        if (err.status == 201) {
+        }
+      },
+    });
   }
 }

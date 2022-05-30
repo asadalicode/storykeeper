@@ -15,10 +15,6 @@ android {
             ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
-  dexOptions {
-    incremental true
-    javaMaxHeapSize "2g"
-  }
     buildTypes {
         release {
             minifyEnabled false

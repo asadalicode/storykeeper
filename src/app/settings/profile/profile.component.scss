@@ -5,6 +5,12 @@ ion-item {
     --padding-start: 28px;
   }
 }
+.cam_icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 44px;
+}
 
 ion-modal {
   --width: 340px;

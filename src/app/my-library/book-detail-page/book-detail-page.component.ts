@@ -58,6 +58,14 @@ export class BookDetailPageComponent implements OnInit {
     return params;
   }
 
+  get queryParams() {
+    let params: any;
+    this.route.queryParams.subscribe((res: any) => {
+      params = res;
+    });
+    return params;
+  }
+
   getBookStories() {
     this.isLoading = true;
     this.apiService.get(`/api/books/${this.routeParams.bookId}/Stories`, Story).subscribe({

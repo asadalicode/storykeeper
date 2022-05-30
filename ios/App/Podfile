@@ -12,6 +12,7 @@ def capacitor_pods
   pod 'CapacitorCommunityFacebookLogin', :path => '..\..\node_modules\@capacitor-community\facebook-login'
   pod 'CapacitorCommunityStripe', :path => '..\..\node_modules\@capacitor-community\stripe'
   pod 'CapacitorApp', :path => '..\..\node_modules\@capacitor\app'
+  pod 'CapacitorCamera', :path => '..\..\node_modules\@capacitor\camera'
   pod 'CapacitorFilesystem', :path => '..\..\node_modules\@capacitor\filesystem'
   pod 'CodetrixStudioCapacitorGoogleAuth', :path => '..\..\node_modules\@codetrix-studio\capacitor-google-auth'
   pod 'CapacitorVoiceRecorder', :path => '..\..\node_modules\capacitor-voice-recorder'

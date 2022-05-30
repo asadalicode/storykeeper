@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1653667168380,
+  "timestamp": 1653927444938,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -32,6 +32,7 @@
         "/3802.6df8b56028e948e7.js",
         "/3804.d956a0a0f364d312.js",
         "/388.7dbd7785e6af6a67.js",
+        "/3954.52b5b6c9bb4cbb84.js",
         "/410.5566d5bbafd285c5.js",
         "/4174.95a449ce6c3c141b.js",
         "/4330.f604290a988ea787.js",
@@ -77,12 +78,12 @@
         "/common.bdb20ed26f91228d.js",
         "/favicon.ico",
         "/index.html",
-        "/main.0413fcfb818aec3e.js",
+        "/main.767bc9002eea5f89.js",
         "/manifest.webmanifest",
         "/polyfills-core-js.08fb6cb7ffd5bf44.js",
         "/polyfills-dom.de5aa1c0480698a8.js",
         "/polyfills.525362d90f3d19a9.js",
-        "/runtime.91d731512ebdb6e2.js",
+        "/runtime.da05dc7ebbc0e327.js",
         "/styles.4451f8727b467c89.css"
       ],
       "patterns": []
@@ -109,6 +110,7 @@
         "/assets/images/book1.svg",
         "/assets/images/book2.svg",
         "/assets/images/bro.svg",
+        "/assets/images/cam_icon.svg",
         "/assets/images/credit-card.svg",
         "/assets/images/default_checkbox.svg",
         "/assets/images/edit-icon-white.svg",
@@ -188,6 +190,7 @@
     "/3802.6df8b56028e948e7.js": "028c1be74326c747fcd88aa78cdc667fbbb301ad",
     "/3804.d956a0a0f364d312.js": "f8b3d78b46453a7acadffe0a7cc764ce2878250e",
     "/388.7dbd7785e6af6a67.js": "f424633ec63748d16ebf2b2ebe71dd3d8eccdae0",
+    "/3954.52b5b6c9bb4cbb84.js": "9b08081f563ec0481609d249e892087fe37aafc2",
     "/410.5566d5bbafd285c5.js": "9ce025dfda2c7892d17c2a1e6c735b1d3b5e8681",
     "/4174.95a449ce6c3c141b.js": "0fcdef97d8ffde221b311967df952e04fc9b8557",
     "/4330.f604290a988ea787.js": "95e5d722862678b9fbd16084f641a8e301ac4969",
@@ -244,6 +247,7 @@
     "/assets/images/book1.svg": "a0eb2deb5d1943fc85fbbf2199cb17d1d37ba356",
     "/assets/images/book2.svg": "99805c7f75158772896b38139666f0e9580a25e0",
     "/assets/images/bro.svg": "78d3a7a01dac9d20299d96d03c723e101a8188dd",
+    "/assets/images/cam_icon.svg": "e2d0af7e015156ca45b258d614e8437d0c35a292",
     "/assets/images/credit-card.svg": "e0797c7bb8770e4f693fa4c6f5dd9a0499c0d3fd",
     "/assets/images/default_checkbox.svg": "da5ddcad0d47a6e1187376f094060200534b4470",
     "/assets/images/edit-icon-white.svg": "5849ef13d2e264d09cc67f0591288ec372e018db",
@@ -298,13 +302,13 @@
     "/default_checkbox.b09829c4cd0ef2ee.svg": "da5ddcad0d47a6e1187376f094060200534b4470",
     "/favicon.ico": "45eae9c24278ef7cbdea0725e9cddeafd0523ed9",
     "/giphy.5a6084941384f3a0.gif": "57536361fe46bbd06d89d5e0b66890d5c87c1d5b",
-    "/index.html": "9ac2c7748cd54bf37887bade6dcbc19d48607709",
-    "/main.0413fcfb818aec3e.js": "047ace577d1450d5c91684acab1527523fe5aca1",
+    "/index.html": "590528da5a89347bb3a6f6c0d9c31e4388a421af",
+    "/main.767bc9002eea5f89.js": "02def54aacca33fd35d9d578e2db32657db6f10b",
     "/manifest.webmanifest": "e4db7587bbdfd9713d0d76ef42a3f162fd3ec59d",
     "/polyfills-core-js.08fb6cb7ffd5bf44.js": "1c0affce64761aa61df671dc621e87882d4fe684",
     "/polyfills-dom.de5aa1c0480698a8.js": "c6cdaed5253f39111504b988ef6c4df86ce19753",
     "/polyfills.525362d90f3d19a9.js": "ef4604fa68046fc5d94f9e26c1b5a01531108829",
-    "/runtime.91d731512ebdb6e2.js": "70a69bc4a8bb4a43f43050655600e8e105a18b05",
+    "/runtime.da05dc7ebbc0e327.js": "830ca86e0f2859b4b3a85ab6cc7d39cac304cba9",
     "/styles.4451f8727b467c89.css": "d9b11f3889446ad7d914f1e19624568eda5f7911"
   },
   "navigationUrls": [
