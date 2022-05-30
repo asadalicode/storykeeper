@@ -13,6 +13,16 @@ export class Utils {
     return new File([blob], fileName, { type: 'audio/mp3' });
   }
 
+  public static async converToBlobImg(base64: any): Promise<Blob> {
+    const byteCharacters = atob(base64);
+    const byteNumbers = await new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+      byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    return new Blob([byteArray], { type: 'image/png' });
+  }
+
   public static getBase64(file: any) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();

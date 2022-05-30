@@ -50,7 +50,10 @@
             Edit
           </ion-button>
         </div>
-        <p>Your book has {{ bookStories.length }} chapters. There are 24 chapters in total.</p>
+        <p>
+          Your book has {{ bookStories.length }} chapters. There are
+          {{ queryParams?.bookType == 1 ? '24' : '52' }} chapters in total.
+        </p>
         <div>
           <ion-text (click)="confirmArchiveBook()" class="link ion-padding-end" color="secondary">
             <span>Archive book</span>

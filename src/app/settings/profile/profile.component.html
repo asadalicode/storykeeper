@@ -11,11 +11,17 @@
   <ion-list class="web-page">
     <ion-list-header *ngIf="isWeb" class="p-0 mb-2">
       <ion-label translate> <h1>My Profile</h1></ion-label>
+      <div class="cam_icon"></div>
     </ion-list-header>
 
     <div class="form-container">
       <div lines="none" class="avatar mb-4 mt-4">
-        <img class="avatar-img" src="assets/logos/logo-cir-blue.png" />
+        <div class="position-relative">
+          <img class="avatar-img" [src]="imgUrl ? imgUrl : 'assets/logos/logo-cir-blue.png'" />
+          <div (click)="takePhoto()" class="cam_icon">
+            <ion-icon slot="icon-only" src="assets/images/cam_icon.svg"></ion-icon>
+          </div>
+        </div>
       </div>
 
       <form (ngSubmit)="save()" class="profile-form" [formGroup]="profileForm" novalidate autocomplete="off">
