@@ -12,6 +12,8 @@ import {
 } from 'capacitor-voice-recorder';
 import { Utils } from '@app/@shared/appConstants';
 import { ToastService } from '@app/@shared/sevices/toast.service';
+import { AudioRecordRtcService } from '@app/@shared/sevices/audioRecord.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-recording-player',
@@ -20,6 +22,12 @@ import { ToastService } from '@app/@shared/sevices/toast.service';
 })
 export class RecordingPlayerComponent implements OnInit, OnDestroy {
   step = 0;
+  audioBlobUrl: any;
+  audioBlob!: Blob;
+  audioName: any;
+  audioStream: any;
+  audioConf = { audio: true };
+
   isPlaying = false; //onditions for play pause buttons
   isPlayable = false; //when wave is ready and audio is loaded
   hasRecordingPermission = false; //permission granted by user device
@@ -31,6 +39,8 @@ export class RecordingPlayerComponent implements OnInit, OnDestroy {
 
   constructor(
     private cdr: ChangeDetectorRef,
+    private audioRecordingService: AudioRecordRtcService,
+    private sanitizer: DomSanitizer,
     private _location: Location,
     private toastService: ToastService,
     private platform: Platform
@@ -46,7 +56,11 @@ export class RecordingPlayerComponent implements OnInit, OnDestroy {
 
   @Input() set startRecord(event: any) {
     if (event && this.hasRecordingPermission) {
-      this.startRecording();
+      if (this.isWeb) {
+        this.startWebRecording();
+      } else {
+        this.startRecording();
+      }
     }
   }
 
@@ -73,6 +87,13 @@ export class RecordingPlayerComponent implements OnInit, OnDestroy {
     }
   }
 
+  startWebRecording() {
+    this.isPlaying = true;
+    this.isRecStarted = true;
+    this.basictimer.start();
+    this.audioRecordingService.startRecording();
+  }
+
   startRecording() {
     // if (this.isWeb) {
     //   this.draw();
@@ -96,25 +117,37 @@ export class RecordingPlayerComponent implements OnInit, OnDestroy {
   }
 
   pauseRecording() {
-    VoiceRecorder.pauseRecording()
-      .then((result: GenericResponse) => {
-        if (result.value) {
-          this.isPlaying = false;
-          this.basictimer.stop();
-        }
-      })
-      .catch((error) => console.log(error));
+    if (this.isWeb) {
+      this.isPlaying = false;
+      this.basictimer.stop();
+      this.audioRecordingService.pauseRecording();
+    } else {
+      VoiceRecorder.pauseRecording()
+        .then((result: GenericResponse) => {
+          if (result.value) {
+            this.isPlaying = false;
+            this.basictimer.stop();
+          }
+        })
+        .catch((error) => console.log(error));
+    }
   }
 
   resumeRecording() {
-    VoiceRecorder.resumeRecording()
-      .then((result: GenericResponse) => {
-        if (result.value) {
-          this.isPlaying = true;
-          this.basictimer.resume();
-        }
-      })
-      .catch((error) => console.log(error));
+    if (this.isWeb) {
+      this.isPlaying = true;
+      this.basictimer.resume();
+      this.audioRecordingService.resumeRecording();
+    } else {
+      VoiceRecorder.resumeRecording()
+        .then((result: GenericResponse) => {
+          if (result.value) {
+            this.isPlaying = true;
+            this.basictimer.resume();
+          }
+        })
+        .catch((error) => console.log(error));
+    }
   }
 
   stopRecording() {
@@ -127,6 +160,19 @@ export class RecordingPlayerComponent implements OnInit, OnDestroy {
         this.audioStopped.emit({ audio: audioRef, event: true });
       }
       this.recordedFileDuration(result.value.recordDataBase64);
+    });
+  }
+
+  stopWebRecording() {
+    this.basictimer.stop();
+    this.audioRecordingService.stopRecording();
+
+    this.audioRecordingService.getRecordedBlob().subscribe((data) => {
+      this.audioBlob = data.blob;
+      this.audioBlobUrl = URL.createObjectURL(this.audioBlob);
+      this.audioStopped.emit({ audio: this.audioBlobUrl, event: true });
+      this.audioFileAction.emit(this.audioBlob);
+      this.cdr.detectChanges();
     });
   }
 
@@ -143,7 +189,11 @@ export class RecordingPlayerComponent implements OnInit, OnDestroy {
       console.log(result);
       if (result.value) {
         this.hasRecordingPermission = true;
-        this.startRecording();
+        if (this.isWeb) {
+          this.startWebRecording();
+        } else {
+          this.startRecording();
+        }
       }
     });
     VoiceRecorder.hasAudioRecordingPermission().then((result: GenericResponse) => {
@@ -151,6 +201,9 @@ export class RecordingPlayerComponent implements OnInit, OnDestroy {
       if (result.value) {
         this.hasRecordingPermission = true;
       }
+    });
+    this.audioRecordingService.recordingFailed().subscribe(() => {
+      this.cdr.detectChanges();
     });
   }
 
@@ -160,13 +213,24 @@ export class RecordingPlayerComponent implements OnInit, OnDestroy {
 
   onTimerComplete(event: any) {
     if (event) {
-      this.stopRecording();
+      if (this.isWeb) {
+        this.stopWebRecording();
+      } else {
+        this.stopRecording();
+      }
     }
+  }
+
+  abortAudioRecording() {
+    this.audioRecordingService.abortRecording();
   }
 
   ngOnDestroy() {
     if (this.hasRecordingPermission && this.isRecStarted) {
       console.log('destroy');
+      if (this.isWeb) {
+        this.abortAudioRecording();
+      }
       VoiceRecorder.stopRecording();
     }
   }
