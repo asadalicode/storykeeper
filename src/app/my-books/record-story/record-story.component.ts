@@ -134,6 +134,7 @@ export class RecordStoryComponent implements OnInit, OnDestroy {
   }
 
   stopRecording(event: any) {
+    console.log(event);
     if (event.event) {
       this.story.answer = event.audio;
       this.isRecorded = true;

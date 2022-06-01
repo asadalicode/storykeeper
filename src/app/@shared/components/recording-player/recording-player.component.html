@@ -54,7 +54,7 @@
       <ion-icon
         *ngIf="isRecStarted && !isRecorded"
         [class.disabled]="!hasRecordingPermission"
-        (click)="stopRecording()"
+        (click)="isWeb ? stopWebRecording() : stopRecording()"
         [color]="'danger'"
         class="cursor-pointer btn-icon-player"
         src="assets/images/stop.svg"
