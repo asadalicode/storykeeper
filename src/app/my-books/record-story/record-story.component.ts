@@ -1,6 +1,6 @@
 import { ConfirmationInfoComponent } from './../../@shared/popup-components/confirmation-info/confirmation-info.component';
 import { ModalDismissRole } from '@app/@shared/constants';
-import { Platform, ModalController, IonRouterOutlet, ViewWillEnter } from '@ionic/angular';
+import { Platform, ModalController, IonRouterOutlet, ViewWillEnter, LoadingController } from '@ionic/angular';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '@app/@shared/sevices/api.service';
@@ -24,6 +24,8 @@ export class RecordStoryComponent implements OnInit, OnDestroy {
   isLoading = true;
   isAudioAvailable = false; //check if audio is already recorded and availble for this story
   isProcessing = false;
+  file!: File;
+  loadingOverlay: any;
   // destroyRecorder=false;
   constructor(
     private platform: Platform,
@@ -34,43 +36,13 @@ export class RecordStoryComponent implements OnInit, OnDestroy {
     private chooser: Chooser,
     private _location: Location,
     private sharedService: SharedService,
+    private loadingController: LoadingController,
     private apiService: ApiService
   ) {}
 
   ngOnInit(): void {
-    console.log(this.story);
-    // this.decide();
-
     this.getStory();
-    // let filter="audio/mp3"
-
-    // this.chooser.getFile(filter)
-    // .then(file => console.log(file ? file : 'canceled'))
-    // .catch((error: any) => console.error(error));
   }
-
-  // decide() {
-  //   this.sharedService.getAudioInStorage().subscribe((res:any)=> {
-  //     if(res) {
-  //       console.log(res);
-  //       this.playAudioStream(res);
-  //     }
-  //     else {
-  //       console.log("@@@")
-  //       this.getStory();
-  //     }
-  //   })
-  // }
-
-  // playAudioStream(audio:any) {
-  //   // console.log(audio)
-  //   console.log(this.story);
-  //   this.story.answer = audio;
-  //           this.isRecorded = true;
-  //           this.isRecording = false;
-  //           this.isAudioAvailable = true;
-  //           this.isLoading=false;
-  // }
 
   get isWeb(): boolean {
     return !this.platform.is('cordova');
@@ -134,12 +106,28 @@ export class RecordStoryComponent implements OnInit, OnDestroy {
   }
 
   stopRecording(event: any) {
-    console.log(event);
     if (event.event) {
       this.story.answer = event.audio;
       this.isRecorded = true;
       this.isRecording = false;
     }
+  }
+
+  getAudioFromSystem(event: any): any {
+    if (!event.target.files.length) {
+      return 0;
+    }
+    this.file = event.target.files[0];
+    let audio: any = URL.createObjectURL(this.file);
+    Utils.getBase64(this.file).then((res: any) => {
+      Utils.converToBlob(res.replace(/^[^,]+,/, '')).then((res) => {
+        this.getAudioFile(res);
+      });
+    });
+
+    this.story.answer = audio;
+    this.isRecorded = true;
+    this.isRecording = false;
   }
 
   startRecording(event: any) {
@@ -159,6 +147,7 @@ export class RecordStoryComponent implements OnInit, OnDestroy {
             this.confirmBox();
           } else {
             this.isProcessing = false;
+            this.loadingOverlay.dismiss();
           }
         },
       });
@@ -171,7 +160,6 @@ export class RecordStoryComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (res) => {
           this.story = res;
-          console.log(this.story);
           if (this.story.answer) {
             this.getServerFileUrl();
           } else {
@@ -216,9 +204,11 @@ export class RecordStoryComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (res) => {
           this.isProcessing = false;
+          this.loadingOverlay.dismiss();
         },
         error: (error) => {
           this.isProcessing = false;
+          this.loadingOverlay.dismiss();
         },
       });
   }
@@ -250,6 +240,13 @@ export class RecordStoryComponent implements OnInit, OnDestroy {
 
   async sendStory() {
     this.isProcessing = true;
+    this.loadingOverlay = await this.loadingController.create({
+      spinner: 'bubbles',
+      showBackdrop: true,
+      cssClass: 'main-loader',
+    });
+    this.loadingOverlay.present();
+
     this.postFile();
   }
 

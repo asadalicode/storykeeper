@@ -62,8 +62,19 @@
         <app-loader *ngIf="isProcessing" [isLoading]="isLoading"></app-loader>
       </ion-button>
 
+      <ion-text *ngIf="!isRecording && !isRecorded && !isAudioAvailable && isWeb">
+        <input
+          type="file"
+          accept=".mp3,audio/*"
+          name="file"
+          id="file"
+          (change)="getAudioFromSystem($event)"
+          class="choosefile status-primary"
+        />
+        <label class="text-button" for="file">Upload a recording</label>
+      </ion-text>
+
       <ion-text *ngIf="isRecorded && !isAudioAvailable">
-        <!-- <p class="text-button" *ngIf="!isRecording">Upload Recording</p> -->
         <p class="text-button status-pending" (click)="reRecordStory()">Delete and Rerecord</p>
       </ion-text>
 

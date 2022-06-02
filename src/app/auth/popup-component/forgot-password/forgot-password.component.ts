@@ -78,6 +78,7 @@ export class ForgotPasswordComponent implements OnInit {
       showBackdrop: true,
       cssClass: 'main-loader',
     });
+    loadingOverlay.present();
     this.apiService.post(`/api/Users/ResetPassword`, data).subscribe({
       next: (res: any) => {
         this.toastService.showToast('success', 'Password reset successfully.');
