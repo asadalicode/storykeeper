@@ -343,6 +343,10 @@ ion-toolbar {
   }
 }
 
+.status-primary {
+  color: var(--ion-color-primary);
+}
+
 .status-finished,
 .status-published {
   color: var(--ion-color-success);

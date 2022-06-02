@@ -7091,6 +7091,9 @@ ion-toolbar ion-back-button {
   top: 15px;
   margin: 0 !important;
 }
+.status-primary {
+  color: var(--ion-color-primary);
+}
 .status-finished,
 .status-published {
   color: var(--ion-color-success);
