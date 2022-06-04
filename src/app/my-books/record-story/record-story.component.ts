@@ -130,6 +130,25 @@ export class RecordStoryComponent implements OnInit, OnDestroy {
     this.isRecording = false;
   }
 
+  getAudioFromStorage() {
+    this.chooser.getFile('audio/*').then(
+      (res: any) => {
+        if (res) {
+          Utils.converToBlob(res.dataURI.replace(/^[^,]+,/, '')).then((res) => {
+            this.getAudioFile(res);
+            let audio: any = URL.createObjectURL(res);
+            this.story.answer = audio;
+            this.isRecorded = true;
+            this.isRecording = false;
+          });
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
   startRecording(event: any) {
     if (event) {
       this.isRecording = true;
