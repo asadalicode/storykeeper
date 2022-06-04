@@ -74,6 +74,10 @@
         <label class="text-button" for="file">Upload a recording</label>
       </ion-text>
 
+      <ion-text *ngIf="!isRecording && !isRecorded && !isAudioAvailable && !isWeb">
+        <p class="text-button status-primary" (click)="getAudioFromStorage()">Upload a recording</p>
+      </ion-text>
+
       <ion-text *ngIf="isRecorded && !isAudioAvailable">
         <p class="text-button status-pending" (click)="reRecordStory()">Delete and Rerecord</p>
       </ion-text>
