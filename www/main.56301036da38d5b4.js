@@ -22311,7 +22311,7 @@
                   }),
                   e._uU(30, 'Privacy Policy'),
                   e.qZA(),
-                  e._uU(31, ' | '),
+                  e._uU(31, ' |\n        '),
                   e.TgZ(32, 'a', 8),
                   e.NdJ('click', function () {
                     return o.routeTo('terms');
@@ -30064,7 +30064,7 @@
               [1, 'ion-padding'],
               ['mode', 'md', 'color', 'primary'],
               [1, 'heading'],
-              [1, 'p-0', 'mt-3'],
+              [1, 'p-0', 'my-3'],
               ['class', 'grid-container', 4, 'ngIf'],
               [3, 'isLoading', 4, 'ngIf'],
               [3, 'p-5', 'fxLayout', 4, 'ngIf'],
