@@ -3,9 +3,9 @@
     <ion-col>
       <div class="col-width">
         <ul class="inline-list">
-          <li>About</li>
-          <li>Settings</li>
-          <li>Help</li>
+          <li (click)="routeTo('about')">About</li>
+          <li *ngIf="isLoggedIn" [routerLink]="'/settings'">Settings</li>
+          <li *ngIf="isLoggedIn" [routerLink]="'/help'">Help</li>
         </ul>
 
         <ion-text color="primary" class="text"> © 2022 Story Keeper. All rights reserved </ion-text>
@@ -14,7 +14,8 @@
     <ion-col class="d-flex-column ion-align-items-end">
       <app-find-on-social></app-find-on-social>
       <ion-text color="primary" class="text ion-padding-top">
-        <a href="">Privacy Policy</a> | <a href="">Terms of Service</a>
+        <a href="javascript:void(0)" (click)="routeTo('privacy')">Privacy Policy</a> |
+        <a href="javascript:void(0)" (click)="routeTo('terms')">Terms of Service</a>
       </ion-text>
     </ion-col>
   </ion-row>
