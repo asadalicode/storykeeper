@@ -42,7 +42,7 @@
       <h1 class="heading" [class.isWeb]="isWeb">My Archived books</h1>
     </ion-text>
 
-    <ion-grid class="p-0 mt-3">
+    <ion-grid class="p-0 my-3">
       <div *ngIf="!isLoading" [@listAnimation]="books?.length" class="grid-container">
         <app-archive-book-card
           *ngFor="let book of books"
