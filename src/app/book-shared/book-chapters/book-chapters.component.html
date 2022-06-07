@@ -67,3 +67,17 @@
     Save Questions
   </ion-button>
 </div>
+
+<div class="form-container" *ngIf="showBacksaveButton">
+  <ion-button
+    style="text-transform: none"
+    type="button"
+    (click)="goBack()"
+    class="default-button"
+    color="primary"
+    expand="block"
+    translate
+  >
+    Save and Continue
+  </ion-button>
+</div>
