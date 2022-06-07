@@ -10,7 +10,7 @@ import { Story } from '@app/@shared/models/bookQuestion';
 import { Category, listAnimation, TemplateQuestion } from '@app/@shared/models';
 import * as _ from 'lodash';
 import { ToastService } from '@app/@shared/sevices/toast.service';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-book-chapters',
   templateUrl: './book-chapters.component.html',
@@ -19,6 +19,8 @@ import { ToastService } from '@app/@shared/sevices/toast.service';
 })
 export class BookChaptersComponent implements OnInit {
   @Input() showSaveButton = false;
+  @Input() showBacksaveButton = false;
+
   @Input() routeParams: any;
   @Output() save = new EventEmitter<any>();
 
@@ -31,6 +33,7 @@ export class BookChaptersComponent implements OnInit {
     private modalController: ModalController,
     private apiService: ApiService,
     private route: ActivatedRoute,
+    private location: Location,
     public toastController: ToastController,
     private routerOutlet: IonRouterOutlet,
     private toastService: ToastService
@@ -149,5 +152,9 @@ export class BookChaptersComponent implements OnInit {
   }
   onSave() {
     this.save.emit(3);
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

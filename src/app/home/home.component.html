@@ -48,7 +48,7 @@
       <p class="small" *ngIf="segmentValue == 'pending'">Edit a book to start your book request</p>
     </ion-text>
 
-    <ion-grid class="p-0 my-3">
+    <ion-grid class="p-0 mt-3 mb-5">
       <div *ngIf="!isLoading" [@listAnimation]="books?.length" class="grid-container">
         <app-books-card *ngFor="let book of books" [book]="book"></app-books-card>
       </div>
