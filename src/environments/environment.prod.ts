@@ -14,7 +14,7 @@ export const environment = {
   supportedLanguages: ['en-US', 'es-ES'],
   api: 'https://j3x0ln9gj7.execute-api.ap-northeast-1.amazonaws.com/dev/',
   stripe_pb_key:
-    'pk_test_51KCReJEtRGO5XeaelVhqrs36jlJI7eY1cP4dr3FwCSH8JU7M9szSuiscP5aICj9qpO7JhGVQNR6aWNnAREkrVvrb00WYqFi4zI',
+    'pk_live_51KCReJEtRGO5Xeaeyldx6BkYLZak8opPPfdCTMaQnhH04Ifrmbt2Xt8s7Wmr36U3MqH25XUGqfs1Wi4TBYGpEGZl00UZIG2Idh',
   strikePK:
     'pk_test_51HnOIGHFh0EYi2CVRcVJxry6vXxI0q8xte5sVPb3jr3SvksSQ6EZAGzNwMVTEPy3rASh9LlWRVZGAqXxmG5sTLM100z8yoU0Qn',
 };
