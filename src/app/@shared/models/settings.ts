@@ -7,6 +7,8 @@ export class Profile {
     public lastName: string,
     public email: string,
     public role: string,
+    public emailReminder: boolean,
+    public emailNotification: boolean,
     public image: string
   ) {}
 
@@ -19,6 +21,8 @@ export class Profile {
       item.lastName,
       item.email,
       item.role,
+      item.isUnsubscribedFromEmailReminders,
+      item.isUnsubscribedFromEmailNotifications,
       item.image
     );
   }

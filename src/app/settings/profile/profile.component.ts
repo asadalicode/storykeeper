@@ -29,6 +29,7 @@ export class ProfileComponent implements OnInit {
   UserEmails!: UserEmail[];
   postImgName: any;
   imgUrl: any;
+  alertOptions: any = [];
   constructor(
     private formBuilder: FormBuilder,
     private credentials: CredentialsService,
@@ -37,11 +38,42 @@ export class ProfileComponent implements OnInit {
     private modalController: ModalController,
     private platform: Platform,
     public routerOutlet: IonRouterOutlet
-  ) {}
+  ) {
+    this.setAlertOptions();
+  }
 
   ngOnInit(): void {
     this.createForm();
     this.getUserInfo();
+  }
+
+  setAlertOptions() {
+    this.alertOptions = [
+      { id: 1, title: 'Email Reminder Subscription', isChecked: false },
+      { id: 2, title: 'Email Notification Subscription', isChecked: false },
+    ];
+  }
+
+  onAlertOptionChange(item: any) {
+    switch (item.id) {
+      case 1:
+        this.toggleSubscription('/api/Users/ToggleEmailReminderSubsctiption');
+        break;
+      case 2:
+        this.toggleSubscription('/api/Users/ToggleEmailNotificationsSubsctiption');
+        break;
+      default:
+        break;
+    }
+  }
+
+  toggleSubscription(url: string) {
+    this.apiService.post(url, {}).subscribe({
+      next: (res) => {
+        this.toastService.showToast('success', 'Updated successfully');
+      },
+      error: (error) => {},
+    });
   }
 
   get isWeb(): boolean {
@@ -54,14 +86,18 @@ export class ProfileComponent implements OnInit {
   }
 
   getUserInfo() {
-    console.log(this.userId);
     this.apiService.getDetails(`/api/Users/${this.userId}`, Profile).subscribe((res: any) => {
-      console.log(res);
       if (res.image) {
         this.imgUrl = res.image;
       }
       if (res) {
         this.profileForm.patchValue(res);
+        if (res.emailReminder) {
+          this.alertOptions[0].isChecked = true;
+        }
+        if (res.emailNotification) {
+          this.alertOptions[1].isChecked = true;
+        }
       }
     });
     this.apiService.get(`/api/Users/Emails`, UserEmail).subscribe((res: any) => {
