@@ -64,6 +64,13 @@
               >Link another email address to receive shared books with with this account</a
             >
           </div>
+
+          <div class="ion-padding-bottom">
+            <ion-item lines="none" color="light" *ngFor="let item of alertOptions">
+              <ion-label>{{ item.title }}</ion-label>
+              <ion-checkbox slot="end" [checked]="item.isChecked" (click)="onAlertOptionChange(item)"></ion-checkbox>
+            </ion-item>
+          </div>
           <ion-item lines="none" color="light">
             <ion-icon class="ion-align-self-center mr-3" name="lock-closed-outline" slot="start"></ion-icon>
             <ion-label class="form-input-label" position="stacked" translate>Password</ion-label>
