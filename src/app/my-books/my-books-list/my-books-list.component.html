@@ -23,7 +23,7 @@
     </ion-card>
     <app-loader *ngIf="isLoading" [isLoading]="isLoading"></app-loader>
     <div [@listAnimation]="books?.length" [ngClass]="isWeb ? 'ion-no-padding' : 'ion-padding'">
-      <ion-grid class="p-0 mt-3 mb-5">
+      <ion-grid class="p-0 mt-3">
         <section>
           <div fxLayout="row" fxLayoutAlign="space-between center">
             <div class="heading">My books</div>
