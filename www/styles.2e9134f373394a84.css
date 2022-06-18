@@ -7124,7 +7124,7 @@ ion-toolbar ion-back-button {
     height: 200px;
     width: 100%;
     border-radius: 14px;
-    object-fit: contain;
+    object-fit: cover;
   }
 }
 .disabled {
@@ -7182,6 +7182,11 @@ ion-toolbar ion-back-button {
 }
 .modal-popup ion-radio.radio-checked:before {
   content: url(active_checkbox.bfe98c709e3c0dd8.svg);
+}
+@media (max-width: 599px) {
+  ion-content {
+    --padding-bottom: 80px !important;
+  }
 }
 .main-loader .loading-wrapper {
   box-shadow: none;

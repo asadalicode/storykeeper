@@ -15,6 +15,12 @@
 @import "theme/theme";
 @import "theme/modal-popup.scss";
 
+@include for-phone-only {
+  ion-content {
+    --padding-bottom: 80px !important;
+  }
+}
+
 .main-loader {
   .loading-wrapper {
     box-shadow: none;
