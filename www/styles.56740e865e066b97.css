@@ -7185,7 +7185,7 @@ ion-toolbar ion-back-button {
 }
 @media (max-width: 599px) {
   ion-content {
-    --padding-bottom: 100px !important;
+    --padding-bottom: 120px !important;
   }
 }
 .main-loader .loading-wrapper {
