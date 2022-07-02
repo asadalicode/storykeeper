@@ -6,6 +6,7 @@ import { ApiService } from '@app/@shared/sevices/api.service';
 import { ToastService } from '@app/@shared/sevices/toast.service';
 import { Product } from '@app/@shared/models';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-buy-new-book',
@@ -14,19 +15,32 @@ import { HttpHeaders, HttpResponse } from '@angular/common/http';
 })
 export class BuyNewBookComponent implements OnInit {
   isLoading = false;
+  PromoForm!: FormGroup;
   productsData!: Product[];
   selectedItem: any;
+  productBuyObj: any = {};
   constructor(
     private modalController: ModalController,
     private platform: Platform,
+    private fb: FormBuilder,
     private router: Router,
     private apiService: ApiService,
     private toastService: ToastService
-  ) {}
+  ) {
+    this.createPromoForm();
+  }
 
   ngOnInit(): void {
     this.getProducts();
   }
+
+  createPromoForm() {
+    this.PromoForm = this.fb.group({
+      promoCode: [''],
+    });
+  }
+
+  setPromoCode() {}
 
   getProducts() {
     this.isLoading = true;
@@ -47,23 +61,30 @@ export class BuyNewBookComponent implements OnInit {
   }
 
   payNow() {
-    this.apiService.post(`/api/Payments/create-checkout-session/${this.selectedItem.id}`, {}).subscribe({
-      next: (res: any) => {
-        console.log(res);
-        if (res.location) {
-          window.open(res.location);
-        }
-      },
-      error: (error: any) => {
-        console.log(error);
-      },
-    });
+    this.apiService
+      .post(
+        `/api/Payments/create-checkout-session/${this.selectedItem.id}&promoCode=${this.PromoForm.value.promoCode}`,
+        {}
+      )
+      .subscribe({
+        next: (res: any) => {
+          console.log(res);
+          if (res.location) {
+            window.open(res.location);
+          }
+        },
+        error: (error: any) => {
+          console.log(error);
+        },
+      });
   }
 
   paymentPage() {
     console.log('@@@');
     this.dismiss(false);
-    this.router.navigate(['/', 'payment-methods', this.selectedItem.id, this.selectedItem.priceInDollars]);
+    this.router.navigate(['/', 'payment-methods', this.selectedItem.id, this.selectedItem.priceInDollars], {
+      queryParams: { promoCode: this.PromoForm.value.promoCode },
+    });
   }
 
   get isWeb(): boolean {

@@ -27,6 +27,7 @@ import { Chooser } from '@awesome-cordova-plugins/chooser/ngx';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdTimerModule } from 'angular-cd-timer';
 import { ArchiveBookCardComponent } from './components/archive-book-card/archive-book-card.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -35,6 +36,8 @@ import { ArchiveBookCardComponent } from './components/archive-book-card/archive
     CommonModule,
     RouterModule,
     I18nModule,
+    FormsModule,
+    ReactiveFormsModule,
     FlexLayoutModule,
     LazyLoadImageModule,
     AngularWavesurferServiceModule,

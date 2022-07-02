@@ -77,12 +77,27 @@ export class PaymentMethodsComponent implements OnInit {
     return params;
   }
 
+  get queryParams() {
+    let params: any;
+    this.route.queryParams.subscribe((res: any) => {
+      params = res;
+    });
+    return params;
+  }
+
   get isWeb(): boolean {
     return !this.platform.is('cordova');
   }
 
   private createPaymentIntent(): Observable<PaymentIntent> {
-    return this.http.post<PaymentIntent>(`/api/Payments/create-payment-intent/${this.routeParams.productId}`, {});
+    if (this.queryParams.promoCode) {
+      return this.http.post<PaymentIntent>(
+        `/api/Payments/create-payment-intent/${this.routeParams.productId}?promoCode=${this.queryParams.promoCode}`,
+        {}
+      );
+    } else {
+      return this.http.post<PaymentIntent>(`/api/Payments/create-payment-intent/${this.routeParams.productId}`, {});
+    }
   }
 
   payNow() {
@@ -98,26 +113,28 @@ export class PaymentMethodsComponent implements OnInit {
             })
           )
         )
-        .subscribe((result: any) => {
-          console.log(result);
-          if (result.error) {
-            // Show error to your customer (e.g., insufficient funds)
-            this.toastService.showToast('error', result.error.message);
-            this.isLoading = false;
-            console.log('ERROR');
-          } else {
-            // The payment has been processed!
-            if (result.paymentIntent.status === 'succeeded') {
+        .subscribe({
+          next: (result: any) => {
+            if (result.error) {
+              // Show error to your customer (e.g., insufficient funds)
+              this.toastService.showToast('error', result.error.message);
               this.isLoading = false;
-              this.router.navigate(['/success']);
-              console.log('Succeeded');
-              // Show a success message to your customer
+              console.log('ERROR');
+            } else {
+              // The payment has been processed!
+              if (result.paymentIntent.status === 'succeeded') {
+                this.isLoading = false;
+                this.router.navigate(['/success']);
+                console.log('Succeeded');
+                // Show a success message to your customer
+              }
             }
-          }
+          },
+          error: (error) => {
+            this.isLoading = false;
+            console.log(this.stripeForm);
+          },
         });
-    } else {
-      this.isLoading = false;
-      console.log(this.stripeForm);
     }
   }
 }

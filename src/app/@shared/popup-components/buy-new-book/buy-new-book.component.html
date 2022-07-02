@@ -21,18 +21,24 @@
               <ion-label>{{ item?.name }}/ ${{ item?.priceInDollars }} </ion-label>
               <ion-radio slot="start" [value]="item"></ion-radio>
             </ion-item>
-
-            <!-- <ion-item lines="none">
-              <ion-label>52 story in book/ $30 </ion-label>
-              <ion-radio slot="start" value="griff"></ion-radio>
-            </ion-item>
-
-            <ion-item lines="none">
-              <ion-label>3 story book with 24 story / $50 </ion-label>
-              <ion-radio slot="start" value="buford"></ion-radio>
-            </ion-item> -->
           </ion-radio-group>
-
+          <div class="my-form">
+            <div class="form-container">
+              <form (ngSubmit)="setPromoCode()" [formGroup]="PromoForm" novalidate autocomplete="off">
+                <ion-list>
+                  <ion-item lines="none">
+                    <ion-label class="form-input-label" position="stacked" translate>Promo code / coupon</ion-label>
+                    <ion-input
+                      class="form-input"
+                      type="text"
+                      formControlName="promoCode"
+                      autocomplete="promoCode"
+                    ></ion-input>
+                  </ion-item>
+                </ion-list>
+              </form>
+            </div>
+          </div>
           <div class="ion-padding-horizontal mt-5 mb-2">
             <ion-button
               [disabled]="isLoading || !selectedItem"
