@@ -4,7 +4,7 @@ import { ModalDismissRole } from '@app/@shared/constants';
 import { ModalController, Platform } from '@ionic/angular';
 import { ApiService } from '@app/@shared/sevices/api.service';
 import { ToastService } from '@app/@shared/sevices/toast.service';
-import { Product } from '@app/@shared/models';
+import { Product, PromoCode } from '@app/@shared/models';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -80,11 +80,30 @@ export class BuyNewBookComponent implements OnInit {
   }
 
   paymentPage() {
-    console.log('@@@');
-    this.dismiss(false);
-    this.router.navigate(['/', 'payment-methods', this.selectedItem.id, this.selectedItem.priceInDollars], {
-      queryParams: { promoCode: this.PromoForm.value.promoCode },
-    });
+    if (this.PromoForm.value.promoCode) {
+      this.apiService.getDetails(`/api/PromoCodes/GetByCode/${this.PromoForm.value.promoCode}`, PromoCode).subscribe({
+        next: (res) => {
+          this.dismiss(false);
+          res.isActive
+            ? (this.selectedItem.priceInDollars = (
+                this.selectedItem.priceInDollars -
+                res.discountInCents / 100
+              ).toFixed(2))
+            : '';
+          this.router.navigate(['/', 'payment-methods', this.selectedItem.id, this.selectedItem.priceInDollars], {
+            queryParams: { promoCode: this.PromoForm.value.promoCode },
+          });
+        },
+        error: (error) => {
+          this.toastService.showToast('error', 'Promo code is invalid or expired');
+        },
+      });
+    } else {
+      this.dismiss(false);
+      this.router.navigate(['/', 'payment-methods', this.selectedItem.id, this.selectedItem.priceInDollars], {
+        queryParams: { promoCode: this.PromoForm.value.promoCode },
+      });
+    }
   }
 
   get isWeb(): boolean {
