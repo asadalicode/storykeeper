@@ -129,7 +129,7 @@ export class BuyNewBookComponent implements OnInit {
 
   verifyPromo() {
     this.searchSub$.pipe(debounceTime(400), distinctUntilChanged()).subscribe((filterValue: string) => {
-      this.searchValue = filterValue.trim().toLowerCase();
+      this.searchValue = filterValue.trim();
       this.getPromoByCode(this.searchValue);
     });
   }

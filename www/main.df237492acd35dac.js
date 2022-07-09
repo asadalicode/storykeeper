@@ -22769,7 +22769,7 @@
                 (0, fy.x)()
               )
               .subscribe((t) => {
-                (this.searchValue = t.trim().toLowerCase()), this.getPromoByCode(this.searchValue);
+                (this.searchValue = t.trim()), this.getPromoByCode(this.searchValue);
               });
           }
           getPromoByCode(t) {
