@@ -22639,7 +22639,7 @@
       function hy(s, r) {
         if ((1 & s && (e.TgZ(0, 'p', 22), e._uU(1), e.qZA()), 2 & s)) {
           const t = e.oxw();
-          e.xp6(1), e.hij('', t.calculatedDiscount, '% OFF');
+          e.xp6(1), e.hij('$', t.calculatedDiscount, ' OFF');
         }
       }
       let Ym = (() => {
@@ -22678,7 +22678,7 @@
               });
           }
           selectedProduct(t) {
-            (this.selectedItem = t.detail.value), this.getPromoByCode(this.searchValue);
+            (this.selectedItem = t.detail.value), console.log(this.selectedItem), this.getPromoByCode(this.searchValue);
           }
           payNow() {
             this.apiService
@@ -22702,8 +22702,8 @@
                       this.dismiss(!1),
                         t.isActive &&
                           (this.selectedItem.priceInDollars = (
-                            this.selectedItem.priceInDollars -
-                            t.discountInCents / 100
+                            (this.selectedItem.priceInCents - t.discountInCents) /
+                            100
                           ).toFixed(2)),
                         this.router.navigate(
                           ['/', 'payment-methods', this.selectedItem.id, this.selectedItem.priceInDollars],
@@ -22777,7 +22777,10 @@
               next: (o) => {
                 this.calculatedDiscount =
                   !(!o.isActive || !this.selectedItem) &&
-                  ((o.discountInCents / this.selectedItem.priceInCents) * 100).toFixed(2);
+                  (
+                    this.selectedItem.priceInDollars -
+                    (this.selectedItem.priceInCents - o.discountInCents) / 100
+                  ).toFixed(2);
               },
               error: (o) => {
                 this.calculatedDiscount = !1;

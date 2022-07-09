@@ -65,6 +65,7 @@ export class BuyNewBookComponent implements OnInit {
 
   selectedProduct(e: any) {
     this.selectedItem = e.detail.value;
+    console.log(this.selectedItem);
     this.getPromoByCode(this.searchValue);
   }
 
@@ -91,8 +92,8 @@ export class BuyNewBookComponent implements OnInit {
           this.dismiss(false);
           res.isActive
             ? (this.selectedItem.priceInDollars = (
-                this.selectedItem.priceInDollars -
-                res.discountInCents / 100
+                (this.selectedItem.priceInCents - res.discountInCents) /
+                100
               ).toFixed(2))
             : '';
           this.router.navigate(['/', 'payment-methods', this.selectedItem.id, this.selectedItem.priceInDollars], {
@@ -137,7 +138,10 @@ export class BuyNewBookComponent implements OnInit {
     this.apiService.getDetails(`/api/PromoCodes/GetByCode/${code}`, PromoCode).subscribe({
       next: (res) => {
         if (res.isActive && this.selectedItem) {
-          this.calculatedDiscount = ((res.discountInCents / this.selectedItem.priceInCents) * 100).toFixed(2);
+          this.calculatedDiscount = (
+            this.selectedItem.priceInDollars -
+            (this.selectedItem.priceInCents - res.discountInCents) / 100
+          ).toFixed(2);
         } else {
           this.calculatedDiscount = false;
         }
