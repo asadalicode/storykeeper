@@ -11,14 +11,14 @@
   }
   (f.m = g),
     (e = []),
-    (f.O = (c, a, d, n) => {
+    (f.O = (c, a, d, b) => {
       if (!a) {
         var t = 1 / 0;
         for (r = 0; r < e.length; r++) {
-          for (var [a, d, n] = e[r], i = !0, b = 0; b < a.length; b++)
-            (!1 & n || t >= n) && Object.keys(f.O).every((p) => f.O[p](a[b]))
-              ? a.splice(b--, 1)
-              : ((i = !1), n < t && (t = n));
+          for (var [a, d, b] = e[r], i = !0, n = 0; n < a.length; n++)
+            (!1 & b || t >= b) && Object.keys(f.O).every((p) => f.O[p](a[n]))
+              ? a.splice(n--, 1)
+              : ((i = !1), b < t && (t = b));
           if (i) {
             e.splice(r--, 1);
             var l = d();
@@ -27,9 +27,9 @@
         }
         return c;
       }
-      n = n || 0;
-      for (var r = e.length; r > 0 && e[r - 1][2] > n; r--) e[r] = e[r - 1];
-      e[r] = [a, d, n];
+      b = b || 0;
+      for (var r = e.length; r > 0 && e[r - 1][2] > b; r--) e[r] = e[r - 1];
+      e[r] = [a, d, b];
     }),
     (f.n = (e) => {
       var c = e && e.__esModule ? () => e.default : () => e;
@@ -44,13 +44,13 @@
           8 & d || ('object' == typeof a && a && ((4 & d && a.__esModule) || (16 & d && 'function' == typeof a.then))))
         )
           return a;
-        var n = Object.create(null);
-        f.r(n);
+        var b = Object.create(null);
+        f.r(b);
         var r = {};
         c = c || [null, e({}), e([]), e(e)];
         for (var t = 2 & d && a; 'object' == typeof t && !~c.indexOf(t); t = e(t))
           Object.getOwnPropertyNames(t).forEach((i) => (r[i] = () => a[i]));
-        return (r.default = () => a), f.d(n, r), n;
+        return (r.default = () => a), f.d(b, r), b;
       };
     })(),
     (f.d = (e, c) => {
@@ -109,7 +109,7 @@
         6560: '511cc7c5b9e58862',
         6708: 'c79035943347202d',
         6748: 'de5aa1c0480698a8',
-        7010: '54a1d7939b571e08',
+        7010: '5fae0321891c3dbb',
         7205: 'f5dadd716d11dfe5',
         7544: '51349382e4e68649',
         7602: 'e523e05e023e233c',
@@ -136,14 +136,14 @@
     (() => {
       var e = {},
         c = 'ngx-new:';
-      f.l = (a, d, n, r) => {
+      f.l = (a, d, b, r) => {
         if (e[a]) e[a].push(d);
         else {
           var t, i;
-          if (void 0 !== n)
-            for (var b = document.getElementsByTagName('script'), l = 0; l < b.length; l++) {
-              var o = b[l];
-              if (o.getAttribute('src') == a || o.getAttribute('data-webpack') == c + n) {
+          if (void 0 !== b)
+            for (var n = document.getElementsByTagName('script'), l = 0; l < n.length; l++) {
+              var o = n[l];
+              if (o.getAttribute('src') == a || o.getAttribute('data-webpack') == c + b) {
                 t = o;
                 break;
               }
@@ -154,7 +154,7 @@
             (t.charset = 'utf-8'),
             (t.timeout = 120),
             f.nc && t.setAttribute('nonce', f.nc),
-            t.setAttribute('data-webpack', c + n),
+            t.setAttribute('data-webpack', c + b),
             (t.src = f.tu(a))),
             (e[a] = [d]);
           var s = (_, p) => {
@@ -189,26 +189,26 @@
     (f.p = ''),
     (() => {
       var e = { 3666: 0 };
-      (f.f.j = (d, n) => {
+      (f.f.j = (d, b) => {
         var r = f.o(e, d) ? e[d] : void 0;
         if (0 !== r)
-          if (r) n.push(r[2]);
+          if (r) b.push(r[2]);
           else if (3666 != d) {
             var t = new Promise((o, s) => (r = e[d] = [o, s]));
-            n.push((r[2] = t));
+            b.push((r[2] = t));
             var i = f.p + f.u(d),
-              b = new Error();
+              n = new Error();
             f.l(
               i,
               (o) => {
                 if (f.o(e, d) && (0 !== (r = e[d]) && (e[d] = void 0), r)) {
                   var s = o && ('load' === o.type ? 'missing' : o.type),
                     u = o && o.target && o.target.src;
-                  (b.message = 'Loading chunk ' + d + ' failed.\n(' + s + ': ' + u + ')'),
-                    (b.name = 'ChunkLoadError'),
-                    (b.type = s),
-                    (b.request = u),
-                    r[1](b);
+                  (n.message = 'Loading chunk ' + d + ' failed.\n(' + s + ': ' + u + ')'),
+                    (n.name = 'ChunkLoadError'),
+                    (n.type = s),
+                    (n.request = u),
+                    r[1](n);
                 }
               },
               'chunk-' + d,
@@ -217,16 +217,16 @@
           } else e[d] = 0;
       }),
         (f.O.j = (d) => 0 === e[d]);
-      var c = (d, n) => {
-          var b,
+      var c = (d, b) => {
+          var n,
             l,
-            [r, t, i] = n,
+            [r, t, i] = b,
             o = 0;
           if (r.some((u) => 0 !== e[u])) {
-            for (b in t) f.o(t, b) && (f.m[b] = t[b]);
+            for (n in t) f.o(t, n) && (f.m[n] = t[n]);
             if (i) var s = i(f);
           }
-          for (d && d(n); o < r.length; o++) f.o(e, (l = r[o])) && e[l] && e[l][0](), (e[r[o]] = 0);
+          for (d && d(b); o < r.length; o++) f.o(e, (l = r[o])) && e[l] && e[l][0](), (e[r[o]] = 0);
           return f.O(s);
         },
         a = (self.webpackChunkngx_new = self.webpackChunkngx_new || []);

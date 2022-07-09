@@ -6909,6 +6909,9 @@ ion-title {
   font-weight: 500 !important;
   font-size: 16px;
 }
+.my-form .green-input {
+  color: var(--ion-color-success) !important;
+}
 .my-form .form-input {
   margin-top: 15px;
   padding: 10px 16px !important;

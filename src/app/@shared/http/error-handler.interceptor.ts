@@ -33,23 +33,23 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
     }
 
     if (error.status != 201) {
-      if (error.error == null) {
-        this.toastService.showToast('error', error?.message);
-      }
-      if (typeof error.error.error == 'string') {
-        this.toastService.showToast('error', error?.error?.error);
-      }
-      if (typeof error.error == 'string') {
-        this.toastService.showToast('error', error?.error);
-      } else if (typeof error.error.errorMessage == 'string') {
-        this.toastService.showToast('error', error?.error?.errorMessage);
-      } else if (error.error.isSuccess == false) {
-        this.toastService.showToast('error', error?.error?.error);
-      } else if (error.error.responseMessage) {
-        this.toastService.showToast('error', error?.error?.responseMessage);
-      } else {
-        this.toastService.showToast('error', error?.message);
-      }
+      // if (error.error == null) {
+      //   this.toastService.showToast('error', error?.message);
+      // }
+      // if (typeof error.error.error == 'string') {
+      //   this.toastService.showToast('error', error?.error?.error);
+      // }
+      // if (typeof error.error == 'string') {
+      //   this.toastService.showToast('error', error?.error);
+      // } else if (typeof error.error.errorMessage == 'string') {
+      //   this.toastService.showToast('error', error?.error?.errorMessage);
+      // } else if (error.error.isSuccess == false) {
+      //   this.toastService.showToast('error', error?.error?.error);
+      // } else if (error.error.responseMessage) {
+      //   this.toastService.showToast('error', error?.error?.responseMessage);
+      // } else {
+      //   this.toastService.showToast('error', error?.message);
+      // }
     }
 
     throw response;

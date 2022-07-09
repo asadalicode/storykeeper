@@ -29,13 +29,15 @@
                   <ion-item lines="none">
                     <ion-label class="form-input-label" position="stacked" translate>Promo code / coupon</ion-label>
                     <ion-input
-                      class="form-input"
+                      [ngClass]="calculatedDiscount ? 'green-input form-input' : 'form-input'"
                       type="text"
                       formControlName="promoCode"
                       autocomplete="promoCode"
+                      (ionChange)="searchPromo($event)"
                     ></ion-input>
                   </ion-item>
                 </ion-list>
+                <p class="text-center" *ngIf="calculatedDiscount">{{ calculatedDiscount }}% OFF</p>
               </form>
             </div>
           </div>

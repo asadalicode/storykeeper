@@ -7,6 +7,8 @@ import { ToastService } from '@app/@shared/sevices/toast.service';
 import { Product, PromoCode } from '@app/@shared/models';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SharedService } from '@app/@shared/sevices/shared.service';
+import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-buy-new-book',
@@ -19,9 +21,14 @@ export class BuyNewBookComponent implements OnInit {
   productsData!: Product[];
   selectedItem: any;
   productBuyObj: any = {};
+  promoData: any = [];
+  private searchSub$ = new Subject<string>();
+  searchValue: string = '';
+  calculatedDiscount: any;
   constructor(
     private modalController: ModalController,
     private platform: Platform,
+    private sharedService: SharedService,
     private fb: FormBuilder,
     private router: Router,
     private apiService: ApiService,
@@ -32,6 +39,7 @@ export class BuyNewBookComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProducts();
+    this.verifyPromo();
   }
 
   createPromoForm() {
@@ -47,7 +55,6 @@ export class BuyNewBookComponent implements OnInit {
     this.apiService.get('/api/Products', Product).subscribe({
       next: (res: any) => {
         this.productsData = res;
-        console.log(res);
         this.isLoading = false;
       },
       error: (error: any) => {
@@ -58,6 +65,7 @@ export class BuyNewBookComponent implements OnInit {
 
   selectedProduct(e: any) {
     this.selectedItem = e.detail.value;
+    this.getPromoByCode(this.searchValue);
   }
 
   payNow() {
@@ -68,14 +76,11 @@ export class BuyNewBookComponent implements OnInit {
       )
       .subscribe({
         next: (res: any) => {
-          console.log(res);
           if (res.location) {
             window.open(res.location);
           }
         },
-        error: (error: any) => {
-          console.log(error);
-        },
+        error: (error: any) => {},
       });
   }
 
@@ -115,5 +120,31 @@ export class BuyNewBookComponent implements OnInit {
     this.modalController.dismiss('', role);
     // this.router.navigate(['tabs/my-library']);
     // this.router.navigate(['tabs/payment-methods']);
+  }
+
+  searchPromo(event: any) {
+    this.searchSub$.next(event.target.value);
+  }
+
+  verifyPromo() {
+    this.searchSub$.pipe(debounceTime(400), distinctUntilChanged()).subscribe((filterValue: string) => {
+      this.searchValue = filterValue.trim().toLowerCase();
+      this.getPromoByCode(this.searchValue);
+    });
+  }
+
+  getPromoByCode(code: string) {
+    this.apiService.getDetails(`/api/PromoCodes/GetByCode/${code}`, PromoCode).subscribe({
+      next: (res) => {
+        if (res.isActive && this.selectedItem) {
+          this.calculatedDiscount = ((res.discountInCents / this.selectedItem.priceInCents) * 100).toFixed(2);
+        } else {
+          this.calculatedDiscount = false;
+        }
+      },
+      error: (error) => {
+        this.calculatedDiscount = false;
+      },
+    });
   }
 }
