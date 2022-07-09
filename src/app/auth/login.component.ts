@@ -178,19 +178,19 @@ export class LoginComponent implements OnInit {
         }),
         untilDestroyed(this)
       )
-      .subscribe(
-        (credentials) => {
+      .subscribe({
+        next: (credentials) => {
           console.log(credentials);
           log.debug(`${credentials.username} successfully logged in`);
           this.toastService.showToast('success', `Successfully logged in`);
           this.router.navigate([this.route.snapshot.queryParams['redirect'] || '/'], { replaceUrl: true });
         },
-        (error) => {
+        error: (error) => {
           log.debug(`Login error: ${error}`);
           this.error = error;
-          // this.toastService.showToast('error', 'Email or password incorrect');
-        }
-      );
+          this.toastService.showToast('error', 'Email or password incorrect');
+        },
+      });
   }
 
   get isWeb(): boolean {

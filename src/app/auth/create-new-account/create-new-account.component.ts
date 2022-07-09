@@ -62,13 +62,13 @@ export class CreateNewAccountComponent implements OnInit {
         }),
         untilDestroyed(this)
       )
-      .subscribe(
-        (credentials) => {
+      .subscribe({
+        next: (credentials) => {
           log.debug(`${credentials.username} successfully signup`);
           this.toastService.showToast('success', `Successfully registered`);
           this.router.navigate(['/login']);
         },
-        (error) => {
+        error: (error) => {
           log.debug(`signup error: ${error}`);
           this.error = error;
           for (var i in error.error) {
@@ -76,8 +76,8 @@ export class CreateNewAccountComponent implements OnInit {
           }
 
           // this.toastService.showToast('error', 'Error occurred, Please contact Administrator');
-        }
-      );
+        },
+      });
   }
 
   get isWeb(): boolean {

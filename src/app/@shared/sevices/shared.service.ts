@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, debounceTime, distinctUntilChanged, Observable, Subject } from 'rxjs';
 const IMG_URL: string = 'IMG_URL';
 const AUDIO_URL: string = 'AUDIO_URL';
 
